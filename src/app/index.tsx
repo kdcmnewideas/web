@@ -1,15 +1,13 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import { AppText } from "@/components/AppText";
 
-export default function Index() {
+export default function IndexScreen() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+    <View className="justify-center flex-1 p-4">
+      <AppText center>
+        Open up <AppText bold>app/index.tsx</AppText> to start working on your
+        app!
+      </AppText>
     </View>
   );
 }

@@ -1,26 +1,44 @@
-import Navigation from '@/components/Navigation';
-import { Button } from '@/components/ui/button';
-import { Icon } from '@/components/ui/icon';
-import { Text } from '@/components/ui/text';
-import { Link, Stack } from 'expo-router';
-import { MoonStarIcon, StarIcon, SunIcon } from 'lucide-react-native';
-import { useColorScheme } from 'nativewind';
-import * as React from 'react';
-import { Image, type ImageStyle, View } from 'react-native';
-
-const LOGO = {
-  light: require('@/assets/images/react-native-reusables-light.png'),
-  dark: require('@/assets/images/react-native-reusables-dark.png'),
-};
+import HeroSection from "@/components/HeroSection";
+import Navigation from "@/components/Navigation";
+import RevisionTopics from "@/components/RevisionTopics";
+import SubjectCard from "@/components/SubjectCard";
+import { Text } from "@/components/ui/text";
+import UserGoal from "@/components/UserGoal";
+import { Stack } from "expo-router";
+import { useColorScheme } from "nativewind";
+import * as React from "react";
+import { ScrollView, View } from "react-native";
 
 const SCREEN_OPTIONS = {
- headerShown: false,
+  headerShown: false,
 };
 
-const IMAGE_STYLE: ImageStyle = {
-  height: 76,
-  width: 76,
-};
+const subjects = [
+  {
+    subject: "Mathematics",
+    progress: 75,
+    icon: "brain" as const,
+    color: "primary" as const,
+  },
+  {
+    subject: "Science",
+    progress: 62,
+    icon: "flask" as const,
+    color: "primary" as const,
+  },
+  {
+    subject: "English",
+    progress: 80,
+    icon: "book" as const,
+    color: "primary" as const,
+  },
+  {
+    subject: "History",
+    progress: 55,
+    icon: "book" as const,
+    color: "primary" as const,
+  },
+];
 
 export default function Screen() {
   const { colorScheme } = useColorScheme();
@@ -28,50 +46,35 @@ export default function Screen() {
   return (
     <>
       <Stack.Screen options={SCREEN_OPTIONS} />
-      <Navigation/>
-      <View className="flex-1 items-center justify-center gap-8 p-4">
-        <Image source={LOGO[colorScheme ?? 'light']} style={IMAGE_STYLE} resizeMode="contain" />
-        <View className="gap-2 p-4">
-          <Text className="ios:text-foreground font-mono text-sm text-muted-foreground">
-            1. Edit <Text variant="code">app/index.tsx</Text> to get started.
-          </Text>
-          <Text className="ios:text-foreground font-mono text-sm text-muted-foreground">
-            2. Save to see your changes instantly.
-          </Text>
+      <ScrollView className="min-h-screen bg-background">
+        <Navigation />
+
+        <View className="container mx-auto px-4 py-6 md:py-8">
+          <View className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <View className="lg:col-span-8 space-y-6">
+              <HeroSection />
+              <UserGoal />
+
+              <View>
+                <Text className="text-2xl font-bold mb-4 text-foreground">
+                  Your Subjects
+                </Text>
+                <View className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {subjects.map((subject, index) => (
+                    <SubjectCard key={index} {...subject} />
+                  ))}
+                </View>
+              </View>
+            </View>
+
+            <View className="lg:col-span-4 hidden lg:block">
+              <RevisionTopics />
+            </View>
+
+            <View className="lg:hidden"> <RevisionTopics /></View>
+          </View>
         </View>
-        <View className="flex-row gap-2">
-          <Link href="https://reactnativereusables.com" asChild>
-            <Button>
-              <Text>Browse the Docs</Text>
-            </Button>
-          </Link>
-          <Link href="https://github.com/founded-labs/react-native-reusables" asChild>
-            <Button variant="ghost">
-              <Text>Star the Repo</Text>
-              <Icon as={StarIcon} />
-            </Button>
-          </Link>
-        </View>
-      </View>
+      </ScrollView>
     </>
-  );
-}
-
-const THEME_ICONS = {
-  light: SunIcon,
-  dark: MoonStarIcon,
-};
-
-function ThemeToggle() {
-  const { colorScheme, toggleColorScheme } = useColorScheme();
-
-  return (
-    <Button
-      onPressIn={toggleColorScheme}
-      size="icon"
-      variant="ghost"
-      className="ios:size-9 rounded-full web:mx-4">
-      <Icon as={THEME_ICONS[colorScheme ?? 'light']} className="size-5" />
-    </Button>
   );
 }

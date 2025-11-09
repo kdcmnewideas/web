@@ -14,7 +14,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: cn(
-          'bg-primary shadow-sm shadow-black/5 active:bg-primary/90',
+          'bg-primary shadow-sm shadow-black/5 active:bg-primary/90 text-primary-foreground',
           Platform.select({ web: 'hover:bg-primary/90' })
         ),
         destructive: cn(
@@ -30,7 +30,7 @@ const buttonVariants = cva(
           })
         ),
         secondary: cn(
-          'bg-secondary shadow-sm shadow-black/5 active:bg-secondary/80',
+          'bg-secondary shadow-sm shadow-black/5 active:bg-secondary/80 text-secondary-foreground',
           Platform.select({ web: 'hover:bg-secondary/80' })
         ),
         ghost: cn(
@@ -93,6 +93,7 @@ type ButtonProps = React.ComponentProps<typeof Pressable> &
   VariantProps<typeof buttonVariants>;
 
 function Button({ className, variant, size, ...props }: ButtonProps) {
+
   return (
     <TextClassContext.Provider value={buttonTextVariants({ variant, size })}>
       <Pressable
@@ -106,3 +107,4 @@ function Button({ className, variant, size, ...props }: ButtonProps) {
 
 export { Button, buttonTextVariants, buttonVariants };
 export type { ButtonProps };
+

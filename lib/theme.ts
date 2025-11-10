@@ -26,6 +26,10 @@ export const THEME = {
     chart3: 'hsl(197 37% 24%)',
     chart4: 'hsl(43 74% 66%)',
     chart5: 'hsl(27 87% 67%)',
+    "gradient-primary": 'linear-gradient(135deg, hsl(210 100% 56%), hsl(195 100% 50%))',
+   " gradient-secondary": 'linear-gradient(135deg, hsl(25 95% 58%), hsl(35 95% 60%))',
+    "gradient-accent": 'linear-gradient(135deg, hsl(145 65% 50%), hsl(160 70% 45%))',
+    "gradient-card": 'linear-gradient(145deg, hsl(0 0% 100%), hsl(210 40% 99%))',
   },
   dark: {
     background: 'hsl(215 30% 12%)',
@@ -52,6 +56,10 @@ export const THEME = {
     chart3: 'hsl(30 80% 55%)',
     chart4: 'hsl(280 65% 60%)',
     chart5: 'hsl(340 75% 55%)',
+    "gradient-primary": "linear-gradient(135deg, hsl(210 100% 56%), hsl(195 100% 50%))",
+    "gradient-secondary": "linear-gradient(135deg, hsl(25 95% 58%), hsl(35 95% 60%))",
+    "gradient-accent": "linear-gradient(135deg, hsl(145 65% 50%), hsl(160 70% 45%))",
+    "gradient-card": "linear-gradient(145deg, hsl(215 28% 16%), hsl(215 25% 18%))",
   },
 };
  

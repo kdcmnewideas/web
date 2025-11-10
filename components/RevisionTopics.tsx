@@ -20,9 +20,8 @@ const RevisionTopics = () => {
     <Card className="sticky top-20 shadow-lg border-2">
       <CardHeader className="pb-3">
         <CardTitle className="text-lg flex items-center gap-2">
-          <Text>
           <Clock className="w-5 h-5 text-primary" />
-          Revision Topics</Text>
+          <Text>Revision Topics</Text>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">

@@ -1,8 +1,9 @@
 import { User } from "@/types/types";
 import { Flame } from "lucide-react-native";
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { Card } from "./ui/card";
+import { Text } from "./ui/text";
 
 interface StreakProps {
   user: User;
@@ -19,7 +20,7 @@ const streak = ({ user }: StreakProps) => {
           <Text className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
             Current Streak
           </Text>
-          <Text className="text-lg font-bold text-slate-900 leading-none group-hover:text-orange-600 transition-colors dark:text-white">
+          <Text className="text-lg font-bold leading-none group-hover:text-orange-600 transition-colors ">
             {user.streakDays} Days
           </Text>
         </View>

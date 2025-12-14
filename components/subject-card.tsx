@@ -3,6 +3,7 @@ import { getSubjectColorStyles } from '@/utils/subject-color';
 import { Atom, BookOpen, Calculator, Dna, Hourglass } from 'lucide-react-native';
 import React from 'react';
 import { Pressable, View } from 'react-native';
+import { Card } from './ui/card';
 import { Text } from './ui/text';
 
 const iconMap: Record<string, React.ElementType> = {
@@ -29,7 +30,9 @@ const SubjectCard = ({subject}: SubjectCardProps) => {
     <Pressable
       key={subject.id}
       onPress={() => onNavigate(ScreenName.SUBJECT_DETAILS, { subjectId: subject.id })}
-      className="group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-slate-100 bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] !h-auto">
+      >
+      <Card
+      className="group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] h-auto!">
       <View className="mb-6 flex items-start justify-between flex-row w-full">
         <View
           className={`flex h-14 w-14 items-center justify-center rounded-2xl shadow-sm ${styles.iconBg} transition-transform duration-300 group-hover:scale-110`}>
@@ -40,7 +43,7 @@ const SubjectCard = ({subject}: SubjectCardProps) => {
         </View>
       </View>
 
-      <Text className="mb-1 text-lg font-bold text-slate-900 text-left w-full">{subject.title}</Text>
+      <Text className="mb-1 text-lg font-bold text-left w-full">{subject.title}</Text>
       <Text className="mb-6 line-clamp-2 text-sm text-slate-400">
         {subject.description || 'Master key concepts and advance your skills.'}
       </Text>
@@ -56,6 +59,7 @@ const SubjectCard = ({subject}: SubjectCardProps) => {
             style={{ width: `${subject.progress}%` }}></View>
         </View>
       </View>
+      </Card>
     </Pressable>
   );
 };

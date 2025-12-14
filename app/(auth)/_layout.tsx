@@ -13,14 +13,15 @@ export {
 } from 'expo-router';
 
 export default function RootLayout() {
-  const {theme} = useUniwind();
+  const { theme: colorScheme } = useUniwind();
 
   return (
-    <ThemeProvider value={NAV_THEME[theme ?? 'light']}>
-      <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
-      <Stack screenOptions={{ headerShown: false }}>
+    <ThemeProvider value={NAV_THEME[colorScheme ?? 'light']}>
+      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
+      <Stack screenOptions={{ headerShown: false }} initialRouteName='login'>
+        <Stack.Screen name="login" options={{ headerShown: false }} />
+        <Stack.Screen name="signup" options={{ headerShown: false }} />
       </Stack>
-
       <PortalHost />
     </ThemeProvider>
   );

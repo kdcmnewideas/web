@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "alc-ai",
-    "slug": "alc-ai",
+    "name": "minimal",
+    "slug": "minimal",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "alc-ai",
+    "scheme": "minimal",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {

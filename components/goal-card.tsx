@@ -50,10 +50,13 @@ const GoalCard = ({ goal, index }: GoalProp) => {
 
       <View className="shrink-0">
         <CircularProgress
-          percentage={percentage}
-          color={color}
+          progressPercent={percentage}
+          bgColor={color}
           size={52}
           strokeWidth={4}
+          text={`${percentage}%`}
+          textColor={color}
+          textSize={12}
         />
       </View>
     </Card>

@@ -1,41 +1,64 @@
-import { Text } from "@/components/ui/text";
-import { View } from "lucide-react-native";
 import React from "react";
-import Svg, { Circle } from "react-native-svg";
+import { View } from "react-native";
+import { Circle, Svg, Text as SVGText } from 'react-native-svg';
 
-const CircularProgress = ({ percentage, color, size = 60, strokeWidth = 5 }: { percentage: number; color: string; size?: number; strokeWidth?: number }) => {
+interface Props {
+  size: number;
+  strokeWidth: number;
+  progressPercent: number;
+  text: string;
+  bgColor?: string;
+  pgColor?: string;
+  textSize: number;
+  textColor?: string;
+}
+
+const CircularProgress = (props : Props) => {
+  const { size, strokeWidth, text } = props;
   const radius = (size - strokeWidth) / 2;
-  const circumference = radius * 2 * Math.PI;
-  const offset = circumference - (percentage / 100) * circumference;
+  const circum = radius * 2 * Math.PI;
+  const svgProgress = 100 - props.progressPercent;
 
   return (
-    <View className="relative flex flex-row items-center justify-center" style={{ width: size, height: size }}>
-      <Svg className="transform -rotate-90 w-full h-full">
-        <Circle
+    <View style={{margin: 10}}>
+      <Svg width={size} height={size}>
+        {/* Background Circle */}
+        <Circle 
+          stroke={props.bgColor ? props.bgColor : "#f2f2f2"}
+          fill="none"
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="#f1f5f9"
-          strokeWidth={strokeWidth}
-          fill="transparent"
+          {...{strokeWidth}}
         />
-        <Circle
+        
+        {/* Progress Circle */}
+        <Circle 
+          stroke={props.pgColor ? props.pgColor : "#3b5998"}
+          fill="none"
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke={color}
-          strokeWidth={strokeWidth}
-          fill="transparent"
-          strokeDasharray={circumference}
-          strokeDashoffset={offset}
+          strokeDasharray={`${circum} ${circum}`}
+          strokeDashoffset={radius * Math.PI * 2 * (svgProgress/100)}
           strokeLinecap="round"
+          transform={`rotate(-90, ${size/2}, ${size/2})`}
+          {...{strokeWidth}}
         />
+
+        {/* Text */}
+        <SVGText
+          fontSize={props.textSize ? props.textSize : "10"}
+          x={size / 2}
+          y={size / 2 + (props.textSize ?  (props.textSize / 2) - 1 : 5)}
+          textAnchor="middle"
+          fill={props.textColor ? props.textColor : "#333333"}
+        >
+          {text}
+        </SVGText>
       </Svg>
-      <View className="absolute inset-0 flex items-center justify-center">
-         <Text className={`text-[10px] font-bold ${color}`}>{percentage}%</Text>
-      </View>
     </View>
-  );
-};
+  )
+}
 
 export default CircularProgress;

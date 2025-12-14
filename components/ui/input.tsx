@@ -1,11 +1,12 @@
 import { cn } from '@/lib/utils';
 import { Platform, TextInput, type TextInputProps } from 'react-native';
+import { useUniwind } from 'uniwind';
 
 function Input({
   className,
-  placeholderClassName,
   ...props
 }: TextInputProps & React.RefAttributes<TextInput>) {
+  const { theme } = useUniwind();
   return (
     <TextInput
       className={cn(
@@ -21,10 +22,11 @@ function Input({
             'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
             'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive'
           ),
-          native: 'placeholder:text-muted-foreground/50',
+          native: 'placeholder:text-muted-foreground',
         }),
         className
       )}
+      placeholderTextColor={theme === 'dark' ? '#a1a1a1' : '#737373'}
       {...props}
     />
   );

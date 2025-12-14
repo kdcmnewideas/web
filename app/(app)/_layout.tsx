@@ -16,13 +16,14 @@ import {
   Users,
 } from "lucide-react-native";
 import { useState } from "react";
-import { Dimensions, View } from "react-native";
+import { Dimensions, Platform, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import {
   GestureHandlerRootView,
   ScrollView,
 } from "react-native-gesture-handler";
+import { useUniwind } from "uniwind";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -34,6 +35,7 @@ export default function AppLayout() {
   const router = useRouter();
   const activeScreen = usePathname();
   const screenHeight = Dimensions.get("window").height;
+  const { theme } = useUniwind();
 
   const onNavigate = (screen: ScreenName) => {
     // Navigation logic here, e.g., using a navigation library
@@ -66,7 +68,7 @@ export default function AppLayout() {
   return (
     <GestureHandlerRootView>
       <SafeAreaView className="flex-1">
-        <View className="flex min-h-screen bg-background flex-1">
+        <View className="flex bg-background flex-1 min-h-screen">
           {/* Sidebar for Desktop */}
           <View
             className={`hidden flex-col md:flex ${isSidebarCollapsed ? "w-20" : "w-48"} fixed z-10 h-full border-r border-border bg-card transition-all duration-300 ease-in-out`}
@@ -161,15 +163,28 @@ export default function AppLayout() {
               <View
                 className={`flex-1 ${isSidebarCollapsed ? "md:ml-20" : "md:ml-48"} relative pb-24 transition-all duration-300 ease-in-out md:pb-0`}
               >
-                <View className="mx-auto max-w-6xl p-4 md:p-8 flex-1">
+                <View className="mx-auto max-w-6xl p-4 md:p-8 flex-1 w-full">
                   <Slot />
                 </View>
               </View>
             </ScrollView>
           </View>
 
+          {/* Floating Action Button (Mobile) - Positioned relative to viewport */}
+          <View className="md:hidden bottom-24 right-6 z-50 fixed items-end" style={buttonstyles.screenHeight}>
+            <Button
+              onPress={() => onNavigate(ScreenName.CALENDAR)}
+              className="w-14 h-14 rounded-full flex items-center justify-center hover:bg-indigo-700 active:scale-95 transition-all"
+            >
+              <Calendar color={"#ffff"} size={24} />
+            </Button>
+          </View>
+
           {/* Bottom Nav for Mobile */}
-          <View className="safe-area-bottom fixed bottom-0 left-0 right-0 z-50 flex flex-row items-center justify-between border-t border-border bg-card py-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] md:hidden">
+          <View
+            className="safe-area fixed bottom-0 left-0 right-0 z-50 flex flex-row items-center justify-between border-t border-border bg-card py-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] md:hidden"
+            style={styles.screenPadding}
+          >
             {mobileNavItems.map((item) => (
               <Button
                 variant={"ghost"}
@@ -178,7 +193,7 @@ export default function AppLayout() {
                 className={`flex flex-col items-center space-y-1`}
               >
                 <item.icon
-                  className={`${activeScreen.startsWith(item.id) ? "text-primary" : "text-slate-400"}`}
+                  color={`${activeScreen.startsWith(item.id) ? (theme === "dark" ? "#6941C6" : "#9E77ED") : "#90a1b9"}`}
                   size={24}
                 />
                 <Text
@@ -194,3 +209,15 @@ export default function AppLayout() {
     </GestureHandlerRootView>
   );
 }
+
+const styles = StyleSheet.create({
+  screenPadding: {
+    paddingBottom: Platform.OS === "android" ? 50 : 15,
+  },
+});
+
+const buttonstyles = StyleSheet.create({
+  screenHeight: {
+    height: Platform.OS === "web" ? 'auto' : 0,
+  },
+});

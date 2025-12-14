@@ -13,7 +13,6 @@ import {
 import { ScreenName } from "@/types/types";
 import {
   ArrowRight,
-  Calendar,
   Target
 } from "lucide-react-native";
 import React from "react";
@@ -35,7 +34,7 @@ const home = () => {
   // Helper for solid colors based on the previous class names
 
   return (
-    <View className="gap-8 animate-fade-in">
+    <View className="gap-8 animate-fade-in pt-10">
       {/* Header & Welcome */}
       <View className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <View>
@@ -136,15 +135,6 @@ const home = () => {
         </View>
       </View>
 
-      {/* Floating Action Button (Mobile) - Positioned relative to viewport */}
-      <View className="md:hidden fixed bottom-24 right-6 z-50">
-        <Button
-          onPress={() => onNavigate(ScreenName.CALENDAR)}
-          className="w-14 h-14 bg-indigo-600 text-white rounded-full shadow-lg shadow-indigo-200 flex items-center justify-center hover:bg-indigo-700 active:scale-95 transition-all"
-        >
-          <Calendar className="w-6 h-6" />
-        </Button>
-      </View>
     </View>
   );
 };

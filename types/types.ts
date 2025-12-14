@@ -1,23 +1,35 @@
-
 export enum ScreenName {
- LOGIN = '/login',
-  SIGNUP = '/signup',
-  FORGOT_PASSWORD = '/forgot-password',
-  HOME = '/home',
-  SUBJECTS = '/subjects',
-  SUBJECT_DETAILS = '/subject/[subjectId]',
-  LESSONS = '/subject/[subjectId]/lessons',
-  LEARN = 'subject/[subjectId]/learn/[lessonId]',
-  REVISION = 'subject/[subjectId]/revision/[lessonId]',
-  REVISION_DETAILS = '/revision/[revisionId]',
-  MOCK_TEST = '/subject/[subjectId]/mock-test/[mockTestId]',
-  PROFILE = '/profile',
-  SETTINGS = '/settings',
-  GOALS = '/goals',
-  ANALYTICS = '/analytics',
-  CALENDAR = '/calendar',
-  COMMUNITY = '/community'
+  LOGIN = "/login",
+  SIGNUP = "/signup",
+  FORGOT_PASSWORD = "/forgot-password",
+  HOME = "/home",
+  SUBJECTS = "/subjects",
+  PROFILE = "/profile",
+  CALENDAR = "/revision",
+  ANALYTICS = "/analytics",
+  LEADERBOARD = "/leaderboard",
 }
+
+// export enum ScreenName {
+//  LOGIN = '/login',
+//   SIGNUP = '/signup',
+//   FORGOT_PASSWORD = '/forgot-password',
+//   HOME = '/home',
+//   SUBJECTS = '/subjects',
+//   SUBJECT_DETAILS = '/subject/[subjectId]',
+//   LESSONS = '/subject/[subjectId]/lessons',
+//   LEARN = 'subject/[subjectId]/learn/[lessonId]',
+//   REVISION = 'subject/[subjectId]/revision/[lessonId]',
+//   REVISION_DETAILS = '/revision/[revisionId]',
+//   MOCK_TEST = '/subject/[subjectId]/mock-test/[mockTestId]',
+//   PROFILE = '/profile',
+//   SETTINGS = '/settings',
+//   GOALS = '/goals',
+//   ANALYTICS = '/analytics',
+//   CALENDAR = '/revision',
+//   COMMUNITY = '/community',
+//   LEADERBOARD = '/leaderboard',
+// }
 
 export interface User {
   id: string;
@@ -60,7 +72,7 @@ export interface Lesson {
   durationMinutes: number;
   isCompleted: boolean;
   lastAccessed?: string;
-  difficulty?: 'Beginner' | 'Intermediate' | 'Advanced';
+  difficulty?: "Beginner" | "Intermediate" | "Advanced";
 }
 
 export interface Goal {
@@ -123,7 +135,11 @@ export interface PerformanceStats {
   totalStudyHours: number;
   masteryDistribution: { label: string; value: number; color: string }[];
   weeklyActivity: number[]; // 7 days of activity (e.g., hours or points)
-  subjectTimeDistribution: { subjectName: string; hours: number; color: string }[];
+  subjectTimeDistribution: {
+    subjectName: string;
+    hours: number;
+    color: string;
+  }[];
 }
 
 export interface LeaderboardEntry {
@@ -132,7 +148,7 @@ export interface LeaderboardEntry {
   name: string;
   points: number;
   avatarUrl?: string;
-  change: 'up' | 'down' | 'same';
+  change: "up" | "down" | "same";
   location: string; // "City, Country"
 }
 
@@ -143,7 +159,7 @@ export interface ScheduleItem {
   date: string; // YYYY-MM-DD
   time: string;
   duration: number; // minutes
-  type: 'revision' | 'test' | 'lesson';
-  status: 'upcoming' | 'completed' | 'missed';
+  type: "revision" | "test" | "lesson";
+  status: "upcoming" | "completed" | "missed";
   description?: string;
 }

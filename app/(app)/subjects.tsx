@@ -2,7 +2,6 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Text } from "@/components/ui/text";
 import { SUBJECTS } from "@/mockData";
-import { ScreenName } from "@/types/types";
 import {
   ArrowRight,
   Atom,
@@ -28,7 +27,7 @@ const subjects = () => {
   const { theme } = useUniwind();
   const [searchTerm, setSearchTerm] = useState("");
 
-  const onNavigate = (screenName: ScreenName, params?: any) => {
+  const onNavigate = (screenName: string, params?: any) => {
     console.log(screenName);
   };
 
@@ -61,7 +60,7 @@ const subjects = () => {
             <Pressable
               key={subject.id}
               onPress={() =>
-                onNavigate(ScreenName.SUBJECT_DETAILS, {
+                onNavigate('/subjectdetails', {
                   subjectId: subject.id,
                 })
               }

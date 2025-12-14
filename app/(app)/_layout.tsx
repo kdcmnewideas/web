@@ -37,22 +37,12 @@ export default function AppLayout() {
   const screenHeight = Dimensions.get("window").height;
   const { theme } = useUniwind();
 
-  const onNavigate = (screen: ScreenName) => {
-    // Navigation logic here, e.g., using a navigation library
-    console.log(`Navigating to ${screen}`);
-    if (screen === "/home") {
-      router.push(screen);
-    } else {
-      router.push("/subjects");
-    }
-  };
-
   const navItems = [
     { id: ScreenName.HOME, icon: Home, label: "Home" },
     { id: ScreenName.SUBJECTS, icon: LayoutDashboard, label: "Subjects" },
     { id: ScreenName.CALENDAR, icon: Calendar, label: "Schedule" },
     { id: ScreenName.ANALYTICS, icon: BarChart2, label: "Results" },
-    { id: ScreenName.COMMUNITY, icon: Users, label: "Leaderboard" },
+    { id: ScreenName.LEADERBOARD, icon: Users, label: "Leaderboard" },
     { id: ScreenName.PROFILE, icon: User, label: "Profile" },
   ];
 
@@ -105,7 +95,7 @@ export default function AppLayout() {
                 <Button
                   variant={"ghost"}
                   key={item.id}
-                  onPress={() => onNavigate(item.id)}
+                  onPress={() => router.push(item.id)}
                   className={`flex w-full items-center ${isSidebarCollapsed ? "justify-center px-0" : "justify-start space-x-3 px-3"} group relative rounded-xl py-2.5 font-medium transition-all duration-200 ${
                     activeScreen.startsWith(item.id)
                       ? "bg-indigo-50 text-primary dark:bg-indigo-400/20"
@@ -135,7 +125,7 @@ export default function AppLayout() {
             <View className="border-t border-border p-4">
               <Button
                 variant={"ghost"}
-                onPress={() => onNavigate(ScreenName.LOGIN)}
+                onPress={() => router.push(ScreenName.LOGIN)}
                 className={`flex w-full items-center ${isSidebarCollapsed ? "justify-center px-0" : "space-x-3 px-4"} group relative rounded-xl py-3 font-medium text-slate-600 transition-colors hover:bg-red-50 hover:text-red-700! dark:text-slate-400`}
               >
                 <LogOut className="h-5 w-5 shrink-0" />
@@ -173,7 +163,7 @@ export default function AppLayout() {
           {/* Floating Action Button (Mobile) - Positioned relative to viewport */}
           <View className="md:hidden bottom-24 right-6 z-50 fixed items-end" style={buttonstyles.screenHeight}>
             <Button
-              onPress={() => onNavigate(ScreenName.CALENDAR)}
+              onPress={() => router.push(ScreenName.CALENDAR)}
               className="w-14 h-14 rounded-full flex items-center justify-center hover:bg-indigo-700 active:scale-95 transition-all"
             >
               <Calendar color={"#ffff"} size={24} />
@@ -182,14 +172,14 @@ export default function AppLayout() {
 
           {/* Bottom Nav for Mobile */}
           <View
-            className="safe-area fixed bottom-0 left-0 right-0 z-50 flex flex-row items-center justify-between border-t border-border bg-card py-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] md:hidden"
+            className="safe-area fixed bottom-0 left-0 right-0 z-50 flex flex-row items-center justify-between border-t border-border bg-card py-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] md:hidden px-3"
             style={styles.screenPadding}
           >
             {mobileNavItems.map((item) => (
               <Button
                 variant={"ghost"}
                 key={item.id}
-                onPress={() => onNavigate(item.id)}
+                onPress={() => router.push(item.id)}
                 className={`flex flex-col items-center space-y-1`}
               >
                 <item.icon

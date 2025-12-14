@@ -13,6 +13,7 @@ import {
 } from "lucide-react-native";
 import React from "react";
 import { View } from "react-native";
+import { useUniwind } from "uniwind";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Text } from "./ui/text";
@@ -26,20 +27,21 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 const RevisionWidget = () => {
+  const {theme} = useUniwind();
   const onNavigate = (route: ScreenName, params?: any) => {
     console.log(route);
   };
   return (
     <Card className=" rounded-3xl p-2 shadow-sm pt-6">
       <View className="flex items-center justify-between flex-row">
-        <View className="flex items-center gap-3 flex-row">
+        <View className="flex items-center gap-3 flex-row pl-3">
           <View className="p-2 bg-indigo-50 text-indigo-600 rounded-lg">
-            <Clock className="w-5 h-5" />
+            <Clock className="w-5 h-5" color={"#4f39f6"}/>
           </View>
           <Text className="font-bold">Up Next</Text>
         </View>
         <Button variant="ghost">
-          <MoreHorizontal className="w-5 h-5 dark:text-white" />
+          <MoreHorizontal className="w-5 h-5" color={theme === 'dark'? '#ffff' : '#0000'}/>
         </Button>
       </View>
 
@@ -60,7 +62,7 @@ const RevisionWidget = () => {
               <View
                 className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 mt-0.5 ${styles.light} ${styles.text}`}
               >
-                <RefreshCw className="w-5 h-5" />
+                <RefreshCw className="w-5 h-5" color={styles.iconColor}/>
               </View>
 
               <View className="flex-1 min-w-0">

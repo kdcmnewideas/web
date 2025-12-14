@@ -11,6 +11,8 @@ interface GoalProp {
    index: number
 }
 
+const iconColor = ['#4f39f6', '#009689', '#f54a00']
+
 const GoalCard = ({ goal, index }: GoalProp) => {
   const percentage = Math.round((goal.current / goal.target) * 100);
   const color =
@@ -29,11 +31,11 @@ const GoalCard = ({ goal, index }: GoalProp) => {
             className={`p-1.5 rounded-lg ${index === 0 ? "bg-indigo-50 text-indigo-600" : index === 1 ? "bg-teal-50 text-teal-600" : "bg-orange-50 text-orange-600"}`}
           >
             {index === 0 ? (
-              <Clock className="w-4 h-4" />
+              <Clock className="w-4 h-4" color={iconColor[index]}/>
             ) : index === 1 ? (
-              <BookOpen className="w-4 h-4" />
+              <BookOpen className="w-4 h-4" color={iconColor[index]}/>
             ) : (
-              <Target className="w-4 h-4" />
+              <Target className="w-4 h-4" color={iconColor[index]}/>
             )}
           </View>
           <Text className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wide">

@@ -8,6 +8,7 @@ export const getSubjectColorStyles = (colorClass: string) => {
       iconBg: 'bg-indigo-600',
       bar: 'bg-indigo-600',
       light: 'bg-indigo-100',
+      iconColor: '#4f39f6'
     };
   if (colorClass.includes('teal'))
     return {
@@ -17,6 +18,7 @@ export const getSubjectColorStyles = (colorClass: string) => {
       iconBg: 'bg-teal-600',
       bar: 'bg-teal-600',
       light: 'bg-teal-100',
+      iconColor: '#009689'
     };
   if (colorClass.includes('rose'))
     return {
@@ -26,6 +28,7 @@ export const getSubjectColorStyles = (colorClass: string) => {
       iconBg: 'bg-rose-600',
       bar: 'bg-rose-600',
       light: 'bg-rose-100',
+      iconColor: '#ec003f'
     };
   if (colorClass.includes('amber'))
     return {
@@ -35,6 +38,7 @@ export const getSubjectColorStyles = (colorClass: string) => {
       iconBg: 'bg-amber-600',
       bar: 'bg-amber-600',
       light: 'bg-amber-100',
+      iconColor: '#e17100'
     };
   if (colorClass.includes('emerald'))
     return {
@@ -44,6 +48,7 @@ export const getSubjectColorStyles = (colorClass: string) => {
       iconBg: 'bg-emerald-600',
       bar: 'bg-emerald-600',
       light: 'bg-emerald-100',
+      iconColor: '#009966'
     };
   return {
     bg: 'bg-slate-50',
@@ -52,5 +57,6 @@ export const getSubjectColorStyles = (colorClass: string) => {
     iconBg: 'bg-slate-600',
     bar: 'bg-slate-600',
     light: 'bg-slate-100',
+    iconColor: '#45556c'
   };
 };

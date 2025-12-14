@@ -30,6 +30,7 @@ const CircularProgress = ({
           r={radius}
           stroke="#f1f5f9"
           strokeWidth={strokeWidth}
+          fill="none"
         />
         <Circle
           stroke={color}

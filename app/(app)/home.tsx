@@ -1,4 +1,5 @@
 import GoalCard from "@/components/goal-card";
+import RecentLearn from "@/components/recent-learn";
 import RevisionWidget from "@/components/revision-widget";
 import Streak from "@/components/streak";
 import SubjectCard from "@/components/subject-card";
@@ -7,14 +8,12 @@ import { Text } from "@/components/ui/text";
 import {
   CURRENT_USER,
   GOALS,
-  RECENT_LESSONS,
   SUBJECTS
 } from "@/mockData";
 import { ScreenName } from "@/types/types";
 import {
   ArrowRight,
   Calendar,
-  Play,
   Target
 } from "lucide-react-native";
 import React from "react";
@@ -36,7 +35,7 @@ const home = () => {
   // Helper for solid colors based on the previous class names
 
   return (
-    <View className="space-y-8 animate-fade-in pb-20">
+    <View className="gap-8 animate-fade-in">
       {/* Header & Welcome */}
       <View className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <View>
@@ -55,12 +54,12 @@ const home = () => {
       {/* Main Content Grid */}
       <View className="grid grid-cols-1 xl:grid-cols-4 gap-8">
         {/* Left Column (Main) */}
-        <View className="xl:col-span-3 space-y-10">
+        <View className="xl:col-span-3 gap-10">
           {/* Goals Section - Modern Widget Style */}
           <View>
             <View className="justify-between mb-4">
               <Text className="text-xl font-bold flex items-center gap-2 ">
-                <Target className="w-5 h-5 text-indigo-600" /> Weekly Targets
+                <Target className="w-5 h-5" color={'#4f39f6'}/> Weekly Targets
               </Text>
             </View>
             <View className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -94,54 +93,17 @@ const home = () => {
 
           {/* Recent Activity */}
           <View>
-            <View className="flex items-center justify-between mb-6">
-              <Text className="text-xl font-bold text-slate-900">
+            <View className="flex justify-between mb-6">
+              <Text className="text-xl font-bold">
                 Jump Back In
               </Text>
             </View>
-            <View className="bg-white rounded-3xl border border-slate-100 shadow-sm Viewide-y Viewide-slate-50 overflow-hidden">
-              {RECENT_LESSONS.map((lesson) => (
-                <View
-                  key={lesson.id}
-                  className="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50/80 transition-colors group cursor-pointer"
-                >
-                  <View className="flex items-center gap-5">
-                    <View className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-indigo-50 group-hover:text-indigo-600 transition-colors">
-                      <Play className="w-5 h-5 ml-1 fill-current" />
-                    </View>
-                    <View>
-                      <Text className="font-bold text-slate-900 text-lg">
-                        {lesson.title}
-                      </Text>
-                      <View className="flex items-center gap-2 text-sm text-slate-500 font-medium mt-0.5">
-                        <Text>
-                          {
-                            SUBJECTS.find((s) => s.id === lesson.subjectId)
-                              ?.title
-                          }
-                        </Text>
-                        <Text className="w-1 h-1 rounded-full bg-slate-300"></Text>
-                        <Text>{lesson.durationMinutes} min left</Text>
-                      </View>
-                    </View>
-                  </View>
-                  <View className="opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-2 group-hover:translate-x-0">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="rounded-xl border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-200"
-                    >
-                      <Text>Resume</Text>
-                    </Button>
-                  </View>
-                </View>
-              ))}
-            </View>
+            <RecentLearn/>
           </View>
         </View>
 
         {/* Right Column (Sidebar) - Fixed Layout */}
-        <View className="xl:col-span-1 space-y-6 sticky top-6 self-start h-fit">
+        <View className="xl:col-span-1 gap-6 sticky top-6 self-start h-fit">
           {/* Revision Widget */}
           <RevisionWidget />
 

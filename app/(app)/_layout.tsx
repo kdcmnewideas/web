@@ -16,8 +16,13 @@ import {
   Users,
 } from "lucide-react-native";
 import { useState } from "react";
-import { View } from "react-native";
+import { Dimensions, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import {
+  GestureHandlerRootView,
+  ScrollView,
+} from "react-native-gesture-handler";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -28,6 +33,7 @@ export default function AppLayout() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const router = useRouter();
   const activeScreen = usePathname();
+  const screenHeight = Dimensions.get("window").height;
 
   const onNavigate = (screen: ScreenName) => {
     // Navigation logic here, e.g., using a navigation library
@@ -58,123 +64,133 @@ export default function AppLayout() {
   ];
 
   return (
-    <SafeAreaView>
-      <View className="flex min-h-screen bg-background flex-1">
-        {/* Sidebar for Desktop */}
-        <View
-          className={`hidden flex-col md:flex ${isSidebarCollapsed ? "w-20" : "w-48"} fixed z-10 h-full border-r border-border bg-card transition-all duration-300 ease-in-out`}
-        >
-          {/* Toggle Button */}
-          <Button
-            onPress={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-            className="absolute -right-3 top-10 z-20 rounded-full border border-border bg-card p-1! text-slate-400 shadow-sm transition-colors hover:border-indigo-200 hover:text-indigo-600"
-          >
-            {isSidebarCollapsed ? (
-              <ChevronRight className="h-3 w-3" />
-            ) : (
-              <ChevronLeft className="h-3 w-3" />
-            )}
-          </Button>
-
+    <GestureHandlerRootView>
+      <SafeAreaView className="flex-1">
+        <View className="flex min-h-screen bg-background flex-1">
+          {/* Sidebar for Desktop */}
           <View
-            className={`flex h-24 flex-row items-center border-b border-border ${isSidebarCollapsed ? "justify-center px-0" : "px-6"}`}
+            className={`hidden flex-col md:flex ${isSidebarCollapsed ? "w-20" : "w-48"} fixed z-10 h-full border-r border-border bg-card transition-all duration-300 ease-in-out`}
           >
-            <View className="flex flex-row items-center gap-3 overflow-hidden">
-              <View className="flex h-8 w-8 shrink-0 flex-row items-center justify-center rounded-lg bg-primary transition-all duration-300">
-                <Text className="text-lg font-bold text-white">S</Text>
+            {/* Toggle Button */}
+            <Button
+              onPress={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+              className="absolute -right-3 top-10 z-20 rounded-full border border-border bg-card p-1! text-slate-400 shadow-sm transition-colors hover:border-indigo-200 hover:text-indigo-600"
+            >
+              {isSidebarCollapsed ? (
+                <ChevronRight className="h-3 w-3" />
+              ) : (
+                <ChevronLeft className="h-3 w-3" />
+              )}
+            </Button>
+
+            <View
+              className={`flex h-24 flex-row items-center border-b border-border ${isSidebarCollapsed ? "justify-center px-0" : "px-6"}`}
+            >
+              <View className="flex flex-row items-center gap-3 overflow-hidden">
+                <View className="flex h-8 w-8 shrink-0 flex-row items-center justify-center rounded-lg bg-primary transition-all duration-300">
+                  <Text className="text-lg font-bold text-white">S</Text>
+                </View>
+                <Text
+                  className={`text-xl font-bold tracking-tight transition-opacity duration-200 ${isSidebarCollapsed ? "w-0 opacity-0" : "opacity-100"}`}
+                >
+                  StudyMate
+                </Text>
               </View>
-              <Text
-                className={`text-xl font-bold tracking-tight transition-opacity duration-200 ${isSidebarCollapsed ? "w-0 opacity-0" : "opacity-100"}`}
+            </View>
+
+            <View className="flex-1 space-y-1.5 overflow-y-auto overflow-x-hidden p-3">
+              {navItems.map((item) => (
+                <Button
+                  variant={"ghost"}
+                  key={item.id}
+                  onPress={() => onNavigate(item.id)}
+                  className={`flex w-full items-center ${isSidebarCollapsed ? "justify-center px-0" : "justify-start space-x-3 px-3"} group relative rounded-xl py-2.5 font-medium transition-all duration-200 ${
+                    activeScreen.startsWith(item.id)
+                      ? "bg-indigo-50 text-primary dark:bg-indigo-400/20"
+                      : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-50"
+                  } `}
+                >
+                  <item.icon
+                    className={`shrink-0 ${activeScreen.startsWith(item.id) ? "text-primary" : "text-slate-400"}`}
+                    size={20}
+                  />
+                  <Text
+                    className={`whitespace-nowrap text-sm transition-all duration-200 ${isSidebarCollapsed ? "hidden w-0 opacity-0" : "opacity-100"} ${activeScreen === item.id ? "text-primary" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"}`}
+                  >
+                    {item.label}
+                  </Text>
+
+                  {/* Tooltip for collapsed state */}
+                  {isSidebarCollapsed && (
+                    <View className="pointer-events-none absolute left-full z-50 ml-4 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
+                      <Text>{item.label}</Text>
+                    </View>
+                  )}
+                </Button>
+              ))}
+            </View>
+
+            <View className="border-t border-border p-4">
+              <Button
+                variant={"ghost"}
+                onPress={() => onNavigate(ScreenName.LOGIN)}
+                className={`flex w-full items-center ${isSidebarCollapsed ? "justify-center px-0" : "space-x-3 px-4"} group relative rounded-xl py-3 font-medium text-slate-600 transition-colors hover:bg-red-50 hover:text-red-700! dark:text-slate-400`}
               >
-                StudyMate
-              </Text>
+                <LogOut className="h-5 w-5 shrink-0" />
+                <Text
+                  className={`whitespace-nowrap text-sm transition-all duration-200 ${isSidebarCollapsed ? "hidden w-0 opacity-0" : "opacity-100"} text-slate-600 transition-colors dark:text-slate-400`}
+                >
+                  Sign Out
+                </Text>
+                {isSidebarCollapsed && (
+                  <View className="pointer-events-none absolute left-full z-50 ml-4 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
+                    <Text>Sign Out</Text>
+                  </View>
+                )}
+              </Button>
             </View>
           </View>
 
-          <View className="flex-1 space-y-1.5 overflow-y-auto overflow-x-hidden p-3">
-            {navItems.map((item) => (
+          {/* Main Content */}
+          <View style={{ flex: 1, height: "auto", maxHeight: screenHeight }}>
+            <ScrollView
+              contentContainerStyle={{ flexGrow: 1 }}
+              nestedScrollEnabled={true}
+              scrollEnabled={true}
+            >
+              <View
+                className={`flex-1 ${isSidebarCollapsed ? "md:ml-20" : "md:ml-48"} relative pb-24 transition-all duration-300 ease-in-out md:pb-0`}
+              >
+                <View className="mx-auto max-w-6xl p-4 md:p-8 flex-1">
+                  <Slot />
+                </View>
+              </View>
+            </ScrollView>
+          </View>
+
+          {/* Bottom Nav for Mobile */}
+          <View className="safe-area-bottom fixed bottom-0 left-0 right-0 z-50 flex flex-row items-center justify-between border-t border-border bg-card py-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] md:hidden">
+            {mobileNavItems.map((item) => (
               <Button
                 variant={"ghost"}
                 key={item.id}
                 onPress={() => onNavigate(item.id)}
-                className={`flex w-full items-center ${isSidebarCollapsed ? "justify-center px-0" : "justify-start space-x-3 px-3"} group relative rounded-xl py-2.5 font-medium transition-all duration-200 ${
-                  activeScreen.startsWith(item.id)
-                    ? "bg-indigo-50 text-primary dark:bg-indigo-400/20"
-                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-50"
-                } `}
+                className={`flex flex-col items-center space-y-1`}
               >
                 <item.icon
-                  className={`shrink-0 ${activeScreen.startsWith(item.id) ? "text-primary" : "text-slate-400"}`}
-                  size={20}
+                  className={`${activeScreen.startsWith(item.id) ? "text-primary" : "text-slate-400"}`}
+                  size={24}
                 />
                 <Text
-                  className={`whitespace-nowrap text-sm transition-all duration-200 ${isSidebarCollapsed ? "hidden w-0 opacity-0" : "opacity-100"} ${activeScreen === item.id ? "text-primary" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"}`}
+                  className={`text-[10px] font-medium ${activeScreen.startsWith(item.id) ? "text-primary" : "text-slate-400"}`}
                 >
                   {item.label}
                 </Text>
-
-                {/* Tooltip for collapsed state */}
-                {isSidebarCollapsed && (
-                  <View className="pointer-events-none absolute left-full z-50 ml-4 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
-                    <Text>{item.label}</Text>
-                  </View>
-                )}
               </Button>
             ))}
           </View>
-
-          <View className="border-t border-border p-4">
-            <Button
-              variant={"ghost"}
-              onPress={() => onNavigate(ScreenName.LOGIN)}
-              className={`flex w-full items-center ${isSidebarCollapsed ? "justify-center px-0" : "space-x-3 px-4"} group relative rounded-xl py-3 font-medium text-slate-600 transition-colors hover:bg-red-50 hover:text-red-700! dark:text-slate-400`}
-            >
-              <LogOut className="h-5 w-5 shrink-0" />
-              <Text
-                className={`whitespace-nowrap text-sm transition-all duration-200 ${isSidebarCollapsed ? "hidden w-0 opacity-0" : "opacity-100"} text-slate-600 transition-colors dark:text-slate-400`}
-              >
-                Sign Out
-              </Text>
-              {isSidebarCollapsed && (
-                <View className="pointer-events-none absolute left-full z-50 ml-4 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
-                  <Text>Sign Out</Text>
-                </View>
-              )}
-            </Button>
-          </View>
         </View>
-
-        {/* Main Content */}
-        <View
-          className={`flex-1 ${isSidebarCollapsed ? "md:ml-20" : "md:ml-48"} relative pb-24 transition-all duration-300 ease-in-out md:pb-0`}
-        >
-          <View className="mx-auto max-w-6xl p-4 md:p-8 flex-1">
-            <Slot />
-          </View>
-        </View>
-
-        {/* Bottom Nav for Mobile */}
-        <View className="safe-area-bottom fixed bottom-0 left-0 right-0 z-50 flex flex-row items-center justify-between border-t border-border bg-card py-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] md:hidden">
-          {mobileNavItems.map((item) => (
-            <Button
-              variant={"ghost"}
-              key={item.id}
-              onPress={() => onNavigate(item.id)}
-              className={`flex flex-col items-center space-y-1`}
-            >
-              <item.icon
-                className={`${activeScreen.startsWith(item.id) ? "text-primary" : "text-slate-400"}`}
-                size={24}
-              />
-              <Text
-                className={`text-[10px] font-medium ${activeScreen.startsWith(item.id) ? "text-primary" : "text-slate-400"}`}
-              >
-                {item.label}
-              </Text>
-            </Button>
-          ))}
-        </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </GestureHandlerRootView>
   );
 }

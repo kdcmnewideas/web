@@ -8,7 +8,6 @@ import {
   BarChart2,
   Globe,
   LayoutGrid,
-  Mail,
   PieChart,
   Rocket,
   Star,
@@ -17,7 +16,7 @@ import {
   Users,
 } from 'lucide-react-native';
 import React, { useEffect, useState } from 'react';
-import { Pressable, View } from 'react-native';
+import { Image, Pressable, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useUniwind } from 'uniwind';
 
@@ -145,7 +144,12 @@ export default function Signup() {
                 <Button
                   variant={'outline'}
                   className="flex h-11 w-full items-center justify-center gap-3">
-                  <Mail color={colorScheme === 'dark'? '#FFFFFF' : '#000000'}/>
+                  <Image
+                                      className={"size-4"}
+                                      source={{
+                                        uri: "https://img.clerk.com/static/google.png?width=160",
+                                      }}
+                                    />
                   <Text>Sign up with Google</Text>
                 </Button>
               </View>

@@ -1,9 +1,8 @@
-import { View } from 'react-native';
-import React from 'react';
-import { getSubjectColorStyles } from '@/utils/subject-color';
 import { ScreenName, Subject } from '@/types/types';
-import { Calculator, Atom, BookOpen, Hourglass, Dna, Ghost } from 'lucide-react-native';
-import { Button } from './ui/button';
+import { getSubjectColorStyles } from '@/utils/subject-color';
+import { Atom, BookOpen, Calculator, Dna, Hourglass } from 'lucide-react-native';
+import React from 'react';
+import { Pressable, View } from 'react-native';
 import { Text } from './ui/text';
 
 const iconMap: Record<string, React.ElementType> = {
@@ -27,8 +26,7 @@ const SubjectCard = ({subject}: SubjectCardProps) => {
   };
 
   return (
-    <Button
-        variant={'ghost'}
+    <Pressable
       key={subject.id}
       onPress={() => onNavigate(ScreenName.SUBJECT_DETAILS, { subjectId: subject.id })}
       className="group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-slate-100 bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] !h-auto">
@@ -58,7 +56,7 @@ const SubjectCard = ({subject}: SubjectCardProps) => {
             style={{ width: `${subject.progress}%` }}></View>
         </View>
       </View>
-    </Button>
+    </Pressable>
   );
 };
 

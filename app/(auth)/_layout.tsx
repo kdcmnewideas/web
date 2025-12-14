@@ -15,6 +15,8 @@ export {
 export default function RootLayout() {
   const { theme: colorScheme } = useUniwind();
 
+
+
   return (
     <ThemeProvider value={NAV_THEME[colorScheme ?? 'light']}>
       <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />

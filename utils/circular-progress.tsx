@@ -9,7 +9,7 @@ const CircularProgress = ({ percentage, color, size = 60, strokeWidth = 5 }: { p
   const offset = circumference - (percentage / 100) * circumference;
 
   return (
-    <View className="relative flex items-center justify-center" style={{ width: size, height: size }}>
+    <View className="relative flex flex-row items-center justify-center" style={{ width: size, height: size }}>
       <Svg className="transform -rotate-90 w-full h-full">
         <Circle
           cx={size / 2}

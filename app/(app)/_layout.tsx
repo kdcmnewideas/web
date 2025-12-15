@@ -98,16 +98,16 @@ export default function AppLayout() {
                   onPress={() => router.push(item.id)}
                   className={`flex w-full items-center ${isSidebarCollapsed ? "justify-center px-0" : "justify-start space-x-3 px-3"} group relative rounded-xl py-2.5 font-medium transition-all duration-200 ${
                     activeScreen.startsWith(item.id)
-                      ? "bg-indigo-50 text-primary dark:bg-indigo-400/20"
+                      ? "bg-indigo-50 text-primary dark:bg-primary dark:hover:bg-primary"
                       : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-50"
                   } `}
                 >
                   <item.icon
-                    className={`shrink-0 ${activeScreen.startsWith(item.id) ? "text-primary" : "text-slate-400"}`}
+                    className={`shrink-0 ${activeScreen.startsWith(item.id) ? "text-primary dark:text-white" : "text-slate-400"}`}
                     size={20}
                   />
                   <Text
-                    className={`whitespace-nowrap text-sm transition-all duration-200 ${isSidebarCollapsed ? "hidden w-0 opacity-0" : "opacity-100"} ${activeScreen === item.id ? "text-primary" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"}`}
+                    className={`whitespace-nowrap text-sm transition-all duration-200 ${isSidebarCollapsed ? "hidden w-0 opacity-0" : "opacity-100"} ${activeScreen === item.id ? "text-primary dark:text-white" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"}`}
                   >
                     {item.label}
                   </Text>

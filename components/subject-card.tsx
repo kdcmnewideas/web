@@ -36,7 +36,7 @@ const SubjectCard = ({ subject }: SubjectCardProps) => {
     <Pressable
       key={subject.id}
       onPress={() =>
-        onNavigate(ScreenName.SUBJECT_DETAILS, { subjectId: subject.id })
+      {}
       }
     >
       <Card className="group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl p-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] transition-all hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] h-auto!">

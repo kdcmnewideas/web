@@ -11,7 +11,7 @@ import {
   CalendarIcon,
   Clock,
   PenTool,
-  RefreshCw
+  RefreshCw,
 } from "lucide-react-native";
 import { View } from "react-native";
 import { useUniwind } from "uniwind";
@@ -121,10 +121,16 @@ const Revision = () => {
           Object.keys(groupedItems).map((date) => (
             <View key={date} className="relative">
               <View className="web:sticky web:top-16 z-10 py-2 mb-4 border-b border-border bg-background">
-                <Text className="text-lg font-bold flex items-center flex-row">
-                  <CalendarIcon size="20" color={theme === "dark" ? "#6941C6" : "#9E77ED"}/> {" "}
-                  {formatDateHeader(date)}
-                </Text>
+                <View className="flex-row gap-2 items-center">
+                  <CalendarIcon
+                    size="20"
+                    color={theme === "dark" ? "#6941C6" : "#9E77ED"}
+                  />
+                  <Text className="text-lg font-bold ">
+                    {" "}
+                    {formatDateHeader(date)}
+                  </Text>
+                </View>
               </View>
 
               <View className="gap-4 pb-4 relative">
@@ -143,14 +149,20 @@ const Revision = () => {
                             {getTypeIcon(item.type)}
                           </View>
                           <View className="flex-1">
-                            <Text className="font-bold">
-                              {item.title}
-                            </Text>
+                            <Text className="font-bold">{item.title}</Text>
                             <View className="flex flex-row flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-500 mt-1">
-                              <Text className="flex  flex-row items-center text-primary font-medium">
-                                <Clock color={theme === "dark" ? "#6941C6" : "#9E77ED"} size={14}/>{"  "}
-                                {item.time}
-                              </Text>
+                              <View className="flex-row items-center gap-2">
+                                <Clock
+                                  color={
+                                    theme === "dark" ? "#6941C6" : "#9E77ED"
+                                  }
+                                  size={14}
+                                />
+                                <Text className="flex  flex-row items-center text-primary font-medium">
+                                  {item.time}
+                                </Text>
+                              </View>
+
                               <Text>•</Text>
                               <Text>{item.duration} min</Text>
                               <Text>•</Text>

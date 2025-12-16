@@ -56,28 +56,28 @@ const Leaderboard = () => {
   return (
     <View className="gap-8 animate-fade-in pt-10 pb-5">
       {/* Header Section - Solid Color */}
-      <View className="bg-indigo-900/60 rounded-2xl p-8 md:p-10 text-white relative overflow-hidden shadow-sm">
+      <View className="bg-primary rounded-2xl p-8 md:p-10 text-white relative overflow-hidden shadow-sm">
         <View className="relative z-10">
-          <Text className="text-3xl font-bold mb-2 tracking-tight">
+          <Text className="text-3xl font-bold mb-2 tracking-tight text-white">
             Leaderboard
           </Text>
-          <Text className="text-indigo-200 text-lg mb-8">
+          <Text className="dark:text-indigo-200 text-lg mb-8 text-gray-200">
             Compete with students around the world.
           </Text>
 
           <View className="flex flex-row items-center gap-8 border-t border-white/10 pt-6">
             <View>
-              <Text className="text-xs text-indigo-300 font-bold uppercase tracking-wider mb-1">
+              <Text className="text-xs dark:text-indigo-300 font-bold uppercase tracking-wider mb-1 text-gray-300">
                 Your Rank
               </Text>
-              <Text className="text-4xl font-bold">{CURRENT_USER.rank}</Text>
+              <Text className="text-4xl font-bold text-white">{CURRENT_USER.rank}</Text>
             </View>
             <View className="w-px h-12 bg-white/10"></View>
             <View>
-              <Text className="text-xs text-indigo-300 font-bold uppercase tracking-wider mb-1">
+              <Text className="text-xs dark:text-indigo-300 font-bold uppercase tracking-wider mb-1 text-gray-300">
                 Total Points
               </Text>
-              <Text className="text-4xl font-bold">
+              <Text className="text-4xl font-bold text-white">
                 {CURRENT_USER.totalPoints}
               </Text>
             </View>

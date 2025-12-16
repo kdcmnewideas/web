@@ -188,13 +188,13 @@ const Profile = () => {
                 />
               </>
             ) : (
-              <View className="space-y-4">
+              <View className="gap-4">
                 <View className="group ">
                   <Text className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">
                     Email Address
                   </Text>
-                  <View className="flex flex-row items-center font-medium bg-muted p-3 rounded-lg border border-border">
-                    <Mail className="mr-3 " color={"#90a1b9"} size={16} />
+                  <View className="flex flex-row items-center font-medium bg-muted p-3 rounded-lg border border-border gap-2">
+                    <Mail color={"#90a1b9"} size={16} />
                     <Text>{user.email}</Text>
                   </View>
                 </View>
@@ -202,8 +202,8 @@ const Profile = () => {
                   <Text className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">
                     Phone Number
                   </Text>
-                  <View className="flex flex-row items-center font-medium bg-muted p-3 rounded-lg border border-border">
-                    <Phone className="mr-3 " color={"#90a1b9"} size={16} />
+                  <View className="flex flex-row items-center font-medium bg-muted p-3 rounded-lg border border-border gap-2">
+                    <Phone  color={"#90a1b9"} size={16} />
                     <Text>{user.phone || "Not set"}</Text>
                   </View>
                 </View>
@@ -211,8 +211,8 @@ const Profile = () => {
                   <Text className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">
                     Age
                   </Text>
-                  <View className="flex flex-row items-center font-medium bg-muted p-3 rounded-lg border border-border">
-                    <Calendar className="mr-3 " color={"#90a1b9"} size={16} />
+                  <View className="flex flex-row items-center font-medium bg-muted p-3 rounded-lg border border-border gap-2">
+                    <Calendar  color={"#90a1b9"} size={16} />
                     <Text>{user.age} Years Old</Text>
                   </View>
                 </View>
@@ -222,10 +222,10 @@ const Profile = () => {
         </Card>
 
         {/* Academic Info & Bio */}
-        <View className="space-y-8">
+        <View className="gap-8">
           <Card className="p-6">
             <Text className="font-bold mb-6 flex items-center text-lg">
-              <GraduationCap className="w-5 h-5 mr-3 text-teal-600" /> Academic
+              <GraduationCap className=" mr-3 " color={"#009689"} size={20}/> Academic
               Profile
             </Text>
             {isEditing ? (
@@ -235,8 +235,8 @@ const Profile = () => {
                   value={user.grade || ""}
                   onChangeText={(e) => setUser({ ...user, grade: e })}
                 />
-                <View className="w-full">
-                  <Label className="block text-sm font-semibold mb-1.5">
+                <View className="w-full gap-4 ">
+                  <Label className="block text-sm font-semibold">
                     Academic Bio
                   </Label>
                   <Textarea
@@ -247,7 +247,7 @@ const Profile = () => {
                 </View>
               </View>
             ) : (
-              <View className="space-y-6">
+              <View className="gap-6">
                 <View>
                   <Text className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">
                     Current Level

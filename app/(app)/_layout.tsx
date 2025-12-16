@@ -105,7 +105,7 @@ export default function AppLayout() {
                   variant={"ghost"}
                   key={item.id}
                   onPress={() => router.push(item.id)}
-                  className={`flex w-full items-center ${isSidebarCollapsed ? "justify-center px-0" : "justify-start space-x-3 px-3"} group relative rounded-xl py-2.5 font-medium transition-all duration-200 ${
+                  className={`flex w-full items-center ${isSidebarCollapsed ? "justify-center px-0" : "justify-start gap-3 px-3"} group relative rounded-xl py-2.5 font-medium transition-all duration-200 ${
                     getActiveScreen(item.active)
                       ? "bg-indigo-50 text-primary dark:bg-primary dark:hover:bg-primary"
                       : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-50"
@@ -135,7 +135,7 @@ export default function AppLayout() {
               <Button
                 variant={"ghost"}
                 onPress={() => router.push(ScreenName.LOGIN)}
-                className={`flex w-full items-center ${isSidebarCollapsed ? "justify-center px-0" : "space-x-3 px-4"} group relative rounded-xl py-3 font-medium text-slate-600 transition-colors hover:bg-red-50 hover:text-red-700! dark:text-slate-400`}
+                className={`flex w-full items-center ${isSidebarCollapsed ? "justify-center px-0" : "gap-3 px-4"} group relative rounded-xl py-3 font-medium text-slate-600 transition-colors hover:bg-red-50 hover:text-red-700! dark:text-slate-400`}
               >
                 <LogOut className="h-5 w-5 shrink-0" />
                 <Text

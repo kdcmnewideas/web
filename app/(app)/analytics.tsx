@@ -90,7 +90,7 @@ const Analytics = () => {
 
   return (
     <>
-      <View className="gap-6 animate-fade-in pb-10 md:p-2 -mx-2 md:mx-0">
+      <View className="gap-6 animate-fade-in pb-10 md:p-2 -mx-2 md:mx-0 pt-10">
         {/* Header */}
         <View className=" md:flex-row justify-between items-center px-2 md:px-0 gap-6 md:gap-0">
           <View>

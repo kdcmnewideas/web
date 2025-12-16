@@ -147,7 +147,7 @@ const Settings = () => {
         <View>
           <SectionTitle>Account</SectionTitle>
           <Card className="p-0 shadow-sm gap-0">
-            <Pressable>
+            <Pressable onPress={() => router.navigate(ScreenName.CHANGE_PASSWORD)}>
               <SettingRow
                 icon={Shield}
                 label="Change Password"

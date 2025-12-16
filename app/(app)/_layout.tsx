@@ -47,7 +47,7 @@ export default function AppLayout() {
       id: ScreenName.PROFILE,
       icon: User,
       label: "Profile",
-      active: [ScreenName.PROFILE, ScreenName.GOALS, ScreenName.SETTINGS],
+      active: [ScreenName.PROFILE, ScreenName.GOALS, ScreenName.SETTINGS, ScreenName.CHANGE_PASSWORD],
     },
   ];
 

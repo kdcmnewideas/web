@@ -58,7 +58,7 @@ const Profile = () => {
           <Button
             variant="ghost"
             className="bg-white/10 border-white/20 border text-white hover:bg-white/20"
-            onPress={() => {}}
+            onPress={() => {router.navigate("/settings")}}
           >
             <Settings color={"#ffff"} size={16} />
             <Text className="text-white ">Settings</Text>

@@ -47,7 +47,7 @@ export default function AppLayout() {
       id: ScreenName.PROFILE,
       icon: User,
       label: "Profile",
-      active: [ScreenName.PROFILE, ScreenName.GOALS],
+      active: [ScreenName.PROFILE, ScreenName.GOALS, ScreenName.SETTINGS],
     },
   ];
 
@@ -116,7 +116,7 @@ export default function AppLayout() {
                     size={20}
                   />
                   <Text
-                    className={`whitespace-nowrap text-sm transition-all duration-200 ${isSidebarCollapsed ? "hidden w-0 opacity-0" : "opacity-100"} ${activeScreen === item.id ? "text-primary dark:text-white" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"}`}
+                    className={`whitespace-nowrap text-sm transition-all duration-200 ${isSidebarCollapsed ? "hidden w-0 opacity-0" : "opacity-100"} ${getActiveScreen(item.active)? "text-primary dark:text-white" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"}`}
                   >
                     {item.label}
                   </Text>

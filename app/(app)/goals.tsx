@@ -197,19 +197,20 @@ const Goals = () => {
                   </Button>
                 </View>
               </View>
-
-              <Text className="font-bold text-lg">{goal.title}</Text>
-              {goal.deadline && (
-                <Text className="text-xs text-slate-400 dark:text-slate-300 flex items-center">
-                  <Calendar
-                    className="mr-1"
-                    color={theme === "dark" ? "#cad5e2" : "#90a1b9"}
-                    size={12}
-                  />
-                  <Text> </Text>
-                  Due {new Date(goal.deadline).toLocaleDateString()}
-                </Text>
-              )}
+              <View>
+                <Text className="font-bold text-lg">{goal.title}</Text>
+                {goal.deadline && (
+                  <Text className="text-xs text-slate-400 dark:text-slate-300 flex items-center">
+                    <Calendar
+                      className="mr-1"
+                      color={theme === "dark" ? "#cad5e2" : "#90a1b9"}
+                      size={12}
+                    />
+                    <Text> </Text>
+                    Due {new Date(goal.deadline).toLocaleDateString()}
+                  </Text>
+                )}
+              </View>
 
               <View className="flex justify-between items-end">
                 <Text className="text-slate-500 font-medium">

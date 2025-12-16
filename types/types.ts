@@ -8,7 +8,8 @@ export enum ScreenName {
   CALENDAR = "/revision",
   ANALYTICS = "/analytics",
   LEADERBOARD = "/leaderboard",
-  GOALS = "/goals"
+  GOALS = "/goals",
+  SETTINGS = '/settings'
 }
 
 // export enum ScreenName {

@@ -38,12 +38,17 @@ export default function AppLayout() {
   const { theme } = useUniwind();
 
   const navItems = [
-    { id: ScreenName.HOME, icon: Home, label: "Home" },
-    { id: ScreenName.SUBJECTS, icon: LayoutDashboard, label: "Subjects" },
-    { id: ScreenName.CALENDAR, icon: Calendar, label: "Schedule" },
-    { id: ScreenName.ANALYTICS, icon: BarChart2, label: "Results" },
-    { id: ScreenName.LEADERBOARD, icon: Users, label: "Leaderboard" },
-    { id: ScreenName.PROFILE, icon: User, label: "Profile" },
+    { id: ScreenName.HOME, icon: Home, label: "Home", active: [ScreenName.HOME] },
+    { id: ScreenName.SUBJECTS, icon: LayoutDashboard, label: "Subjects", active: [ScreenName.SUBJECTS] },
+    { id: ScreenName.CALENDAR, icon: Calendar, label: "Revision", active: [ScreenName.CALENDAR] },
+    { id: ScreenName.ANALYTICS, icon: BarChart2, label: "Results", active: [ScreenName.ANALYTICS] },
+    { id: ScreenName.LEADERBOARD, icon: Users, label: "Leaderboard", active: [ScreenName.LEADERBOARD] },
+    {
+      id: ScreenName.PROFILE,
+      icon: User,
+      label: "Profile",
+      active: [ScreenName.PROFILE, ScreenName.GOALS],
+    },
   ];
 
   // Mobile nav logic (show Profile instead of Schedule)
@@ -54,6 +59,10 @@ export default function AppLayout() {
     navItems[4], // Leaderboard
     navItems[5], // Profile
   ];
+
+  const getActiveScreen = (activeScreens: string[]) => {
+    return activeScreens.find((input) => activeScreen.startsWith(input));
+  };
 
   return (
     <GestureHandlerRootView>
@@ -97,13 +106,13 @@ export default function AppLayout() {
                   key={item.id}
                   onPress={() => router.push(item.id)}
                   className={`flex w-full items-center ${isSidebarCollapsed ? "justify-center px-0" : "justify-start space-x-3 px-3"} group relative rounded-xl py-2.5 font-medium transition-all duration-200 ${
-                    activeScreen.startsWith(item.id)
+                    getActiveScreen(item.active)
                       ? "bg-indigo-50 text-primary dark:bg-primary dark:hover:bg-primary"
                       : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-50"
                   } `}
                 >
                   <item.icon
-                    className={`shrink-0 ${activeScreen.startsWith(item.id) ? "text-primary dark:text-white" : "text-slate-400"}`}
+                    className={`shrink-0 ${getActiveScreen(item.active) ? "text-primary dark:text-white" : "text-slate-400"}`}
                     size={20}
                   />
                   <Text
@@ -161,7 +170,10 @@ export default function AppLayout() {
           </View>
 
           {/* Floating Action Button (Mobile) - Positioned relative to viewport */}
-          <View className="md:hidden bottom-24 right-6 z-50 fixed items-end" style={buttonstyles.screenHeight}>
+          <View
+            className="md:hidden bottom-24 right-6 z-50 fixed items-end"
+            style={buttonstyles.screenHeight}
+          >
             <Button
               onPress={() => router.push(ScreenName.CALENDAR)}
               className="w-14 h-14 rounded-full flex items-center justify-center hover:bg-indigo-700 active:scale-95 transition-all"
@@ -183,11 +195,11 @@ export default function AppLayout() {
                 className={`flex flex-col items-center space-y-1`}
               >
                 <item.icon
-                  color={`${activeScreen.startsWith(item.id) ? (theme === "dark" ? "#6941C6" : "#9E77ED") : "#90a1b9"}`}
+                  color={`${getActiveScreen(item.active) ? (theme === "dark" ? "#6941C6" : "#9E77ED") : "#90a1b9"}`}
                   size={24}
                 />
                 <Text
-                  className={`text-[10px] font-medium ${activeScreen.startsWith(item.id) ? "text-primary" : "text-slate-400"}`}
+                  className={`text-[10px] font-medium ${getActiveScreen(item.active) ? "text-primary" : "text-slate-400"}`}
                 >
                   {item.label}
                 </Text>
@@ -208,6 +220,6 @@ const styles = StyleSheet.create({
 
 const buttonstyles = StyleSheet.create({
   screenHeight: {
-    height: Platform.OS === "web" ? 'auto' : 0,
+    height: Platform.OS === "web" ? "auto" : 0,
   },
 });

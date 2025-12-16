@@ -6,6 +6,7 @@ import { Text } from "@/components/ui/text";
 import { Textarea } from "@/components/ui/textarea";
 import { CURRENT_USER } from "@/mockData";
 import { User } from "@/types/types";
+import { router } from "expo-router";
 import {
   Award,
   Calendar,
@@ -21,7 +22,7 @@ import {
   Zap,
 } from "lucide-react-native";
 import React, { useState } from "react";
-import { Image, View } from "react-native";
+import { Image, Pressable, View } from "react-native";
 import { useUniwind } from "uniwind";
 
 const Profile = () => {
@@ -59,7 +60,7 @@ const Profile = () => {
             className="bg-white/10 border-white/20 border text-white hover:bg-white/20"
             onPress={() => {}}
           >
-            <Settings className="mr-2" color={"#ffff"} size={16} />
+            <Settings color={"#ffff"} size={16} />
             <Text className="text-white ">Settings</Text>
           </Button>
         </View>
@@ -265,21 +266,23 @@ const Profile = () => {
             )}
           </Card>
 
-          <Card className="border-border bg-muted/50 cursor-pointer p-6">
-            <View className="flex flex-row justify-between items-center">
-              <View>
-                <Text className="font-bold text-indigo-50 text-lg">
-                  Learning Goals
-                </Text>
-                <Text className="text-indigo-700/80 dark:text-indigo-100 text-sm">
-                  Manage your targets and deadlines
-                </Text>
+          <Pressable onPress={() => router.navigate("/goals")}>
+            <Card className="border-border bg-muted/50 cursor-pointer p-6 hover:translate-1">
+              <View className="flex flex-row justify-between items-center">
+                <View>
+                  <Text className="font-bold text-indigo-50 text-lg">
+                    Learning Goals
+                  </Text>
+                  <Text className="text-indigo-700/80 dark:text-indigo-100 text-sm">
+                    Manage your targets and deadlines
+                  </Text>
+                </View>
+                <View className="bg-white p-3 rounded-full shadow-sm text-indigo-600">
+                  <Target color={"#4f39f6"} size={24} />
+                </View>
               </View>
-              <View className="bg-white p-3 rounded-full shadow-sm text-indigo-600">
-                <Target color={"#4f39f6"} size={24} />
-              </View>
-            </View>
-          </Card>
+            </Card>
+          </Pressable>
         </View>
       </View>
     </View>

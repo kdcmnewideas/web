@@ -120,7 +120,7 @@ const home = () => {
               </Text>
               <Button
                 variant={'default'}
-                onPress={() => onNavigate(ScreenName.REVISION)}
+                onPress={() => {}}
               >
                 <Text className="flex items-center">
                   Start Revision <ArrowRight className="w-4 h-4" />

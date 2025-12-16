@@ -33,12 +33,11 @@ const RecentLearn = () => {
             </View>
           </View>
           <View className="opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-2 group-hover:translate-x-0 hidden md:block">
-            <Button
-              variant="outline"
-              size="sm"
+            <View
+              className="rounded-md px-3 h-9 border-border bg-background active:bg-accent dark:bg-input/30 dark:border-input dark:active:bg-input/50 border shadow-sm shadow-black/5 flex-row items-center justify-center"
             >
               <Text>Resume</Text>
-            </Button>
+            </View>
           </View>
         </Button>
       ))}

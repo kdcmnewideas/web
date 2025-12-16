@@ -58,7 +58,7 @@ const ChangePassword = () => {
   }
 
   return (
-    <View className="max-w-2xl mx-auto gap-6 animate-fade-in pb-20 w-full">
+    <View className="max-w-2xl mx-auto gap-6 animate-fade-in pb-10 w-full">
       <View className="flex-row items-center gap-4 mb-2">
         <Button
           variant="ghost"

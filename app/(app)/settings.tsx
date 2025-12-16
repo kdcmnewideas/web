@@ -5,15 +5,15 @@ import { Text } from "@/components/ui/text";
 import { ScreenName } from "@/types/types";
 import { router } from "expo-router";
 import {
-    ArrowLeft,
-    Bell,
-    ChevronRight,
-    Globe,
-    LogOut,
-    Moon,
-    Shield,
-    Smartphone,
-    Sun,
+  ArrowLeft,
+  Bell,
+  ChevronRight,
+  Globe,
+  LogOut,
+  Moon,
+  Shield,
+  Smartphone,
+  Sun,
 } from "lucide-react-native";
 import React, { useState } from "react";
 import { Pressable, View } from "react-native";
@@ -72,7 +72,7 @@ const Settings = () => {
   };
 
   return (
-    <View className="max-w-3xl mx-auto gap-6 animate-fade-in pb-20 w-full">
+    <View className="max-w-3xl mx-auto gap-6 animate-fade-in pb-10 w-full">
       <View className="flex-row items-center gap-4 mb-4">
         <Button
           variant="ghost"

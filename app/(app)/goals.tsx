@@ -7,12 +7,12 @@ import { GOALS } from "@/mockData";
 import { Goal, ScreenName } from "@/types/types";
 import { router } from "expo-router";
 import {
-    ArrowLeft,
-    Calendar,
-    Edit3,
-    Plus,
-    Target,
-    Trash2,
+  ArrowLeft,
+  Calendar,
+  Edit3,
+  Plus,
+  Target,
+  Trash2,
 } from "lucide-react-native";
 import React, { useState } from "react";
 import { View } from "react-native";
@@ -136,7 +136,7 @@ const Goals = () => {
   }
 
   return (
-    <View className="max-w-4xl mx-auto gap-6 animate-fade-in pb-20 w-full">
+    <View className="max-w-4xl mx-auto gap-6 animate-fade-in pb-10 w-full">
       <View className="flex flex-row items-center justify-between mb-2">
         <View className="flex flex-row items-center gap-4">
           <Button

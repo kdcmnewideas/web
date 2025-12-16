@@ -50,7 +50,7 @@ const Profile = () => {
   );
 
   return (
-    <View className="gap-6 animate-fade-in pb-20">
+    <View className="gap-6 animate-fade-in pb-10">
       {/* Header / Banner - Solid */}
       <View className="relative">
         <View className="h-48 bg-primary rounded-2xl"></View>

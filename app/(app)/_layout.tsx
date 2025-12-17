@@ -39,7 +39,7 @@ export default function AppLayout() {
 
   const navItems = [
     { id: ScreenName.HOME, icon: Home, label: "Home", active: [ScreenName.HOME] },
-    { id: ScreenName.SUBJECTS, icon: LayoutDashboard, label: "Subjects", active: [ScreenName.SUBJECTS] },
+    { id: ScreenName.SUBJECTS, icon: LayoutDashboard, label: "Subjects", active: [ScreenName.SUBJECTS, '/subject'] },
     { id: ScreenName.CALENDAR, icon: Calendar, label: "Revision", active: [ScreenName.CALENDAR] },
     { id: ScreenName.ANALYTICS, icon: BarChart2, label: "Results", active: [ScreenName.ANALYTICS] },
     { id: ScreenName.LEADERBOARD, icon: Users, label: "Leaderboard", active: [ScreenName.LEADERBOARD] },
@@ -196,6 +196,7 @@ export default function AppLayout() {
               >
                 <item.icon
                   color={`${getActiveScreen(item.active) ? (theme === "dark" ? "#6941C6" : "#9E77ED") : "#90a1b9"}`}
+                  fill={`${getActiveScreen(item.active) ? (theme === "dark" ? "#6941C6" : "#9E77ED") : ""}`}
                   size={24}
                 />
                 <Text

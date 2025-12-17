@@ -60,9 +60,7 @@ const subjects = () => {
             <Pressable
               key={subject.id}
               onPress={() =>
-                onNavigate('/subjectdetails', {
-                  subjectId: subject.id,
-                })
+                onNavigate(`/subject/${subject.id}`)
               }
             >
               <Card className="group hover:border-primary transition-colors duration-300 p-6">

@@ -94,6 +94,7 @@ const ChangePassword = () => {
             <Input
               value={currentPassword}
               onChangeText={(e) => setCurrentPassword(e)}
+              secureTextEntry={true}
             />
           </View>
           <View className="h-px bg-border my-2">
@@ -104,6 +105,7 @@ const ChangePassword = () => {
             <Input
               value={newPassword}
               onChangeText={(e) => setNewPassword(e)}
+              secureTextEntry={true}
             />
           </View>
           <View className="gap-2">
@@ -111,6 +113,7 @@ const ChangePassword = () => {
             <Input
               value={confirmPassword}
               onChangeText={(e) => setConfirmPassword(e)}
+              secureTextEntry={true}
             />
             {newPassword &&
               confirmPassword &&

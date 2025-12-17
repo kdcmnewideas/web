@@ -1,7 +1,8 @@
-import { User } from "@/types/types";
+import { ScreenName, User } from "@/types/types";
+import { router } from "expo-router";
 import { Flame } from "lucide-react-native";
 import React from "react";
-import { View } from "react-native";
+import { Pressable, View } from "react-native";
 import { Card } from "./ui/card";
 import { Text } from "./ui/text";
 
@@ -11,6 +12,7 @@ interface StreakProps {
 
 const streak = ({ user }: StreakProps) => {
   return (
+    <Pressable onPress={()=> router.navigate(ScreenName.ANALYTICS)}>
       <Card className="rounded-full flex flex-row pl-5 pr-2 py-2 items-center gap-3 justify-around">
         <View className="flex flex-col items-end">
           <Text className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
@@ -24,6 +26,7 @@ const streak = ({ user }: StreakProps) => {
           <Flame className="w-5 h-5" fill={"#ff6900"} color={'#ff6900'}/>
         </View>
       </Card>
+      </Pressable>
   );
 };
 

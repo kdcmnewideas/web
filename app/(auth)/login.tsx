@@ -12,7 +12,7 @@ import {
   LayoutGrid,
   PieChart,
   Users,
-  Zap
+  Zap,
 } from "lucide-react-native";
 import { useState } from "react";
 import { Image, View } from "react-native";
@@ -62,6 +62,7 @@ export default function LoginScreen() {
                 <Input
                   placeholder="••••••••"
                   value={password}
+                  secureTextEntry={true}
                   onChange={(e: any) => setPassword(e.target.value)}
                 />
               </View>

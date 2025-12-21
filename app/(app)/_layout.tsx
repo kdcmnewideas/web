@@ -38,16 +38,46 @@ export default function AppLayout() {
   const { theme } = useUniwind();
 
   const navItems = [
-    { id: ScreenName.HOME, icon: Home, label: "Home", active: [ScreenName.HOME] },
-    { id: ScreenName.SUBJECTS, icon: LayoutDashboard, label: "Subjects", active: [ScreenName.SUBJECTS, '/subject'] },
-    { id: ScreenName.CALENDAR, icon: Calendar, label: "Revision", active: [ScreenName.CALENDAR] },
-    { id: ScreenName.ANALYTICS, icon: BarChart2, label: "Results", active: [ScreenName.ANALYTICS] },
-    { id: ScreenName.LEADERBOARD, icon: Users, label: "Leaderboard", active: [ScreenName.LEADERBOARD] },
+    {
+      id: ScreenName.HOME,
+      icon: Home,
+      label: "Home",
+      active: [ScreenName.HOME],
+    },
+    {
+      id: ScreenName.SUBJECTS,
+      icon: LayoutDashboard,
+      label: "Subjects",
+      active: [ScreenName.SUBJECTS, "/subject"],
+    },
+    {
+      id: ScreenName.CALENDAR,
+      icon: Calendar,
+      label: "Revision",
+      active: [ScreenName.CALENDAR],
+    },
+    {
+      id: ScreenName.ANALYTICS,
+      icon: BarChart2,
+      label: "Results",
+      active: [ScreenName.ANALYTICS],
+    },
+    {
+      id: ScreenName.LEADERBOARD,
+      icon: Users,
+      label: "Leaderboard",
+      active: [ScreenName.LEADERBOARD],
+    },
     {
       id: ScreenName.PROFILE,
       icon: User,
       label: "Profile",
-      active: [ScreenName.PROFILE, ScreenName.GOALS, ScreenName.SETTINGS, ScreenName.CHANGE_PASSWORD],
+      active: [
+        ScreenName.PROFILE,
+        ScreenName.GOALS,
+        ScreenName.SETTINGS,
+        ScreenName.CHANGE_PASSWORD,
+      ],
     },
   ];
 
@@ -78,9 +108,9 @@ export default function AppLayout() {
               className="absolute -right-3 top-10 z-20 rounded-full border border-border bg-card p-1! text-slate-400 shadow-sm transition-colors hover:border-indigo-200 hover:text-indigo-600"
             >
               {isSidebarCollapsed ? (
-                <ChevronRight className="h-3 w-3" />
+                <ChevronRight size={12} />
               ) : (
-                <ChevronLeft className="h-3 w-3" />
+                <ChevronLeft size={12} />
               )}
             </Button>
 
@@ -107,16 +137,17 @@ export default function AppLayout() {
                   onPress={() => router.push(item.id)}
                   className={`flex w-full items-center ${isSidebarCollapsed ? "justify-center px-0" : "justify-start gap-3 px-3"} group relative rounded-xl py-2.5 font-medium transition-all duration-200 ${
                     getActiveScreen(item.active)
-                      ? "bg-indigo-50 text-primary dark:bg-primary dark:hover:bg-primary"
-                      : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-50"
+                      ? "text-primary bg-primary hover:bg-primary"
+                      : " hover:bg-slate-50   dark:hover:bg-slate-800 "
                   } `}
                 >
                   <item.icon
-                    className={`shrink-0 ${getActiveScreen(item.active) ? "text-primary dark:text-white" : "text-slate-400"}`}
+                    className={`shrink-0`}
+                    color={`${getActiveScreen(item.active) ? "#fff" : theme === "dark" ? "#fff" : "#000"}`}
                     size={20}
                   />
                   <Text
-                    className={`whitespace-nowrap text-sm transition-all duration-200 ${isSidebarCollapsed ? "hidden w-0 opacity-0" : "opacity-100"} ${getActiveScreen(item.active)? "text-primary dark:text-white" : "text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"}`}
+                    className={`whitespace-nowrap text-sm transition-all duration-200 ${isSidebarCollapsed ? "hidden w-0 opacity-0" : "opacity-100"} ${getActiveScreen(item.active) ? " text-white" : ""}`}
                   >
                     {item.label}
                   </Text>
@@ -195,12 +226,12 @@ export default function AppLayout() {
                 className={`flex flex-col items-center space-y-1`}
               >
                 <item.icon
-                  color={`${getActiveScreen(item.active) ? (theme === "dark" ? "#6941C6" : "#9E77ED") : "#90a1b9"}`}
+                  color={`${getActiveScreen(item.active) ? (theme === "dark" ? "#6941C6" : "#9E77ED") : theme === "dark" ? "#fff" : "#000"}`}
                   fill={`${getActiveScreen(item.active) ? (theme === "dark" ? "#6941C6" : "#9E77ED") : ""}`}
                   size={24}
                 />
                 <Text
-                  className={`text-[10px] font-medium ${getActiveScreen(item.active) ? "text-primary" : "text-slate-400"}`}
+                  className={`text-[10px] font-medium ${getActiveScreen(item.active) ? "text-primary" : ""}`}
                 >
                   {item.label}
                 </Text>

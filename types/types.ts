@@ -34,6 +34,15 @@ export enum ScreenName {
 //   LEADERBOARD = '/leaderboard',
 // }
 
+export enum QuestionType {
+  MCQ = 'MCQ',
+  WRITTEN = 'WRITTEN',
+  ORAL = 'ORAL',
+  FILL_BLANKS = 'FILL_BLANKS',
+  TRUE_FALSE = 'TRUE_FALSE',
+  MATCHING = 'MATCHING'
+}
+
 export interface User {
   id: string;
   name: string;
@@ -68,6 +77,12 @@ export interface Subject {
   description?: string;
 }
 
+export interface MindMapNode {
+  id: string;
+  label: string;
+  children?: MindMapNode[];
+}
+
 export interface Lesson {
   id: string;
   subjectId: string;
@@ -87,18 +102,36 @@ export interface Goal {
   deadline?: string;
 }
 
+export interface MindMapNode {
+  id: string;
+  label: string;
+  children?: MindMapNode[];
+}
+
 export interface Topic {
   id: string;
   title: string;
   content: string; // Markdown/HTML string
+  mindMap?: MindMapNode;
+}
+
+export interface MatchingPair {
+  id: string;
+  left: string;
+  right: string;
 }
 
 export interface Question {
   id: string;
+  type: QuestionType;
   text: string;
-  options: string[];
-  correctAnswer: number; // index
+  options?: string[];
+  correctAnswer?: number | string | string[] | Record<string, string>;
   explanation?: string;
+  // Matching specifics
+  pairs?: MatchingPair[];
+  // Fill in blanks specifics (text with [blank] placeholder)
+  blankText?: string;
 }
 
 export interface Flashcard {
@@ -121,6 +154,7 @@ export interface LessonContent {
   quiz: Question[];
   flashcards: Flashcard[];
   quickPrep: QA[];
+  
 }
 
 export interface ExamResult {

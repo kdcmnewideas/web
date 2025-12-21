@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Text } from "@/components/ui/text";
 import { SUBJECTS } from "@/mockData";
+import { router } from "expo-router";
 import {
   ArrowRight,
   Atom,
@@ -26,10 +27,6 @@ const iconMap: Record<string, React.ElementType> = {
 const subjects = () => {
   const { theme } = useUniwind();
   const [searchTerm, setSearchTerm] = useState("");
-
-  const onNavigate = (screenName: string, params?: any) => {
-    console.log(screenName);
-  };
 
   const filteredSubjects = SUBJECTS.filter(
     (s) =>
@@ -60,7 +57,7 @@ const subjects = () => {
             <Pressable
               key={subject.id}
               onPress={() =>
-                onNavigate(`/subject/${subject.id}`)
+                router.navigate(`/subject/${subject.id}`)
               }
             >
               <Card className="group hover:border-primary transition-colors duration-300 p-6">

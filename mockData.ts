@@ -1,5 +1,5 @@
 
-import { User, Subject, Lesson, Goal, LessonContent, ExamResult, LeaderboardEntry, PerformanceStats, ScheduleItem } from './types/types';
+import { ExamResult, Goal, LeaderboardEntry, Lesson, LessonContent, PerformanceStats, QuestionType, ScheduleItem, Subject, User } from './types/types';
 
 export const CURRENT_USER: User = {
   id: 'u1',
@@ -168,7 +168,17 @@ Find the derivative of $y = (3x^2 + 1)^2$.
 2. $\\frac{dy}{du} = 2u$
 3. $\\frac{du}{dx} = 6x$
 4. Multiply: $2u \\cdot 6x = 12x(3x^2 + 1)$
-        `
+        `,
+        mindMap: {
+          id: 'root',
+          label: 'The Chain Rule',
+          children: [
+            { id: 'c1', label: 'Composite Functions' },
+            { id: 'c2', label: 'Differentiation Formula', children: [{ id: 'c2-1', label: 'dy/dx = dy/du * du/dx' }] },
+            { id: 'c3', label: 'Practical Examples', children: [{ id: 'c3-1', label: 'Polynomials' }, { id: 'c3-2', label: 'Trigonometric' }] },
+            { id: 'c4', label: 'Applications' }
+          ]
+        }
       },
       {
         id: 't2',
@@ -179,12 +189,23 @@ Find the derivative of $y = (3x^2 + 1)^2$.
 In calculus, a method called **implicit differentiation** makes use of the chain rule to differentiate implicitly defined functions.
 
 To differentiate an implicit function $y(x)$, defined by an equation $R(x,y) = 0$, it is not generally possible to solve it explicitly for $y$ and then differentiate. Instead, one can totally differentiate $R(x,y) = 0$ with respect to $x$ and then solve the resulting linear equation for $dy/dx$.
-        `
+        `,
+        mindMap: {
+          id: 'root',
+          label: 'Implicit Differentiation',
+          children: [
+            { id: 'i1', label: 'Implicit Functions' },
+            { id: 'i2', label: 'Chain Rule Application' },
+            { id: 'i3', label: 'Algebraic Solving', children: [{ id: 'i3-1', label: 'Isolating dy/dx' }] },
+            { id: 'i4', label: 'Tangent Lines' }
+          ]
+        }
       }
     ],
     quiz: [
       {
         id: 'q1',
+        type: QuestionType.MCQ,
         text: 'What is the derivative of sin(x²)?',
         options: ['cos(x²)', '2x cos(x²)', '-sin(x²)', '2x sin(x)'],
         correctAnswer: 1,
@@ -192,10 +213,43 @@ To differentiate an implicit function $y(x)$, defined by an equation $R(x,y) = 0
       },
       {
         id: 'q2',
-        text: 'If y = u³ and u = x + 1, what is dy/dx?',
-        options: ['3(x+1)²', '3x²', '3u', 'x+1'],
+        type: QuestionType.TRUE_FALSE,
+        text: 'The derivative of a constant is always zero.',
+        options: ['True', 'False'],
         correctAnswer: 0,
-        explanation: 'dy/du = 3u², du/dx = 1. Product is 3u² * 1 = 3(x+1)².'
+        explanation: 'A constant function represents a horizontal line, so its rate of change (slope) is always zero.'
+      },
+      {
+        id: 'q3',
+        type: QuestionType.WRITTEN,
+        text: 'Explain the importance of the Chain Rule in complex differentiation.',
+        explanation: 'The Chain Rule allows us to break down complex composite functions into simpler ones for step-by-step differentiation.'
+      },
+      {
+        id: 'q4',
+        type: QuestionType.ORAL,
+        text: 'Briefly explain the concept of a "derivative" as if you were talking to a high schooler.',
+        explanation: 'A derivative is simply the instantaneous rate of change or the slope of a curve at any specific point.'
+      },
+      {
+        id: 'q5',
+        type: QuestionType.FILL_BLANKS,
+        text: 'Complete the power rule formula.',
+        blankText: 'The derivative of x^n is [blank] * x^([blank]).',
+        correctAnswer: ['n', 'n-1'],
+        explanation: 'The power rule states: d/dx(x^n) = n*x^(n-1).'
+      },
+      {
+        id: 'q6',
+        type: QuestionType.MATCHING,
+        text: 'Match the function with its derivative.',
+        pairs: [
+          { id: 'p1', left: 'sin(x)', right: 'cos(x)' },
+          { id: 'p2', left: 'ln(x)', right: '1/x' },
+          { id: 'p3', left: 'e^x', right: 'e^x' },
+          { id: 'p4', left: 'tan(x)', right: 'sec²(x)' }
+        ],
+        explanation: 'These are fundamental derivatives that must be memorized.'
       }
     ],
     flashcards: [
@@ -230,7 +284,6 @@ To differentiate an implicit function $y(x)$, defined by an equation $R(x,y) = 0
     ]
   }
 };
-
 export const EXAM_HISTORY: ExamResult[] = [
   { id: 'e1', date: '2023-10-28', subjectId: 's1', score: 92, totalQuestions: 20, timeSpentSeconds: 540 },
   { id: 'e2', date: '2023-10-27', subjectId: 's2', score: 78, totalQuestions: 15, timeSpentSeconds: 420 },

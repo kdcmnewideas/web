@@ -200,3 +200,10 @@ export interface ScheduleItem {
   status: "upcoming" | "completed" | "missed";
   description?: string;
 }
+
+export interface NoteItem {
+  id: string;
+  type: "text" | "audio" | "video";
+  content: string;
+  date: string;
+}

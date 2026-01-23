@@ -1,73 +1,59 @@
-# Minimal Uniwind Template
+# Aile
 
-This is a [React Native](https://reactnative.dev/) project built with [Expo](https://expo.dev/) and [React Native Reusables](https://reactnativereusables.com).
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.1.
 
-It was initialized using the following command:
+## Development server
 
-```bash
-npx @react-native-reusables/cli@latest init -t rexa-learning
-```
-
-## Getting Started
-
-To run the development server:
+To start a local development server, run:
 
 ```bash
-    npm run dev
-    # or
-    yarn dev
-    # or
-    pnpm dev
-    # or
-    bun dev
+ng serve
 ```
 
-This will start the Expo Dev Server. Open the app in:
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-- **iOS**: press `i` to launch in the iOS simulator _(Mac only)_
-- **Android**: press `a` to launch in the Android emulator
-- **Web**: press `w` to run in a browser
+## Code scaffolding
 
-You can also scan the QR code using the [Expo Go](https://expo.dev/go) app on your device. This project fully supports running in Expo Go for quick testing on physical devices.
-
-## Adding components
-
-You can add more reusable components using the CLI:
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
 ```bash
-npx react-native-reusables/cli@latest add [...components]
+ng generate component component-name
 ```
 
-> e.g. `npx react-native-reusables/cli@latest add input textarea`
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-If you don't specify any component names, you'll be prompted to select which components to add interactively. Use the `--all` flag to install all available components at once.
+```bash
+ng generate --help
+```
 
-## Project Features
+## Building
 
-- ⚛️ Built with [Expo Router](https://expo.dev/router)
-- 🎨 Styled with [Tailwind CSS](https://tailwindcss.com/) via [Uniwind](https://uniwind.dev/)
-- 📦 UI powered by [React Native Reusables](https://github.com/founded-labs/react-native-reusables)
-- 🚀 New Architecture enabled
-- 🔥 Edge to Edge enabled
-- 📱 Runs on iOS, Android, and Web
+To build the project run:
 
-## Learn More
+```bash
+ng build
+```
 
-To dive deeper into the technologies used:
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-- [React Native Docs](https://reactnative.dev/docs/getting-started)
-- [Expo Docs](https://docs.expo.dev/)
-- [Uniwind Docs](https://docs.uniwind.dev/)
-- [React Native Reusables](https://reactnativereusables.com)
+## Running unit tests
 
-## Deploy with EAS
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
 
-The easiest way to deploy your app is with [Expo Application Services (EAS)](https://expo.dev/eas).
+```bash
+ng test
+```
 
-- [EAS Build](https://docs.expo.dev/build/introduction/)
-- [EAS Updates](https://docs.expo.dev/eas-update/introduction/)
-- [EAS Submit](https://docs.expo.dev/submit/introduction/)
+## Running end-to-end tests
 
----
+For end-to-end (e2e) testing, run:
 
-If you enjoy using React Native Reusables, please consider giving it a ⭐ on [GitHub](https://github.com/founded-labs/react-native-reusables). Your support means a lot!
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

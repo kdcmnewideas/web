@@ -1,4 +1,4 @@
-import { Component, Inject, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   lucideSquareCheckBig,
   lucideSquare,
@@ -16,7 +16,6 @@ import { InputTextModule } from 'primeng/inputtext';
 import {
   FormControl,
   FormGroup,
-  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -31,7 +30,6 @@ import { Router } from '@angular/router';
     NgIcon,
     CheckboxModule,
     InputTextModule,
-    FormsModule,
     ReactiveFormsModule,
     PasswordModule,
     ButtonModule,
@@ -64,7 +62,7 @@ export class Login {
     private router: Router,
   ) {}
 
-  login() {
+  login = () => {
     const { email, password } = this.loginForm.value;
     if (email && password)
       this.authService.login({ email, password }).subscribe({
@@ -73,5 +71,9 @@ export class Login {
           this.router.navigate(['/']);
         },
       });
+  }
+
+  navigateTo = (page: string) => {
+    this.router.navigate([page])
   }
 }

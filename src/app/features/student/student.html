@@ -11,7 +11,9 @@
       class="absolute -right-3 top-10 bg-white border border-slate-200 rounded-full p-1 shadow-sm text-slate-400 hover:text-primary-600 hover:border-primary-200 z-20 transition-colors"
     >
       @if (isSidebarCollapsed()) {
-        <ng-icon name="lucideChevronRight" size="12" />
+        <ng-icon name="lucideChevronRight" size="1
+￼
+2" />
       } @else {
         <ng-icon name="lucideChevronLeft" size="12" />
       }
@@ -126,7 +128,7 @@
       <button
         (click)="navigateTo(item.id)"
         [class]="
-          `flex flex-col items-center space-y-1 ${router.url.toLowerCase() === item.id ? 'text-primary-600' : 'text-slate-400'}`
+          `flex flex-col items-center space-y-1 ${router.url.toLowerCase().includes(item.id.toLowerCase()) ? 'text-primary-600' : 'text-slate-400'}`
         "
       >
         <ng-icon [name]="item.icon" size="24" />

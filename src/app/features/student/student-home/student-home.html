@@ -1,50 +1,54 @@
 <div class="space-y-8 animate-fade-in pb-20">
+  <!--Header & Welcome -->
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+    <div>
+      <p class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-1">{{ today }}</p>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+        Welcome back, {{ user?.name.split(' ')[0] }}
+      </h1>
+    </div>
 
-        <!--Header & Welcome -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-             <p class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-1">{{today}}</p>
-             <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-               Welcome back, {{user?.name.split(' ')[0]}}
-             </h1>
-          </div>
+    <!--Streak Pill -->
+    <div
+      class="flex items-center gap-3 bg-white pl-5 pr-2 py-2 rounded-full border border-slate-200 shadow-sm hover:shadow-md hover:border-orange-200 transition-all cursor-pointer group"
+    >
+      <div class="flex flex-col items-end">
+        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider"
+          >Current Streak</span
+        >
+        <span
+          class="text-lg font-bold text-slate-900 leading-none group-hover:text-orange-600 transition-colors"
+          >{{ user?.streakDays }} Days</span
+        >
+      </div>
+      <div
+        class="w-10 h-10 rounded-full bg-orange-50 group-hover:bg-orange-100 flex items-center justify-center text-orange-500 transition-colors"
+      >
+        <ng-icon name="lucideFlame" color="#ff6900" size="20" strokeWidth="3" />
+      </div>
+    </div>
+  </div>
 
-          <!--Streak Pill -->
-          <div
-             class="flex items-center gap-3 bg-white pl-5 pr-2 py-2 rounded-full border border-slate-200 shadow-sm hover:shadow-md hover:border-orange-200 transition-all cursor-pointer group"
-          >
-             <div class="flex flex-col items-end">
-                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Current Streak</span>
-                <span class="text-lg font-bold text-slate-900 leading-none group-hover:text-orange-600 transition-colors">{{user?.streakDays}} Days</span>
-             </div>
-             <div class="w-10 h-10 rounded-full bg-orange-50 group-hover:bg-orange-100 flex items-center justify-center text-orange-500 transition-colors">
-                <ng-icon name="lucideFlame" color="#ff6900" size="20" strokeWidth="3"/>
-             </div>
-          </div>
+  <!--Main Content Grid -->
+  <div class="grid grid-cols-1 xl:grid-cols-4 gap-8">
+    <!--Left Column (Main) -->
+    <div class="xl:col-span-3 space-y-10">
+      <!--Goals Section - Modern Widget Style -->
+      <section>
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <ng-icon name="lucideTarget" class="w-5 h-5" color="#4f46e5" /> Weekly Targets
+          </h2>
         </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          @for (goal of goals; track goal.id; let index = $index) {
+            <app-goal [goal]="goal" [index]="index" />
+          }
+        </div>
+      </section>
 
-        <!--Main Content Grid -->
-        <div class="grid grid-cols-1 xl:grid-cols-4 gap-8">
-
-           <!--Left Column (Main) -->
-           <div class="xl:col-span-3 space-y-10">
-
-              <!--Goals Section - Modern Widget Style -->
-              <section>
-                 <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
-                       <ng-icon name="lucideTarget" class="w-5 h-5" color="#4f46e5" /> Weekly Targets
-                    </h2>
-                 </div>
-                 <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                  @for(goal of goals; track goal.id; let index = $index){
-                    <app-goal [goal]="goal" [index]="index"/>
-                  }
-                 </div>
-              </section>
-
-              <!--Subjects Grid -->
-              <!-- <section>
+      <!--Subjects Grid -->
+      <!-- <section>
                  <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-bold text-slate-900">My Courses</h2>
                     <button onClick={() => onNavigate(ScreenName.SUBJECTS)} class="text-sm font-bold text-indigo-600 hover:text-indigo-700 flex items-center gap-1 group">
@@ -88,8 +92,8 @@
                  </div>
               </section> -->
 
-              <!--Recent Activity -->
-               <!-- <section>
+      <!--Recent Activity -->
+      <!-- <section>
                  <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-bold text-slate-900">Jump Back In</h2>
                  </div>
@@ -118,14 +122,12 @@
                     ))}
                  </div>
               </section> -->
+    </div>
 
-           </div>
-
-           <!--Right Column (Sidebar) - Fixed Layout -->
-           <div class="xl:col-span-1 space-y-6 sticky top-6 self-start h-fit">
-
-              <!--Revision Widget -->
-              <!-- <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm">
+    <!--Right Column (Sidebar) - Fixed Layout -->
+    <div class="xl:col-span-1 space-y-6 sticky top-6 self-start h-fit">
+      <!--Revision Widget -->
+      <!-- <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm">
                  <div class="flex items-center justify-between mb-6">
                     <div class="flex items-center gap-3">
                        <div class="p-2 bg-indigo-50 text-indigo-600 rounded-lg">
@@ -177,8 +179,8 @@
                  </div>
               </div> -->
 
-              <!--Pro Tip Card -->
-              <!-- <div class="bg-slate-900 rounded-3xl p-8 text-white relative overflow-hidden group shadow-lg">
+      <!--Pro Tip Card -->
+      <!-- <div class="bg-slate-900 rounded-3xl p-8 text-white relative overflow-hidden group shadow-lg">
                  <div class="relative z-10">
                     <div class="flex items-center gap-2 mb-4">
                        <span class="px-2 py-0.5 rounded bg-white/10 text-[10px] font-bold uppercase tracking-wider text-indigo-200">Pro Tip</span>
@@ -191,17 +193,16 @@
                     </button>
                  </div> -->
 
-                 <!--Decorative background elements -->
-                 <!-- <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-600/30 rounded-full blur-3xl group-hover:bg-indigo-500/40 transition-colors duration-500"></div>
+      <!--Decorative background elements -->
+      <!-- <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-600/30 rounded-full blur-3xl group-hover:bg-indigo-500/40 transition-colors duration-500"></div>
                  <div class="absolute top-10 -left-10 w-24 h-24 bg-teal-500/20 rounded-full blur-2xl"></div>
               </div> -->
-           </div>
+    </div>
+  </div>
+</div>
 
-        </div>
-      </div>
-
-      <!--Floating Action Button (Mobile) - Positioned relative to viewport via Portal -->
-      <!-- {createPortal(
+<!--Floating Action Button (Mobile) - Positioned relative to viewport via Portal -->
+<!-- {createPortal(
         <div class="md:hidden fixed bottom-24 right-6 z-[60]">
           <button
             onClick={() => onNavigate(ScreenName.CALENDAR)}

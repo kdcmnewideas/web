@@ -1,0 +1,44 @@
+<p-card
+  class="rounded-2xl border border-slate-100 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:border-indigo-100 transition-all cursor-pointer group"
+>
+  <div class="flex items-center justify-between">
+    <div class="flex flex-col justify-center">
+      <div class="flex items-center gap-2 mb-2">
+        <div
+          [class]="
+            `p-1.5 flex rounded-lg ${index() === 0 ? 'bg-indigo-50 text-indigo-600' : index() === 1 ? 'bg-teal-50 text-teal-600' : 'bg-orange-50 text-orange-600'}`
+          "
+        >
+          <ng-icon
+            [name]="
+              index() === 0 ? 'lucideClock' : index() === 1 ? 'lucideBookOpen' : 'lucideTarget'
+            "
+            size="16"
+          />
+        </div>
+        <p-tag
+          [severity]="daysLeft() < 0 ? 'danger' : daysLeft() < 3 ? 'warn' : 'secondary'"
+          [value]="
+            daysLeft() < 0 ? 'Overdue' : daysLeft() === 0 ? 'Due Today' : `${daysLeft}d left`
+          "
+          [rounded]="true"
+          class="py-0!"
+        />
+      </div>
+      <h3 class="font-bold text-slate-900 leading-tight mb-1">{{ goal()?.target_type }}</h3>
+      <p class="text-xs text-slate-400 font-medium">
+        <span class="text-slate-700 font-bold">{{ goal()?.current_score }}</span> /
+        {{ goal()?.target_score }}
+      </p>
+    </div>
+
+    <div class="shrink-0">
+      <app-circular-progress
+        [percentage]="percentage()"
+        [color]="color()"
+        [size]="52"
+        [strokeWidth]="4"
+      />
+    </div>
+  </div>
+</p-card>

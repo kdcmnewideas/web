@@ -1,0 +1,137 @@
+<div class="flex min-h-screen bg-slate-50">
+  <!-- Sidebar for Desktop -->
+  <aside
+    [class]="
+      `hidden md:flex flex-col ${isSidebarCollapsed() ? 'w-20' : 'w-48'} bg-white border-r border-slate-200 fixed h-full z-10 transition-all duration-300 ease-in-out`
+    "
+  >
+    <!-- Toggle Button -->
+    <button
+      (click)="isSidebarCollapsed.set(!isSidebarCollapsed())"
+      class="absolute -right-3 top-10 bg-white border border-slate-200 rounded-full p-1 shadow-sm text-slate-400 hover:text-primary-600 hover:border-primary-200 z-20 transition-colors"
+    >
+      @if (isSidebarCollapsed()) {
+        <ng-icon name="lucideChevronRight" size="12" />
+      } @else {
+        <ng-icon name="lucideChevronLeft" size="12" />
+      }
+    </button>
+
+    <div
+      [class]="
+        `h-24 flex items-center border-b border-slate-100 ${isSidebarCollapsed() ? 'justify-center px-0' : 'px-6'}`
+      "
+    >
+      <div class="flex items-center gap-3 overflow-hidden">
+        <div
+          class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300"
+        >
+          <span class="text-white font-bold text-lg">A</span>
+        </div>
+        <h1
+          [class]="
+            `text-xl font-bold text-slate-900 tracking-tight transition-opacity duration-200 ${isSidebarCollapsed() ? 'opacity-0 w-0' : 'opacity-100'}`
+          "
+        >
+          Aile Learning
+        </h1>
+      </div>
+    </div>
+
+    <nav class="flex-1 p-3 space-y-1.5 overflow-y-auto overflow-x-hidden">
+      @for (item of navItems; track item.id) {
+        <button
+          (click)="navigateTo(item.id)"
+          [class]="
+            `
+                w-full flex items-center ${isSidebarCollapsed() ? 'justify-center px-0' : 'space-x-3 px-3'} py-2.5 rounded-xl transition-all duration-200 font-medium relative group
+                ${
+                  router.url.toLowerCase().includes(item.id.toLowerCase())
+                    ? 'bg-primary-50 text-primary-700'
+                    : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                }
+              `
+          "
+          [title]="isSidebarCollapsed() ? item.label : ''"
+        >
+          <ng-icon
+            [name]="item.icon"
+            [class]="
+              `w-5 h-5 shrink-0 ${router.url.toLowerCase().includes(item.id.toLowerCase()) ? 'text-primary-600' : 'text-slate-400'}`
+            "
+          />
+          <span
+            [class]="
+              `whitespace-nowrap text-sm transition-all duration-200 ${isSidebarCollapsed() ? 'opacity-0 w-0 hidden' : 'opacity-100'}`
+            "
+          >
+            {{ item.label }}
+          </span>
+
+          <!-- Tooltip for collapsed state -->
+          @if (isSidebarCollapsed()) {
+            <div
+              class="absolute left-full ml-4 px-2 py-1 bg-slate-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none"
+            >
+              {{ item.label }}
+            </div>
+          }
+        </button>
+      }
+    </nav>
+
+    <div class="p-4 border-t border-slate-100">
+      <button
+        (click)="navigateTo('auth/login')"
+        [class]="
+          `w-full flex items-center ${isSidebarCollapsed() ? 'justify-center px-0' : 'space-x-3 px-4'} py-3 rounded-xl text-slate-600 hover:bg-red-50 hover:text-red-700 transition-colors font-medium group relative`
+        "
+        [title]="isSidebarCollapsed() ? 'Sign Out' : ''"
+      >
+        <ng-icon name="lucideLogOut" size="20" />
+        <span
+          [class]="
+            `whitespace-nowrap text-sm transition-all duration-200 ${isSidebarCollapsed() ? 'opacity-0 w-0 hidden' : 'opacity-100'}`
+          "
+        >
+          Sign Out
+        </span>
+        @if (isSidebarCollapsed()) {
+          <div
+            class="absolute left-full ml-4 px-2 py-1 bg-slate-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 pointer-events-none"
+          >
+            Sign Out
+          </div>
+        }
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main
+    [class]="
+      `flex-1 ${isSidebarCollapsed() ? 'md:ml-20' : 'md:ml-48'} pb-24 md:pb-0 relative transition-all duration-300 ease-in-out`
+    "
+  >
+    <div class="max-w-6xl mx-auto p-4 md:p-8">
+      <router-outlet />
+    </div>
+  </main>
+
+  <!-- Bottom Nav for Mobile -->
+  <div
+    class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 px-6 py-3 flex justify-between items-center z-50 safe-area-bottom shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]"
+  >
+    @for (item of mobileNavItems; track item.id) {
+      <button
+        (click)="navigateTo(item.id)"
+        [class]="
+          `flex flex-col items-center space-y-1 ${router.url.toLowerCase() === item.id ? 'text-primary-600' : 'text-slate-400'}`
+        "
+      >
+        <ng-icon [name]="item.icon" size="24" />
+        <span class="text-[10px] font-medium">{{ item.label }}</span>
+      </button>
+    }
+  </div>
+</div>

@@ -13,7 +13,7 @@
       <h1 class="text-3xl font-bold text-slate-900 mb-2">Welcome back</h1>
       <p class="text-slate-500 mb-8">Please enter your details</p>
 
-      <form onsubmit="login()" class="space-y-5" [formGroup]="loginForm">
+      <form (submit)="login()" class="space-y-5" [formGroup]="loginForm">
         <div class="flex flex-col gap-6 w-full">
           <div class="flex flex-col gap-2 w-full">
             <label
@@ -67,13 +67,14 @@
         </div>
 
         <div class="space-y-4 pt-2">
-          <button type="submit" pButton class="h-11 w-full" (click)="login()">Sign in</button>
+          <button type="submit" pButton class="h-11 w-full">Sign in</button>
           <p-button
             type="button"
             class="w-full flex items-center justify-center gap-3"
             variant="outlined"
             fluid="true"
             severity="secondary"
+            (onClick)="navigateTo('home')"
           >
             <img src="assets/images/google.svg" alt="Google Logo" class="w-5 h-5" />
             Sign in with Google
@@ -87,7 +88,7 @@
           label="Sign up"
           link
           (click)="navigateTo('auth/register')"
-          styleClass="text-sm! font-semibold!"
+          styleClass="text-sm! font-semibold! p-0!"
         />
       </p>
     </div>

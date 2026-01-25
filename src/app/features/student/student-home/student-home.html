@@ -1,0 +1,214 @@
+<div class="space-y-8 animate-fade-in pb-20">
+
+        <!--Header & Welcome -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+             <p class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-1">{{today}}</p>
+             <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+               Welcome back, {{user?.name.split(' ')[0]}}
+             </h1>
+          </div>
+
+          <!--Streak Pill -->
+          <div
+             class="flex items-center gap-3 bg-white pl-5 pr-2 py-2 rounded-full border border-slate-200 shadow-sm hover:shadow-md hover:border-orange-200 transition-all cursor-pointer group"
+          >
+             <div class="flex flex-col items-end">
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Current Streak</span>
+                <span class="text-lg font-bold text-slate-900 leading-none group-hover:text-orange-600 transition-colors">{{user?.streakDays}} Days</span>
+             </div>
+             <div class="w-10 h-10 rounded-full bg-orange-50 group-hover:bg-orange-100 flex items-center justify-center text-orange-500 transition-colors">
+                <ng-icon name="lucideFlame" color="#ff6900" size="20" strokeWidth="3"/>
+             </div>
+          </div>
+        </div>
+
+        <!--Main Content Grid -->
+        <div class="grid grid-cols-1 xl:grid-cols-4 gap-8">
+
+           <!--Left Column (Main) -->
+           <div class="xl:col-span-3 space-y-10">
+
+              <!--Goals Section - Modern Widget Style -->
+              <section>
+                 <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                       <ng-icon name="lucideTarget" class="w-5 h-5" color="#4f46e5" /> Weekly Targets
+                    </h2>
+                 </div>
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                  @for(goal of goals; track goal.id; let index = $index){
+                    <app-goal [goal]="goal" [index]="index"/>
+                  }
+                 </div>
+              </section>
+
+              <!--Subjects Grid -->
+              <!-- <section>
+                 <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-slate-900">My Courses</h2>
+                    <button onClick={() => onNavigate(ScreenName.SUBJECTS)} class="text-sm font-bold text-indigo-600 hover:text-indigo-700 flex items-center gap-1 group">
+                       View All <ArrowRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                 </div>
+                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {SUBJECTS.map(subject => {
+                        const Icon = iconMap[subject.icon] || BookOpen;
+                        const styles = getSubjectColorStyles(subject.color);
+                        return (
+                           <div
+                             key={subject.id}
+                             onClick={() => onNavigate(ScreenName.SUBJECT_DETAILS, { subjectId: subject.id })}
+                             class="bg-white rounded-3xl p-6 border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all cursor-pointer flex flex-col relative overflow-hidden group"
+                           >
+                              <div class="flex justify-between items-start mb-6">
+                                 <div class={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-sm ${styles.iconBg} group-hover:scale-110 transition-transform duration-300`}>
+                                    <Icon class="w-7 h-7" />
+                                 </div>
+                                 <div class="bg-slate-50 px-3 py-1 rounded-full border border-slate-100 group-hover:border-slate-200 transition-colors">
+                                    <span class="text-xs font-bold text-slate-500">{subject.totalLessons} Lessons</span>
+                                 </div>
+                              </div>
+
+                              <h3 class="text-lg font-bold text-slate-900 mb-1">{subject.title}</h3>
+                              <p class="text-sm text-slate-400 mb-6 line-clamp-2">{subject.description || "Master key concepts and advance your skills."}</p>
+
+                              <div class="mt-auto">
+                                 <div class="flex justify-between text-xs font-semibold mb-2 text-slate-400">
+                                    <span>Progress</span>
+                                    <span>{subject.progress}%</span>
+                                 </div>
+                                 <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                                    <div class={`h-full rounded-full ${styles.bar}`} style={{ width: `${subject.progress}%` }}></div>
+                                 </div>
+                              </div>
+                           </div>
+                        )
+                    })}
+                 </div>
+              </section> -->
+
+              <!--Recent Activity -->
+               <!-- <section>
+                 <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-slate-900">Jump Back In</h2>
+                 </div>
+                 <div class="bg-white rounded-3xl border border-slate-100 shadow-sm divide-y divide-slate-50 overflow-hidden">
+                    {RECENT_LESSONS.map((lesson) => (
+                       <div key={lesson.id} class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50/80 transition-colors group cursor-pointer" onClick={() => onNavigate(ScreenName.LEARN, { lessonId: lesson.id })}>
+                          <div class="flex items-center gap-5">
+                             <div class="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-indigo-50 group-hover:text-indigo-600 transition-colors">
+                                <Play class="w-5 h-5 ml-1 fill-current" />
+                             </div>
+                             <div>
+                                <h4 class="font-bold text-slate-900 text-lg">{lesson.title}</h4>
+                                <div class="flex items-center gap-2 text-sm text-slate-500 font-medium mt-0.5">
+                                   <span>{SUBJECTS.find(s => s.id === lesson.subjectId)?.title}</span>
+                                   <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+                                   <span>{lesson.durationMinutes} min left</span>
+                                </div>
+                             </div>
+                          </div>
+                          <div class="opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-2 group-hover:translate-x-0">
+                             <Button variant="outline" size="sm" class="rounded-xl border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-200">
+                                Resume
+                             </Button>
+                          </div>
+                       </div>
+                    ))}
+                 </div>
+              </section> -->
+
+           </div>
+
+           <!--Right Column (Sidebar) - Fixed Layout -->
+           <div class="xl:col-span-1 space-y-6 sticky top-6 self-start h-fit">
+
+              <!--Revision Widget -->
+              <!-- <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm">
+                 <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-3">
+                       <div class="p-2 bg-indigo-50 text-indigo-600 rounded-lg">
+                          <Clock class="w-5 h-5" />
+                       </div>
+                       <h3 class="font-bold text-slate-900">Up Next</h3>
+                    </div>
+                    <button class="text-slate-400 hover:text-slate-600">
+                       <MoreHorizontal class="w-5 h-5" />
+                    </button>
+                 </div>
+
+                 <div class="space-y-3">
+                    {REVISION_TOPICS.slice(0, 4).map((topic) => {
+                       const subject = SUBJECTS.find(s => s.title === topic.subject);
+                       const styles = getSubjectColorStyles(subject?.color || 'bg-slate-500');
+                       const Icon = subject ? iconMap[subject.icon] : BookOpen;
+
+                       return (
+                        <div
+                          key={topic.id}
+                          class="flex items-start gap-3 p-3 rounded-2xl hover:bg-slate-50 border border-transparent hover:border-slate-100 transition-all cursor-pointer group"
+                          onClick={() => onNavigate(ScreenName.SUBJECT_DETAILS)}
+                        >
+                           <div class={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 ${styles.light} ${styles.text}`}>
+                              <RefreshCw class="w-5 h-5" />
+                           </div>
+
+                           <div class="flex-1 min-w-0">
+                              <div class="flex justify-between items-start mb-1.5">
+                                 <h4 class="font-bold text-slate-900 text-sm leading-snug group-hover:text-primary transition-colors">{topic.title}</h4>
+                                 <span class="text-[10px] font-bold text-slate-400 whitespace-nowrap ml-2 flex-shrink-0 mt-0.5">{topic.date.replace(' days ago', 'd').replace(' week ago', 'w')}</span>
+                              </div>
+                              <div class="flex items-center gap-2 text-xs font-medium text-slate-500">
+                                 <span class={`${styles.text} font-bold`}>{topic.subject}</span>
+                                 <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+                                 <span>15 min</span>
+                              </div>
+                           </div>
+                        </div>
+                       );
+                    })}
+                 </div>
+
+                 <div class="mt-6 pt-5 border-t border-slate-50">
+                    <Button fullWidth variant="outline" onClick={() => onNavigate(ScreenName.CALENDAR)} class="rounded-xl border-slate-200 text-slate-600 hover:bg-slate-50">
+                       View Full Calendar
+                    </Button>
+                 </div>
+              </div> -->
+
+              <!--Pro Tip Card -->
+              <!-- <div class="bg-slate-900 rounded-3xl p-8 text-white relative overflow-hidden group shadow-lg">
+                 <div class="relative z-10">
+                    <div class="flex items-center gap-2 mb-4">
+                       <span class="px-2 py-0.5 rounded bg-white/10 text-[10px] font-bold uppercase tracking-wider text-indigo-200">Pro Tip</span>
+                    </div>
+                    <p class="text-lg font-medium leading-relaxed mb-6 text-slate-100">
+                       "Reviewing material 24 hours after learning it increases retention by 60%."
+                    </p>
+                    <button onClick={() => onNavigate(ScreenName.REVISION)} class="text-sm font-bold text-white flex items-center gap-2 hover:gap-3 transition-all">
+                       Start Revision <ArrowRight class="w-4 h-4" />
+                    </button>
+                 </div> -->
+
+                 <!--Decorative background elements -->
+                 <!-- <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-600/30 rounded-full blur-3xl group-hover:bg-indigo-500/40 transition-colors duration-500"></div>
+                 <div class="absolute top-10 -left-10 w-24 h-24 bg-teal-500/20 rounded-full blur-2xl"></div>
+              </div> -->
+           </div>
+
+        </div>
+      </div>
+
+      <!--Floating Action Button (Mobile) - Positioned relative to viewport via Portal -->
+      <!-- {createPortal(
+        <div class="md:hidden fixed bottom-24 right-6 z-[60]">
+          <button
+            onClick={() => onNavigate(ScreenName.CALENDAR)}
+            class="w-14 h-14 bg-indigo-600 text-white rounded-full shadow-lg shadow-indigo-200 flex items-center justify-center hover:bg-indigo-700 active:scale-95 transition-all"
+          >
+             <Calendar class="w-6 h-6" />
+          </button>
+        </div>,
+        document.body
+      )} -->

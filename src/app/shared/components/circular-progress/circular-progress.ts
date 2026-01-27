@@ -12,6 +12,7 @@ export class CircularProgress {
   color = input.required<string>();
   size = input<number>(60);
   strokeWidth = input<number>(5);
+  showText = input<boolean>(true);
 
   // Computed values automatically update when inputs change
   radius = computed(() => (this.size() - this.strokeWidth()) / 2);

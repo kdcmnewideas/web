@@ -1,0 +1,81 @@
+<div
+  [class]="
+    `group relative bg-white rounded-4xl p-6 border border-slate-100 ${softShadow} ${hoverShadow} cursor-pointer flex flex-col overflow-hidden`
+  "
+>
+  <div
+    [class]="
+      `absolute -right-12 -top-12 w-48 h-48 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-700 ${styles().iconBg}`
+    "
+  ></div>
+
+  <div class="flex justify-between items-center mb-8 relative z-10">
+    <div
+      [class]="
+        `w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-xl ${styles().glow} ${styles().iconBg} group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`
+      "
+    >
+      <ng-icon [name]="subject().icon" class="w-6 h-6" />
+    </div>
+    <div class="flex flex-col items-end">
+      <span
+        class="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em] leading-none mb-1.5"
+        >Module</span
+      >
+      <span class="text-sm font-black text-slate-800 leading-none"
+        >{{ subject().totalLessons }} Lessons</span
+      >
+    </div>
+  </div>
+
+  <div class="mb-8 relative z-10">
+    <h3
+      class="text-xl font-black text-slate-900 leading-tight group-hover:text-indigo-600 transition-colors tracking-tight"
+    >
+      {{ subject().title }}
+    </h3>
+  </div>
+
+  <div class="mt-auto relative z-10">
+    <div class="flex items-center justify-between mb-4">
+      <div class="flex items-center gap-2">
+        <div
+          [class]="
+            `w-1.5 h-1.5 rounded-full ${styles().iconBg} animate-pulse shadow-[0_0_8px_rgba(0,0,0,0.2)]`
+          "
+        ></div>
+        <span class="text-[9px] font-black text-slate-400 uppercase tracking-[0.15em]"
+          >Mastery</span
+        >
+      </div>
+      <span [class]="`text-sm font-black ${styles().text}`">{{ subject().progress }}%</span>
+    </div>
+
+    <div
+      class="relative h-2.5 w-full bg-slate-50 rounded-full overflow-hidden p-0.5 border border-slate-100/50"
+    >
+      <div
+        [class]="
+          `h-full rounded-full ${styles().bar} transition-all duration-2000 ease-out relative`
+        "
+        [style]="{ width: `${subject().progress}%` }"
+      >
+        <div
+          class="absolute top-0 right-0 bottom-0 w-12 bg-white/20 skew-x-[-35deg] -translate-x-3"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="absolute top-1/2 -translate-y-1/2 right-6 translate-x-16 group-hover:translate-x-0 transition-transform duration-500 ease-out"
+  >
+    <div
+      [class]="
+        `w-10 h-10 rounded-xl ${styles().iconBg} flex items-center justify-center text-white shadow-xl ${styles().glow}`
+      "
+    >
+      <ng-icon name="lucideChevronRight" size="24" />
+    </div>
+  </div>
+</div>

@@ -27,7 +27,8 @@
     />
   </svg>
 
+  @if(showText()){
   <div class="absolute inset-0 flex items-center justify-center">
     <span class="text-[10px] font-bold" [class]="color()"> {{ percentage() }}% </span>
-  </div>
+  </div>}
 </div>

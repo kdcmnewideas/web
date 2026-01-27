@@ -9,6 +9,7 @@ export const routes: Routes = [
     path: '',
     loadChildren: () => import('./features/student/student.routes').then((m) => m.STUDENT_ROUTES),
     loadComponent: () => import('./features/student/student').then((m) => m.Student),
+    title: 'Aile Learning'
   },
   {
     path: '**',

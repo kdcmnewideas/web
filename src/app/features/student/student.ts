@@ -55,7 +55,7 @@ export class Student {
     { id: ScreenName.HOME, icon: 'bootstrapHouse', label: 'Home' },
     { id: ScreenName.CALENDAR, icon: 'bootstrapCalendar', label: 'Schedule' },
     { id: ScreenName.ANALYTICS, icon: 'bootstrapBarChart', label: 'Results' },
-    { id: ScreenName.COMMUNITY, icon: 'bootstrapTrophy', label: 'Leaderboard' },
+    { id: ScreenName.LEADERBOARD, icon: 'bootstrapTrophy', label: 'Leaderboard' },
     { id: ScreenName.AI_USAGE, icon: 'bootstrapCpu', label: 'AI Usage' },
   ];
 

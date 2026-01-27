@@ -7,13 +7,10 @@ import { Component, computed, Input, input, signal } from '@angular/core';
   styleUrl: './line-chart.css',
 })
 export class LineChart {
-  // Inputs using the modern Signal-based API (Angular 17.1+)
-  // Or use standard @Input() with setters if on older versions
-  @Input({ required: true }) set chartData(val: number[]) { this.data.set(val); }
-  @Input() color: string = '#4f46e5';
-  @Input() className: string = '';
+   color = input<string>('#4f46e5');
+   className = input<string>('');
 
-  data = signal<number[]>([]);
+  data = input<number[]>([]);
 
   readonly viewWidth = 100;
   readonly viewHeight = 50;

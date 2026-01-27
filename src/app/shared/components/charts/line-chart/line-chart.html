@@ -1,6 +1,6 @@
 @if (data().length < 2) {
   <div
-    [class]="'flex items-center justify-center bg-slate-50 rounded-lg ' + className"
+    [class]="'flex items-center justify-center bg-slate-50 rounded-lg ' + className()"
     style="height: 100%"
   >
     <span class="text-slate-400 text-sm">Not enough data to display trend</span>
@@ -39,11 +39,11 @@
       vector-effect="non-scaling-stroke"
     />
 
-    <polygon [attr.points]="areaPath()" [attr.fill]="color" fill-opacity="0.1" />
+    <polygon [attr.points]="areaPath()" [attr.fill]="color()" fill-opacity="0.1" />
 
     <polyline
       fill="none"
-      [attr.stroke]="color"
+      [attr.stroke]="color()"
       stroke-width="2.5"
       vector-effect="non-scaling-stroke"
       [attr.points]="points()"

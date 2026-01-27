@@ -15,6 +15,10 @@ export const STUDENT_ROUTES: Routes = [
     path: 'ai-usage',
     loadComponent: () => import('./ai-usage/ai-usage').then((m) => m.AiUsage),
     title: 'AI Usage',
+  },{
+    path: 'analytics',
+    loadComponent: () => import('./analytics/analytics').then((m) => m.Analytics),
+    title: 'Analytics',
   },
   {
     path: '**',

@@ -169,6 +169,54 @@ export interface ScheduleItem {
   description?: string;
 }
 
+export interface APIKeyData {
+  id: string;
+  name: string;
+  key: string;
+  provider: 'Gemini' | 'OpenAI' | 'Anthropic';
+  usageTokens: number;
+  limitTokens: number;
+  costEstimate: number;
+  status: 'Active' | 'Rate Limited' | 'Expired';
+  lastChecked: string;
+}
+
+export const INITIAL_KEYS: APIKeyData[] = [
+  {
+    id: 'k1',
+    name: 'Gemini Production',
+    key: 'AIzaSyC...j9L3',
+    provider: 'Gemini',
+    usageTokens: 45200,
+    limitTokens: 100000,
+    costEstimate: 12.50,
+    status: 'Active',
+    lastChecked: '2 mins ago'
+  },
+  {
+    id: 'k2',
+    name: 'OpenAI Dev',
+    key: 'sk-proj-...k2m1',
+    provider: 'OpenAI',
+    usageTokens: 82000,
+    limitTokens: 80000,
+    costEstimate: 45.20,
+    status: 'Rate Limited',
+    lastChecked: '15 mins ago'
+  },
+  {
+    id: 'k3',
+    name: 'Research Sandbox',
+    key: 'AIzaSyA...z0X2',
+    provider: 'Gemini',
+    usageTokens: 1200,
+    limitTokens: 50000,
+    costEstimate: 0.45,
+    status: 'Active',
+    lastChecked: '1 hour ago'
+  }
+];
+
 
 export const CURRENT_USER: User = {
   id: 'u1',
@@ -209,7 +257,7 @@ export const SUBJECTS: Subject[] = [
     id: 's1',
     title: 'Mathematics',
     color: 'bg-indigo-600',
-    icon: 'lucideCalculator',
+    icon: 'Calculator',
     progress: 75,
     totalLessons: 24,
     description: 'Master calculus, algebra, and geometry with interactive problem solving.',
@@ -220,7 +268,7 @@ export const SUBJECTS: Subject[] = [
     id: 's2',
     title: 'Physics',
     color: 'bg-teal-500',
-    icon: 'lucideAtom',
+    icon: 'Atom',
     progress: 45,
     totalLessons: 18,
     description: 'Explore the fundamental laws of the universe from mechanics to quantum physics.',
@@ -231,7 +279,7 @@ export const SUBJECTS: Subject[] = [
     id: 's3',
     title: 'Literature',
     color: 'bg-rose-500',
-    icon: 'lucideBookOpen',
+    icon: 'BookOpen',
     progress: 20,
     totalLessons: 12,
     boardId: 'b1',
@@ -241,7 +289,7 @@ export const SUBJECTS: Subject[] = [
     id: 's4',
     title: 'History',
     color: 'bg-amber-500',
-    icon: 'lucideHourglass',
+    icon: 'Hourglass',
     progress: 90,
     totalLessons: 15,
     boardId: 'b1',
@@ -251,7 +299,7 @@ export const SUBJECTS: Subject[] = [
     id: 's5',
     title: 'Biology',
     color: 'bg-emerald-500',
-    icon: 'lucideDna',
+    icon: 'Dna',
     progress: 10,
     totalLessons: 20,
     boardId: 'b1',

@@ -1,0 +1,22 @@
+<div [class]="`flex items-end justify-between gap-4 ${className()}`" [style]="{ height }">
+  @for (item of data(); track item.label) {
+    <div class="flex-1 flex flex-col items-center group h-full justify-end">
+      <div
+        [class]="
+          `w-full rounded-t-lg transition-all duration-500 relative ${item.color?.replace('bg-', 'bg-') || 'bg-slate-300'}`
+        "
+        [style]="{ height: `${(item.value / max()) * 100}%` }"
+      >
+        <!-- Tooltip on Hover -->
+        <div
+          class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs font-semibold py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 pointer-events-none shadow-lg"
+        >
+          {{ item.value }} hrs
+        </div>
+      </div>
+      <span class="text-xs font-medium text-slate-500 mt-3 truncate w-full text-center">{{
+        item.label
+      }}</span>
+    </div>
+  }
+</div>

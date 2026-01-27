@@ -12,6 +12,11 @@ export const STUDENT_ROUTES: Routes = [
     title: 'Leaderboard',
   },
   {
+    path: 'ai-usage',
+    loadComponent: () => import('./ai-usage/ai-usage').then((m) => m.AiUsage),
+    title: 'AI Usage',
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },

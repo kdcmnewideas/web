@@ -1,0 +1,54 @@
+@if (data().length < 2) {
+  <div
+    [class]="'flex items-center justify-center bg-slate-50 rounded-lg ' + className"
+    style="height: 100%"
+  >
+    <span class="text-slate-400 text-sm">Not enough data to display trend</span>
+  </div>
+} @else {
+  <svg
+    [attr.viewBox]="'0 0 ' + viewWidth + ' ' + viewHeight"
+    [class]="'w-full h-full overflow-visible ' + className"
+    preserveAspectRatio="none"
+  >
+    <line
+      x1="0"
+      [attr.y1]="viewHeight * 0.25"
+      [attr.x2]="viewWidth"
+      [attr.y2]="viewHeight * 0.25"
+      stroke="#f1f5f9"
+      stroke-width="0.5"
+      vector-effect="non-scaling-stroke"
+    />
+    <line
+      x1="0"
+      [attr.y1]="viewHeight * 0.5"
+      [attr.x2]="viewWidth"
+      [attr.y2]="viewHeight * 0.5"
+      stroke="#f1f5f9"
+      stroke-width="0.5"
+      vector-effect="non-scaling-stroke"
+    />
+    <line
+      x1="0"
+      [attr.y1]="viewHeight * 0.75"
+      [attr.x2]="viewWidth"
+      [attr.y2]="viewHeight * 0.75"
+      stroke="#f1f5f9"
+      stroke-width="0.5"
+      vector-effect="non-scaling-stroke"
+    />
+
+    <polygon [attr.points]="areaPath()" [attr.fill]="color" fill-opacity="0.1" />
+
+    <polyline
+      fill="none"
+      [attr.stroke]="color"
+      stroke-width="2.5"
+      vector-effect="non-scaling-stroke"
+      [attr.points]="points()"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+}

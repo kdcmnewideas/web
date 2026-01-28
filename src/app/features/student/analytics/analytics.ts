@@ -10,38 +10,67 @@ import { LineChart } from '../../../shared/components/charts/line-chart/line-cha
 import { DonutChart } from '../../../shared/components/charts/donut-chart/donut-chart';
 import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
-import { NgIcon, provideIcons } from '@ng-icons/core';
-import {
-  lucideArrowRight,
-  lucideBookOpen,
-  lucideDownload,
-  lucideShare2,
-  lucideSparkles,
-  lucideTarget,
-  lucideTrophy,
-  lucideZap,
-} from '@ng-icons/lucide';
 import { ButtonModule } from 'primeng/button';
+import {
+  LucideAngularModule,
+  ArrowRight,
+  BookOpen,
+  Download,
+  Share2,
+  Sparkles,
+  Target,
+  Trophy,
+  Zap,
+  Clock,
+  GraduationCap,
+  CircleCheck,
+  TrendingUp,
+  ChartBar,
+  ChevronRight,
+  X,
+  HistoryIcon,
+} from 'lucide-angular';
+import { BarChart } from '../../../shared/components/charts/bar-chart/bar-chart';
+import { ExamAnalytics } from './exam-analytics/exam-analytics';
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
   selector: 'app-analytics',
   templateUrl: './analytics.html',
-  imports: [LineChart, DonutChart, CommonModule, CardModule, NgIcon, ButtonModule],
-  viewProviders: [
-    provideIcons({
-      lucideSparkles,
-      lucideShare2,
-      lucideDownload,
-      lucideTrophy,
-      lucideTarget,
-      lucideBookOpen,
-      lucideZap,
-      lucideArrowRight,
-    }),
+  imports: [
+    LineChart,
+    DonutChart,
+    CommonModule,
+    CardModule,
+    ButtonModule,
+    LucideAngularModule,
+    BarChart,
+    ExamAnalytics,
+    DialogModule,
   ],
+  viewProviders: [],
 })
 export class Analytics implements OnInit {
   @ViewChild('contentRef') contentRef!: ElementRef;
+
+  icons = {
+    ArrowRight,
+    BookOpen,
+    Download,
+    Share2,
+    Sparkles,
+    Target,
+    Trophy,
+    Zap,
+    Clock,
+    GraduationCap,
+    CircleCheck,
+    TrendingUp,
+    ChartBar,
+    ChevronRight,
+    X,
+    HistoryIcon,
+  };
 
   // Data bindings
   stats = PERFORMANCE_STATS;
@@ -65,6 +94,14 @@ export class Analytics implements OnInit {
     'text-rose-500': '#f43f5e',
     'text-slate-500': '#64748b',
   };
+
+  styles = [
+    'text-emerald-500',
+    'text-indigo-500',
+    'text-amber-500',
+    'text-rose-500',
+    'text-slate-500',
+  ];
 
   ngOnInit() {
     this.calculateAnalytics();

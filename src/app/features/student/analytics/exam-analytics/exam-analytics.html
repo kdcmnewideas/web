@@ -1,0 +1,30 @@
+<div class="p-5 flex items-center justify-between hover:bg-slate-50 transition-all group">
+  <div class="flex items-center gap-4">
+    <div
+      [class]="
+        `w-12 h-12 rounded-2xl flex items-center justify-center ${subject()?.color || 'bg-slate-500'}/10 text-slate-800 transition-transform group-hover:scale-110`
+      "
+    >
+      <lucide-icon
+        [img]="icons.BookOpen"
+        [class]="`w-5 h-5 ${subject()?.color?.replace('bg-', 'text-')}`"
+      />
+    </div>
+    <div>
+      <p class="font-black text-slate-900 text-sm tracking-tight">{{ subject()?.title }}</p>
+      <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">
+        {{ exam().date }} • {{ exam().totalQuestions }} Questions
+      </p>
+    </div>
+  </div>
+  <div class="text-right">
+    <span
+      [class]="
+        `text-lg font-black block leading-none mb-1 ${exam().score >= 80 ? 'text-emerald-600' : exam().score >= 60 ? 'text-amber-600' : 'text-rose-600'}`
+      "
+    >
+      {{ exam().score }}%
+    </span>
+    <span class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Score</span>
+  </div>
+</div>

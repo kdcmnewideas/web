@@ -1,4 +1,4 @@
-<div [class]="`flex items-end justify-between gap-4 ${className()}`" [style]="{ height }">
+<div [class]="`flex items-end justify-between gap-4 ${className()} h-full`" [style]="{ height }">
   @for (item of data(); track item.label) {
     <div class="flex-1 flex flex-col items-center group h-full justify-end">
       <div

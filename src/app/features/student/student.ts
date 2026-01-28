@@ -1,62 +1,43 @@
 import { Component, inject, signal } from '@angular/core';
 import { ScreenName } from '../../shared/constants/screen-names.constant';
-import { NgIcon, provideIcons } from '@ng-icons/core';
 import { Router, RouterOutlet } from '@angular/router';
-import {
-  bootstrapTrophy,
-  bootstrapTrophyFill,
-  bootstrapPerson,
-  bootstrapPersonFill,
-  bootstrapBarChart,
-  bootstrapBarChartFill,
-  bootstrapCalendar,
-  bootstrapCalendarFill,
-  bootstrapHouse,
-  bootstrapHouseFill,
-  bootstrapCpu,
-  bootstrapCpuFill,
-  bootstrapChevronRight,
-  bootstrapChevronLeft,
-  bootstrapSearch,
-  bootstrapBell
-} from '@ng-icons/bootstrap-icons';
 import { TooltipModule } from 'primeng/tooltip';
+import { CURRENT_USER } from '../../shared/constants/mock-data.constant';
+import {
+  Calendar,
+  ChevronLeft,
+  ChevronRight,
+  Cpu,
+  Search,
+  Bell,
+  LucideAngularModule,
+  Trophy,
+  House,
+  ChartNoAxesColumn
+} from 'lucide-angular';
 
 @Component({
   selector: 'app-student',
-  imports: [NgIcon, RouterOutlet, TooltipModule],
+  imports: [RouterOutlet, TooltipModule, LucideAngularModule],
   templateUrl: './student.html',
   styleUrl: './student.css',
-  viewProviders: [
-    provideIcons({
-      bootstrapTrophy,
-      bootstrapTrophyFill,
-      bootstrapPerson,
-      bootstrapPersonFill,
-      bootstrapBarChart,
-      bootstrapBarChartFill,
-      bootstrapCalendar,
-      bootstrapCalendarFill,
-      bootstrapHouse,
-      bootstrapHouseFill,
-      bootstrapCpu,
-      bootstrapCpuFill,
-      bootstrapChevronRight,
-      bootstrapChevronLeft,
-      bootstrapSearch,
-      bootstrapBell
-    }),
-  ],
 })
 export class Student {
   isSidebarCollapsed = signal<boolean>(false);
   router = inject(Router);
+  currentUser = CURRENT_USER;
+  icons = {
+    ChevronLeft,
+  ChevronRight,
+  Bell,
+  Search
+  }
   navItems = [
-    { id: ScreenName.HOME, icon: 'bootstrapHouse', label: 'Home' },
-    { id: ScreenName.CALENDAR, icon: 'bootstrapCalendar', label: 'Schedule' },
-    { id: ScreenName.ANALYTICS, icon: 'bootstrapBarChart', label: 'Results' },
-    { id: ScreenName.LEADERBOARD, icon: 'bootstrapTrophy', label: 'Leaderboard' },
-    { id: ScreenName.AI_USAGE, icon: 'bootstrapCpu', label: 'AI Usage' },
+    { id: ScreenName.HOME, icon: House, label: 'Home' },
+    { id: ScreenName.CALENDAR, icon: Calendar, label: 'Schedule' },
+    { id: ScreenName.ANALYTICS, icon: ChartNoAxesColumn, label: 'Results' },
+    { id: ScreenName.LEADERBOARD, icon: Trophy, label: 'Leaderboard' },
+    { id: ScreenName.AI_USAGE, icon: Cpu, label: 'AI Usage' },
   ];
 
   mobileNavItems = [

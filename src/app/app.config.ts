@@ -8,21 +8,28 @@ import Aura from '@primeuix/themes/aura';
 import { definePreset } from '@primeuix/themes';
 
 const MyPreset = definePreset(Aura, {
-    semantic: {
-        primary: {
-            50: '{purple.50}',
-            100: '{purple.100}',
-            200: '{purple.200}',
-            300: '{purple.300}',
-            400: '{purple.400}',
-            500: '{purple.500}',
-            600: '{purple.600}',
-            700: '{purple.700}',
-            800: '{purple.800}',
-            900: '{purple.900}',
-            950: '{purple.950}'
-        }
-    }
+  semantic: {
+    primary: {
+      50: '{indigo.50}',
+      100: '{indigo.100}',
+      200: '{indigo.200}',
+      300: '{indigo.300}',
+      400: '{indigo.400}',
+      500: '{indigo.500}',
+      600: '{indigo.600}',
+      700: '{indigo.700}',
+      800: '{indigo.800}',
+      900: '{indigo.900}',
+      950: '{indigo.950}',
+    },
+  },
+  components: {
+    card: {
+      body: {
+        padding: '0',
+      },
+    },
+  },
 });
 
 export const appConfig: ApplicationConfig = {
@@ -30,10 +37,13 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideAnimationsAsync(),
-        providePrimeNG({
-            theme: {
-                preset: MyPreset
-            }
-        })
-  ]
+    providePrimeNG({
+      theme: {
+        preset: MyPreset,
+        options: {
+          darkModeSelector: '.my-app-dark',
+        },
+      },
+    }),
+  ],
 };

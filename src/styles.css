@@ -2,10 +2,10 @@
 
 @import 'tailwindcss';
 @import "tailwindcss-primeui";
-@import '@fontsource-variable/nunito-sans';
+@import '@fontsource-variable/nunito';
 
 body {
-  font-family:  'Nunito Sans Variable', sans-serif;
+  font-family:  'Nunito Variable', sans-serif;
 }
 
 /* Animations */

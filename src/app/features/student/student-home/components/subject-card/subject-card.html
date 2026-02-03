@@ -2,6 +2,7 @@
   [class]="
     `group relative bg-white rounded-4xl p-6 border border-slate-100 ${softShadow} ${hoverShadow} cursor-pointer flex flex-col overflow-hidden`
   "
+  (click)="goToSubject()"
 >
   <div
     [class]="
@@ -15,7 +16,7 @@
         `w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-xl ${styles().glow} ${styles().iconBg} group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`
       "
     >
-      <ng-icon [name]="subject().icon" class="w-6 h-6" />
+      <lucide-angular [img]="subject().icon" class="w-6 h-6" />
     </div>
     <div class="flex flex-col items-end">
       <span
@@ -75,7 +76,7 @@
         `w-10 h-10 rounded-xl ${styles().iconBg} flex items-center justify-center text-white shadow-xl ${styles().glow}`
       "
     >
-      <ng-icon name="lucideChevronRight" size="24" />
+      <lucide-angular [img]="ChevronRight" size="24" />
     </div>
   </div>
 </div>

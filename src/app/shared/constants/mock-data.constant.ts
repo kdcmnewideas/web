@@ -1,3 +1,5 @@
+import { Atom, BookOpen, Calculator, Dna, Hourglass } from "lucide-angular";
+
 export enum QuestionType {
   MCQ = 'MCQ',
   WRITTEN = 'WRITTEN',
@@ -59,7 +61,7 @@ export interface Subject {
   id: string;
   title: string;
   color: string;
-  icon: string;
+  icon: any;
   progress: number;
   totalLessons: number;
   description?: string;
@@ -259,7 +261,7 @@ export const SUBJECTS: Subject[] = [
     id: 's1',
     title: 'Mathematics',
     color: 'bg-indigo-600',
-    icon: 'lucideCalculator',
+    icon: Calculator,
     progress: 75,
     totalLessons: 24,
     description: 'Master calculus, algebra, and geometry with interactive problem solving.',
@@ -270,7 +272,7 @@ export const SUBJECTS: Subject[] = [
     id: 's2',
     title: 'Physics',
     color: 'bg-teal-500',
-    icon: 'lucideAtom',
+    icon: Atom,
     progress: 45,
     totalLessons: 18,
     description: 'Explore the fundamental laws of the universe from mechanics to quantum physics.',
@@ -281,7 +283,7 @@ export const SUBJECTS: Subject[] = [
     id: 's3',
     title: 'Literature',
     color: 'bg-rose-500',
-    icon: 'lucideBookOpen',
+    icon: BookOpen,
     progress: 20,
     totalLessons: 12,
     boardId: 'b1',
@@ -291,7 +293,7 @@ export const SUBJECTS: Subject[] = [
     id: 's4',
     title: 'History',
     color: 'bg-amber-500',
-    icon: 'lucideHourglass',
+    icon: Hourglass,
     progress: 90,
     totalLessons: 15,
     boardId: 'b1',
@@ -301,7 +303,7 @@ export const SUBJECTS: Subject[] = [
     id: 's5',
     title: 'Biology',
     color: 'bg-emerald-500',
-    icon: 'lucideDna',
+    icon: Dna,
     progress: 10,
     totalLessons: 20,
     boardId: 'b1',

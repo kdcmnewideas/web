@@ -13,13 +13,13 @@ import {
   EllipsisVertical,
 } from 'lucide-angular';
 import { SUBJECTS } from '../../../../shared/constants/mock-data.constant';
-import { getSubjectColorStyles } from '../../../../shared/utils/subject-color.util';
 import { CardModule } from 'primeng/card';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-revision-card',
-  imports: [CardModule, LucideAngularModule],
+  imports: [CardModule, LucideAngularModule, CommonModule],
   templateUrl: './revision-card.html',
   styleUrl: './revision-card.css',
 })
@@ -27,12 +27,12 @@ export class RevisionCard {
   item = input.required<any>();
   router = inject(Router);
 
-  styles = computed(() => getSubjectColorStyles(this.item().subjectId));
+  styles = computed(() => this.getSubjectColorStyles(this.item().subjectId));
   status = computed(() => this.getStatusConfig(this.item().status));
   subject = computed(() => SUBJECTS.find((s) => s.id === this.item().subjectId));
-  StatusIcon = this.status().icon;
+  StatusIcon = computed(() => this.status().icon);
   ScreenName = ScreenName;
-  icons = {ChevronRight, EllipsisVertical, Clock}
+  icons = { ChevronRight, EllipsisVertical, Clock };
 
   getStatusConfig = (status: string) => {
     switch (status) {
@@ -66,5 +66,58 @@ export class RevisionCard {
   onNavigate = (path: string, id?: string | number) => {
     if (id) this.router.navigate([path, id]);
     else this.router.navigate([path]);
+  };
+
+  getSubjectColorStyles = (subjectId: string) => {
+    const subject = SUBJECTS.find((s) => s.id === subjectId);
+    const colorClass = subject?.color || 'bg-slate-500';
+
+    if (colorClass.includes('indigo'))
+      return {
+        text: 'text-indigo-600',
+        bg: 'bg-indigo-50',
+        icon: 'bg-indigo-600',
+        border: 'border-indigo-100',
+        glow: 'shadow-indigo-100',
+      };
+    if (colorClass.includes('teal'))
+      return {
+        text: 'text-teal-600',
+        bg: 'bg-teal-50',
+        icon: 'bg-teal-600',
+        border: 'border-teal-100',
+        glow: 'shadow-teal-100',
+      };
+    if (colorClass.includes('rose'))
+      return {
+        text: 'text-rose-600',
+        bg: 'bg-rose-50',
+        icon: 'bg-rose-600',
+        border: 'border-rose-100',
+        glow: 'shadow-rose-100',
+      };
+    if (colorClass.includes('amber'))
+      return {
+        text: 'text-amber-600',
+        bg: 'bg-amber-50',
+        icon: 'bg-amber-600',
+        border: 'border-amber-100',
+        glow: 'shadow-amber-100',
+      };
+    if (colorClass.includes('emerald'))
+      return {
+        text: 'text-emerald-600',
+        bg: 'bg-emerald-50',
+        icon: 'bg-emerald-600',
+        border: 'border-emerald-100',
+        glow: 'shadow-emerald-100',
+      };
+    return {
+      text: 'text-slate-600',
+      bg: 'bg-slate-50',
+      icon: 'bg-slate-600',
+      border: 'border-slate-100',
+      glow: 'shadow-slate-100',
+    };
   };
 }

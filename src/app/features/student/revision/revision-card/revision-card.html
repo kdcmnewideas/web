@@ -8,7 +8,7 @@
   <div
     [class]="
       `absolute -right-12 -top-12 w-28 h-28 rounded-full blur-3xl opacity-0 group-hover:opacity-10
-            transition-opacity duration-500 ${styles().iconBg}`
+            transition-opacity duration-500 ${styles().icon}`
     "
   ></div>
 
@@ -17,7 +17,7 @@
       <div
         [class]="
           `w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-lg ${styles().glow}
-                ${styles().iconBg} group-hover:scale-110 transition-transform duration-300`
+                ${styles().icon} group-hover:scale-110 transition-transform duration-300`
         "
       >
         <lucide-angular [img]="getTypeIcon(item().type)" class="w-4 h-4" />
@@ -64,7 +64,7 @@
                 tracking-widest ${status().bg} ${status().color} border border-white shadow-sm`
         "
       >
-        <lucide-angular [img]="StatusIcon" class="w-2.5 h-2.5" />
+        <lucide-angular [img]="StatusIcon()" class="w-2.5 h-2.5" />
         {{ status().label }}
       </div>
       @if (item().status === 'upcoming') {

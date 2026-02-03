@@ -6,9 +6,9 @@
    <!-- Absolute Actions - Top Right -->
         <div class="absolute top-6 right-6 md:top-10 md:right-10 flex gap-3 z-20">
           @if(isEditing){
-            <Button onClick={handleSave} class="rounded-2xl h-12 px-8 bg-indigo-600 hover:bg-indigo-700 shadow-xl shadow-indigo-100 text-xs font-black uppercase tracking-widest">
+            <button class="rounded-2xl h-12 px-8 bg-indigo-600 hover:bg-indigo-700 shadow-xl shadow-indigo-100 text-xs font-black uppercase tracking-widest">
               <lucide-angular [img]="icons.Save" class="w-4 h-4 mr-2" /> Save Profile
-            </Button>
+            </button>
           } @else {
             <button
               (click)="isEditing=true"

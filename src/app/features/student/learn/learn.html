@@ -1,7 +1,7 @@
 <div class="min-h-screen bg-slate-50 animate-fade-in pb-20 md:pb-0">
   <div class="bg-white border-b border-slate-200 px-6 py-4 mb-6">
     <button
-      (click)="onNavigate('suject', lesson()?.subjectId)"
+      (click)="onNavigate('subject', lesson()?.subjectId)"
       class="flex items-center text-slate-600 hover:text-slate-900 transition-colors font-medium"
     >
       <lucide-angular [img]="icons.ArrowLeft" class="w-4 h-4 mr-2" /> Back to
@@ -46,7 +46,7 @@
             <button
               (click)="viewMode.set('mindmap')"
               [class]="
-                `flex items-center px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${viewMode() === 'mindmap' ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
+                `flex items-center px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${viewMode() === 'mindmap' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
               "
             >
               <lucide-angular [img]="icons.Network" class="w-4 h-4 mr-2" /> Map
@@ -160,7 +160,7 @@
                       [isPlaying]="isPlaying()"
                       [numSpeakers]="numSpeakers()"
                       [playbackSpeed]="playbackSpeed()"
-                      (onTogglePlay)="isPlaying.set(!isPlaying())"
+                      (togglePlay)="isPlaying.set(!isPlaying())"
                       (onCycleSpeed)="
                         playbackSpeed.set(
                           playbackSpeed() === 1

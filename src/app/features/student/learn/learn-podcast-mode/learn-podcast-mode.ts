@@ -1,6 +1,28 @@
-import { Component, computed, effect, ElementRef, input, output, QueryList, signal, ViewChild, ViewChildren } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  ElementRef,
+  input,
+  output,
+  QueryList,
+  signal,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import { Lesson, Subject, Topic } from '../../../../shared/constants/mock-data.constant';
-import { FastForward, Headphones, LucideAngularModule, Mic, Mic2, Pause, Play, Rewind, User, Users, Volume2 } from 'lucide-angular';
+import {
+  FastForward,
+  Headphones,
+  LucideAngularModule,
+  Mic,
+  Pause,
+  Play,
+  Rewind,
+  User,
+  Users,
+  Volume2,
+} from 'lucide-angular';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,16 +32,14 @@ import { CommonModule } from '@angular/common';
   styleUrl: './learn-podcast-mode.css',
 })
 export class LearnPodcastMode {
-
-   topic = input<Topic>();
+  topic = input<Topic>();
   subject = input<Subject>();
   lesson = input<Lesson>();
   isPlaying = input<boolean>();
-  onTogglePlay = output();
+  togglePlay = output<void>();
   playbackSpeed = input<number>();
-  onCycleSpeed = output();
-  numSpeakers = input<1|2|3|4>(1);
-
+  onCycleSpeed = output<void>();
+  numSpeakers = input<1 | 2 | 3 | 4>(1);
 
   // State Signals
   currentSentenceIndex = signal(0);
@@ -34,10 +54,10 @@ export class LearnPodcastMode {
   // Computed Values
   sentences = computed(() => {
     if (!this.topic()?.content) return [];
-    return this.topic()?.content
-      .replace(/[#*]/g, '')
+    return this.topic()
+      ?.content.replace(/[#*]/g, '')
       .split(/(?<=[.?!])\s+/)
-      .filter(s => s.trim().length > 0);
+      .filter((s) => s.trim().length > 0);
   });
 
   progress = computed(() => {
@@ -45,8 +65,6 @@ export class LearnPodcastMode {
     if (total === 0) return 0;
     return (this.currentSentenceIndex() / Math.max(1, total - 1)) * 100;
   });
-  togglePlay: any;
-
   constructor() {
     this.initVoiceReady();
 
@@ -106,14 +124,19 @@ export class LearnPodcastMode {
     utterance.rate = this.playbackSpeed() || 1;
 
     const voices = synth.getVoices();
-    const enVoices = voices.filter(v => v.lang.startsWith('en'));
+    const enVoices = voices.filter((v) => v.lang.startsWith('en'));
 
     if (enVoices.length > 0) {
       const speakerVoices = [
-        enVoices.find(v => v.name.includes('Premium') || v.name.includes('Google US')) || enVoices[0],
-        enVoices.find(v => (v.name.includes('GB') || v.name.includes('UK')) && !v.name.includes('Premium')) || enVoices[1 % enVoices.length],
-        enVoices.find(v => v.name.includes('Natural') || v.name.includes('Australia')) || enVoices[2 % enVoices.length],
-        enVoices.find(v => v.name.includes('Neural') || v.name.includes('Ireland')) || enVoices[3 % enVoices.length]
+        enVoices.find((v) => v.name.includes('Premium') || v.name.includes('Google US')) ||
+          enVoices[0],
+        enVoices.find(
+          (v) => (v.name.includes('GB') || v.name.includes('UK')) && !v.name.includes('Premium'),
+        ) || enVoices[1 % enVoices.length],
+        enVoices.find((v) => v.name.includes('Natural') || v.name.includes('Australia')) ||
+          enVoices[2 % enVoices.length],
+        enVoices.find((v) => v.name.includes('Neural') || v.name.includes('Ireland')) ||
+          enVoices[3 % enVoices.length],
       ];
 
       const speakerIdx = idx % this.numSpeakers();
@@ -139,9 +162,9 @@ export class LearnPodcastMode {
   handleSkip(direction: 'prev' | 'next') {
     window.speechSynthesis.cancel();
     if (direction === 'prev') {
-      this.currentSentenceIndex.update(v => Math.max(0, v - 1));
+      this.currentSentenceIndex.update((v) => Math.max(0, v - 1));
     } else {
-      this.currentSentenceIndex.update(v => Math.min((this.sentences()?.length || 0)- 1, v + 1));
+      this.currentSentenceIndex.update((v) => Math.min((this.sentences()?.length || 0) - 1, v + 1));
     }
   }
 
@@ -156,8 +179,11 @@ export class LearnPodcastMode {
     return icons[idx % this.numSpeakers()];
   }
 
+  stopOrPlay = () => {
+    this.togglePlay.emit();
+  };
+
   ngOnDestroy() {
-    if(window.speechSynthesis?.speaking)
-    window.speechSynthesis.cancel();
+    if (window.speechSynthesis?.speaking) window.speechSynthesis.cancel();
   }
 }

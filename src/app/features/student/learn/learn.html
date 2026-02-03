@@ -1,1 +1,224 @@
-<p>learn works!</p>
+<div class="min-h-screen bg-slate-50 animate-fade-in pb-20 md:pb-0">
+  <div class="bg-white border-b border-slate-200 px-6 py-4 mb-6">
+    <button
+      (click)="onNavigate('suject', lesson()?.subjectId)"
+      class="flex items-center text-slate-600 hover:text-slate-900 transition-colors font-medium"
+    >
+      <lucide-angular [img]="icons.ArrowLeft" class="w-4 h-4 mr-2" /> Back to
+      {{ subject()?.title || 'Subject' }}
+    </button>
+  </div>
+
+  <div class="max-w-375 mx-auto px-4 md:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <!-- Main Content Area -->
+      <div class="lg:col-span-9 space-y-6">
+        <!-- Topic Selector - Custom Select Box -->
+        <div class="flex items-end justify-between">
+          <app-learn-topics-list
+            [topics]="topics"
+            [activeTopicIndex]="activeTopicIndex()"
+            (onTopicSelect)="activeTopicIndex.set($event)"
+          />
+
+          <!-- Mode Switcher moved here to maximize space in the main card -->
+          <div
+            [class]="
+              `${viewMode() === 'mindmap' ? 'bg-slate-200/50' : 'bg-slate-200/50'} p-1.5 rounded-2xl inline-flex items-center shadow-inner`
+            "
+          >
+            <button
+              (click)="viewMode.set('read')"
+              [class]="
+                `flex items-center px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${viewMode() === 'read' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
+              "
+            >
+              <lucide-angular [img]="icons.FileText" class="w-4 h-4 mr-2" /> Read
+            </button>
+            <button
+              (click)="viewMode.set('podcast')"
+              [class]="
+                `flex items-center px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${viewMode() === 'podcast' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
+              "
+            >
+              <lucide-angular [img]="icons.Headphones" class="w-4 h-4 mr-2" /> Podcast
+            </button>
+            <button
+              (click)="viewMode.set('mindmap')"
+              [class]="
+                `flex items-center px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${viewMode() === 'mindmap' ? 'bg-indigo-600 text-white shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
+              "
+            >
+              <lucide-angular [img]="icons.Network" class="w-4 h-4 mr-2" /> Map
+            </button>
+          </div>
+        </div>
+
+        <p-card
+          [class]="
+            `p-8 min-h-175 flex flex-col relative overflow-hidden transition-all duration-500 shadow-xl! border-slate-200/60! ${viewMode() === 'mindmap' ? 'bg-slate-50!' : 'bg-white!'}`
+          "
+        >
+          <div class="grow flex flex-col">
+            @switch (viewMode()) {
+              @case ('read') {
+                <app-learn-read-mode [topic]="currentTopic" onReadAloud="" />
+              }
+              @case ('podcast') {
+                @if (podcastStatus() === 'config') {
+                  <div
+                    class="grow flex flex-col items-center justify-center animate-fade-in text-center p-6"
+                  >
+                    <div
+                      class="w-20 h-20 bg-indigo-100 rounded-3xl flex items-center justify-center text-indigo-600 mb-6 shadow-sm"
+                    >
+                      <lucide-angular [img]="icons.Headphones" class="w-10 h-10" />
+                    </div>
+                    <h2 class="text-3xl font-black text-slate-900 mb-2 tracking-tight">
+                      Podcast Studio
+                    </h2>
+                    <p class="text-slate-500 mb-10 max-w-sm">
+                      Customize your AI-generated audio lesson format.
+                    </p>
+
+                    <div class="w-full max-w-md mb-10 space-y-6 text-left">
+                      <div>
+                        <label
+                          class="block text-xs font-black text-slate-400 uppercase tracking-widest mb-3"
+                          >Number of Speakers</label
+                        >
+                        <div class="relative">
+                          <select
+                            [value]="numSpeakers()"
+                            (change)="handleNumSpeakersChange($event)"
+                            class="w-full h-14 pl-12 pr-4 bg-white border-2 border-slate-100 rounded-2xl text-slate-800 font-bold focus:border-indigo-600 focus:ring-0 transition-all appearance-none cursor-pointer shadow-sm"
+                          >
+                            <option value="1">1 Speaker (Solo Lecture)</option>
+                            <option value="2">2 Speakers (Classic Duo)</option>
+                            <option value="3">3 Speakers (Panel Discussion)</option>
+                            <option value="4">4 Speakers (Round Table)</option>
+                          </select>
+                          <div class="absolute left-4 top-1/2 -translate-y-1/2 text-indigo-600">
+                            <lucide-angular [img]="icons.Mic" class="w-5 h-5" />
+                          </div>
+                          <div
+                            class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400"
+                          >
+                            <lucide-angular [img]="icons.ChevronLeft" class="w-4 h-4 -rotate-90" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        class="p-5 bg-indigo-50/50 rounded-2xl border border-indigo-100 flex items-start gap-3"
+                      >
+                        <lucide-angular
+                          [img]="icons.Sparkles"
+                          class="w-5 h-5 text-indigo-600 mt-0.5 shrink-0"
+                        />
+                        <p class="text-xs text-indigo-800 font-medium leading-relaxed">
+                          @if (numSpeakers() === 1) {
+                            A single professional AI voice will narrate the lesson topics in a
+                            clear, focused manner.
+                          } @else {
+                            We'll assign {{ numSpeakers() }} unique AI voices to simulate a natural,
+                            conversational debate about the topic.
+                          }
+                        </p>
+                      </div>
+                    </div>
+
+                    <button
+                      class="w-full max-w-md h-14 text-lg shadow-xl shadow-indigo-100 font-black rounded-2xl"
+                      (click)="handleStartPodcast()"
+                    >
+                      Generate Lesson
+                    </button>
+                  </div>
+                } @else {
+                  @if (podcastStatus() === 'generating') {
+                    <div class="grow flex flex-col items-center justify-center animate-pulse">
+                      <div class="relative w-24 h-24 mb-6">
+                        <div class="absolute inset-0 border-4 border-indigo-100 rounded-full"></div>
+                        <div
+                          class="absolute inset-0 border-4 border-indigo-600 rounded-full border-t-transparent animate-spin"
+                        ></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                          <lucide-angular [img]="icons.Sparkles" class="w-8 h-8 text-indigo-600" />
+                        </div>
+                      </div>
+                      <h3 class="text-xl font-bold text-slate-800 mb-2">
+                        AI is drafting the script...
+                      </h3>
+                      <p class="text-slate-500">Assigning {{ numSpeakers() }} distinct voices</p>
+                    </div>
+                  } @else {
+                    <app-learn-podcast-mode
+                      [topic]="currentTopic"
+                      [subject]="subject()"
+                      [lesson]="lesson()"
+                      [isPlaying]="isPlaying()"
+                      [numSpeakers]="numSpeakers()"
+                      [playbackSpeed]="playbackSpeed()"
+                      (onTogglePlay)="isPlaying.set(!isPlaying())"
+                      (onCycleSpeed)="
+                        playbackSpeed.set(
+                          playbackSpeed() === 1
+                            ? 1.5
+                            : playbackSpeed() === 1.5
+                              ? 2
+                              : playbackSpeed() === 2
+                                ? 0.5
+                                : 1
+                        )
+                      "
+                    />
+                  }
+                }
+              }
+              @case ('mindmap') {
+                <div
+                  class="grow min-h-150 border border-slate-200/50 rounded-3xl overflow-hidden bg-white"
+                >
+                  <app-learn-mind-map [rootNode]="currentTopic.mindMap" [isDark]="false" />
+                </div>
+              }
+            }
+          </div>
+
+          <div
+            [class]="
+              `flex justify-between items-center mt-auto pt-6 border-t w-full ${viewMode() === 'mindmap' ? 'border-slate-200' : 'border-slate-100'}`
+            "
+          >
+            <p-button
+              variant="outlined"
+              [class]="
+                `bg-slate-50 hover:bg-slate-100 font-bold ${viewMode() === 'mindmap' ? 'text-slate-500 hover:bg-slate-200/50' : ''}`
+              "
+              [disabled]="activeTopicIndex() === 0"
+              (click)="activeTopicIndex.set(activeTopicIndex() - 1)"
+            >
+              <lucide-angular [img]="icons.ChevronLeft" class="w-4 h-4" /> Previous
+            </p-button>
+            <button (click)="next()" class="px-10 font-black shadow-lg shadow-indigo-100" pButton>
+              {{ activeTopicIndex() < topics.length - 1 ? 'Next' : 'Take Quiz' }}
+            </button>
+          </div>
+        </p-card>
+      </div>
+
+      <!-- Right Sidebar -->
+      <div class="lg:col-span-3 space-y-6 flex flex-col">
+        @if (activeQuestion) {
+          <app-learn-quick-quiz
+            [question]="activeQuestion"
+            [selectedAnswerIndex]="selectedAnswers()[activeQuestion.id]"
+            (onAnswer)="handleAnswer($event)"
+          />
+        }
+        <app-learn-notes [notes]="notes()" (notesChange)="notes.set($event)" />
+      </div>
+    </div>
+  </div>
+</div>

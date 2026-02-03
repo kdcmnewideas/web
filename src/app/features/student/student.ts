@@ -1,5 +1,4 @@
 import { Component, inject, signal } from '@angular/core';
-import { ScreenName } from '../../shared/constants/screen-names.constant';
 import { Router, RouterOutlet } from '@angular/router';
 import { TooltipModule } from 'primeng/tooltip';
 import { CURRENT_USER } from '../../shared/constants/mock-data.constant';
@@ -13,7 +12,7 @@ import {
   LucideAngularModule,
   Trophy,
   House,
-  ChartNoAxesColumn
+  ChartNoAxesColumn,
 } from 'lucide-angular';
 
 @Component({
@@ -28,16 +27,16 @@ export class Student {
   currentUser = CURRENT_USER;
   icons = {
     ChevronLeft,
-  ChevronRight,
-  Bell,
-  Search
-  }
+    ChevronRight,
+    Bell,
+    Search,
+  };
   navItems = [
-    { id: ScreenName.HOME, icon: House, label: 'Home' },
-    { id: ScreenName.REVISION, icon: Calendar, label: 'Revsion' },
-    { id: ScreenName.ANALYTICS, icon: ChartNoAxesColumn, label: 'Results' },
-    { id: ScreenName.LEADERBOARD, icon: Trophy, label: 'Leaderboard' },
-    { id: ScreenName.AI_USAGE, icon: Cpu, label: 'AI Usage' },
+    { id: 'home', icon: House, label: 'Home' },
+    { id: 'revison', icon: Calendar, label: 'Revsion' },
+    { id: 'analytics', icon: ChartNoAxesColumn, label: 'Results' },
+    { id: 'leaderboard', icon: Trophy, label: 'Leaderboard' },
+    { id: 'ai-usage', icon: Cpu, label: 'AI Usage' },
   ];
 
   mobileNavItems = [

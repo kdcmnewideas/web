@@ -1,4 +1,3 @@
-import { ScreenName } from './../../../shared/constants/screen-names.constant';
 import { Component } from '@angular/core';
 import {
   ArrowUpRight,
@@ -7,7 +6,6 @@ import {
   Camera,
   Compass,
   Crown,
-  Edit2,
   ExternalLink,
   Flame,
   GraduationCap,
@@ -31,17 +29,15 @@ import {
 import { CURRENT_USER } from '../../../shared/constants/mock-data.constant';
 import { CardModule } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
-import { ButtonDirective } from "primeng/button";
 
 @Component({
   selector: 'app-user',
-  imports: [LucideAngularModule, CardModule, FormsModule, ButtonDirective],
+  imports: [LucideAngularModule, CardModule, FormsModule],
   templateUrl: './user.html',
   styleUrl: './user.css',
 })
 export class User {
   user = CURRENT_USER;
-  ScreenName = ScreenName;
   achievements = [
     {
       name: 'Grandmaster',

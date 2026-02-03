@@ -1,0 +1,103 @@
+<div class="relative w-full max-w-sm" ref="{dropdownRef}">
+  <label class="block text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-2 ml-1">
+    Current Topic Progress
+  </label>
+
+  <!-- Dropdown Trigger (The Select Box) -->
+  <button
+    (click)="isOpen.set(!isOpen())"
+    [class]="
+      `w-full flex items-center justify-between px-5 py-4 bg-white border-2 rounded-2xl transition-all duration-300 shadow-sm
+          ${isOpen() ? 'border-indigo-600 ring-4 ring-indigo-50 shadow-md' : 'border-slate-100 hover:border-slate-200'}
+        `
+    "
+  >
+    <div class="flex items-center gap-4 overflow-hidden">
+      <div
+        class="shrink-0 w-8 h-8 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600"
+      >
+        <lucide-angular [img]="icons.BookOpen" class="w-4 h-4" />
+      </div>
+      <div class="text-left overflow-hidden">
+        <div class="text-[10px] font-black text-slate-400 uppercase leading-none mb-1">
+          Topic {{ activeTopicIndex() + 1 }} of {{ topics().length }}
+        </div>
+        <div class="font-bold text-slate-800 truncate">
+          {{ currentTopic().title }}
+        </div>
+      </div>
+    </div>
+    <lucide-angular
+      [img]="icons.ChevronDown"
+      class="`w-5 h-5 text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`"
+    />
+  </button>
+
+  <!-- Dropdown Menu -->
+  @if (isOpen()) {
+    <div
+      class="absolute top-full left-0 right-0 mt-2 p-2 bg-white border border-slate-100 rounded-3xl shadow-2xl z-50 animate-fade-in origin-top overflow-hidden"
+    >
+      <div class="max-h-75 overflow-y-auto scrollbar-hide">
+        @for (topic of topics(); track idx; let idx = $index) {
+          <button
+            (click)="onTopicSelected(idx)"
+            [class]="
+              `w-full flex items-center justify-between p-4 rounded-2xl transition-all mb-1 last:mb-0 group
+                      ${
+                        idx === activeTopicIndex()
+                          ? 'bg-indigo-600 text-white'
+                          : 'text-slate-600 hover:bg-slate-50'
+                      }
+                    `
+            "
+          >
+            <div class="flex items-center gap-3">
+              <span
+                [class]="
+                  `text-[10px] font-black ${idx === activeTopicIndex() ? 'text-indigo-200' : 'text-slate-300'}`
+                "
+              >
+                {{ getIndex(idx) }}
+              </span>
+              <span class="font-bold text-sm text-left">
+                {{ topic.title }}
+              </span>
+            </div>
+
+            @if (idx < activeTopicIndex()) {
+              <div
+                [class]="
+                  `p-1 rounded-full ${idx === activeTopicIndex() ? 'bg-white/20' : 'bg-emerald-50'}`
+                "
+              >
+                <lucide-angular
+                  [img]="icons.CircleCheck"
+                  [class]="
+                    `w-4 h-4 ${idx === activeTopicIndex() ? 'text-white' : 'text-emerald-500'}`
+                  "
+                />
+              </div>
+            } @else {
+              @if (idx === activeTopicIndex()) {
+                <div class="w-2 h-2 rounded-full bg-white animate-pulse"></div>
+              } @else {
+                <lucide-angular [img]="icons.Circle" class="w-4 h-4 text-slate-200" />
+              }
+            }
+          </button>
+        }
+      </div>
+
+      <!-- Footer Stats -->
+      <div class="p-3 bg-slate-50 mt-1 rounded-2xl flex items-center justify-between">
+        <span class="text-[10px] font-bold text-slate-400 uppercase">Completed</span>
+        <span
+          class="text-[10px] font-black text-indigo-600 bg-white px-2 py-0.5 rounded-full border border-indigo-100"
+        >
+          {{ activeTopicIndex() }} / {{ topics().length }}
+        </span>
+      </div>
+    </div>
+  }
+</div>

@@ -37,6 +37,11 @@ export const STUDENT_ROUTES: Routes = [
     title: 'Revision',
   },
   {
+    path: 'learn/:id',
+    loadComponent: () => import('./learn/learn').then((m) => m.Learn),
+    title: 'Learn',
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },

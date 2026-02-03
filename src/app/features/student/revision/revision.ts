@@ -1,14 +1,7 @@
-import { ScreenName } from './../../../shared/constants/screen-names.constant';
 import { Component, computed, inject, signal } from '@angular/core';
 import {
-  Clock,
-  Circle,
   CircleCheck,
-  CircleAlert,
   LucideAngularModule,
-  BookOpen,
-  PenTool,
-  RefreshCw,
   EllipsisVertical,
   ChevronRight,
   Plus,
@@ -25,7 +18,6 @@ import {
 } from '../../../shared/constants/mock-data.constant';
 import { Router } from '@angular/router';
 import { CardModule } from 'primeng/card';
-import { NgClass } from "../../../../../node_modules/@angular/common/types/_common_module-chunk";
 import { RevisionCard } from './revision-card/revision-card';
 
 @Component({
@@ -38,7 +30,6 @@ export class Revision {
   activeTab = signal<'upcoming' | 'history'>('upcoming');
   mockToday = '2023-11-01'; // Mocking today's date
   router = inject(Router);
-  ScreenName = ScreenName;
   icons = {
     EllipsisVertical,
     ChevronRight,

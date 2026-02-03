@@ -25,7 +25,7 @@
 
         <div class="flex-1 text-center md:text-left">
           <div class="flex flex-wrap justify-center md:justify-start items-center gap-3 mb-3">
-            <button (click)="onNavigate(ScreenName.HOME)"
+            <button (click)="onNavigate('home')"
               class="group flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-indigo-600 transition-all">
               <lucide-angular [img]="icons.ArrowLeft" class="w-3.5 h-3.5" /> Home
             </button>
@@ -143,7 +143,7 @@
           }
         </div>
 
-        <button (click)="onNavigate(ScreenName.ANALYTICS)" class="mt-6 w-full py-4 bg-slate-900 hover:bg-indigo-600 text-white rounded-2xl text-[9px] font-black
+        <button (click)="onNavigate('analytics')" class="mt-6 w-full py-4 bg-slate-900 hover:bg-indigo-600 text-white rounded-2xl text-[9px] font-black
           uppercase tracking-widest transition-all flex items-center justify-center gap-3 shadow-lg active:scale-95
           group/btn">
           Deep Analytics
@@ -167,7 +167,7 @@
             "Cognitive pattern analysis indicates high proficiency in <span
               class="text-white font-black underline decoration-indigo-500 decoration-2 underline-offset-4">Derivatives</span>."
           </p>
-          <button (click)="onNavigate(ScreenName.REVISION_DETAILS, { lessonId: lessons()[0].id })" class="w-full py-4 bg-white/10 hover:bg-white text-white hover:text-slate-900 rounded-2xl border
+          <button (click)="onNavigate('revision', { lessonId: lessons()[0].id })" class="w-full py-4 bg-white/10 hover:bg-white text-white hover:text-slate-900 rounded-2xl border
             border-white/10 text-[9px] font-black uppercase tracking-[0.3em] transition-all shadow-lg active:scale-95">
             Apply Optimization
           </button>

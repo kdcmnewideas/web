@@ -89,7 +89,7 @@
     <div class="flex items-center gap-3 relative z-10">
       <button
         [disabled]="isLocked()"
-        (click)="onNavigate(ScreenName.LEARN, lesson().id)"
+        (click)="onNavigate('learn', lesson().id)"
         [class]="
           `h-11 px-6 rounded-xl font-black text-[9px] uppercase tracking-[0.2em] transition-all duration-500 active:scale-95 shadow-md ${
             isStarted()
@@ -106,7 +106,7 @@
       </button>
       <button
         [disabled]="isLocked()"
-        (click)="onNavigate(ScreenName.REVISION_DETAILS, lesson().id)"
+        (click)="onNavigate('revise', lesson().id)"
         className="w-11 h-11 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:border-indigo-200 shadow-sm transition-all active:scale-90"
         title="Revise"
       >
@@ -114,7 +114,7 @@
       </button>
       <button
         [disabled]="isLocked()"
-        (click)="onNavigate(ScreenName.MOCK_TEST, lesson().id)"
+        (click)="onNavigate('test', lesson().id)"
         class="w-11 h-11 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:border-indigo-200 shadow-sm transition-all active:scale-90"
       >
         <lucide-angular [img]="icons.PenTool" class="w-5 h-5" />

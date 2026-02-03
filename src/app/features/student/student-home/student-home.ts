@@ -1,4 +1,4 @@
-import { SUBJECTS } from './../../../shared/constants/mock-data.constant';
+import { SUBJECTS, CURRENT_USER } from './../../../shared/constants/mock-data.constant';
 import { GoalService } from './../../../services/goal/goal.service';
 import { Component, inject, OnInit } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
@@ -31,7 +31,7 @@ import { SubjectCard } from "./components/subject-card/subject-card";
   ],
 })
 export class StudentHome implements OnInit {
-  user: any;
+  user: any = CURRENT_USER;
   today = new Date().toLocaleDateString('en-US', {
     weekday: 'long',
     month: 'long',

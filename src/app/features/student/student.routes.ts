@@ -15,10 +15,26 @@ export const STUDENT_ROUTES: Routes = [
     path: 'ai-usage',
     loadComponent: () => import('./ai-usage/ai-usage').then((m) => m.AiUsage),
     title: 'AI Usage',
-  },{
+  },
+  {
     path: 'analytics',
     loadComponent: () => import('./analytics/analytics').then((m) => m.Analytics),
     title: 'Analytics',
+  },
+  {
+    path: 'profile',
+    loadComponent: () => import('./user/user').then((m) => m.User),
+    title: 'Profile',
+  },
+  {
+    path: 'subject/:id',
+    loadComponent: () => import('./subject/subject').then((m) => m.Subject),
+    title: 'Subject',
+  },
+  {
+    path: 'revision',
+    loadComponent: () => import('./revision/revision').then((m) => m.Revision),
+    title: 'Revision',
   },
   {
     path: '**',

@@ -34,7 +34,7 @@ export class Student {
   }
   navItems = [
     { id: ScreenName.HOME, icon: House, label: 'Home' },
-    { id: ScreenName.CALENDAR, icon: Calendar, label: 'Schedule' },
+    { id: ScreenName.REVISION, icon: Calendar, label: 'Revsion' },
     { id: ScreenName.ANALYTICS, icon: ChartNoAxesColumn, label: 'Results' },
     { id: ScreenName.LEADERBOARD, icon: Trophy, label: 'Leaderboard' },
     { id: ScreenName.AI_USAGE, icon: Cpu, label: 'AI Usage' },

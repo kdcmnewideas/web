@@ -31,10 +31,11 @@ import {
 import { CURRENT_USER } from '../../../shared/constants/mock-data.constant';
 import { CardModule } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
+import { ButtonDirective } from "primeng/button";
 
 @Component({
   selector: 'app-user',
-  imports: [LucideAngularModule, CardModule, FormsModule],
+  imports: [LucideAngularModule, CardModule, FormsModule, ButtonDirective],
   templateUrl: './user.html',
   styleUrl: './user.css',
 })

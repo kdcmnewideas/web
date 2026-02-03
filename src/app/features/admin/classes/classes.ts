@@ -1,13 +1,24 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Plus, EllipsisVertical, LucideAngularModule, Pencil, Trash2 } from 'lucide-angular';
+import { Plus, EllipsisVertical, LucideAngularModule, Pencil, Trash2, Search } from 'lucide-angular';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { BOARDS, CLASSES } from '../../../shared/constants/mock-data.constant';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-classes',
-  imports: [FormsModule, LucideAngularModule, CardModule, ButtonModule],
+  imports: [
+    FormsModule,
+    LucideAngularModule,
+    CardModule,
+    ButtonModule,
+    IconFieldModule,
+    InputIconModule,
+    InputTextModule,
+  ],
   templateUrl: './classes.html',
   styleUrl: './classes.css',
 })
@@ -18,6 +29,7 @@ export class Classes {
     EllipsisVertical,
     Pencil,
     Trash2,
+    Search
   };
 
   classes = CLASSES;

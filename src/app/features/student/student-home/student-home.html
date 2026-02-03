@@ -73,7 +73,7 @@
           Jump Back In
         </h2>
       </div>
-      <div class="flex gap-6 overflow-x-auto pb-6 scrollbar-hide -mx-4 px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         @for (lesson of RECENT_LESSONS; track lesson.id) {
           <app-jumpback-card [lesson]="lesson" />
         }

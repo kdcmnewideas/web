@@ -21,6 +21,7 @@ export interface User {
   bio?: string;
   phone?: string;
   role: 'user' | 'admin';
+  location: string;
 }
 
 export interface Board {
@@ -231,7 +232,8 @@ export const CURRENT_USER: User = {
   grade: 'Administrator',
   bio: 'Platform Administrator for StudyMate.',
   phone: '+1 (555) 123-4567',
-  role: 'admin'
+  role: 'admin',
+  location: 'New York, USA'
 };
 
 export const BOARDS: Board[] = [

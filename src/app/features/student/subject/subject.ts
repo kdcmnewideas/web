@@ -29,6 +29,7 @@ import { SUBJECTS, ALL_LESSONS } from '../../../shared/constants/mock-data.const
 import { ActivatedRoute, Router } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { LessonCard } from "./lesson-card/lesson-card";
+import { SubjectService } from '../../../services/subject/subject.service';
 
 @Component({
   selector: 'app-subject',
@@ -62,8 +63,42 @@ export class Subject {
     Compass
   };
 
-  subject = computed(() => SUBJECTS.find((s) => s.id === this.subjectId()) || SUBJECTS[0]);
-  lessons = computed(() => ALL_LESSONS.filter((l) => l.subjectId === this.subject().id));
+  // API-backed subject and lessons
+  private subjectService = inject(SubjectService);
+  apiSubject = signal<any | null>(null);
+  loading = signal(false);
+  error = signal<string | null>(null);
+
+  subject = computed(() => {
+    const s = this.apiSubject();
+    if (s) return s;
+    return SUBJECTS.find((s2) => s2.id === this.subjectId()) || SUBJECTS[0];
+  });
+
+  // lessons: map chapters/topics/subtopics -> lesson-like objects for LessonCard
+  lessonsSignal = signal<any[]>([]);
+  lessons = computed(() => {
+    const api = this.apiSubject();
+    if (api && Array.isArray(api.chapters)) {
+      const lessons: any[] = [];
+      api.chapters.forEach((c: any) => {
+        (c.topics || []).forEach((t: any) => {
+          (t.subtopics || []).forEach((st: any) => {
+            lessons.push({
+              id: st.id,
+              title: st.title,
+              description: st.content_original,
+              isCompleted: false,
+              lastAccessed: null,
+              subjectId: api.id,
+            });
+          });
+        });
+      });
+      return lessons.length ? lessons : this.lessonsSignal();
+    }
+    return ALL_LESSONS.filter((l) => l.subjectId === this.subject().id);
+  });
 
   subjectId = signal('');
   private activatedRoute = inject(ActivatedRoute);
@@ -72,7 +107,24 @@ export class Subject {
   constructor() {
     // Access route parameters
     this.activatedRoute.params.subscribe((params) => {
-      this.subjectId.set(params['id']);
+      const id = params['id'];
+      this.subjectId.set(id);
+      if (id) this.loadSubject(id);
+    });
+  }
+
+  private loadSubject(id: string) {
+    this.loading.set(true);
+    this.error.set(null);
+    this.subjectService.getSubjectById(id).subscribe({
+      next: (res) => {
+        this.apiSubject.set(res || null);
+        this.loading.set(false);
+      },
+      error: (err) => {
+        this.error.set(err?.message || 'Failed to load subject');
+        this.loading.set(false);
+      },
     });
   }
 

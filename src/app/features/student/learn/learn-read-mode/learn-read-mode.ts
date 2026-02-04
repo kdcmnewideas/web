@@ -32,7 +32,11 @@ export class LearnReadMode {
 
   // Computed signal to parse content whenever topic changes
   parsedBlocks = computed(() => {
-    return this.modifyingContnet(this.content()?.[this.dataTypes[this.currentDataIndex()]]);
+    return this.modifyingContnet(
+      this.content()
+        ? this.content()?.[this.dataTypes[this.currentDataIndex()]]
+        : this.topic()?.content,
+    );
   });
 
   onReadAloudClick() {

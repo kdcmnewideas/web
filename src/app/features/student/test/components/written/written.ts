@@ -1,10 +1,11 @@
 import { Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LucideAngularModule, FileText } from 'lucide-angular';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-written',
-  imports: [CommonModule, LucideAngularModule],
+  imports: [CommonModule, LucideAngularModule, FormsModule],
   templateUrl: './written.html',
   styleUrl: './written.css',
 })

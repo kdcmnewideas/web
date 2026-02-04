@@ -21,6 +21,10 @@
     </button>
   </div>
 
+  @if(image()){
+  <div class="mt-6">
+    <img [src]="`data:image/jpeg;base64,${image().b64_json}`" [alt]="image().alt_text" />
+    </div>}
   <div class="prose prose-slate prose-lg max-w-none grow text-slate-600 leading-relaxed mt-5">
     @for (block of parsedBlocks(); track $index) {
       @switch (block.type) {

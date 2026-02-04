@@ -61,6 +61,7 @@ export class Learn {
     effect(() => {
       this.getData(this.topics[this.activeTopicIndex()]);
       this.getImage(this.topics[this.activeTopicIndex()]);
+      this.getMindMap(this.topics[this.activeTopicIndex()]);
     })
   }
 
@@ -77,6 +78,7 @@ export class Learn {
   data = signal<any>('');
   readDataLoad = signal(false);
   readImage = signal<any>(null);
+  mindMap = signal<any>(null);
 
   lesson = computed(() => ALL_LESSONS.find((l) => l.id === this.lessonId()));
   subject = computed(() => SUBJECTS.find((s) => s.id === this.lesson()?.subjectId));
@@ -157,7 +159,7 @@ export class Learn {
       topic: topic?.title || '',
     }
     this.aiWrapperService.getMindMap(data).subscribe((data) => {
-      console.log(data);
+      this.mindMap.set(data);
     });
   }
 

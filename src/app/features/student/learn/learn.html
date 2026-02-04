@@ -203,7 +203,7 @@
                 <div
                   class="grow min-h-150 border border-slate-200/50 rounded-3xl overflow-hidden bg-white"
                 >
-                  <app-learn-mind-map [rootNode]="currentTopic.mindMap" [isDark]="false" />
+                  <app-learn-mind-map [rootNode]="mindMap() || currentTopic.mindMap" [isDark]="false" />
                 </div>
               }
             }

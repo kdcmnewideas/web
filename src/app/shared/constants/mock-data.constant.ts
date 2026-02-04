@@ -228,7 +228,7 @@ export const CURRENT_USER: User = {
   streakDays: 12,
   totalPoints: 1450,
   goalsCompleted: 8,
-  avatarUrl: 'https://i.pravatar.cc/150?u=u3',
+  avatarUrl: 'assets/images/user.jpeg',
   rank: 42,
   age: 19,
   grade: 'User',
@@ -766,7 +766,7 @@ export const LEADERBOARD_DATA: LeaderboardEntry[] = [
     points: 1450,
     change: 'up',
     location: 'Toronto, CA',
-    avatarUrl: 'https://i.pravatar.cc/150?u=u1',
+    avatarUrl: 'assets/images/user.jpeg',
   },
   {
     id: 'u7',

@@ -77,7 +77,6 @@ export class Test {
     });
     // Global Timer Effect
     effect(() => {
-      console.log(this.timeLeft());
       if (this.status() === 'active' && this.timeLeft() > 0) {
         if (!this.mainTimer) {
           this.mainTimer = setInterval(() => {
@@ -112,8 +111,7 @@ export class Test {
 
     this.activeQuestions.set(filtered);
     this.timeLeft.set(filtered.length * 60);
-    this.status.set('active');
-    console.log(this.status());
+    this.status.set('active');;
   }
 
   updateAnswer(questionId: string, value: any) {

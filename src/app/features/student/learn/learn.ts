@@ -6,7 +6,7 @@ import {
   ALL_LESSONS,
   SUBJECTS,
   LESSON_CONTENTS,
-  Topic
+  Topic,
 } from '../../../shared/constants/mock-data.constant';
 import {
   ArrowLeft,
@@ -26,8 +26,8 @@ import { LearnQuickQuiz, Question } from './learn-quick-quiz/learn-quick-quiz';
 import { LearnNotes } from './learn-notes/learn-notes';
 import { LearnReadMode } from './learn-read-mode/learn-read-mode';
 import { ButtonModule } from 'primeng/button';
-import { AiWrapperService, IAiWrapper } from '../../../services/ai-wrapper/ai-wrapper.service';
-
+import { AiWrapperService } from '../../../services/ai-wrapper/ai-wrapper.service';
+import { IModuleRequest } from '../../../core/interface/ai-wrapper.interface';
 
 @Component({
   selector: 'app-learn',
@@ -41,7 +41,7 @@ import { AiWrapperService, IAiWrapper } from '../../../services/ai-wrapper/ai-wr
     LearnQuickQuiz,
     LearnNotes,
     LearnReadMode,
-    ButtonModule
+    ButtonModule,
   ],
   templateUrl: './learn.html',
   styleUrl: './learn.css',
@@ -52,7 +52,7 @@ export class Learn {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private aiWrapperService: AiWrapperService
+    private aiWrapperService: AiWrapperService,
   ) {
     // Access route parameters
     this.activatedRoute.params.subscribe((params) => {
@@ -60,8 +60,8 @@ export class Learn {
     });
 
     effect(() => {
-      this.getData(this.topics[this.activeTopicIndex()]);
-    })
+      this.getData(this.currentTopic());
+    });
   }
 
   activeTopicIndex = signal(0);
@@ -77,16 +77,20 @@ export class Learn {
 
   lesson = computed(() => ALL_LESSONS.find((l) => l.id === this.lessonId()));
   subject = computed(() => SUBJECTS.find((s) => s.id === this.lesson()?.subjectId));
-  content =
-    this.lessonId() && LESSON_CONTENTS[this.lessonId()]
-      ? LESSON_CONTENTS[this.lessonId()]
-      : LESSON_CONTENTS['l1'];
+  content = computed(() => {
+    const id = this.lessonId();
+    return id && LESSON_CONTENTS[id] ? LESSON_CONTENTS[id] : LESSON_CONTENTS['l1'];
+  });
 
-  topics = this.content?.topics || [];
-  currentTopic = this.topics[this.activeTopicIndex()];
-  quizQuestions = this.content?.quiz || [];
-  activeQuestion = (this.quizQuestions[this.activeTopicIndex() % this.quizQuestions.length] ||
-    this.quizQuestions[0]) as Question;
+  topics = computed(() => this.content().topics || []);
+  currentTopic = computed(() => this.topics()[this.activeTopicIndex()] || this.topics()[0]);
+  quizQuestions = computed(() => this.content().quiz || []);
+  activeQuestion = computed(() => {
+    const qs = this.quizQuestions();
+    if (!qs || qs.length === 0) return {} as Question;
+    const idx = this.activeTopicIndex() % qs.length;
+    return (qs[idx] || qs[0]) as Question;
+  });
 
   icons = {
     ArrowLeft,
@@ -127,20 +131,20 @@ export class Learn {
   }
 
   next() {
-    if (this.activeTopicIndex() < this.topics.length - 1)
+    if (this.activeTopicIndex() < this.topics().length - 1)
       this.activeTopicIndex.set(this.activeTopicIndex() + 1);
     else this.onNavigate('test', this.lessonId());
   }
 
   handleAnswer(idx: number) {
-    this.selectedAnswers.set({ ...this.selectedAnswers(), [this.activeQuestion.id]: idx });
+    this.selectedAnswers.set({ ...this.selectedAnswers(), [this.activeQuestion().id]: idx });
   }
 
-    getData(topic: Topic){
-    const data: IAiWrapper = {
+  getData(topic: Topic) {
+    const data: IModuleRequest = {
       subject: this.subject()?.title || '',
       topic: topic?.title || '',
-    }
+    };
     this.aiWrapperService.getData(data).subscribe((data) => {
       console.log(data);
     });

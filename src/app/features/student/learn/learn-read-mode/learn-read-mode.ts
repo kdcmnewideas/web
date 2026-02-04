@@ -1,7 +1,8 @@
 import { Component, computed, input, output, inject, OnInit } from '@angular/core';
 import { Topic } from '../../../../shared/constants/mock-data.constant';
 import { LucideAngularModule, Sparkles, Volume2 } from 'lucide-angular';
-import { AiWrapperService, IAiWrapper } from '../../../../services/ai-wrapper/ai-wrapper.service';
+import { AiWrapperService } from '../../../../services/ai-wrapper/ai-wrapper.service';
+import { IModuleRequest } from '../../../../core/interface/ai-wrapper.interface';
 
 interface ContentBlock {
   type: 'h3' | 'callout' | 'spacer' | 'p';
@@ -15,7 +16,7 @@ interface ContentBlock {
   templateUrl: './learn-read-mode.html',
   styleUrl: './learn-read-mode.css',
 })
-export class LearnReadMode implements OnInit{
+export class LearnReadMode implements OnInit {
   // Signal-based Input and Output
   topic = input.required<Topic>();
   readAloud = output<void>();
@@ -64,11 +65,11 @@ export class LearnReadMode implements OnInit{
     this.readAloud.emit();
   }
 
-  getData(){
-    const data: IAiWrapper = {
+  getData() {
+    const data: IModuleRequest = {
       subject: this.subject(),
       topic: this.topic()?.title,
-    }
+    };
     this.aiWrapperService.getData(data).subscribe((data) => {
       console.log(data);
     });

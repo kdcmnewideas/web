@@ -1,12 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-
-export interface IAiWrapper{
-  content?: string,
-  subject?: string,
-  topic?: string
-}
+import { IModuleRequest } from '../../core/interface/ai-wrapper.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +11,7 @@ export class AiWrapperService {
 
   private http = inject(HttpClient);
 
-  getData(data: IAiWrapper){
+  getData(data: IModuleRequest) {
     return this.http.post(`${this.baseUrl}/generate-module`, data);
   }
-
 }

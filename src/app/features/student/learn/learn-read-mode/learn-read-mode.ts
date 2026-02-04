@@ -20,6 +20,7 @@ export class LearnReadMode {
   readAloud = output<void>();
   subject = input.required<string>();
   content = input.required<any>();
+  image = input<any>();
 
   dataTypes = ['analogy', 'deep_dive', 'mechanism'];
   currentDataIndex = signal(0);

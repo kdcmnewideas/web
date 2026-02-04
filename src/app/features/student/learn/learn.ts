@@ -60,6 +60,7 @@ export class Learn {
 
     effect(() => {
       this.getData(this.topics[this.activeTopicIndex()]);
+      this.getImage(this.topics[this.activeTopicIndex()]);
     })
   }
 
@@ -75,6 +76,7 @@ export class Learn {
   playbackSpeed = signal(1);
   data = signal<any>('');
   readDataLoad = signal(false);
+  readImage = signal<any>(null);
 
   lesson = computed(() => ALL_LESSONS.find((l) => l.id === this.lessonId()));
   subject = computed(() => SUBJECTS.find((s) => s.id === this.lesson()?.subjectId));
@@ -166,7 +168,7 @@ export class Learn {
       image_type: 'diagram',
     }
     this.aiWrapperService.getImage(data).subscribe((data) => {
-      console.log(data);
+      this.readImage.set(data);
     });
   }
 }

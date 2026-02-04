@@ -231,11 +231,11 @@ export const CURRENT_USER: User = {
   avatarUrl: 'https://i.pravatar.cc/150?u=u3',
   rank: 42,
   age: 19,
-  grade: 'Administrator',
-  bio: 'Platform Administrator for AileLearn.',
-  phone: '+1 (555) 123-4567',
-  role: 'admin',
-  location: 'New York, USA',
+  grade: 'User',
+  bio: 'Architecting the future through rigorous study and persistent curiosity. I believe in the power of continuous learning.',
+  phone: '+91-9123445567',
+  role: 'user',
+  location: 'Bangalore, India',
 };
 
 export const BOARDS: Board[] = [

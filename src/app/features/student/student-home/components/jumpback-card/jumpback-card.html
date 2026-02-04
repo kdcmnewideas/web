@@ -1,0 +1,71 @@
+<div
+  click=""
+  [class]="
+    `shrink-0  group relative bg-white rounded-3xl p-1 border border-slate-100 ${softShadow} ${hoverShadow} cursor-pointer flex flex-col overflow-hidden`
+  "
+>
+  <div class="p-4 flex flex-col h-full bg-linear-to-br from-white to-slate-50/10 rounded-[1.4rem]">
+    <div
+      [class]="
+        `absolute -right-16 -top-16 w-32 h-32 rounded-full blur-[50px] opacity-0 group-hover:opacity-15 transition-opacity duration-700 ${styles().iconBg}`
+      "
+    ></div>
+
+    <div class="flex items-start justify-between mb-4">
+      <div
+        [class]="
+          `w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-md ${styles().glow} ${styles().iconBg} group-hover:scale-110 group-hover:rotate-2 transition-all duration-300`
+        "
+      >
+        <ng-icon name="bootstrapPlayFill" class="ml-0.5" size="16" />
+      </div>
+      <div class="flex flex-col items-end">
+        <div
+          [class]="
+            `px-2 py-0.5 rounded-full text-[7px] font-black uppercase tracking-widest ${styles().light} ${styles().text} mb-1`
+          "
+        >
+          {{ subject()?.title }}
+        </div>
+        <span class="text-[8px] font-bold text-slate-300 uppercase">2h ago</span>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <h4
+        class="font-black text-slate-900 text-sm leading-snug group-hover:text-indigo-600 transition-colors line-clamp-2 min-h-[2.2rem] tracking-tight"
+      >
+        {{ lesson().title }}
+      </h4>
+    </div>
+
+    <div
+      class="mt-auto flex items-center justify-between bg-white/50 border border-slate-100 p-2.5 rounded-xl shadow-sm group-hover:border-indigo-100 transition-colors"
+    >
+      <div class="flex items-center gap-2">
+        <app-circular-progress
+          [percentage]="percentage()"
+          [color]="styles().text"
+          [size]="28"
+          [strokeWidth]="3"
+          [showText]="false"
+        />
+        <div class="flex flex-col">
+          <span
+            class="text-[8px] font-black text-slate-400 uppercase leading-none tracking-wider mb-0.5"
+            >Left</span
+          >
+          <span class="text-[9px] font-black text-slate-600">{{ lesson().durationMinutes }}m</span>
+        </div>
+      </div>
+
+      <div
+        [class]="
+          `w-7 h-7 rounded-lg flex items-center justify-center text-white shadow-sm ${styles().iconBg} hover:brightness-110 transition-all`
+        "
+      >
+        <ng-icon name="bootstrapArrowRight" size="14" />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<p-card
+  [class]="
+    `group relative p-5 rounded-4xl border border-slate-100
+          shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:-translate-y-1
+          transition-all duration-300 overflow-hidden flex flex-col`
+  "
+>
+  <div
+    [class]="
+      `absolute -right-12 -top-12 w-28 h-28 rounded-full blur-3xl opacity-0 group-hover:opacity-10
+            transition-opacity duration-500 ${styles().icon}`
+    "
+  ></div>
+
+  <div class="flex items-start justify-between mb-5 relative z-10">
+    <div class="flex items-center gap-3.5">
+      <div
+        [class]="
+          `w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-lg ${styles().glow}
+                ${styles().icon} group-hover:scale-110 transition-transform duration-300`
+        "
+      >
+        <lucide-angular [img]="getTypeIcon(item().type)" class="w-4 h-4" />
+      </div>
+      <div class="flex flex-col">
+        <span
+          [class]="
+            `text-[8px] font-black uppercase tracking-widest leading-none mb-1 ${styles().text}`
+          "
+        >
+          {{ subject()?.title }}
+        </span>
+        <h3
+          class="font-black text-slate-900 text-[13px] leading-tight tracking-tight group-hover:text-indigo-600 transition-colors"
+        >
+          {{ item().title }}
+        </h3>
+      </div>
+    </div>
+    <button
+      class="w-7 h-7 flex items-center justify-center text-slate-300 hover:text-slate-600 transition-colors"
+    >
+      <lucide-angular [img]="icons.EllipsisVertical" class="w-3.5 h-3.5" />
+    </button>
+  </div>
+
+  <div
+    class="mt-auto flex items-center justify-between bg-white/60 border border-slate-100 p-3 rounded-2xl relative z-10"
+  >
+    <div class="flex flex-col">
+      <div class="flex items-center gap-1.5 text-indigo-600 font-black text-[10px]">
+        <lucide-angular [img]="icons.Clock" class="w-3 h-3" />
+        {{ item().time }}
+      </div>
+      <span class="text-[8px] font-bold text-slate-400 uppercase tracking-widest mt-0.5"
+        >Duration: {{ item().duration }}m</span
+      >
+    </div>
+
+    <div class="flex items-center gap-2">
+      <div
+        [class]="
+          `px-2 py-0.5 rounded-lg flex items-center gap-1 text-[8px] font-black uppercase
+                tracking-widest ${status().bg} ${status().color} border border-white shadow-sm`
+        "
+      >
+        <lucide-angular [img]="StatusIcon()" class="w-2.5 h-2.5" />
+        {{ status().label }}
+      </div>
+      @if (item().status === 'upcoming') {
+        <button
+          (click)="onNavigate('learn', item().id)"
+          class="w-7 h-7 rounded-lg bg-indigo-600 text-white flex items-center justify-center shadow-md shadow-indigo-100 hover:bg-indigo-700 active:scale-90 transition-all"
+        >
+          <lucide-angular [img]="icons.ChevronRight" class="w-3.5 h-3.5" />
+        </button>
+      }
+    </div>
+  </div>
+</p-card>

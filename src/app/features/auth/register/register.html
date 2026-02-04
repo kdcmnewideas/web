@@ -1,0 +1,173 @@
+<div class="min-h-screen flex bg-white animate-fade-in">
+  <!-- Left Side - Form -->
+  <div class="w-full lg:w-1/2 p-8 md:p-16 flex flex-col justify-center relative bg-white z-10">
+    <!-- Brand -->
+    <div class="absolute top-8 left-8 md:left-16 flex items-center gap-2">
+      <div class="flex items-center justify-center shrink-0 transition-all duration-300">
+        <img src="assets/logo.png" alt="Logo" class="h-10" />
+      </div>
+      <span class="text-xl font-bold text-slate-900">Aile Learning</span>
+    </div>
+
+    <div class="max-w-md w-full mx-auto mt-12 lg:mt-0">
+      <h1 class="text-3xl font-bold text-slate-900 mb-2">Create an account</h1>
+
+      <form onSubmit="{handleSubmit}" class="space-y-5" [formGroup]="registerForm">
+        <div class="flex flex-col gap-2 w-full">
+          <label for="name" class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
+            >Name</label
+          >
+          <input
+            pInputText
+            id="name"
+            type="text"
+            placeholder="Name"
+            class="w-full px-3 py-2 shadow-sm rounded-lg"
+            formControlName="name"
+          />
+        </div>
+
+        <div class="flex flex-col gap-2 w-full">
+          <label
+            for="email1"
+            class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
+            >Email Address</label
+          >
+          <input
+            pInputText
+            id="email1"
+            type="text"
+            placeholder="Email address"
+            class="w-full px-3 py-2 shadow-sm rounded-lg"
+            formControlName="email"
+          />
+        </div>
+        <div class="flex flex-col gap-2 w-full">
+          <label
+            for="password1"
+            class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
+            >Password</label
+          >
+          <p-password
+            [toggleMask]="true"
+            autocomplete="off"
+            formControlName="password"
+            [feedback]="false"
+            className="w-full px-3 py-2 shadow-sm rounded-lg"
+            fluid="true"
+            placeholder="Password"
+          />
+        </div>
+
+        <div class="flex flex-col gap-2 w-full">
+          <label
+            for="join_key"
+            class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
+            >Join Key</label
+          >
+          <input
+            pInputText
+            id="join_key"
+            type="text"
+            placeholder="Join Key"
+            class="w-full px-3 py-2 shadow-sm rounded-lg"
+            formControlName="join_key"
+          />
+        </div>
+
+        <div class="space-y-4 pt-2">
+          <button type="submit" pButton class="h-11 w-full"> Get started </button>
+
+          <p-button
+            type="button"
+            class="w-full flex items-center justify-center gap-3"
+            variant="outlined"
+            fluid="true"
+            severity="secondary"
+          >
+            <img src="assets/images/google.svg" alt="Google Logo" class="w-5 h-5" />
+            Sign in with Google
+          </p-button>
+        </div>
+      </form>
+
+      <p class="text-center mt-8 text-sm text-slate-600">
+        Already have an account?
+        <p-button
+          label="Login"
+          link
+          (click)="navigateTo('auth/login')"
+          styleClass="text-sm! font-semibold! p-0!"
+        />
+      </p>
+    </div>
+  </div>
+
+  <!-- Right Side - Visual -->
+  <div
+    class="hidden lg:flex w-1/2 bg-[#7F56D9] items-center justify-center relative overflow-hidden transition-colors duration-700"
+  >
+    <!-- Decorative Background -->
+    <div class="absolute inset-0 bg-linear-to-br from-[#7F56D9] to-[#6941C6]"></div>
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+    <div
+      class="absolute bottom-0 left-0 w-full h-1/2 bg-linear-to-t from-black/10 to-transparent"
+    ></div>
+
+    <div class="relative z-10 text-center px-12 w-full max-w-lg">
+      <!-- Animated Icon Composition - Horizontal Layout -->
+      <div class="mb-12 relative h-40 flex justify-center items-center">
+        <div class="relative animate-fade-in flex items-center justify-center">
+          <!-- Left Icon -->
+          <div
+            [class]="
+              `w-24 h-24 backdrop-blur-md rounded-3xl border border-white/20 flex items-center justify-center transform -rotate-12 shadow-2xl absolute -left-28 z-0 ${currentSlide().icons.top.bg} ${currentSlide().icons.top.color}`
+            "
+          >
+            <ng-icon [name]="currentSlide().icons.top.icon" size="40" />
+          </div>
+
+          <!-- Main Icon (Center) -->
+          <div
+            [class]="
+              `w-32 h-32 backdrop-blur-md rounded-3xl border border-white/30 flex items-center justify-center transform rotate-0 shadow-2xl relative z-20 ${currentSlide().icons.main.bg} ${currentSlide().icons.main.color}`
+            "
+          >
+            <ng-icon [name]="currentSlide().icons.main.icon" size="64" />
+          </div>
+
+          <!-- Right Icon -->
+          <div
+            [class]="
+              `w-24 h-24 backdrop-blur-md rounded-3xl border border-white/20 flex items-center justify-center transform rotate-12 shadow-2xl absolute -right-28 z-0 ${currentSlide().icons.bottom.bg} ${currentSlide().icons.bottom.color}`
+            "
+          >
+            <ng-icon [name]="currentSlide().icons.bottom.icon" size="40" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Text Content -->
+      <div class="animate-fade-in min-h-35">
+        <h2 class="text-3xl font-bold text-white mb-4">{{ currentSlide().title }}</h2>
+        <p class="text-indigo-200 text-lg leading-relaxed">
+          {{ currentSlide().description }}
+        </p>
+      </div>
+
+      <!-- Slide Indicators -->
+      <div class="mt-12 flex justify-center gap-2">
+        @for (silde of slides; track idx; let idx = $index) {
+          <button
+            (click)="setActiveSlide(idx)"
+            [class]="
+              `w-2 h-2 rounded-full transition-all duration-300 ${
+                activeSlide() === idx ? 'bg-white w-6' : 'bg-white/30 hover:bg-white/50'
+              }`
+            "
+          ></button>
+        }
+      </div>
+    </div>
+  </div>
+</div>

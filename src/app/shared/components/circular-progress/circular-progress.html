@@ -1,0 +1,34 @@
+<div
+  class="relative flex items-center justify-center"
+  [style.width.px]="size()"
+  [style.height.px]="size()"
+>
+  <svg class="transform -rotate-90 w-full h-full">
+    <circle
+      [attr.cx]="size() / 2"
+      [attr.cy]="size() / 2"
+      [attr.r]="radius()"
+      stroke="currentColor"
+      [attr.stroke-width]="strokeWidth()"
+      fill="transparent"
+      class="text-slate-100"
+    />
+    <circle
+      [attr.cx]="size() / 2"
+      [attr.cy]="size() / 2"
+      [attr.r]="radius()"
+      stroke="currentColor"
+      [attr.stroke-width]="strokeWidth()"
+      fill="transparent"
+      [style.strokeDasharray]="circumference()"
+      [style.strokeDashoffset]="offset()"
+      stroke-linecap="round"
+      [class]="color() + ' transition-all duration-1000 ease-out'"
+    />
+  </svg>
+
+  @if(showText()){
+  <div class="absolute inset-0 flex items-center justify-center">
+    <span class="text-[10px] font-bold" [class]="color()"> {{ percentage() }}% </span>
+  </div>}
+</div>

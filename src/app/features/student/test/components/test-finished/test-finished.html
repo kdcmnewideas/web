@@ -1,0 +1,30 @@
+<div class="max-w-2xl mx-auto py-12 text-center animate-fade-in">
+  <div
+    [class]="
+      `w-40 h-40 rounded-full flex items-center justify-center mx-auto mb-10 border-12 shadow-2xl ${score() >= 70 ? 'border-emerald-100 bg-emerald-50 text-emerald-600' : 'border-rose-100 bg-rose-50 text-rose-600'}`
+    "
+  >
+    <div class="text-center">
+      <div class="text-5xl font-black">{{ score() }}%</div>
+      <div class="text-[10px] font-black uppercase tracking-widest opacity-60">Result Score</div>
+    </div>
+  </div>
+  <h1 class="text-4xl font-black text-slate-900 mb-3 tracking-tight">Test Complete!</h1>
+  <p class="text-slate-500 mb-12 text-lg">
+    {{
+      score() >= 70
+        ? 'Outstanding! You have demonstrated mastery in this category.'
+        : 'Keep practicing! Review the lesson content and try again.'
+    }}
+  </p>
+  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+    <p-button variant="outlined" class="h-14 px-8 rounded-2xl font-bold" (click)="onReturn.emit()"
+      >Return to Course</p-button
+    >
+    <p-button
+      class="h-14 px-10 rounded-2xl font-black shadow-xl shadow-indigo-100"
+      (click)="onRetry.emit()"
+      >Retry Test</p-button
+    >
+  </div>
+</div>

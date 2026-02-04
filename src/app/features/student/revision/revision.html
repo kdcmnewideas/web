@@ -1,0 +1,142 @@
+<div class="max-w-4xl mx-auto space-y-10 animate-fade-in pb-24">
+  <!-- Header Area -->
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 px-1">
+    <div class="flex items-center gap-4">
+      <button
+        (click)="onNavigate('home')"
+        class="w-10 h-10 rounded-xl bg-white border border-slate-100 flex items-center justify-center text-slate-400 hover:text-indigo-600 hover:border-indigo-100 transition-all shadow-sm"
+      >
+        <lucide-angular [img]="icons.ArrowLeft" class="w-5 h-5" />
+      </button>
+      <div>
+        <h1
+          class="text-2xl md:text-3xl font-black text-slate-900 tracking-tight flex items-center gap-2"
+        >
+          Revision Planner
+          <lucide-angular [img]="icons.Sparkles" class="w-6 h-6 text-amber-500" />
+        </h1>
+        <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">
+          Structured path to total recall
+        </p>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <div class="flex p-1 bg-white border border-slate-100 rounded-2xl shadow-sm">
+        <button
+          (click)="activeTab.set('upcoming')"
+          [class]="
+            `px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
+              activeTab() === 'upcoming'
+                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100'
+                : 'text-slate-400 hover:text-slate-600'
+            }`
+          "
+        >
+          Active
+        </button>
+        <button
+          (click)="activeTab.set('history')"
+          [class]="
+            `px-5 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
+              activeTab() === 'history'
+                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-100'
+                : 'text-slate-400 hover:text-slate-600'
+            }`
+          "
+        >
+          Completed
+        </button>
+      </div>
+      <button
+        class="hidden md:flex w-11 h-11 items-center justify-center bg-indigo-50 border border-indigo-100 rounded-xl text-indigo-600 hover:bg-indigo-100 shadow-sm transition-all"
+      >
+        <lucide-angular [img]="icons.Plus" class="w-5 h-5" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Summary Stat (Quick View) -->
+  @if (activeTab() === 'upcoming') {
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 px-1">
+      <p-card class="rounded-[1.75rem]! border-indigo-100! overflow-hidden">
+        <div class="flex items-center gap-4 bg-linear-to-br! from-white to-indigo-50/20 p-5 h-full">
+          <div
+            class="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shadow-lg shadow-indigo-100"
+          >
+            <lucide-angular [img]="icons.Target" class="w-6 h-6" />
+          </div>
+          <div>
+            <p
+              class="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1.5"
+            >
+              Next Session
+            </p>
+            <h3 class="font-black text-slate-800 text-sm">Industrial Revolution (10:00 AM)</h3>
+          </div>
+        </div>
+      </p-card>
+      <p-card class="rounded-[1.75rem] border-emerald-100! overflow-hidden">
+        <div class="bg-linear-to-br! from-white to-emerald-50/20 flex items-center gap-4 p-5">
+          <div
+            class="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-emerald-100"
+          >
+            <lucide-angular [img]="icons.CircleCheck" class="w-6 h-6" />
+          </div>
+          <div>
+            <p
+              class="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1.5"
+            >
+              Total Mastered
+            </p>
+            <h3 class="font-black text-slate-800 text-sm">82 Concepts This Week</h3>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  }
+
+  <!-- Schedule Timeline -->
+  <div class="space-y-10">
+    @if (getKeys(groupedItems()).length === 0) {
+      <div class="flex flex-col items-center justify-center py-24 text-center">
+        <div
+          class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 text-slate-200"
+        >
+          <lucide-angular [img]="icons.History" class="w-8 h-8" />
+        </div>
+        <h3 class="text-lg font-black text-slate-900 mb-2">No active revisions</h3>
+        <p class="text-slate-500 font-medium max-w-xs mx-auto text-sm">
+          Your planner is clear. Add a new topic to keep your memory sharp.
+        </p>
+        <button class="mt-8 rounded-xl h-12 px-8 font-black shadow-xl shadow-indigo-100"
+          >New Topic</button
+        >
+      </div>
+    } @else {
+      @for (date of getKeys(groupedItems()); track date) {
+        <div class="relative">
+          <div
+            class="flex items-center gap-4 mb-6 sticky top-0 bg-slate-50/80 backdrop-blur-md py-2 z-10 px-1"
+          >
+            <div
+              class="w-8 h-8 rounded-lg bg-white border border-slate-100 shadow-sm flex items-center justify-center text-indigo-600"
+            >
+              <lucide-angular [img]="icons.CalendarDays" class="w-4 h-4" />
+            </div>
+            <h2 class="text-sm font-black text-slate-600 tracking-tight uppercase">
+              {{ formatDateHeader(date) }}
+            </h2>
+            <div class="h-px flex-1 bg-slate-200/60 ml-2"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            @for (item of groupedItems()[date]; track item.id) {
+              <app-revision-card [item]="item" />
+            }
+          </div>
+        </div>
+      }
+    }
+  </div>
+</div>

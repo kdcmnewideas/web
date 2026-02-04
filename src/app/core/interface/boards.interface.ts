@@ -12,4 +12,5 @@ export interface IBoard {
   state: string;
   id: string;
   is_active: boolean;
+  description?: string;
 }

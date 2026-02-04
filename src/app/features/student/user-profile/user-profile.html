@@ -3,29 +3,32 @@
   <div
     class="bg-white p-8 md:p-12 rounded-[3.5rem] border border-slate-100 shadow-[0_30px_100px_rgba(0,0,0,0.03)] relative overflow-hidden flex flex-col xl:flex-row items-center justify-between gap-12 group"
   >
-   <!-- Absolute Actions - Top Right -->
-        <div class="absolute top-6 right-6 md:top-10 md:right-10 flex gap-3 z-20">
-          @if(isEditing){
-            <button  class="rounded-2xl h-12 px-8 bg-indigo-600 hover:bg-indigo-700 shadow-xl shadow-indigo-100 text-xs font-black uppercase tracking-widest">
-              <lucide-angular [img]="icons.Save" class="w-4 h-4 mr-2" /> Save Profile
-            </button>
-          } @else {
-            <button
-              (click)="isEditing=true"
-              class="p-3.5 bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white rounded-2xl transition-all border border-indigo-100 shadow-sm active:scale-90"
-              title="Edit Profile"
-            >
-              <lucide-angular [img]="icons.SquarePen" class="w-5 h-5" />
-            </button>
-          }
-          <button
-            (click)="onNavigate(ScreenName.SETTINGS)"
-            class="p-3.5 bg-slate-50 hover:bg-slate-900 text-slate-400 hover:text-white rounded-2xl transition-all border border-slate-100 shadow-sm active:scale-90"
-            title="Settings"
-          >
-            <lucide-angular [img]="icons.Settings" class="w-5 h-5" />
-          </button>
-        </div>
+    <!-- Absolute Actions - Top Right -->
+    <div class="absolute top-6 right-6 md:top-10 md:right-10 flex gap-3 z-20">
+      @if (isEditing) {
+        <Button
+          onClick="{handleSave}"
+          class="rounded-2xl h-12 px-8 bg-indigo-600 hover:bg-indigo-700 shadow-xl shadow-indigo-100 text-xs font-black uppercase tracking-widest"
+        >
+          <lucide-angular [img]="icons.Save" class="w-4 h-4 mr-2" /> Save Profile
+        </Button>
+      } @else {
+        <button
+          (click)="isEditing = true"
+          class="p-3.5 bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white rounded-2xl transition-all border border-indigo-100 shadow-sm active:scale-90"
+          title="Edit Profile"
+        >
+          <lucide-angular [img]="icons.SquarePen" class="w-5 h-5" />
+        </button>
+      }
+      <button
+        (click)="onNavigate(ScreenName.SETTINGS)"
+        class="p-3.5 bg-slate-50 hover:bg-slate-900 text-slate-400 hover:text-white rounded-2xl transition-all border border-slate-100 shadow-sm active:scale-90"
+        title="Settings"
+      >
+        <lucide-angular [img]="icons.Settings" class="w-5 h-5" />
+      </button>
+    </div>
     <!-- Background Accents -->
     <div
       class="absolute top-0 right-0 w-[40%] h-full bg-linear-to-l from-indigo-50/30 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000"

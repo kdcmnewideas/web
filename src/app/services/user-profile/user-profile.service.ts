@@ -6,9 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class CurriculumAdminService {
-  baseUrl = environment.contentAPI;
+export class UserProfileService {
+  baseUrl = environment.userProgressAPI;
   http = inject(HttpClient);
-
-  // getAllTopicsByChapterId = (chapter_id: string): Observable<any> => {};
 }

@@ -23,7 +23,7 @@ export const STUDENT_ROUTES: Routes = [
   },
   {
     path: 'profile',
-    loadComponent: () => import('./user/user').then((m) => m.User),
+    loadComponent: () => import('./user-profile/user-profile').then((m) => m.UserProfile),
     title: 'Profile',
   },
   {

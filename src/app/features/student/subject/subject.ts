@@ -28,7 +28,7 @@ import {
 import { SUBJECTS, ALL_LESSONS } from '../../../shared/constants/mock-data.constant';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CardModule } from 'primeng/card';
-import { LessonCard } from "./lesson-card/lesson-card";
+import { LessonCard } from './lesson-card/lesson-card';
 import { SubjectService } from '../../../services/subject/subject.service';
 
 @Component({
@@ -60,7 +60,7 @@ export class Subject {
     Award,
     Activity,
     Box,
-    Compass
+    Compass,
   };
 
   // API-backed subject and lessons
@@ -188,11 +188,23 @@ export class Subject {
   theme = computed(() => this.getThemeStyles(this.subject().color));
 
   stats = [
-          { label: 'Mastery', val: `${this.subject().progress}%`, icon: Zap, color: 'text-indigo-600', bg: 'bg-indigo-50' },
-          { label: 'Rank', val: '#4', icon: Trophy, color: 'text-amber-600', bg: 'bg-amber-50' },
-          { label: 'Velocity', val: '1.2x', icon: TrendingUp, color: 'text-emerald-600', bg: 'bg-emerald-50' },
-          { label: 'Knowledge', val: '142', icon: Box, color: 'text-purple-600', bg: 'bg-purple-50' }
-          ]
+    {
+      label: 'Mastery',
+      val: `${this.subject().progress}%`,
+      icon: Zap,
+      color: 'text-indigo-600',
+      bg: 'bg-indigo-50',
+    },
+    { label: 'Rank', val: '#4', icon: Trophy, color: 'text-amber-600', bg: 'bg-amber-50' },
+    {
+      label: 'Velocity',
+      val: '1.2x',
+      icon: TrendingUp,
+      color: 'text-emerald-600',
+      bg: 'bg-emerald-50',
+    },
+    { label: 'Knowledge', val: '142', icon: Box, color: 'text-purple-600', bg: 'bg-purple-50' },
+  ];
 
   onNavigate(path: string, data?: any) {
     this.router.navigate([path]);

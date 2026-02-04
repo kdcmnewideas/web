@@ -11,6 +11,7 @@ import {
   Shrink,
   X,
 } from 'lucide-angular';
+import { MIND_MAP_MOCK_DATA } from '../../../../shared/mocks/learn-mind-map-mock.constant';
 
 export interface MindMapNode {
   id: string;
@@ -61,23 +62,12 @@ export class LearnMindMap {
   layoutNodes: PositionedNode[] = [];
   layoutConnections: Connection[] = [];
 
+  // Dynamically computed bounds
+  bounds = { width: 1000, height: 700 };
+  boundingBox = { minX: -500, maxX: 500, minY: -350, maxY: 350 };
+
   get data(): MindMapNode {
-    return (
-      this.rootNode() || {
-        id: 'root',
-        label: 'Advancing Multimodal AI in Medicine',
-        children: [
-          { id: 'c1', label: 'Med-Gemini Model Family' },
-          {
-            id: 'c2',
-            label: 'Key Applications & Tasks',
-            children: [{ id: 'c2-1', label: 'Clinical Diagnostics' }],
-          },
-          { id: 'c3', label: 'Evaluation and Benchmarking' },
-          { id: 'c4', label: 'Related Genomic Discovery Methods' },
-        ],
-      }
-    );
+    return this.rootNode() || MIND_MAP_MOCK_DATA;
   }
 
   ngOnInit() {
@@ -133,6 +123,16 @@ export class LearnMindMap {
     return Math.max(this.nodeHeight, childrenHeight + gaps);
   }
 
+  private expandAllNodes(node?: MindMapNode): void {
+    const nodeToProcess = node || this.data;
+    if (!nodeToProcess) return;
+
+    this.expandedIds.add(nodeToProcess.id);
+    if (nodeToProcess.children && nodeToProcess.children.length > 0) {
+      nodeToProcess.children.forEach((child) => this.expandAllNodes(child));
+    }
+  }
+
   calculateLayout() {
     const nodes: PositionedNode[] = [];
     const connections: Connection[] = [];
@@ -164,6 +164,52 @@ export class LearnMindMap {
     positionNodes(this.data, 0, 0, 0);
     this.layoutNodes = nodes;
     this.layoutConnections = connections;
+    this.updateBounds();
+  }
+
+  private updateBounds() {
+    if (this.layoutNodes.length === 0) {
+      this.bounds = { width: 1000, height: 700 };
+      this.boundingBox = { minX: -500, maxX: 500, minY: -350, maxY: 350 };
+      return;
+    }
+
+    let minX = Infinity,
+      maxX = -Infinity,
+      minY = Infinity,
+      maxY = -Infinity;
+
+    this.layoutNodes.forEach((node) => {
+      const left = node.x - this.nodeWidth / 2;
+      const right = node.x + this.nodeWidth / 2;
+      const top = node.y - this.nodeHeight / 2;
+      const bottom = node.y + this.nodeHeight / 2;
+
+      minX = Math.min(minX, left);
+      maxX = Math.max(maxX, right);
+      minY = Math.min(minY, top);
+      maxY = Math.max(maxY, bottom);
+    });
+
+    // Add padding around the content
+    const padding = 80;
+    minX -= padding;
+    maxX += padding;
+    minY -= padding;
+    maxY += padding;
+
+    this.boundingBox = { minX, maxX, minY, maxY };
+    this.bounds = {
+      width: maxX - minX,
+      height: maxY - minY,
+    };
+  }
+
+  getViewBox(): string {
+    const { minX, minY, maxX, maxY } = this.boundingBox;
+    const width = maxX - minX;
+    const height = maxY - minY;
+    return `${minX} ${minY} ${width} ${height}`;
   }
 
   handleMouseDown(e: MouseEvent) {

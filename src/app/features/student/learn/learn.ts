@@ -1,5 +1,4 @@
 import { Component, signal, computed, effect } from '@angular/core';
-import { inject } from '@angular/core/primitives/di';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -26,8 +25,8 @@ import { LearnQuickQuiz, Question } from './learn-quick-quiz/learn-quick-quiz';
 import { LearnNotes } from './learn-notes/learn-notes';
 import { LearnReadMode } from './learn-read-mode/learn-read-mode';
 import { ButtonModule } from 'primeng/button';
-import { AiWrapperService } from '../../../services/ai-wrapper/ai-wrapper.service';
-import { IModuleRequest } from '../../../core/interface/ai-wrapper.interface';
+import { AiWrapperService, IAiWrapper, IImageDTO } from '../../../services/ai-wrapper/ai-wrapper.service';
+
 
 @Component({
   selector: 'app-learn',
@@ -60,8 +59,9 @@ export class Learn {
     });
 
     effect(() => {
-      this.getData(this.currentTopic());
-    });
+      this.getData(this.topics[this.activeTopicIndex()]);
+      this.getImage(this.topics[this.activeTopicIndex()]);
+    })
   }
 
   activeTopicIndex = signal(0);
@@ -74,6 +74,9 @@ export class Learn {
   numSpeakers = signal<1 | 2 | 3 | 4>(1);
   isPlaying = signal(false);
   playbackSpeed = signal(1);
+  data = signal<any>('');
+  readDataLoad = signal(false);
+  readImage = signal<any>(null);
 
   lesson = computed(() => ALL_LESSONS.find((l) => l.id === this.lessonId()));
   subject = computed(() => SUBJECTS.find((s) => s.id === this.lesson()?.subjectId));
@@ -140,13 +143,36 @@ export class Learn {
     this.selectedAnswers.set({ ...this.selectedAnswers(), [this.activeQuestion().id]: idx });
   }
 
-  getData(topic: Topic) {
-    const data: IModuleRequest = {
+    getData(topic: Topic){
+      this.readDataLoad.set(true);
+    const data: IAiWrapper = {
       subject: this.subject()?.title || '',
       topic: topic?.title || '',
     };
     this.aiWrapperService.getData(data).subscribe((data) => {
+      this.data.set(data);
+      this.readDataLoad.set(false);
+    });
+  }
+
+  getMindMap(topic: Topic){
+    const data: IAiWrapper = {
+      subject: this.subject()?.title || '',
+      topic: topic?.title || '',
+    }
+    this.aiWrapperService.getMindMap(data).subscribe((data) => {
       console.log(data);
+    });
+  }
+
+  getImage(topic: Topic){
+    const data: IImageDTO = {
+      subject: this.subject()?.title || '',
+      topic: topic?.title || '',
+      image_type: 'diagram',
+    }
+    this.aiWrapperService.getImage(data).subscribe((data) => {
+      this.readImage.set(data);
     });
   }
 }

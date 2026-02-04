@@ -17,7 +17,6 @@ export interface Question {
   styleUrl: './learn-quick-quiz.css',
 })
 export class LearnQuickQuiz {
-
   // Signal-based inputs and outputs
   question = input.required<Question>();
   selectedAnswerIndex = input<number | undefined>();
@@ -26,13 +25,16 @@ export class LearnQuickQuiz {
   // Derived state using computed signals
   hasAnswered = computed(() => this.selectedAnswerIndex() !== undefined);
 
+  quizData = input<any>();
+
   /**
    * Helper to handle dynamic classes for the option buttons.
    * Keeping logic here keeps the template clean.
    */
   getOptionStyles(idx: number) {
     const isSelected = this.selectedAnswerIndex() === idx;
-    const isCorrect = this.question().correctAnswer === idx;
+    const isCorrect =
+      (this.quizData() ? this.quizData().answer_index : this.question().correctAnswer) === idx;
     const answered = this.hasAnswered();
 
     if (answered) {
@@ -47,7 +49,8 @@ export class LearnQuickQuiz {
 
   getCircleStyles(idx: number) {
     const isSelected = this.selectedAnswerIndex() === idx;
-    const isCorrect = this.question().correctAnswer === idx;
+    const isCorrect =
+      (this.quizData() ? this.quizData().answer_index : this.question().correctAnswer) === idx;
     const answered = this.hasAnswered();
 
     if (answered) {
@@ -58,5 +61,4 @@ export class LearnQuickQuiz {
     if (isSelected) return 'border-indigo-600 text-indigo-600';
     return 'border-slate-300 text-transparent';
   }
-
 }

@@ -62,11 +62,30 @@
           <div class="grow flex flex-col min-h-175">
             @switch (viewMode()) {
               @case ('read') {
-                <app-learn-read-mode
-                  [topic]="currentTopic()"
-                  onReadAloud=""
-                  [subject]="subject()?.title || ''"
-                />
+                @if (readDataLoad()) {
+                  <div class="grow flex flex-col items-center justify-center animate-pulse">
+                    <div class="relative w-24 h-24 mb-6">
+                      <div class="absolute inset-0 border-4 border-indigo-100 rounded-full"></div>
+                      <div
+                        class="absolute inset-0 border-4 border-indigo-600 rounded-full border-t-transparent animate-spin"
+                      ></div>
+                      <div class="absolute inset-0 flex items-center justify-center">
+                        <lucide-angular [img]="icons.Sparkles" class="w-8 h-8 text-indigo-600" />
+                      </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-2">
+                      AI is drafting the script...
+                    </h3>
+                  </div>
+                } @else {
+                  <app-learn-read-mode
+                    [topic]="currentTopic"
+                    onReadAloud=""
+                    [subject]="subject()?.title || ''"
+                    [content]="data()"
+                    [image]="readImage()"
+                  />
+                }
               }
               @case ('podcast') {
                 @if (podcastStatus() === 'config') {
@@ -214,12 +233,30 @@
 
       <!-- Right Sidebar -->
       <div class="lg:col-span-3 space-y-6 flex flex-col">
-        @if (activeQuestion()) {
-          <app-learn-quick-quiz
-            [question]="activeQuestion()"
-            [selectedAnswerIndex]="selectedAnswers()[activeQuestion().id]"
-            (onAnswer)="handleAnswer($event)"
-          />
+        @if (activeQuestion) {
+          @if (readDataLoad()) {
+            <p-card class="p-5">
+              <div class="grow flex flex-col items-center justify-center animate-pulse text-center">
+                <div class="relative w-24 h-24 mb-6">
+                  <div class="absolute inset-0 border-4 border-indigo-100 rounded-full"></div>
+                  <div
+                    class="absolute inset-0 border-4 border-indigo-600 rounded-full border-t-transparent animate-spin"
+                  ></div>
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <lucide-angular [img]="icons.Sparkles" class="w-8 h-8 text-indigo-600" />
+                  </div>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-2">AI is generating quiz..</h3>
+              </div>
+            </p-card>
+          } @else {
+            <app-learn-quick-quiz
+              [question]="activeQuestion"
+              [selectedAnswerIndex]="selectedAnswers()[activeQuestion.id]"
+              (onAnswer)="handleAnswer($event)"
+              [quizData]="data().quiz"
+            />
+          }
         }
         <app-learn-notes [notes]="notes()" (notesChange)="notes.set($event)" />
       </div>

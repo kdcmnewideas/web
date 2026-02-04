@@ -1,8 +1,6 @@
-import { Component, computed, input, output, inject, OnInit } from '@angular/core';
+import { Component, computed, input, output, signal } from '@angular/core';
 import { Topic } from '../../../../shared/constants/mock-data.constant';
 import { LucideAngularModule, Sparkles, Volume2 } from 'lucide-angular';
-import { AiWrapperService } from '../../../../services/ai-wrapper/ai-wrapper.service';
-import { IModuleRequest } from '../../../../core/interface/ai-wrapper.interface';
 
 interface ContentBlock {
   type: 'h3' | 'callout' | 'spacer' | 'p';
@@ -16,12 +14,16 @@ interface ContentBlock {
   templateUrl: './learn-read-mode.html',
   styleUrl: './learn-read-mode.css',
 })
-export class LearnReadMode implements OnInit {
+export class LearnReadMode {
   // Signal-based Input and Output
   topic = input.required<Topic>();
   readAloud = output<void>();
-  aiWrapperService = inject(AiWrapperService);
   subject = input.required<string>();
+  content = input.required<any>();
+  image = input<any>();
+
+  dataTypes = ['analogy', 'deep_dive', 'mechanism'];
+  currentDataIndex = signal(0);
 
   icons = {
     Volume2,
@@ -30,8 +32,24 @@ export class LearnReadMode implements OnInit {
 
   // Computed signal to parse content whenever topic changes
   parsedBlocks = computed(() => {
-    const content = this.topic()?.content || '';
-    return content.split('\n').map((line): ContentBlock => {
+    return this.modifyingContnet(
+      this.content()
+        ? this.content()?.[this.dataTypes[this.currentDataIndex()]]
+        : this.topic()?.content,
+    );
+  });
+
+  onReadAloudClick() {
+    this.readAloud.emit();
+  }
+
+  handleRegenerateClick() {
+    this.currentDataIndex.set((this.currentDataIndex() + 1) % this.dataTypes.length);
+  }
+
+  modifyingContnet(data: string) {
+    const content = data || '';
+    return content.split('\n').map((line: string): ContentBlock => {
       const trimmed = line.trim();
 
       if (trimmed.startsWith('###')) {
@@ -54,24 +72,6 @@ export class LearnReadMode implements OnInit {
       }));
 
       return { type: 'p', parts };
-    });
-  });
-
-  ngOnInit(): void {
-    this.getData();
-  }
-
-  onReadAloudClick() {
-    this.readAloud.emit();
-  }
-
-  getData() {
-    const data: IModuleRequest = {
-      subject: this.subject(),
-      topic: this.topic()?.title,
-    };
-    this.aiWrapperService.getData(data).subscribe((data) => {
-      console.log(data);
     });
   }
 }

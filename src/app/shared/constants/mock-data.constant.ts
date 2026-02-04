@@ -231,7 +231,7 @@ export const CURRENT_USER: User = {
   avatarUrl: 'https://i.pravatar.cc/150?u=u1',
   rank: 42,
   age: 19,
-  grade: 'Administrator',
+  grade: 'User',
   bio: 'Platform Administrator for StudyMate.',
   phone: '+1 (555) 123-4567',
   role: 'admin',

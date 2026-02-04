@@ -14,6 +14,7 @@ import { GOALS, RECENT_LESSONS } from '../../../shared/constants/mock-data.const
 import { bootstrapFire } from '@ng-icons/bootstrap-icons';
 import { JumpbackCard } from './components/jumpback-card/jumpback-card';
 import { SubjectCard } from "./components/subject-card/subject-card";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-home',
@@ -40,6 +41,7 @@ export class StudentHome implements OnInit {
   goals: IGoal[] = GOALS;
   RECENT_LESSONS = RECENT_LESSONS;
   SUBJECTS = SUBJECTS;
+  router = inject(Router);
 
   GoalService = inject(GoalService);
   softShadow = 'shadow-[0_8px_30px_rgba(0,0,0,0.04)]';
@@ -56,4 +58,8 @@ export class StudentHome implements OnInit {
       error: (err) => console.log('Get Goal service failed', err),
     });
   };
+
+  navigateTo(path: string) {
+    this.router.navigate([path]);
+  }
 }

@@ -234,7 +234,7 @@ export const CURRENT_USER: User = {
   grade: 'User',
   bio: 'Platform Administrator for StudyMate.',
   phone: '+1 (555) 123-4567',
-  role: 'admin',
+  role: 'user',
   location: 'New York, USA'
 };
 

@@ -1,5 +1,6 @@
 import { Atom, BookOpen, Calculator, Dna, Hourglass } from 'lucide-angular';
 import { MIND_MAP_MOCK_DATA } from '../mocks/learn-mind-map-mock.constant';
+import { LESSON_CONTENTS_MOCK } from '../mocks/lesson-contents-mock.clean.constant';
 
 export enum QuestionType {
   MCQ = 'MCQ',
@@ -275,7 +276,7 @@ export const SUBJECTS: Subject[] = [
     color: 'bg-teal-500',
     icon: Atom,
     progress: 45,
-    totalLessons: 8,
+    totalLessons: 6,
     description:
       'Motion, Atoms & Molecules, Cells, Plant Tissues, Photosynthesis, and Cell Division. Explore physics, chemistry, and biology fundamentals.',
     boardId: 'b1',
@@ -287,7 +288,7 @@ export const SUBJECTS: Subject[] = [
     color: 'bg-rose-500',
     icon: BookOpen,
     progress: 20,
-    totalLessons: 4,
+    totalLessons: 3,
     description:
       'Literature texts, Tenses, Voice, and Parts of Speech. Develop language skills through diverse literary and grammatical studies.',
     boardId: 'b1',
@@ -309,13 +310,13 @@ export const SUBJECTS: Subject[] = [
 
 export const RECENT_LESSONS: Lesson[] = [
   {
-    id: 'l1',
+    id: 'l4',
     subjectId: 's1',
-    title: 'The Chain Rule',
-    durationMinutes: 45,
-    isCompleted: false,
+    title: 'Real Numbers',
+    durationMinutes: 40,
+    isCompleted: true,
     lastAccessed: '2023-10-25T10:00:00Z',
-    difficulty: 'Advanced',
+    difficulty: 'Intermediate',
   },
   {
     id: 'l2',
@@ -327,10 +328,10 @@ export const RECENT_LESSONS: Lesson[] = [
     difficulty: 'Intermediate',
   },
   {
-    id: 'l3',
+    id: 'l16',
     subjectId: 's4',
-    title: 'The French Revolution',
-    durationMinutes: 50,
+    title: 'Democracy: Arguments',
+    durationMinutes: 48,
     isCompleted: false,
     lastAccessed: '2023-10-23T09:15:00Z',
     difficulty: 'Intermediate',
@@ -339,14 +340,6 @@ export const RECENT_LESSONS: Lesson[] = [
 
 export const ALL_LESSONS: Lesson[] = [
   ...RECENT_LESSONS,
-  {
-    id: 'l4',
-    subjectId: 's1',
-    title: 'Real Numbers',
-    durationMinutes: 40,
-    isCompleted: true,
-    difficulty: 'Intermediate',
-  },
   {
     id: 'l5',
     subjectId: 's1',
@@ -435,14 +428,7 @@ export const ALL_LESSONS: Lesson[] = [
     isCompleted: true,
     difficulty: 'Beginner',
   },
-  {
-    id: 'l16',
-    subjectId: 's4',
-    title: 'Democracy: Arguments',
-    durationMinutes: 48,
-    isCompleted: false,
-    difficulty: 'Intermediate',
-  },
+
   {
     id: 'l17',
     subjectId: 's4',
@@ -511,138 +497,7 @@ export const GOALS: Goal[] = [
   },
 ];
 
-export const LESSON_CONTENTS: Record<string, LessonContent> = {
-  l1: {
-    lessonId: 'l1',
-    topics: [
-      {
-        id: 't1',
-        title: 'The Chain Rule',
-        content: `
-### Understanding the Chain Rule
-
-The chain rule is a formula to compute the derivative of a composite function. That is, if $f$ and $g$ are differentiable functions, then the chain rule expresses the derivative of their composition $f \\circ g$.
-
-**Formula:**
-If $y = f(u)$ and $u = g(x)$, then:
-$\\frac{dy}{dx} = \\frac{dy}{du} \\cdot \\frac{du}{dx}$
-
-**Example:**
-Find the derivative of $y = (3x^2 + 1)^2$.
-1. Let $u = 3x^2 + 1$, so $y = u^2$.
-2. $\\frac{dy}{du} = 2u$
-3. $\\frac{du}{dx} = 6x$
-4. Multiply: $2u \\cdot 6x = 12x(3x^2 + 1)$
-        `,
-        mindMap: MIND_MAP_MOCK_DATA,
-      },
-      {
-        id: 't2',
-        title: 'Implicit Differentiation',
-        content: `
-### Implicit Differentiation
-
-In calculus, a method called **implicit differentiation** makes use of the chain rule to differentiate implicitly defined functions.
-
-To differentiate an implicit function $y(x)$, defined by an equation $R(x,y) = 0$, it is not generally possible to solve it explicitly for $y$ and then differentiate. Instead, one can totally differentiate $R(x,y) = 0$ with respect to $x$ and then solve the resulting linear equation for $dy/dx$.
-        `,
-        mindMap: MIND_MAP_MOCK_DATA,
-      },
-    ],
-    quiz: [
-      {
-        id: 'q1',
-        type: QuestionType.MCQ,
-        text: 'What is the derivative of sin(x²)?',
-        options: ['cos(x²)', '2x cos(x²)', '-sin(x²)', '2x sin(x)'],
-        correctAnswer: 1,
-        explanation:
-          'Using the chain rule: d/dx(sin(u)) = cos(u) * du/dx. Here u = x², so du/dx = 2x.',
-      },
-      {
-        id: 'q2',
-        type: QuestionType.TRUE_FALSE,
-        text: 'The derivative of a constant is always zero.',
-        options: ['True', 'False'],
-        correctAnswer: 0,
-        explanation:
-          'A constant function represents a horizontal line, so its rate of change (slope) is always zero.',
-      },
-      {
-        id: 'q3',
-        type: QuestionType.WRITTEN,
-        text: 'Explain the importance of the Chain Rule in complex differentiation.',
-        explanation:
-          'The Chain Rule allows us to break down complex composite functions into simpler ones for step-by-step differentiation.',
-      },
-      {
-        id: 'q4',
-        type: QuestionType.ORAL,
-        text: 'Briefly explain the concept of a "derivative" as if you were talking to a high schooler.',
-        explanation:
-          'A derivative is simply the instantaneous rate of change or the slope of a curve at any specific point.',
-      },
-      {
-        id: 'q5',
-        type: QuestionType.FILL_BLANKS,
-        text: 'Complete the power rule formula.',
-        blankText: 'The derivative of x^n is [blank] * x^([blank]).',
-        correctAnswer: ['n', 'n-1'],
-        explanation: 'The power rule states: d/dx(x^n) = n*x^(n-1).',
-      },
-      {
-        id: 'q6',
-        type: QuestionType.MATCHING,
-        text: 'Match the function with its derivative.',
-        pairs: [
-          { id: 'p1', left: 'sin(x)', right: 'cos(x)' },
-          { id: 'p2', left: 'ln(x)', right: '1/x' },
-          { id: 'p3', left: 'e^x', right: 'e^x' },
-          { id: 'p4', left: 'tan(x)', right: 'sec²(x)' },
-        ],
-        explanation: 'These are fundamental derivatives that must be memorized.',
-      },
-    ],
-    flashcards: [
-      { id: 'f1', front: 'Chain Rule Formula', back: "d/dx[f(g(x))] = f'(g(x)) * g'(x)" },
-      { id: 'f2', front: 'Derivative of e^x', back: 'e^x' },
-      { id: 'f3', front: 'Derivative of ln(x)', back: '1/x' },
-      { id: 'f4', front: 'Power Rule', back: 'd/dx(x^n) = n*x^(n-1)' },
-      { id: 'f5', front: 'Product Rule', back: "d/dx(uv) = u'v + uv'" },
-    ],
-    quickPrep: [
-      {
-        id: 'qa1',
-        question: 'Define the Product Rule.',
-        answerShort: "The product rule finds derivatives of products: (fg)' = f'g + fg'.",
-        answerMedium:
-          "The product rule is a calculus formula used to find the derivatives of products of two or more functions. For two functions f and g, it is expressed as: (fg)' = f'g + fg'.",
-        answerLong:
-          "The product rule is a fundamental formula in calculus used to find the derivatives of products of two or more functions. It states that for two differentiable functions f(x) and g(x), the derivative of their product is the first function times the derivative of the second, plus the second function times the derivative of the first. The formula is written as: d/dx[f(x)g(x)] = f(x)g'(x) + g(x)f'(x).",
-      },
-      {
-        id: 'qa2',
-        question: 'Explain the Chain Rule.',
-        answerShort:
-          "Chain rule differentiates composite functions: d/dx[f(g(x))] = f'(g(x)) * g'(x).",
-        answerMedium:
-          'The chain rule is used to compute the derivative of a composite function. If y = f(u) and u = g(x), then dy/dx = (dy/du) * (du/dx).',
-        answerLong:
-          'The chain rule is a rule for computing the derivative of the composition of two or more functions. In intuitive terms, if a variable z depends on y, and y depends on x, then z depends on x as well, via the intermediate variable y. The chain rule states that the instantaneous rate of change of z with respect to x is the product of the instantaneous rate of change of z with respect to y and the instantaneous rate of change of y with respect to x.',
-      },
-      {
-        id: 'qa3',
-        question: 'What is implicit differentiation?',
-        answerShort:
-          'Differentiating both sides of an equation with respect to x and solving for dy/dx.',
-        answerMedium:
-          'Implicit differentiation is a technique used when y cannot be easily isolated on one side of the equation. You differentiate both sides with respect to x, treating y as a function of x (using the chain rule), and then solve for dy/dx.',
-        answerLong:
-          'Implicit differentiation is a method in calculus for finding the derivative of a function that is not defined explicitly (y = ...). Instead, the relationship between x and y is given by an implicit equation like R(x, y) = 0. To find dy/dx, you differentiate every term of the equation with respect to x. When differentiating terms involving y, you must apply the Chain Rule, multiplying by dy/dx. Finally, you rearrange the resulting equation to solve algebraically for dy/dx.',
-      },
-    ],
-  },
-};
+export const LESSON_CONTENTS = LESSON_CONTENTS_MOCK;
 
 export const EXAM_HISTORY: ExamResult[] = [
   {

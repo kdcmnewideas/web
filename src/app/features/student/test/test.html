@@ -1,0 +1,112 @@
+<div class="max-w-5xl mx-auto animate-fade-in pb-20">
+
+  @if (status() === 'intro') {
+    <app-test-intro
+      [lessonTitle]="'Lesson Title'"
+      [(selectedCategory)]="selectedCategory"
+      (onStart)="handleLaunch()"
+    ></app-test-intro>
+  }
+{{status()}}
+  @if (status() === 'finished') {
+    <app-test-finished
+      [score]="calculateScore()"
+      (onRetry)="status.set('intro'); answers.set({}); currentQuestionIdx.set(0);"
+      (onReturn)="navigateTo('home')"
+    ></app-test-finished>
+  }
+
+  @if (status() === 'active' && activeQuestions()[currentQuestionIdx()]) {
+    <app-test-header
+      [currentIdx]="currentQuestionIdx()"
+      [totalQuestions]="activeQuestions().length"
+      [timeLeft]="timeLeft()"
+    ></app-test-header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      <div class="lg:col-span-8">
+        <div class="bg-white mb-8 p-10 border-0 shadow-2xl shadow-indigo-50 rounded-[3rem] relative overflow-hidden min-h-[500px]">
+          <div class="absolute top-0 right-0 px-8 py-3 bg-indigo-50 text-indigo-600 rounded-bl-[2rem] font-black text-[10px] uppercase tracking-[0.2em]">
+            {{ activeQuestions()[currentQuestionIdx()].type }}
+          </div>
+
+          <h3 class="text-2xl md:text-3xl font-black text-slate-900 mb-10 leading-tight pt-4">
+            {{ activeQuestions()[currentQuestionIdx()].text }}
+          </h3>
+
+          @switch (activeQuestions()[currentQuestionIdx()].type) {
+            @case(QuestionType.MCQ){
+              <app-mcq
+                [options]="activeQuestions()[currentQuestionIdx()].options || []"
+                [answer]="answers()[activeQuestions()[currentQuestionIdx()].id]"
+                (answerChange)="updateAnswer(activeQuestions()[currentQuestionIdx()].id, $event)"/>
+            }
+            @case(QuestionType.TRUE_FALSE){
+              <app-mcq
+                [options]="activeQuestions()[currentQuestionIdx()].options || []"
+                [answer]="answers()[activeQuestions()[currentQuestionIdx()].id]"
+                (answerChange)="updateAnswer(activeQuestions()[currentQuestionIdx()].id, $event)"/>
+            }
+            @case(QuestionType.WRITTEN){
+              <app-written
+                [answer]="answers()[activeQuestions()[currentQuestionIdx()].id]"
+                (answerChange)="updateAnswer(activeQuestions()[currentQuestionIdx()].id, $event)"/>
+            }
+            @case (QuestionType.ORAL) {
+              <app-oral
+                [answer]="answers()[activeQuestions()[currentQuestionIdx()].id]"
+                (toggleRecording)="isRecording.set($event)"
+                (answerChange)="updateAnswer(activeQuestions()[currentQuestionIdx()].id, $event)"
+                [recordingTime]="recordingTime()"
+                [isRecording]="isRecording()"/>
+            }
+
+            @case(QuestionType.FILL_BLANKS){
+              <app-fill-blanks
+                [blankText]="activeQuestions()[currentQuestionIdx()].text"
+                [answer]="answers()[activeQuestions()[currentQuestionIdx()].id]"
+                (answerChange)="updateAnswer(activeQuestions()[currentQuestionIdx()].id, $event)"/>
+            }
+            @case(QuestionType.MATCHING){
+              <app-matching
+                [pairs]="activeQuestions()[currentQuestionIdx()].pairs || []"
+                [answer]="answers()[activeQuestions()[currentQuestionIdx()].id]"
+                (answerChange)="updateAnswer(activeQuestions()[currentQuestionIdx()].id, $event)"/>
+            }
+          }
+        </div>
+
+        <div class="flex justify-between items-center px-4">
+          <button
+            (click)="prevQuestion()"
+            [disabled]="currentQuestionIdx() === 0"
+            class="h-14 px-8 rounded-2xl font-bold hover:bg-slate-100 flex items-center">
+            <lucide-icon [img]="icons.ArrowLeft" class="w-5 h-5 mr-3"></lucide-icon> Back
+          </button>
+
+          <button
+            (click)="nextQuestion()"
+            [class.bg-emerald-600]="currentQuestionIdx() === activeQuestions().length - 1"
+            class="h-14 px-12 rounded-2xl bg-indigo-600 text-white font-black shadow-lg flex items-center">
+            {{ currentQuestionIdx() < activeQuestions().length - 1 ? 'Continue' : 'Complete Test' }}
+            <lucide-icon [img]="icons.ChevronRight" class="w-5 h-5 ml-3"></lucide-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="lg:col-span-4 space-y-6">
+        <div class="bg-white p-8 border border-slate-100 rounded-[2.5rem]">
+          <h4 class="text-sm font-black text-slate-400 uppercase tracking-widest mb-6">
+            Mode: {{ selectedCategory() }}
+          </h4>
+          <ul class="space-y-4">
+            <li class="flex gap-3 text-sm text-slate-600 font-medium">
+              <div class="w-1.5 h-1.5 rounded-full bg-indigo-600 mt-1.5 shrink-0"></div>
+              Question format is locked.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  }
+</div>

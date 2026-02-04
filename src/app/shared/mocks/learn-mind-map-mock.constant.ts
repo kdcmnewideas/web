@@ -2,244 +2,328 @@ import { MindMapNode } from '../../features/student/learn/learn-mind-map/learn-m
 
 export const MIND_MAP_MOCK_DATA: MindMapNode = {
   id: 'root',
-  label: 'Chain Rule in Calculus',
+  label: 'AP Class 9 Comprehensive Curriculum',
   children: [
     {
-      id: 'c1',
-      label: 'Fundamental Concepts',
+      id: 'maths',
+      label: 'Mathematics',
       children: [
-        { id: 'c1-1', label: 'Definition: dy/dx = (dy/du) × (du/dx)' },
-        { id: 'c1-2', label: 'Composite Functions: f(g(x))' },
-        { id: 'c1-3', label: 'Inner & Outer Functions' },
         {
-          id: 'c1-4',
-          label: 'Core Principle',
+          id: 'm-c1',
+          label: 'Real Numbers',
           children: [
-            { id: 'c1-4-1', label: 'Differentiate Outer Function' },
-            { id: 'c1-4-2', label: 'Multiply by Inner Derivative' },
-            { id: 'c1-4-3', label: 'Keep Inner Function Unchanged' },
+            {
+              id: 'm-c1-t1',
+              label: 'Number Systems',
+              children: [
+                {
+                  id: 'm-c1-t1-st1',
+                  label: 'Irrational Numbers',
+                  children: [{ id: 'm-c1-t1-st1-con1', label: 'Representing √n on Number Line' }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'm-c2',
+          label: 'Polynomials and Factorisation',
+          children: [
+            {
+              id: 'm-c2-t1',
+              label: 'Factorisation of Polynomials',
+              children: [
+                {
+                  id: 'm-c2-t1-st1',
+                  label: 'Theorems',
+                  children: [{ id: 'm-c2-t1-st1-con1', label: 'Remainder and Factor Theorem' }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'm-c3',
+          label: 'Triangles',
+          children: [
+            {
+              id: 'm-c3-t1',
+              label: 'Congruency',
+              children: [
+                {
+                  id: 'm-c3-t1-st1',
+                  label: 'Congruency Rules',
+                  children: [{ id: 'm-c3-t1-st1-con1', label: 'SSS, SAS, and RHS Criteria' }],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'm-c4',
+          label: 'Quadrilaterals',
+          children: [
+            {
+              id: 'm-c4-t1',
+              label: 'Properties of Quadrilaterals',
+              children: [
+                {
+                  id: 'm-c4-t1-st1',
+                  label: 'Parallelograms',
+                  children: [
+                    { id: 'm-c4-t1-st1-con1', label: 'Diagonal Properties of Parallelograms' },
+                  ],
+                },
+              ],
+            },
           ],
         },
       ],
     },
     {
-      id: 'c2',
-      label: 'Basic Applications',
+      id: 'science',
+      label: 'Science',
       children: [
         {
-          id: 'c2-1',
-          label: 'Polynomial Chains',
+          id: 'sci-c1',
+          label: 'Motion (Physics)',
           children: [
-            { id: 'c2-1-1', label: 'd/dx[(3x+2)⁵]' },
-            { id: 'c2-1-2', label: 'd/dx[(x²+1)³]' },
-            { id: 'c2-1-3', label: 'd/dx[(2x-5)⁴]' },
+            {
+              id: 'sci-c1-t1',
+              label: 'Describing Motion',
+              children: [
+                {
+                  id: 'sci-c1-t1-st1',
+                  label: 'Equations of Motion',
+                  children: [{ id: 'sci-c1-t1-st1-con1', label: 'Derivation by Graphical Method' }],
+                },
+              ],
+            },
           ],
         },
         {
-          id: 'c2-2',
-          label: 'Trigonometric Chains',
+          id: 'sci-c2',
+          label: 'Atoms and Molecules (Chemistry)',
           children: [
-            { id: 'c2-2-1', label: 'd/dx[sin(3x)]' },
-            { id: 'c2-2-2', label: 'd/dx[cos(x²)]' },
-            { id: 'c2-2-3', label: 'd/dx[tan(2x+1)]' },
+            {
+              id: 'sci-c2-t1',
+              label: 'Laws of Chemical Combination',
+              children: [
+                {
+                  id: 'sci-c2-t1-st1',
+                  label: 'Atomic Mass',
+                  children: [
+                    { id: 'sci-c2-t1-st1-con1', label: 'Concept of Mole and Avogadro Number' },
+                  ],
+                },
+              ],
+            },
           ],
         },
         {
-          id: 'c2-3',
-          label: 'Exponential & Logarithmic',
+          id: 'sci-c3',
+          label: 'The Fundamental Unit of Life (Biology)',
           children: [
-            { id: 'c2-3-1', label: 'd/dx[e^(3x)]' },
-            { id: 'c2-3-2', label: 'd/dx[ln(x²)]' },
-            { id: 'c2-3-3', label: 'd/dx[a^(2x)]' },
+            {
+              id: 'sci-c3-t1',
+              label: 'Cell Reproduction',
+              children: [
+                {
+                  id: 'sci-c3-t1-st1',
+                  label: 'Cell Division',
+                  children: [
+                    { id: 'sci-c3-t1-st1-con1', label: 'Mitosis (Equational Division)' },
+                    { id: 'sci-c3-t1-st1-con2', label: 'Meiosis (Reduction Division)' },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'sci-c4',
+          label: 'Plant Tissues (Biology)',
+          children: [
+            {
+              id: 'sci-c4-t1',
+              label: 'Metabolic Processes',
+              children: [
+                {
+                  id: 'sci-c4-t1-st1',
+                  label: 'Photosynthesis',
+                  children: [
+                    { id: 'sci-c4-t1-st1-con1', label: 'Structure of Chloroplast and Chlorophyll' },
+                    {
+                      id: 'sci-c4-t1-st1-con2',
+                      label: 'Light-dependent and Light-independent Reactions',
+                    },
+                  ],
+                },
+              ],
+            },
           ],
         },
       ],
     },
     {
-      id: 'c3',
-      label: 'Advanced Techniques',
+      id: 'social',
+      label: 'Social Studies',
       children: [
         {
-          id: 'c3-1',
-          label: 'Multiple Chains',
+          id: 'soc-c1',
+          label: 'Our Earth',
           children: [
-            { id: 'c3-1-1', label: 'Three or more nested functions' },
-            { id: 'c3-1-2', label: 'Extended chain rule formula' },
-            { id: 'c3-1-3', label: 'd/dx[sin(cos(x))]' },
+            {
+              id: 'soc-c1-t1',
+              label: 'Evolution of Earth',
+              children: [
+                {
+                  id: 'soc-c1-t1-st1',
+                  label: 'Grid System',
+                  children: [{ id: 'soc-c1-t1-st1-con1', label: 'Latitudes and Longitudes' }],
+                },
+              ],
+            },
           ],
         },
         {
-          id: 'c3-2',
-          label: 'Combined with Product Rule',
+          id: 'soc-c2',
+          label: 'The French Revolution',
           children: [
-            { id: 'c3-2-1', label: 'd/dx[x × sin(2x)]' },
-            { id: 'c3-2-2', label: 'd/dx[(x+1) × (2x)³]' },
+            {
+              id: 'soc-c2-t1',
+              label: 'Social Structure',
+              children: [
+                {
+                  id: 'soc-c2-t1-st1',
+                  label: 'The Three Estates',
+                  children: [{ id: 'soc-c2-t1-st1-con1', label: 'Causes of the Outbreak' }],
+                },
+              ],
+            },
           ],
         },
         {
-          id: 'c3-3',
-          label: 'Combined with Quotient Rule',
+          id: 'soc-c3',
+          label: 'What is Democracy?',
           children: [
-            { id: 'c3-3-1', label: 'd/dx[sin(x)/x²]' },
-            { id: 'c3-3-2', label: 'd/dx[(x+1)²/(2x-1)³]' },
+            {
+              id: 'soc-c3-t1',
+              label: 'Arguments for Democracy',
+              children: [
+                {
+                  id: 'soc-c3-t1-st1',
+                  label: 'Democratic Decision Making',
+                  children: [
+                    { id: 'soc-c3-t1-st1-con1', label: 'Political Equality and Franchise' },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'soc-c4',
+          label: 'Poverty as a Challenge',
+          children: [
+            {
+              id: 'soc-c4-t1',
+              label: 'Vulnerability and Poverty Line',
+              children: [
+                {
+                  id: 'soc-c4-t1-st1',
+                  label: 'Anti-Poverty Measures',
+                  children: [
+                    {
+                      id: 'soc-c4-t1-st1-con1',
+                      label: 'Mahatma Gandhi National Rural Employment Guarantee Act',
+                    },
+                  ],
+                },
+              ],
+            },
           ],
         },
       ],
     },
     {
-      id: 'c4',
-      label: 'Related Derivative Rules',
+      id: 'english',
+      label: 'English',
       children: [
         {
-          id: 'c4-1',
-          label: 'Power Rule',
+          id: 'eng-c1',
+          label: 'The Fun They Had',
           children: [
-            { id: 'c4-1-1', label: 'd/dx[xⁿ] = n × x^(n-1)' },
-            { id: 'c4-1-2', label: 'Foundation for chain rule' },
+            {
+              id: 'eng-c1-t1',
+              label: 'Future Schools',
+              children: [
+                {
+                  id: 'eng-c1-t1-st1',
+                  label: 'Technology in Education',
+                  children: [
+                    { id: 'eng-c1-t1-st1-con1', label: 'Mechanical Teacher vs Human Teacher' },
+                  ],
+                },
+              ],
+            },
           ],
         },
         {
-          id: 'c4-2',
-          label: 'Product Rule',
+          id: 'eng-c2',
+          label: 'Tenses (Grammar)',
           children: [
-            { id: 'c4-2-1', label: "d/dx[f×g] = f'g + fg'" },
-            { id: 'c4-2-2', label: 'Often combined with chain' },
+            {
+              id: 'eng-c2-t1',
+              label: 'Verb Forms',
+              children: [
+                {
+                  id: 'eng-c2-t1-st1',
+                  label: 'Present & Past Perfect',
+                  children: [
+                    { id: 'eng-c2-t1-st1-con1', label: 'Sequence of Tenses in Complex Sentences' },
+                  ],
+                },
+              ],
+            },
           ],
         },
         {
-          id: 'c4-3',
-          label: 'Quotient Rule',
+          id: 'eng-c3',
+          label: 'Voice (Grammar)',
           children: [
-            { id: 'c4-3-1', label: "d/dx[f/g] = (f'g - fg')/g²" },
-            { id: 'c4-3-2', label: 'Special case of product rule' },
-          ],
-        },
-      ],
-    },
-    {
-      id: 'c5',
-      label: 'Common Function Derivatives',
-      children: [
-        {
-          id: 'c5-1',
-          label: 'Trigonometric',
-          children: [
-            { id: 'c5-1-1', label: "d/dx[sin(u)] = cos(u) × u'" },
-            { id: 'c5-1-2', label: "d/dx[cos(u)] = -sin(u) × u'" },
-            { id: 'c5-1-3', label: "d/dx[tan(u)] = sec²(u) × u'" },
+            {
+              id: 'eng-c3-t1',
+              label: 'Active and Passive Transformation',
+              children: [
+                {
+                  id: 'eng-c3-t1-st1',
+                  label: 'Transitive Verbs',
+                  children: [
+                    { id: 'eng-c3-t1-st1-con1', label: 'Passive Voice in Imperative Sentences' },
+                  ],
+                },
+              ],
+            },
           ],
         },
         {
-          id: 'c5-2',
-          label: 'Exponential & Log',
+          id: 'eng-c4',
+          label: 'Parts of Speech (Grammar)',
           children: [
-            { id: 'c5-2-1', label: "d/dx[e^u] = e^u × u'" },
-            { id: 'c5-2-2', label: "d/dx[ln(u)] = (1/u) × u'" },
-            { id: 'c5-2-3', label: "d/dx[a^u] = a^u × ln(a) × u'" },
-          ],
-        },
-        {
-          id: 'c5-3',
-          label: 'Power Functions',
-          children: [
-            { id: 'c5-3-1', label: "d/dx[u^n] = n × u^(n-1) × u'" },
-            { id: 'c5-3-2', label: "d/dx[√u] = (1/(2√u)) × u'" },
-          ],
-        },
-      ],
-    },
-    {
-      id: 'c6',
-      label: 'Problem Solving Strategy',
-      children: [
-        {
-          id: 'c6-1',
-          label: 'Step 1: Identify Structure',
-          children: [
-            { id: 'c6-1-1', label: 'Recognize composite function' },
-            { id: 'c6-1-2', label: 'Identify inner function u' },
-            { id: 'c6-1-3', label: 'Identify outer function f(u)' },
-          ],
-        },
-        {
-          id: 'c6-2',
-          label: 'Step 2: Apply Chain Rule',
-          children: [
-            { id: 'c6-2-1', label: 'Find du/dx (derivative of inner)' },
-            { id: 'c6-2-2', label: 'Find df/du (derivative of outer)' },
-            { id: 'c6-2-3', label: 'Multiply: df/dx = (df/du) × (du/dx)' },
-          ],
-        },
-        {
-          id: 'c6-3',
-          label: 'Step 3: Simplify',
-          children: [
-            { id: 'c6-3-1', label: 'Substitute back original function' },
-            { id: 'c6-3-2', label: 'Factor and simplify' },
-            { id: 'c6-3-3', label: 'Final answer' },
-          ],
-        },
-      ],
-    },
-    {
-      id: 'c7',
-      label: 'Real-World Applications',
-      children: [
-        {
-          id: 'c7-1',
-          label: 'Physics & Engineering',
-          children: [
-            { id: 'c7-1-1', label: 'Velocity and Acceleration' },
-            { id: 'c7-1-2', label: 'Wave Propagation' },
-            { id: 'c7-1-3', label: 'Heat Transfer' },
-          ],
-        },
-        {
-          id: 'c7-2',
-          label: 'Economics & Business',
-          children: [
-            { id: 'c7-2-1', label: 'Rate of Change Analysis' },
-            { id: 'c7-2-2', label: 'Elasticity of Demand' },
-            { id: 'c7-2-3', label: 'Growth Models' },
-          ],
-        },
-        {
-          id: 'c7-3',
-          label: 'Biology & Medicine',
-          children: [
-            { id: 'c7-3-1', label: 'Drug Concentration' },
-            { id: 'c7-3-2', label: 'Population Growth' },
-            { id: 'c7-3-3', label: 'Disease Spread' },
-          ],
-        },
-      ],
-    },
-    {
-      id: 'c8',
-      label: 'Common Mistakes',
-      children: [
-        {
-          id: 'c8-1',
-          label: 'Forgetting Inner Derivative',
-          children: [
-            { id: 'c8-1-1', label: 'Wrong: d/dx[sin(2x)] = cos(2x)' },
-            { id: 'c8-1-2', label: 'Right: d/dx[sin(2x)] = 2cos(2x)' },
-          ],
-        },
-        {
-          id: 'c8-2',
-          label: 'Incorrect Function Identification',
-          children: [
-            { id: 'c8-2-1', label: 'Confusing inner and outer' },
-            { id: 'c8-2-2', label: 'Missing nested levels' },
-          ],
-        },
-        {
-          id: 'c8-3',
-          label: 'Algebraic Errors',
-          children: [
-            { id: 'c8-3-1', label: 'Sign errors' },
-            { id: 'c8-3-2', label: 'Simplification mistakes' },
+            {
+              id: 'eng-c4-t1',
+              label: 'Word Classes',
+              children: [
+                {
+                  id: 'eng-c4-t1-st1',
+                  label: 'Conjunctions and Prepositions',
+                  children: [
+                    { id: 'eng-c4-t1-st1-con1', label: 'Usage of Correlative Conjunctions' },
+                  ],
+                },
+              ],
+            },
           ],
         },
       ],

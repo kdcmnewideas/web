@@ -73,6 +73,8 @@ export class Learn {
   numSpeakers = signal<1 | 2 | 3 | 4>(1);
   isPlaying = signal(false);
   playbackSpeed = signal(1);
+  data = signal<any>('');
+  readDataLoad = signal(false);
 
   lesson = computed(() => ALL_LESSONS.find((l) => l.id === this.lessonId()));
   subject = computed(() => SUBJECTS.find((s) => s.id === this.lesson()?.subjectId));
@@ -136,12 +138,14 @@ export class Learn {
   }
 
     getData(topic: Topic){
+      this.readDataLoad.set(true);
     const data: IAiWrapper = {
       subject: this.subject()?.title || '',
       topic: topic?.title || '',
     }
     this.aiWrapperService.getData(data).subscribe((data) => {
-      console.log(data);
+      this.data.set(data);
+      this.readDataLoad.set(false);
     });
   }
 

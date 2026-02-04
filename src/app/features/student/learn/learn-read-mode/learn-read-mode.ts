@@ -19,8 +19,9 @@ export class LearnReadMode {
   topic = input.required<Topic>();
   readAloud = output<void>();
   subject = input.required<string>();
+  content = input.required<any>();
 
-  dataTypes = ['analogy', 'deep_dive', 'mechanism']
+  dataTypes = ['analogy', 'deep_dive', 'mechanism'];
   currentDataIndex = signal(0);
 
   icons = {
@@ -30,8 +31,20 @@ export class LearnReadMode {
 
   // Computed signal to parse content whenever topic changes
   parsedBlocks = computed(() => {
-    const content = this.topic()?.content || '';
-    return content.split('\n').map((line): ContentBlock => {
+    return this.modifyingContnet(this.content()?.[this.dataTypes[this.currentDataIndex()]]);
+  });
+
+  onReadAloudClick() {
+    this.readAloud.emit();
+  }
+
+  handleRegenerateClick() {
+    this.currentDataIndex.set((this.currentDataIndex() + 1) % this.dataTypes.length);
+  }
+
+  modifyingContnet(data: string) {
+    const content = data || '';
+    return content.split('\n').map((line: string): ContentBlock => {
       const trimmed = line.trim();
 
       if (trimmed.startsWith('###')) {
@@ -55,13 +68,5 @@ export class LearnReadMode {
 
       return { type: 'p', parts };
     });
-  });
-
-  onReadAloudClick() {
-    this.readAloud.emit();
-  }
-
-  changeText(){
-    this.currentDataIndex.set((this.currentDataIndex() + 1) % this.dataTypes.length);
   }
 }

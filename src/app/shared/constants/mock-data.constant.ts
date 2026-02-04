@@ -223,19 +223,19 @@ export const INITIAL_KEYS: APIKeyData[] = [
 
 export const CURRENT_USER: User = {
   id: 'u1',
-  name: 'Alex Johnson',
-  email: 'admin@studymate.com',
+  name: 'Divya',
+  email: 'divya@ailelearning.com',
   streakDays: 12,
   totalPoints: 1450,
   goalsCompleted: 8,
-  avatarUrl: 'https://i.pravatar.cc/150?u=u1',
+  avatarUrl: 'https://i.pravatar.cc/150?u=u3',
   rank: 42,
   age: 19,
   grade: 'User',
-  bio: 'Platform Administrator for StudyMate.',
-  phone: '+1 (555) 123-4567',
+  bio: 'I am a passionate learner, always eager to expand my knowledge and skills.',
+  phone: '+91-9123456789',
   role: 'user',
-  location: 'New York, USA'
+  location: 'Bangalore, India'
 };
 
 export const BOARDS: Board[] = [
@@ -580,11 +580,11 @@ export const PERFORMANCE_STATS: PerformanceStats = {
 
 export const LEADERBOARD_DATA: LeaderboardEntry[] = [
   { id: 'u2', rank: 1, name: 'Sarah Chen', points: 2450, change: 'same', location: 'New York, USA', avatarUrl: 'https://i.pravatar.cc/150?u=u2' },
-  { id: 'u3', rank: 2, name: 'Michael Ross', points: 2320, change: 'up', location: 'London, UK', avatarUrl: 'https://i.pravatar.cc/150?u=u3' },
+  { id: 'u3', rank: 2, name: 'Michael Ross', points: 2320, change: 'up', location: 'London, UK', avatarUrl: 'https://i.pravatar.cc/150?u=u1' },
   { id: 'u4', rank: 3, name: 'Priya Patel', points: 2180, change: 'down', location: 'Mumbai, India', avatarUrl: 'https://i.pravatar.cc/150?u=u4' },
   { id: 'u5', rank: 4, name: 'David Kim', points: 1950, change: 'up', location: 'Seoul, SK', avatarUrl: 'https://i.pravatar.cc/150?u=u5' },
   { id: 'u6', rank: 5, name: 'Emma Wilson', points: 1890, change: 'same', location: 'Sydney, AU', avatarUrl: 'https://i.pravatar.cc/150?u=u6' },
-  { id: 'u1', rank: 42, name: 'Alex Johnson', points: 1450, change: 'up', location: 'Toronto, CA', avatarUrl: 'https://i.pravatar.cc/150?u=u1' },
+  { id: 'u1', rank: 42, name: 'Divya', points: 1450, change: 'up', location: 'Bangalore, India', avatarUrl: 'https://i.pravatar.cc/150?u=u3' },
   { id: 'u7', rank: 43, name: 'Lucas Silva', points: 1445, change: 'down', location: 'Rio, BR', avatarUrl: 'https://i.pravatar.cc/150?u=u7' },
 ];
 

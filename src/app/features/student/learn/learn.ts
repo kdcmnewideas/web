@@ -6,7 +6,9 @@ import {
   SUBJECTS,
   LESSON_CONTENTS,
   Topic,
+  MindMapNode,
 } from '../../../shared/constants/mock-data.constant';
+import { MIND_MAP_MOCK_DATA } from '../../../shared/mocks/learn-mind-map-mock.constant';
 import {
   ArrowLeft,
   ChevronLeft,
@@ -30,6 +32,7 @@ import {
   IAiWrapper,
   IImageDTO,
 } from '../../../services/ai-wrapper/ai-wrapper.service';
+import { IModuleRequest } from '../../../core/interface/ai-wrapper.interface';
 
 @Component({
   selector: 'app-learn',
@@ -51,6 +54,11 @@ import {
 export class Learn {
   lessonId = signal('');
 
+  // Cache of generated mind-maps keyed by topic id
+  mindMaps = signal<Record<string, MindMapNode | undefined>>({});
+  // Loading state for mind-map generation per topic
+  mindMapLoading = signal<Record<string, boolean>>({});
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -62,8 +70,28 @@ export class Learn {
     });
 
     effect(() => {
-      this.getData(this.topics[this.activeTopicIndex()]);
-      this.getImage(this.topics[this.activeTopicIndex()]);
+      this.getData(this.currentTopic());
+      this.getImage(this.currentTopic());
+    });
+
+    // When user switches to mindmap view, ensure we have generated a mindmap for the current topic
+    effect(() => {
+      if (this.viewMode() === 'mindmap') {
+        const topic = this.currentTopic();
+        if (topic && !this.mindMaps()[topic.id]) {
+          this.generateMindMap(topic);
+        }
+      }
+    });
+
+    // When user switches to mindmap view, ensure we have generated a mindmap for the current topic
+    effect(() => {
+      if (this.viewMode() === 'mindmap') {
+        const topic = this.currentTopic();
+        if (topic && !this.mindMaps()[topic.id]) {
+          this.generateMindMap(topic);
+        }
+      }
     });
   }
 
@@ -85,7 +113,20 @@ export class Learn {
   subject = computed(() => SUBJECTS.find((s) => s.id === this.lesson()?.subjectId));
   content = computed(() => {
     const id = this.lessonId();
-    return id && LESSON_CONTENTS[id] ? LESSON_CONTENTS[id] : LESSON_CONTENTS['l1'];
+    if (id && LESSON_CONTENTS[id]) {
+      return LESSON_CONTENTS[id];
+    }
+    // Fallback to first available lesson content for consistency
+    const firstLessonId = Object.keys(LESSON_CONTENTS)[0];
+    return (
+      LESSON_CONTENTS[firstLessonId] || {
+        lessonId: '',
+        topics: [],
+        quiz: [],
+        flashcards: [],
+        quickPrep: [],
+      }
+    );
   });
 
   topics = computed(() => this.content().topics || []);
@@ -96,6 +137,20 @@ export class Learn {
     if (!qs || qs.length === 0) return {} as Question;
     const idx = this.activeTopicIndex() % qs.length;
     return (qs[idx] || qs[0]) as Question;
+  });
+
+  // Computed mind map to display for current topic (topic-specific fallback)
+  displayedMindMap = computed(() => {
+    const t = this.currentTopic();
+    if (!t) return undefined as unknown as MindMapNode;
+    const cached = this.mindMaps()[t.id];
+    if (cached) return cached;
+    if (t.mindMap && t.mindMap.id && t.mindMap.id !== 'root') return t.mindMap;
+    return {
+      id: t.id,
+      label: t.title,
+      children: [{ id: `${t.id}-c1`, label: t.content || t.title }],
+    } as MindMapNode;
   });
 
   icons = {
@@ -176,6 +231,49 @@ export class Learn {
     };
     this.aiWrapperService.getImage(data).subscribe((data) => {
       this.readImage.set(data);
+    });
+  }
+
+  generateMindMap(topic: Topic) {
+    const req: IModuleRequest = {
+      subject: this.subject()?.title || '',
+      topic: topic?.title || '',
+    };
+
+    // mark loading for this topic
+    this.mindMapLoading.set({ ...this.mindMapLoading(), [topic.id]: true });
+
+    this.aiWrapperService.getMindMap(req).subscribe({
+      next: (res: any) => {
+        // stop loading
+        this.mindMapLoading.set({ ...this.mindMapLoading(), [topic.id]: false });
+        // use API result if valid, otherwise create a small topic-specific node
+        const mm = res as MindMapNode | undefined;
+        const node: MindMapNode =
+          mm && mm.id
+            ? mm
+            : {
+                id: topic.id,
+                label: topic.title,
+                children: [{ id: `${topic.id}-c1`, label: topic.content || topic.title }],
+              };
+        this.mindMaps.set({ ...this.mindMaps(), [topic.id]: node });
+      },
+      error: (err: any) => {
+        console.error('getMindMap API error', err);
+        // stop loading
+        this.mindMapLoading.set({ ...this.mindMapLoading(), [topic.id]: false });
+        // fallback only on error: prefer topic-specific mindMap if present and not the global root mock
+        const fallback =
+          topic.mindMap && topic.mindMap.id && topic.mindMap.id !== 'root'
+            ? topic.mindMap
+            : {
+                id: topic.id,
+                label: topic.title,
+                children: [{ id: `${topic.id}-c1`, label: topic.content || topic.title }],
+              };
+        this.mindMaps.set({ ...this.mindMaps(), [topic.id]: fallback });
+      },
     });
   }
 }

@@ -18,8 +18,8 @@ export const MIND_MAP_MOCK_DATA: MindMapNode = {
               children: [
                 {
                   id: 'm-c1-t1-st1',
-                  label: 'Irrational Numbers',
-                  children: [{ id: 'm-c1-t1-st1-con1', label: 'Representing √n on Number Line' }],
+                  label: 'Rational and Irrational Numbers',
+                  children: [{ id: 'm-c1-t1-st1-con1', label: 'Properties and Representation' }],
                 },
               ],
             },
@@ -27,16 +27,16 @@ export const MIND_MAP_MOCK_DATA: MindMapNode = {
         },
         {
           id: 'm-c2',
-          label: 'Polynomials and Factorisation',
+          label: 'Triangles and Congruency',
           children: [
             {
               id: 'm-c2-t1',
-              label: 'Factorisation of Polynomials',
+              label: 'Triangle Congruency',
               children: [
                 {
                   id: 'm-c2-t1-st1',
-                  label: 'Theorems',
-                  children: [{ id: 'm-c2-t1-st1-con1', label: 'Remainder and Factor Theorem' }],
+                  label: 'Congruency Criteria',
+                  children: [{ id: 'm-c2-t1-st1-con1', label: 'SSS, SAS, ASA, AAS, and RHS' }],
                 },
               ],
             },
@@ -44,34 +44,17 @@ export const MIND_MAP_MOCK_DATA: MindMapNode = {
         },
         {
           id: 'm-c3',
-          label: 'Triangles',
-          children: [
-            {
-              id: 'm-c3-t1',
-              label: 'Congruency',
-              children: [
-                {
-                  id: 'm-c3-t1-st1',
-                  label: 'Congruency Rules',
-                  children: [{ id: 'm-c3-t1-st1-con1', label: 'SSS, SAS, and RHS Criteria' }],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          id: 'm-c4',
           label: 'Quadrilaterals',
           children: [
             {
-              id: 'm-c4-t1',
+              id: 'm-c3-t1',
               label: 'Properties of Quadrilaterals',
               children: [
                 {
-                  id: 'm-c4-t1-st1',
-                  label: 'Parallelograms',
+                  id: 'm-c3-t1-st1',
+                  label: 'Parallelograms and Theorems',
                   children: [
-                    { id: 'm-c4-t1-st1-con1', label: 'Diagonal Properties of Parallelograms' },
+                    { id: 'm-c3-t1-st1-con1', label: 'Diagonal Properties and Relationships' },
                   ],
                 },
               ],
@@ -86,7 +69,7 @@ export const MIND_MAP_MOCK_DATA: MindMapNode = {
       children: [
         {
           id: 'sci-c1',
-          label: 'Motion (Physics)',
+          label: 'Physics: Motion',
           children: [
             {
               id: 'sci-c1-t1',
@@ -95,7 +78,7 @@ export const MIND_MAP_MOCK_DATA: MindMapNode = {
                 {
                   id: 'sci-c1-t1-st1',
                   label: 'Equations of Motion',
-                  children: [{ id: 'sci-c1-t1-st1-con1', label: 'Derivation by Graphical Method' }],
+                  children: [{ id: 'sci-c1-t1-st1-con1', label: 'Derivation and Applications' }],
                 },
               ],
             },
@@ -103,17 +86,17 @@ export const MIND_MAP_MOCK_DATA: MindMapNode = {
         },
         {
           id: 'sci-c2',
-          label: 'Atoms and Molecules (Chemistry)',
+          label: 'Chemistry: Atoms and Molecules',
           children: [
             {
               id: 'sci-c2-t1',
-              label: 'Laws of Chemical Combination',
+              label: 'Atomic Structure',
               children: [
                 {
                   id: 'sci-c2-t1-st1',
-                  label: 'Atomic Mass',
+                  label: 'Mole Concept',
                   children: [
-                    { id: 'sci-c2-t1-st1-con1', label: 'Concept of Mole and Avogadro Number' },
+                    { id: 'sci-c2-t1-st1-con1', label: "Avogadro's Number and Applications" },
                   ],
                 },
               ],
@@ -122,18 +105,18 @@ export const MIND_MAP_MOCK_DATA: MindMapNode = {
         },
         {
           id: 'sci-c3',
-          label: 'The Fundamental Unit of Life (Biology)',
+          label: 'Biology: Cells and Life',
           children: [
             {
               id: 'sci-c3-t1',
-              label: 'Cell Reproduction',
+              label: 'Cell Structure and Division',
               children: [
                 {
                   id: 'sci-c3-t1-st1',
-                  label: 'Cell Division',
+                  label: 'Cell Cycle and Division Processes',
                   children: [
-                    { id: 'sci-c3-t1-st1-con1', label: 'Mitosis (Equational Division)' },
-                    { id: 'sci-c3-t1-st1-con2', label: 'Meiosis (Reduction Division)' },
+                    { id: 'sci-c3-t1-st1-con1', label: 'Mitosis and Meiosis' },
+                    { id: 'sci-c3-t1-st1-con2', label: 'Organelles and Their Functions' },
                   ],
                 },
               ],
@@ -142,21 +125,18 @@ export const MIND_MAP_MOCK_DATA: MindMapNode = {
         },
         {
           id: 'sci-c4',
-          label: 'Plant Tissues (Biology)',
+          label: 'Biology: Photosynthesis',
           children: [
             {
               id: 'sci-c4-t1',
-              label: 'Metabolic Processes',
+              label: 'Metabolic Processes in Plants',
               children: [
                 {
                   id: 'sci-c4-t1-st1',
                   label: 'Photosynthesis',
                   children: [
-                    { id: 'sci-c4-t1-st1-con1', label: 'Structure of Chloroplast and Chlorophyll' },
-                    {
-                      id: 'sci-c4-t1-st1-con2',
-                      label: 'Light-dependent and Light-independent Reactions',
-                    },
+                    { id: 'sci-c4-t1-st1-con1', label: 'Light and Dark Reactions' },
+                    { id: 'sci-c4-t1-st1-con2', label: 'Chloroplast Structure and Pigments' },
                   ],
                 },
               ],
@@ -171,16 +151,16 @@ export const MIND_MAP_MOCK_DATA: MindMapNode = {
       children: [
         {
           id: 'soc-c1',
-          label: 'Our Earth',
+          label: 'Our Earth: Geography',
           children: [
             {
               id: 'soc-c1-t1',
-              label: 'Evolution of Earth',
+              label: 'Location and Coordinates',
               children: [
                 {
                   id: 'soc-c1-t1-st1',
                   label: 'Grid System',
-                  children: [{ id: 'soc-c1-t1-st1-con1', label: 'Latitudes and Longitudes' }],
+                  children: [{ id: 'soc-c1-t1-st1-con1', label: 'Latitude and Longitude' }],
                 },
               ],
             },
@@ -188,34 +168,17 @@ export const MIND_MAP_MOCK_DATA: MindMapNode = {
         },
         {
           id: 'soc-c2',
-          label: 'The French Revolution',
+          label: 'Democratic Governance',
           children: [
             {
               id: 'soc-c2-t1',
-              label: 'Social Structure',
+              label: 'What is Democracy?',
               children: [
                 {
                   id: 'soc-c2-t1-st1',
-                  label: 'The Three Estates',
-                  children: [{ id: 'soc-c2-t1-st1-con1', label: 'Causes of the Outbreak' }],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          id: 'soc-c3',
-          label: 'What is Democracy?',
-          children: [
-            {
-              id: 'soc-c3-t1',
-              label: 'Arguments for Democracy',
-              children: [
-                {
-                  id: 'soc-c3-t1-st1',
-                  label: 'Democratic Decision Making',
+                  label: 'Democratic Principles and Equality',
                   children: [
-                    { id: 'soc-c3-t1-st1-con1', label: 'Political Equality and Franchise' },
+                    { id: 'soc-c2-t1-st1-con1', label: 'Political Equality and Decision Making' },
                   ],
                 },
               ],
@@ -223,20 +186,20 @@ export const MIND_MAP_MOCK_DATA: MindMapNode = {
           ],
         },
         {
-          id: 'soc-c4',
-          label: 'Poverty as a Challenge',
+          id: 'soc-c3',
+          label: 'Poverty and Social Programs',
           children: [
             {
-              id: 'soc-c4-t1',
-              label: 'Vulnerability and Poverty Line',
+              id: 'soc-c3-t1',
+              label: 'Poverty as a Challenge',
               children: [
                 {
-                  id: 'soc-c4-t1-st1',
+                  id: 'soc-c3-t1-st1',
                   label: 'Anti-Poverty Measures',
                   children: [
                     {
-                      id: 'soc-c4-t1-st1-con1',
-                      label: 'Mahatma Gandhi National Rural Employment Guarantee Act',
+                      id: 'soc-c3-t1-st1-con1',
+                      label: 'MGNREGA and Government Initiatives',
                     },
                   ],
                 },

@@ -1,6 +1,6 @@
 import { Atom, BookOpen, Calculator, Dna, Hourglass } from 'lucide-angular';
 import { MIND_MAP_MOCK_DATA } from '../mocks/learn-mind-map-mock.constant';
-import { LESSON_CONTENTS_MOCK } from '../mocks/lesson-contents-mock.constant';
+import { LESSON_CONTENTS_MOCK } from '../mocks/lesson-contents-mock.clean.constant';
 
 export enum QuestionType {
   MCQ = 'MCQ',
@@ -276,7 +276,7 @@ export const SUBJECTS: Subject[] = [
     color: 'bg-teal-500',
     icon: Atom,
     progress: 45,
-    totalLessons: 8,
+    totalLessons: 6,
     description:
       'Motion, Atoms & Molecules, Cells, Plant Tissues, Photosynthesis, and Cell Division. Explore physics, chemistry, and biology fundamentals.',
     boardId: 'b1',
@@ -288,7 +288,7 @@ export const SUBJECTS: Subject[] = [
     color: 'bg-rose-500',
     icon: BookOpen,
     progress: 20,
-    totalLessons: 4,
+    totalLessons: 3,
     description:
       'Literature texts, Tenses, Voice, and Parts of Speech. Develop language skills through diverse literary and grammatical studies.',
     boardId: 'b1',
@@ -310,13 +310,13 @@ export const SUBJECTS: Subject[] = [
 
 export const RECENT_LESSONS: Lesson[] = [
   {
-    id: 'l1',
+    id: 'l4',
     subjectId: 's1',
-    title: 'The Chain Rule',
-    durationMinutes: 45,
-    isCompleted: false,
+    title: 'Real Numbers',
+    durationMinutes: 40,
+    isCompleted: true,
     lastAccessed: '2023-10-25T10:00:00Z',
-    difficulty: 'Advanced',
+    difficulty: 'Intermediate',
   },
   {
     id: 'l2',
@@ -328,10 +328,10 @@ export const RECENT_LESSONS: Lesson[] = [
     difficulty: 'Intermediate',
   },
   {
-    id: 'l3',
+    id: 'l16',
     subjectId: 's4',
-    title: 'The French Revolution',
-    durationMinutes: 50,
+    title: 'Democracy: Arguments',
+    durationMinutes: 48,
     isCompleted: false,
     lastAccessed: '2023-10-23T09:15:00Z',
     difficulty: 'Intermediate',
@@ -340,14 +340,6 @@ export const RECENT_LESSONS: Lesson[] = [
 
 export const ALL_LESSONS: Lesson[] = [
   ...RECENT_LESSONS,
-  {
-    id: 'l4',
-    subjectId: 's1',
-    title: 'Real Numbers',
-    durationMinutes: 40,
-    isCompleted: true,
-    difficulty: 'Intermediate',
-  },
   {
     id: 'l5',
     subjectId: 's1',
@@ -436,14 +428,7 @@ export const ALL_LESSONS: Lesson[] = [
     isCompleted: true,
     difficulty: 'Beginner',
   },
-  {
-    id: 'l16',
-    subjectId: 's4',
-    title: 'Democracy: Arguments',
-    durationMinutes: 48,
-    isCompleted: false,
-    difficulty: 'Intermediate',
-  },
+
   {
     id: 'l17',
     subjectId: 's4',

@@ -25,8 +25,11 @@ import { LearnQuickQuiz, Question } from './learn-quick-quiz/learn-quick-quiz';
 import { LearnNotes } from './learn-notes/learn-notes';
 import { LearnReadMode } from './learn-read-mode/learn-read-mode';
 import { ButtonModule } from 'primeng/button';
-import { AiWrapperService, IAiWrapper, IImageDTO } from '../../../services/ai-wrapper/ai-wrapper.service';
-
+import {
+  AiWrapperService,
+  IAiWrapper,
+  IImageDTO,
+} from '../../../services/ai-wrapper/ai-wrapper.service';
 
 @Component({
   selector: 'app-learn',
@@ -61,7 +64,7 @@ export class Learn {
     effect(() => {
       this.getData(this.topics[this.activeTopicIndex()]);
       this.getImage(this.topics[this.activeTopicIndex()]);
-    })
+    });
   }
 
   activeTopicIndex = signal(0);
@@ -143,8 +146,8 @@ export class Learn {
     this.selectedAnswers.set({ ...this.selectedAnswers(), [this.activeQuestion().id]: idx });
   }
 
-    getData(topic: Topic){
-      this.readDataLoad.set(true);
+  getData(topic: Topic) {
+    this.readDataLoad.set(true);
     const data: IAiWrapper = {
       subject: this.subject()?.title || '',
       topic: topic?.title || '',
@@ -155,22 +158,22 @@ export class Learn {
     });
   }
 
-  getMindMap(topic: Topic){
+  getMindMap(topic: Topic) {
     const data: IAiWrapper = {
       subject: this.subject()?.title || '',
       topic: topic?.title || '',
-    }
+    };
     this.aiWrapperService.getMindMap(data).subscribe((data) => {
       console.log(data);
     });
   }
 
-  getImage(topic: Topic){
+  getImage(topic: Topic) {
     const data: IImageDTO = {
       subject: this.subject()?.title || '',
       topic: topic?.title || '',
       image_type: 'diagram',
-    }
+    };
     this.aiWrapperService.getImage(data).subscribe((data) => {
       this.readImage.set(data);
     });

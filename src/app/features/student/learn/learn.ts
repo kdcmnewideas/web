@@ -1,4 +1,4 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, effect } from '@angular/core';
 import { inject } from '@angular/core/primitives/di';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,6 +6,7 @@ import {
   ALL_LESSONS,
   SUBJECTS,
   LESSON_CONTENTS,
+  Topic
 } from '../../../shared/constants/mock-data.constant';
 import {
   ArrowLeft,
@@ -25,6 +26,8 @@ import { LearnQuickQuiz, Question } from './learn-quick-quiz/learn-quick-quiz';
 import { LearnNotes } from './learn-notes/learn-notes';
 import { LearnReadMode } from './learn-read-mode/learn-read-mode';
 import { ButtonModule } from 'primeng/button';
+import { AiWrapperService, IAiWrapper } from '../../../services/ai-wrapper/ai-wrapper.service';
+
 
 @Component({
   selector: 'app-learn',
@@ -49,11 +52,16 @@ export class Learn {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private aiWrapperService: AiWrapperService
   ) {
     // Access route parameters
     this.activatedRoute.params.subscribe((params) => {
       this.lessonId.set(params['id']);
     });
+
+    effect(() => {
+      this.getData(this.topics[this.activeTopicIndex()]);
+    })
   }
 
   activeTopicIndex = signal(0);
@@ -126,5 +134,15 @@ export class Learn {
 
   handleAnswer(idx: number) {
     this.selectedAnswers.set({ ...this.selectedAnswers(), [this.activeQuestion.id]: idx });
+  }
+
+    getData(topic: Topic){
+    const data: IAiWrapper = {
+      subject: this.subject()?.title || '',
+      topic: topic?.title || '',
+    }
+    this.aiWrapperService.getData(data).subscribe((data) => {
+      console.log(data);
+    });
   }
 }

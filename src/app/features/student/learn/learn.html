@@ -62,7 +62,7 @@
           <div class="grow flex flex-col min-h-175 ">
             @switch (viewMode()) {
               @case ('read') {
-                <app-learn-read-mode [topic]="currentTopic" onReadAloud="" />
+                <app-learn-read-mode [topic]="currentTopic" onReadAloud=""  [subject]="subject()?.title || ''"/>
               }
               @case ('podcast') {
                 @if (podcastStatus() === 'config') {

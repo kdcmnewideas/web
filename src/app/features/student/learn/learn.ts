@@ -202,6 +202,8 @@ export class Learn {
     };
     this.aiWrapperService.getMindMap(data).subscribe((data) => {
       this.mindMap.set(data);
+    },  (err) => {
+      console.log(err);
     });
   }
 
@@ -213,6 +215,8 @@ export class Learn {
     };
     this.aiWrapperService.getImage(data).subscribe((data) => {
       this.readImage.set(data);
+    }, (err) => {
+      console.log(err);
     });
   }
 

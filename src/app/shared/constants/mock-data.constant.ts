@@ -1,4 +1,5 @@
-import { Atom, BookOpen, Calculator, Dna, Hourglass } from "lucide-angular";
+import { Atom, BookOpen, Calculator, Dna, Hourglass } from 'lucide-angular';
+import { MIND_MAP_MOCK_DATA } from '../mocks/learn-mind-map-mock.constant';
 
 export enum QuestionType {
   MCQ = 'MCQ',
@@ -6,7 +7,7 @@ export enum QuestionType {
   ORAL = 'ORAL',
   FILL_BLANKS = 'FILL_BLANKS',
   TRUE_FALSE = 'TRUE_FALSE',
-  MATCHING = 'MATCHING'
+  MATCHING = 'MATCHING',
 }
 
 export interface User {
@@ -192,9 +193,9 @@ export const INITIAL_KEYS: APIKeyData[] = [
     provider: 'Gemini',
     usageTokens: 45200,
     limitTokens: 100000,
-    costEstimate: 12.50,
+    costEstimate: 12.5,
     status: 'Active',
-    lastChecked: '2 mins ago'
+    lastChecked: '2 mins ago',
   },
   {
     id: 'k2',
@@ -203,9 +204,9 @@ export const INITIAL_KEYS: APIKeyData[] = [
     provider: 'OpenAI',
     usageTokens: 82000,
     limitTokens: 80000,
-    costEstimate: 45.20,
+    costEstimate: 45.2,
     status: 'Rate Limited',
-    lastChecked: '15 mins ago'
+    lastChecked: '15 mins ago',
   },
   {
     id: 'k3',
@@ -216,10 +217,9 @@ export const INITIAL_KEYS: APIKeyData[] = [
     limitTokens: 50000,
     costEstimate: 0.45,
     status: 'Active',
-    lastChecked: '1 hour ago'
-  }
+    lastChecked: '1 hour ago',
+  },
 ];
-
 
 export const CURRENT_USER: User = {
   id: 'u1',
@@ -231,29 +231,29 @@ export const CURRENT_USER: User = {
   avatarUrl: 'https://i.pravatar.cc/150?u=u3',
   rank: 42,
   age: 19,
-  grade: 'User',
-  bio: 'I am a passionate learner, always eager to expand my knowledge and skills.',
-  phone: '+91-9123456789',
-  role: 'user',
-  location: 'Bangalore, India'
+  grade: 'Administrator',
+  bio: 'Platform Administrator for AileLearn.',
+  phone: '+1 (555) 123-4567',
+  role: 'admin',
+  location: 'New York, USA',
 };
 
 export const BOARDS: Board[] = [
   { id: 'b1', name: 'CBSE', description: 'Central Board of Secondary Education' },
   { id: 'b2', name: 'ICSE', description: 'Indian Certificate of Secondary Education' },
-  { id: 'b3', name: 'IB', description: 'International Baccalaureate' }
+  { id: 'b3', name: 'IB', description: 'International Baccalaureate' },
 ];
 
 export const CLASSES: ClassLevel[] = [
   { id: 'c1', name: 'Grade 10', boardId: 'b1' },
   { id: 'c2', name: 'Grade 11', boardId: 'b1' },
-  { id: 'c3', name: 'Grade 12', boardId: 'b1' }
+  { id: 'c3', name: 'Grade 12', boardId: 'b1' },
 ];
 
 export const SECTIONS: Section[] = [
   { id: 'sec1', name: 'Section A', classId: 'c1' },
   { id: 'sec2', name: 'Section B', classId: 'c1' },
-  { id: 'sec3', name: 'Science Stream', classId: 'c2' }
+  { id: 'sec3', name: 'Science Stream', classId: 'c2' },
 ];
 
 export const SUBJECTS: Subject[] = [
@@ -263,82 +263,78 @@ export const SUBJECTS: Subject[] = [
     color: 'bg-indigo-600',
     icon: Calculator,
     progress: 75,
-    totalLessons: 24,
-    description: 'Master calculus, algebra, and geometry with interactive problem solving.',
+    totalLessons: 4,
+    description:
+      'Real Numbers, Polynomials, Triangles, and Quadrilaterals. Master algebraic and geometric concepts with proofs and applications.',
     boardId: 'b1',
-    classId: 'c1'
+    classId: 'c1',
   },
   {
     id: 's2',
-    title: 'Physics',
+    title: 'Science',
     color: 'bg-teal-500',
     icon: Atom,
     progress: 45,
-    totalLessons: 18,
-    description: 'Explore the fundamental laws of the universe from mechanics to quantum physics.',
+    totalLessons: 8,
+    description:
+      'Motion, Atoms & Molecules, Cells, Plant Tissues, Photosynthesis, and Cell Division. Explore physics, chemistry, and biology fundamentals.',
     boardId: 'b1',
-    classId: 'c2'
+    classId: 'c2',
   },
   {
     id: 's3',
-    title: 'Literature',
+    title: 'English',
     color: 'bg-rose-500',
     icon: BookOpen,
     progress: 20,
-    totalLessons: 12,
+    totalLessons: 4,
+    description:
+      'Literature texts, Tenses, Voice, and Parts of Speech. Develop language skills through diverse literary and grammatical studies.',
     boardId: 'b1',
-    classId: 'c1'
+    classId: 'c1',
   },
   {
     id: 's4',
-    title: 'History',
+    title: 'Social Studies',
     color: 'bg-amber-500',
     icon: Hourglass,
     progress: 90,
-    totalLessons: 15,
+    totalLessons: 4,
+    description:
+      'Our Earth, French Revolution, Democracy, and Poverty. Understand geography, history, and social systems.',
     boardId: 'b1',
-    classId: 'c1'
+    classId: 'c1',
   },
-  {
-    id: 's5',
-    title: 'Biology',
-    color: 'bg-emerald-500',
-    icon: Dna,
-    progress: 10,
-    totalLessons: 20,
-    boardId: 'b1',
-    classId: 'c1'
-  }
 ];
 
 export const RECENT_LESSONS: Lesson[] = [
   {
     id: 'l1',
     subjectId: 's1',
-    title: 'Calculus: Derivatives II',
+    title: 'The Chain Rule',
     durationMinutes: 45,
     isCompleted: false,
     lastAccessed: '2023-10-25T10:00:00Z',
-    difficulty: 'Advanced'
+    difficulty: 'Advanced',
   },
   {
     id: 'l2',
     subjectId: 's2',
-    title: 'Newtonian Mechanics',
+    title: 'Motion: Equations of Motion',
     durationMinutes: 30,
     isCompleted: true,
     lastAccessed: '2023-10-24T14:30:00Z',
-    difficulty: 'Intermediate'
+    difficulty: 'Intermediate',
   },
   {
     id: 'l3',
     subjectId: 's4',
-    title: 'The Industrial Revolution',
+    title: 'The French Revolution',
     durationMinutes: 50,
     isCompleted: false,
     lastAccessed: '2023-10-23T09:15:00Z',
-    difficulty: 'Intermediate'
-  }
+    difficulty: 'Intermediate',
+  },
 ];
 
 export const ALL_LESSONS: Lesson[] = [
@@ -346,27 +342,131 @@ export const ALL_LESSONS: Lesson[] = [
   {
     id: 'l4',
     subjectId: 's1',
-    title: 'Limits and Continuity',
+    title: 'Real Numbers',
     durationMinutes: 40,
     isCompleted: true,
-    difficulty: 'Intermediate'
+    difficulty: 'Intermediate',
   },
   {
     id: 'l5',
     subjectId: 's1',
-    title: 'Integrals Introduction',
+    title: 'Polynomials and Factorisation',
     durationMinutes: 60,
     isCompleted: false,
-    difficulty: 'Advanced'
+    difficulty: 'Advanced',
   },
   {
     id: 'l6',
     subjectId: 's1',
-    title: 'Functions and Graphs',
-    durationMinutes: 30,
+    title: 'Triangles: Congruency',
+    durationMinutes: 35,
     isCompleted: true,
-    difficulty: 'Beginner'
-  }
+    difficulty: 'Intermediate',
+  },
+  {
+    id: 'l7',
+    subjectId: 's1',
+    title: 'Quadrilaterals: Properties',
+    durationMinutes: 40,
+    isCompleted: false,
+    difficulty: 'Intermediate',
+  },
+  {
+    id: 'l8',
+    subjectId: 's2',
+    title: 'Atoms and Molecules',
+    durationMinutes: 50,
+    isCompleted: true,
+    difficulty: 'Intermediate',
+  },
+  {
+    id: 'l9',
+    subjectId: 's2',
+    title: 'The Fundamental Unit of Life',
+    durationMinutes: 45,
+    isCompleted: false,
+    difficulty: 'Advanced',
+  },
+  {
+    id: 'l10',
+    subjectId: 's2',
+    title: 'Plant Tissues: Photosynthesis',
+    durationMinutes: 55,
+    isCompleted: true,
+    difficulty: 'Intermediate',
+  },
+  {
+    id: 'l11',
+    subjectId: 's3',
+    title: 'The Fun They Had',
+    durationMinutes: 40,
+    isCompleted: false,
+    difficulty: 'Beginner',
+  },
+  {
+    id: 'l12',
+    subjectId: 's3',
+    title: 'Tenses: Present & Past Perfect',
+    durationMinutes: 35,
+    isCompleted: true,
+    difficulty: 'Intermediate',
+  },
+  {
+    id: 'l13',
+    subjectId: 's3',
+    title: 'Voice: Active and Passive',
+    durationMinutes: 38,
+    isCompleted: true,
+    difficulty: 'Intermediate',
+  },
+  {
+    id: 'l14',
+    subjectId: 's3',
+    title: 'Parts of Speech',
+    durationMinutes: 45,
+    isCompleted: false,
+    difficulty: 'Beginner',
+  },
+  {
+    id: 'l15',
+    subjectId: 's4',
+    title: 'Our Earth: Grid System',
+    durationMinutes: 42,
+    isCompleted: true,
+    difficulty: 'Beginner',
+  },
+  {
+    id: 'l16',
+    subjectId: 's4',
+    title: 'Democracy: Arguments',
+    durationMinutes: 48,
+    isCompleted: false,
+    difficulty: 'Intermediate',
+  },
+  {
+    id: 'l17',
+    subjectId: 's4',
+    title: 'Poverty as a Challenge',
+    durationMinutes: 50,
+    isCompleted: true,
+    difficulty: 'Intermediate',
+  },
+  {
+    id: 'l18',
+    subjectId: 's2',
+    title: 'Cell Structure and Division',
+    durationMinutes: 55,
+    isCompleted: false,
+    difficulty: 'Advanced',
+  },
+  {
+    id: 'l19',
+    subjectId: 's2',
+    title: 'Photosynthesis Process',
+    durationMinutes: 50,
+    isCompleted: true,
+    difficulty: 'Intermediate',
+  },
 ];
 
 export const GOALS: Goal[] = [
@@ -381,7 +481,7 @@ export const GOALS: Goal[] = [
     is_active: true,
     is_achieved: false,
     created_at: '2023-10-01T08:00:00Z',
-    updated_at: '2023-10-28T12:00:00Z'
+    updated_at: '2023-10-28T12:00:00Z',
   },
   {
     id: 2,
@@ -394,7 +494,7 @@ export const GOALS: Goal[] = [
     is_active: true,
     is_achieved: false,
     created_at: '2023-10-01T08:00:00Z',
-    updated_at: '2023-10-28T12:00:00Z'
+    updated_at: '2023-10-28T12:00:00Z',
   },
   {
     id: 3,
@@ -407,12 +507,12 @@ export const GOALS: Goal[] = [
     is_active: true,
     is_achieved: false,
     created_at: '2023-10-01T08:00:00Z',
-    updated_at: '2023-10-28T12:00:00Z'
-  }
+    updated_at: '2023-10-28T12:00:00Z',
+  },
 ];
 
 export const LESSON_CONTENTS: Record<string, LessonContent> = {
-  'l1': {
+  l1: {
     lessonId: 'l1',
     topics: [
       {
@@ -434,16 +534,7 @@ Find the derivative of $y = (3x^2 + 1)^2$.
 3. $\\frac{du}{dx} = 6x$
 4. Multiply: $2u \\cdot 6x = 12x(3x^2 + 1)$
         `,
-        mindMap: {
-          id: 'root',
-          label: 'The Chain Rule',
-          children: [
-            { id: 'c1', label: 'Composite Functions' },
-            { id: 'c2', label: 'Differentiation Formula', children: [{ id: 'c2-1', label: 'dy/dx = dy/du * du/dx' }] },
-            { id: 'c3', label: 'Practical Examples', children: [{ id: 'c3-1', label: 'Polynomials' }, { id: 'c3-2', label: 'Trigonometric' }] },
-            { id: 'c4', label: 'Applications' }
-          ]
-        }
+        mindMap: MIND_MAP_MOCK_DATA,
       },
       {
         id: 't2',
@@ -455,17 +546,8 @@ In calculus, a method called **implicit differentiation** makes use of the chain
 
 To differentiate an implicit function $y(x)$, defined by an equation $R(x,y) = 0$, it is not generally possible to solve it explicitly for $y$ and then differentiate. Instead, one can totally differentiate $R(x,y) = 0$ with respect to $x$ and then solve the resulting linear equation for $dy/dx$.
         `,
-        mindMap: {
-          id: 'root',
-          label: 'Implicit Differentiation',
-          children: [
-            { id: 'i1', label: 'Implicit Functions' },
-            { id: 'i2', label: 'Chain Rule Application' },
-            { id: 'i3', label: 'Algebraic Solving', children: [{ id: 'i3-1', label: 'Isolating dy/dx' }] },
-            { id: 'i4', label: 'Tangent Lines' }
-          ]
-        }
-      }
+        mindMap: MIND_MAP_MOCK_DATA,
+      },
     ],
     quiz: [
       {
@@ -474,7 +556,8 @@ To differentiate an implicit function $y(x)$, defined by an equation $R(x,y) = 0
         text: 'What is the derivative of sin(x²)?',
         options: ['cos(x²)', '2x cos(x²)', '-sin(x²)', '2x sin(x)'],
         correctAnswer: 1,
-        explanation: 'Using the chain rule: d/dx(sin(u)) = cos(u) * du/dx. Here u = x², so du/dx = 2x.'
+        explanation:
+          'Using the chain rule: d/dx(sin(u)) = cos(u) * du/dx. Here u = x², so du/dx = 2x.',
       },
       {
         id: 'q2',
@@ -482,19 +565,22 @@ To differentiate an implicit function $y(x)$, defined by an equation $R(x,y) = 0
         text: 'The derivative of a constant is always zero.',
         options: ['True', 'False'],
         correctAnswer: 0,
-        explanation: 'A constant function represents a horizontal line, so its rate of change (slope) is always zero.'
+        explanation:
+          'A constant function represents a horizontal line, so its rate of change (slope) is always zero.',
       },
       {
         id: 'q3',
         type: QuestionType.WRITTEN,
         text: 'Explain the importance of the Chain Rule in complex differentiation.',
-        explanation: 'The Chain Rule allows us to break down complex composite functions into simpler ones for step-by-step differentiation.'
+        explanation:
+          'The Chain Rule allows us to break down complex composite functions into simpler ones for step-by-step differentiation.',
       },
       {
         id: 'q4',
         type: QuestionType.ORAL,
         text: 'Briefly explain the concept of a "derivative" as if you were talking to a high schooler.',
-        explanation: 'A derivative is simply the instantaneous rate of change or the slope of a curve at any specific point.'
+        explanation:
+          'A derivative is simply the instantaneous rate of change or the slope of a curve at any specific point.',
       },
       {
         id: 'q5',
@@ -502,7 +588,7 @@ To differentiate an implicit function $y(x)$, defined by an equation $R(x,y) = 0
         text: 'Complete the power rule formula.',
         blankText: 'The derivative of x^n is [blank] * x^([blank]).',
         correctAnswer: ['n', 'n-1'],
-        explanation: 'The power rule states: d/dx(x^n) = n*x^(n-1).'
+        explanation: 'The power rule states: d/dx(x^n) = n*x^(n-1).',
       },
       {
         id: 'q6',
@@ -512,51 +598,101 @@ To differentiate an implicit function $y(x)$, defined by an equation $R(x,y) = 0
           { id: 'p1', left: 'sin(x)', right: 'cos(x)' },
           { id: 'p2', left: 'ln(x)', right: '1/x' },
           { id: 'p3', left: 'e^x', right: 'e^x' },
-          { id: 'p4', left: 'tan(x)', right: 'sec²(x)' }
+          { id: 'p4', left: 'tan(x)', right: 'sec²(x)' },
         ],
-        explanation: 'These are fundamental derivatives that must be memorized.'
-      }
+        explanation: 'These are fundamental derivatives that must be memorized.',
+      },
     ],
     flashcards: [
       { id: 'f1', front: 'Chain Rule Formula', back: "d/dx[f(g(x))] = f'(g(x)) * g'(x)" },
       { id: 'f2', front: 'Derivative of e^x', back: 'e^x' },
       { id: 'f3', front: 'Derivative of ln(x)', back: '1/x' },
-      { id: 'f4', front: 'Power Rule', back: "d/dx(x^n) = n*x^(n-1)" },
-      { id: 'f5', front: 'Product Rule', back: "d/dx(uv) = u'v + uv'" }
+      { id: 'f4', front: 'Power Rule', back: 'd/dx(x^n) = n*x^(n-1)' },
+      { id: 'f5', front: 'Product Rule', back: "d/dx(uv) = u'v + uv'" },
     ],
     quickPrep: [
       {
         id: 'qa1',
         question: 'Define the Product Rule.',
         answerShort: "The product rule finds derivatives of products: (fg)' = f'g + fg'.",
-        answerMedium: "The product rule is a calculus formula used to find the derivatives of products of two or more functions. For two functions f and g, it is expressed as: (fg)' = f'g + fg'.",
-        answerLong: "The product rule is a fundamental formula in calculus used to find the derivatives of products of two or more functions. It states that for two differentiable functions f(x) and g(x), the derivative of their product is the first function times the derivative of the second, plus the second function times the derivative of the first. The formula is written as: d/dx[f(x)g(x)] = f(x)g'(x) + g(x)f'(x)."
+        answerMedium:
+          "The product rule is a calculus formula used to find the derivatives of products of two or more functions. For two functions f and g, it is expressed as: (fg)' = f'g + fg'.",
+        answerLong:
+          "The product rule is a fundamental formula in calculus used to find the derivatives of products of two or more functions. It states that for two differentiable functions f(x) and g(x), the derivative of their product is the first function times the derivative of the second, plus the second function times the derivative of the first. The formula is written as: d/dx[f(x)g(x)] = f(x)g'(x) + g(x)f'(x).",
       },
       {
         id: 'qa2',
         question: 'Explain the Chain Rule.',
-        answerShort: "Chain rule differentiates composite functions: d/dx[f(g(x))] = f'(g(x)) * g'(x).",
-        answerMedium: "The chain rule is used to compute the derivative of a composite function. If y = f(u) and u = g(x), then dy/dx = (dy/du) * (du/dx).",
-        answerLong: "The chain rule is a rule for computing the derivative of the composition of two or more functions. In intuitive terms, if a variable z depends on y, and y depends on x, then z depends on x as well, via the intermediate variable y. The chain rule states that the instantaneous rate of change of z with respect to x is the product of the instantaneous rate of change of z with respect to y and the instantaneous rate of change of y with respect to x."
+        answerShort:
+          "Chain rule differentiates composite functions: d/dx[f(g(x))] = f'(g(x)) * g'(x).",
+        answerMedium:
+          'The chain rule is used to compute the derivative of a composite function. If y = f(u) and u = g(x), then dy/dx = (dy/du) * (du/dx).',
+        answerLong:
+          'The chain rule is a rule for computing the derivative of the composition of two or more functions. In intuitive terms, if a variable z depends on y, and y depends on x, then z depends on x as well, via the intermediate variable y. The chain rule states that the instantaneous rate of change of z with respect to x is the product of the instantaneous rate of change of z with respect to y and the instantaneous rate of change of y with respect to x.',
       },
-       {
+      {
         id: 'qa3',
         question: 'What is implicit differentiation?',
-        answerShort: "Differentiating both sides of an equation with respect to x and solving for dy/dx.",
-        answerMedium: "Implicit differentiation is a technique used when y cannot be easily isolated on one side of the equation. You differentiate both sides with respect to x, treating y as a function of x (using the chain rule), and then solve for dy/dx.",
-        answerLong: "Implicit differentiation is a method in calculus for finding the derivative of a function that is not defined explicitly (y = ...). Instead, the relationship between x and y is given by an implicit equation like R(x, y) = 0. To find dy/dx, you differentiate every term of the equation with respect to x. When differentiating terms involving y, you must apply the Chain Rule, multiplying by dy/dx. Finally, you rearrange the resulting equation to solve algebraically for dy/dx."
-      }
-    ]
-  }
+        answerShort:
+          'Differentiating both sides of an equation with respect to x and solving for dy/dx.',
+        answerMedium:
+          'Implicit differentiation is a technique used when y cannot be easily isolated on one side of the equation. You differentiate both sides with respect to x, treating y as a function of x (using the chain rule), and then solve for dy/dx.',
+        answerLong:
+          'Implicit differentiation is a method in calculus for finding the derivative of a function that is not defined explicitly (y = ...). Instead, the relationship between x and y is given by an implicit equation like R(x, y) = 0. To find dy/dx, you differentiate every term of the equation with respect to x. When differentiating terms involving y, you must apply the Chain Rule, multiplying by dy/dx. Finally, you rearrange the resulting equation to solve algebraically for dy/dx.',
+      },
+    ],
+  },
 };
 
 export const EXAM_HISTORY: ExamResult[] = [
-  { id: 'e1', date: '2023-10-28', subjectId: 's1', score: 92, totalQuestions: 20, timeSpentSeconds: 540 },
-  { id: 'e2', date: '2023-10-27', subjectId: 's2', score: 78, totalQuestions: 15, timeSpentSeconds: 420 },
-  { id: 'e3', date: '2023-10-25', subjectId: 's4', score: 85, totalQuestions: 25, timeSpentSeconds: 900 },
-  { id: 'e4', date: '2023-10-22', subjectId: 's1', score: 88, totalQuestions: 20, timeSpentSeconds: 600 },
-  { id: 'e5', date: '2023-10-20', subjectId: 's5', score: 65, totalQuestions: 15, timeSpentSeconds: 300 },
-  { id: 'e6', date: '2023-10-18', subjectId: 's1', score: 75, totalQuestions: 20, timeSpentSeconds: 580 },
+  {
+    id: 'e1',
+    date: '2023-10-28',
+    subjectId: 's1',
+    score: 92,
+    totalQuestions: 20,
+    timeSpentSeconds: 540,
+  },
+  {
+    id: 'e2',
+    date: '2023-10-27',
+    subjectId: 's2',
+    score: 78,
+    totalQuestions: 15,
+    timeSpentSeconds: 420,
+  },
+  {
+    id: 'e3',
+    date: '2023-10-25',
+    subjectId: 's4',
+    score: 85,
+    totalQuestions: 25,
+    timeSpentSeconds: 900,
+  },
+  {
+    id: 'e4',
+    date: '2023-10-22',
+    subjectId: 's1',
+    score: 88,
+    totalQuestions: 20,
+    timeSpentSeconds: 600,
+  },
+  {
+    id: 'e5',
+    date: '2023-10-20',
+    subjectId: 's2',
+    score: 65,
+    totalQuestions: 15,
+    timeSpentSeconds: 300,
+  },
+  {
+    id: 'e6',
+    date: '2023-10-18',
+    subjectId: 's1',
+    score: 75,
+    totalQuestions: 20,
+    timeSpentSeconds: 580,
+  },
 ];
 
 export const PERFORMANCE_STATS: PerformanceStats = {
@@ -571,37 +707,156 @@ export const PERFORMANCE_STATS: PerformanceStats = {
   weeklyActivity: [45, 60, 30, 90, 120, 20, 45],
   subjectTimeDistribution: [
     { subjectName: 'Mathematics', hours: 12, color: 'bg-indigo-600' },
-    { subjectName: 'Physics', hours: 8.5, color: 'bg-teal-500' },
-    { subjectName: 'History', hours: 5, color: 'bg-amber-500' },
-    { subjectName: 'Literature', hours: 4, color: 'bg-rose-500' },
-    { subjectName: 'Biology', hours: 3, color: 'bg-emerald-500' },
-  ]
+    { subjectName: 'Science', hours: 11.5, color: 'bg-teal-500' },
+    { subjectName: 'Social Studies', hours: 5, color: 'bg-amber-500' },
+    { subjectName: 'English', hours: 4, color: 'bg-rose-500' },
+  ],
 };
 
 export const LEADERBOARD_DATA: LeaderboardEntry[] = [
-  { id: 'u2', rank: 1, name: 'Sarah Chen', points: 2450, change: 'same', location: 'New York, USA', avatarUrl: 'https://i.pravatar.cc/150?u=u2' },
-  { id: 'u3', rank: 2, name: 'Michael Ross', points: 2320, change: 'up', location: 'London, UK', avatarUrl: 'https://i.pravatar.cc/150?u=u1' },
-  { id: 'u4', rank: 3, name: 'Priya Patel', points: 2180, change: 'down', location: 'Mumbai, India', avatarUrl: 'https://i.pravatar.cc/150?u=u4' },
-  { id: 'u5', rank: 4, name: 'David Kim', points: 1950, change: 'up', location: 'Seoul, SK', avatarUrl: 'https://i.pravatar.cc/150?u=u5' },
-  { id: 'u6', rank: 5, name: 'Emma Wilson', points: 1890, change: 'same', location: 'Sydney, AU', avatarUrl: 'https://i.pravatar.cc/150?u=u6' },
-  { id: 'u1', rank: 42, name: 'Divya', points: 1450, change: 'up', location: 'Bangalore, India', avatarUrl: 'https://i.pravatar.cc/150?u=u3' },
-  { id: 'u7', rank: 43, name: 'Lucas Silva', points: 1445, change: 'down', location: 'Rio, BR', avatarUrl: 'https://i.pravatar.cc/150?u=u7' },
+  {
+    id: 'u2',
+    rank: 1,
+    name: 'Sarah Chen',
+    points: 2450,
+    change: 'same',
+    location: 'New York, USA',
+    avatarUrl: 'https://i.pravatar.cc/150?u=u2',
+  },
+  {
+    id: 'u3',
+    rank: 2,
+    name: 'Michael Ross',
+    points: 2320,
+    change: 'up',
+    location: 'London, UK',
+    avatarUrl: 'https://i.pravatar.cc/150?u=u3',
+  },
+  {
+    id: 'u4',
+    rank: 3,
+    name: 'Priya Patel',
+    points: 2180,
+    change: 'down',
+    location: 'Mumbai, India',
+    avatarUrl: 'https://i.pravatar.cc/150?u=u4',
+  },
+  {
+    id: 'u5',
+    rank: 4,
+    name: 'David Kim',
+    points: 1950,
+    change: 'up',
+    location: 'Seoul, SK',
+    avatarUrl: 'https://i.pravatar.cc/150?u=u5',
+  },
+  {
+    id: 'u6',
+    rank: 5,
+    name: 'Emma Wilson',
+    points: 1890,
+    change: 'same',
+    location: 'Sydney, AU',
+    avatarUrl: 'https://i.pravatar.cc/150?u=u6',
+  },
+  {
+    id: 'u1',
+    rank: 42,
+    name: 'Alex Johnson',
+    points: 1450,
+    change: 'up',
+    location: 'Toronto, CA',
+    avatarUrl: 'https://i.pravatar.cc/150?u=u1',
+  },
+  {
+    id: 'u7',
+    rank: 43,
+    name: 'Lucas Silva',
+    points: 1445,
+    change: 'down',
+    location: 'Rio, BR',
+    avatarUrl: 'https://i.pravatar.cc/150?u=u7',
+  },
 ];
 
 export const REVISION_TOPICS = [
-  { id: 'rt1', title: 'Photosynthesis', subject: 'Biology', date: '2 days ago' },
+  { id: 'rt1', title: 'Photosynthesis', subject: 'Science', date: '2 days ago' },
   { id: 'rt2', title: 'Quadratic Equations', subject: 'Mathematics', date: '4 days ago' },
-  { id: 'rt3', title: 'World War II', subject: 'History', date: '5 days ago' },
-  { id: 'rt4', title: 'Verb Conjugation', subject: 'Literature', date: '1 week ago' },
-  { id: 'rt5', title: 'Cell Division', subject: 'Biology', date: '1 week ago' }
+  { id: 'rt3', title: 'The French Revolution', subject: 'Social Studies', date: '5 days ago' },
+  { id: 'rt4', title: 'Verb Conjugation', subject: 'English', date: '1 week ago' },
+  { id: 'rt5', title: 'Cell Division', subject: 'Science', date: '1 week ago' },
 ];
 
 export const SCHEDULE_ITEMS: ScheduleItem[] = [
-  { id: 'sch1', title: 'Calculus Review', subjectId: 's1', date: '2023-10-28', time: '09:00 AM', duration: 45, type: 'revision', status: 'completed' },
-  { id: 'sch2', title: 'Physics Quiz', subjectId: 's2', date: '2023-10-27', time: '02:00 PM', duration: 30, type: 'test', status: 'completed' },
-  { id: 'sch3', title: 'The Industrial Revolution', subjectId: 's4', date: '2023-11-01', time: '10:00 AM', duration: 60, type: 'lesson', status: 'upcoming', description: 'Read chapter 4 and complete the summary.' },
-  { id: 'sch4', title: 'Verbs Practice', subjectId: 's3', date: '2023-11-01', time: '01:30 PM', duration: 30, type: 'revision', status: 'upcoming' },
-  { id: 'sch5', title: 'Cell Biology Mock Test', subjectId: 's5', date: '2023-11-02', time: '11:00 AM', duration: 45, type: 'test', status: 'upcoming' },
-  { id: 'sch6', title: 'Integrals Workshop', subjectId: 's1', date: '2023-11-03', time: '04:00 PM', duration: 90, type: 'lesson', status: 'upcoming' },
-  { id: 'sch7', title: 'Mechanics Revision', subjectId: 's2', date: '2023-11-04', time: '10:00 AM', duration: 60, type: 'revision', status: 'upcoming' },
+  {
+    id: 'sch1',
+    title: 'Real Numbers Review',
+    subjectId: 's1',
+    date: '2023-10-28',
+    time: '09:00 AM',
+    duration: 45,
+    type: 'revision',
+    status: 'completed',
+  },
+  {
+    id: 'sch2',
+    title: 'Motion Quiz',
+    subjectId: 's2',
+    date: '2023-10-27',
+    time: '02:00 PM',
+    duration: 30,
+    type: 'test',
+    status: 'completed',
+  },
+  {
+    id: 'sch3',
+    title: 'The French Revolution',
+    subjectId: 's4',
+    date: '2023-11-01',
+    time: '10:00 AM',
+    duration: 60,
+    type: 'lesson',
+    status: 'upcoming',
+    description: 'Read chapter 4 and complete the summary.',
+  },
+  {
+    id: 'sch4',
+    title: 'Tenses Practice',
+    subjectId: 's3',
+    date: '2023-11-01',
+    time: '01:30 PM',
+    duration: 30,
+    type: 'revision',
+    status: 'upcoming',
+  },
+  {
+    id: 'sch5',
+    title: 'Cell Division Mock Test',
+    subjectId: 's2',
+    date: '2023-11-02',
+    time: '11:00 AM',
+    duration: 45,
+    type: 'test',
+    status: 'upcoming',
+  },
+  {
+    id: 'sch6',
+    title: 'Polynomials Workshop',
+    subjectId: 's1',
+    date: '2023-11-03',
+    time: '04:00 PM',
+    duration: 90,
+    type: 'lesson',
+    status: 'upcoming',
+  },
+  {
+    id: 'sch7',
+    title: 'Photosynthesis Revision',
+    subjectId: 's2',
+    date: '2023-11-04',
+    time: '10:00 AM',
+    duration: 60,
+    type: 'revision',
+    status: 'upcoming',
+  },
 ];

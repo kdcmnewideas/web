@@ -33,7 +33,7 @@ export class Student {
   };
   navItems = [
     { id: 'home', icon: House, label: 'Home' },
-    { id: 'revison', icon: Calendar, label: 'Revsion' },
+    { id: 'revision', icon: Calendar, label: 'Revision' },
     { id: 'analytics', icon: ChartNoAxesColumn, label: 'Results' },
     { id: 'leaderboard', icon: Trophy, label: 'Leaderboard' },
     { id: 'ai-usage', icon: Cpu, label: 'AI Usage' },

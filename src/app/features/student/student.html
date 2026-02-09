@@ -1,24 +1,10 @@
-<div class="flex min-h-screen bg-slate-50">
-  <!-- Sidebar for Desktop -->
-  <aside
-    [class]="
-      `hidden md:flex flex-col ${isSidebarCollapsed() ? 'w-24' : 'w-64'} bg-white border-r border-slate-100 fixed h-full z-30 transition-all duration-500 ease-in-out shadow-[10px_0_40px_rgba(0,0,0,0.02)]`
-    "
-  >
-    <!-- Toggle Button -->
-    <button
-      (click)="isSidebarCollapsed.set(!isSidebarCollapsed())"
-      class="absolute -right-3 top-10 bg-white border border-slate-200 rounded-full p-1 shadow-sm text-slate-400 hover:text-primary-600 hover:border-primary-200 z-20 transition-colors cursor-pointer h-10"
-    >
-      <lucide-icon
-        [img]="isSidebarCollapsed() ? icons.ChevronRight : icons.ChevronLeft"
-        size="12"
-      />
-    </button>
+<div class="min-h-screen bg-slate-50">
+  <!-- Sleek Global Top Header -->
 
-    <div
-      [class]="`h-24 flex items-center ${isSidebarCollapsed() ? 'justify-center px-0' : 'px-6'}`"
-    >
+  <header
+    class="h-16 pr-8 flex items-center justify-between sticky top-0 bg-white/10 backdrop-blur-xl z-20 border-b border-slate-50/50"
+  >
+    <div [class]="`h-24 flex items-center px-6`">
       <div
         class="flex items-center gap-4 overflow-hidden group cursor-pointer"
         (click)="navigateTo('home')"
@@ -28,7 +14,7 @@
         </div>
         <h1
           [class]="
-            `text-xl font-bold text-slate-900 tracking-tight transition-opacity duration-200 ${isSidebarCollapsed() ? 'opacity-0 w-0' : 'opacity-100'}`
+            `text-xl font-bold text-slate-900 tracking-tight transition-opacity duration-200`
           "
         >
           Aile Learning
@@ -36,12 +22,60 @@
       </div>
     </div>
 
-    <nav class="flex-1 p-4 space-y-2 overflow-y-auto scrollbar-hide">
-      @for (item of navItems; track item.id) {
-        <button
-          (click)="navigateTo(item.id.toLowerCase())"
-          [class]="
-            `
+    <div class="flex items-center gap-4">
+      <button
+        class="relative p-3 bg-white border border-slate-100 rounded-xl text-slate-400 hover:text-indigo-600 transition-all shadow-sm group flex"
+      >
+        <lucide-icon [img]="icons.Bell" size="20" />
+        <span
+          class="absolute top-2.5 right-2.5 w-2 h-2 bg-rose-500 rounded-full border-2 border-white group-hover:scale-110 transition-transform"
+        ></span>
+      </button>
+
+      <div
+        (click)="navigateTo('profile')"
+        class="flex items-center gap-3 pl-2 pr-1 py-1 bg-white border border-slate-100 rounded-2xl shadow-sm hover:border-indigo-100 cursor-pointer transition-all group"
+      >
+        <div class="hidden sm:block text-right">
+          <p class="text-xs font-black text-slate-900 leading-none mb-0.5">
+            {{ currentUser.name }}
+          </p>
+          <p class="text-[9px] font-black text-indigo-500 uppercase tracking-widest">
+            {{ currentUser.role }}
+          </p>
+        </div>
+        <div
+          class="w-10 h-10 rounded-xl overflow-hidden border-2 border-slate-50 group-hover:border-indigo-100 transition-all"
+        >
+          <img [src]="currentUser.avatarUrl" class="w-full h-full object-cover" alt="Profile" />
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Sidebar for Desktop -->
+  <div class="min-h-[100vh - 4rem] flex">
+    <aside
+      [class]="
+        `hidden md:flex flex-col ${isSidebarCollapsed() ? 'w-24' : 'w-64'} bg-white border-r border-slate-100 fixed h-full z-30 transition-all duration-500 ease-in-out shadow-[10px_0_40px_rgba(0,0,0,0.02)]`
+      "
+    >
+      <!-- Toggle Button -->
+      <button
+        (click)="isSidebarCollapsed.set(!isSidebarCollapsed())"
+        class="absolute -right-3 top-10 bg-white border border-slate-200 rounded-full p-1 shadow-sm text-slate-400 hover:text-primary-600 hover:border-primary-200 z-20 transition-colors cursor-pointer h-10"
+      >
+        <lucide-icon
+          [img]="isSidebarCollapsed() ? icons.ChevronRight : icons.ChevronLeft"
+          size="12"
+        />
+      </button>
+
+      <nav class="flex-1 p-4 space-y-2 overflow-y-auto scrollbar-hide">
+        @for (item of navItems; track item.id) {
+          <button
+            (click)="navigateTo(item.id.toLowerCase())"
+            [class]="
+              `
                 w-full flex items-center ${isSidebarCollapsed() ? 'justify-center px-0' : 'space-x-4 px-4'} py-3.5 rounded-[1.25rem] transition-all duration-300 font-bold relative group
                 ${
                   router.url.toLowerCase().includes(item.id.toLowerCase())
@@ -49,88 +83,39 @@
                     : 'text-slate-400 hover:bg-slate-50 hover:text-slate-900'
                 }
               `
-          "
-          [pTooltip]="isSidebarCollapsed() ? item.label : ''"
-        >
-          <lucide-icon
-            [img]="item.icon"
-            [class]="
-              `w-5 h-5 shrink-0 ${router.url.toLowerCase().includes(item.id.toLowerCase()) ? 'text-white' : 'group-hover:text-indigo-600 transition-colors'}`
             "
-          />
-          <span
-            [class]="
-              `whitespace-nowrap text-sm tracking-tight transition-all duration-300 ${isSidebarCollapsed() ? 'opacity-0 w-0 hidden' : 'opacity-100'}`
-            "
+            [pTooltip]="isSidebarCollapsed() ? item.label : ''"
           >
-            {{ item.label }}
-          </span>
-        </button>
-      }
-    </nav>
-  </aside>
+            <lucide-icon
+              [img]="item.icon"
+              [class]="
+                `w-5 h-5 shrink-0 ${router.url.toLowerCase().includes(item.id.toLowerCase()) ? 'text-white' : 'group-hover:text-indigo-600 transition-colors'}`
+              "
+            />
+            <span
+              [class]="
+                `whitespace-nowrap text-sm tracking-tight transition-all duration-300 ${isSidebarCollapsed() ? 'opacity-0 w-0 hidden' : 'opacity-100'}`
+              "
+            >
+              {{ item.label }}
+            </span>
+          </button>
+        }
+      </nav>
+    </aside>
 
-  <!-- Main Content -->
-  <div
-    [class]="
-      `flex-1 flex flex-col transition-all duration-500 ${isSidebarCollapsed() ? 'md:ml-24' : 'md:ml-64'}`
-    "
-  >
-    <!-- Sleek Global Top Header -->
-    <header
-      class="h-24 px-8 flex items-center justify-between sticky top-0 bg-white/10 backdrop-blur-xl z-20 border-b border-slate-50/50"
+    <!-- Main Content -->
+    <div
+      [class]="
+        `flex-1 flex flex-col transition-all duration-500 ${isSidebarCollapsed() ? 'md:ml-24' : 'md:ml-64'}`
+      "
     >
-      <div class="flex items-center gap-8 flex-1">
-        <div class="relative max-w-md w-full hidden">
-          <div
-            class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-300"
-          >
-            <lucide-icon [img]="icons.Search" size="16" />
-          </div>
-          <input
-            type="text"
-            placeholder="Search courses, lessons, or topics..."
-            class="w-full bg-slate-50 border-none rounded-2xl py-3 pl-11 pr-12 text-sm font-bold text-slate-600 placeholder-slate-300 focus:ring-2 focus:ring-indigo-100 transition-all"
-          />
+      <main class="flex-1 p-4 md:p-10">
+        <div class="max-w-400 mx-auto">
+          <router-outlet />
         </div>
-      </div>
-
-      <div class="flex items-center gap-4">
-        <button
-          class="relative p-3 bg-white border border-slate-100 rounded-xl text-slate-400 hover:text-indigo-600 transition-all shadow-sm group flex"
-        >
-          <lucide-icon [img]="icons.Bell" size="20" />
-          <span
-            class="absolute top-2.5 right-2.5 w-2 h-2 bg-rose-500 rounded-full border-2 border-white group-hover:scale-110 transition-transform"
-          ></span>
-        </button>
-
-        <div
-          (click)="navigateTo('profile')"
-          class="flex items-center gap-3 pl-2 pr-1 py-1 bg-white border border-slate-100 rounded-2xl shadow-sm hover:border-indigo-100 cursor-pointer transition-all group"
-        >
-          <div class="hidden sm:block text-right">
-            <p class="text-xs font-black text-slate-900 leading-none mb-0.5">
-              {{ currentUser.name }}
-            </p>
-            <p class="text-[9px] font-black text-indigo-500 uppercase tracking-widest">
-              {{ currentUser.role }}
-            </p>
-          </div>
-          <div
-            class="w-10 h-10 rounded-xl overflow-hidden border-2 border-slate-50 group-hover:border-indigo-100 transition-all"
-          >
-            <img [src]="currentUser.avatarUrl" class="w-full h-full object-cover" alt="Profile" />
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <main class="flex-1 p-4 md:p-10">
-      <div class="max-w-400 mx-auto">
-        <router-outlet />
-      </div>
-    </main>
+      </main>
+    </div>
   </div>
 
   <!-- Bottom Nav for Mobile -->

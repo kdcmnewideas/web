@@ -1,40 +1,27 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
-  lucideTrophy,
-  lucideCrown,
-  lucideCoins,
-  lucideTimer,
-  lucideChevronRight,
-  lucideTrendingUp,
-  lucideHistory,
-  lucideArrowLeft,
-  lucideSparkles,
-  lucideMapPin,
-} from '@ng-icons/lucide';
+  Trophy,
+  Crown,
+  Coins,
+  Timer,
+  ChevronRight,
+  TrendingUp,
+  History,
+  ArrowLeft,
+  Sparkles,
+  MapPin,
+  LucideAngularModule,
+} from 'lucide-angular';
 import { CardModule } from 'primeng/card';
 import { CURRENT_USER, LEADERBOARD_DATA } from '../../../shared/constants/mock-data.constant';
 
 @Component({
   selector: 'app-leaderboard',
-  imports: [NgIcon, CardModule],
+  imports: [CardModule, LucideAngularModule],
   templateUrl: './leaderboard.html',
   styleUrl: './leaderboard.css',
-  viewProviders: [
-    provideIcons({
-      lucideTrophy,
-      lucideCrown,
-      lucideCoins,
-      lucideTimer,
-      lucideChevronRight,
-      lucideTrendingUp,
-      lucideHistory,
-      lucideArrowLeft,
-      lucideSparkles,
-      lucideMapPin,
-    }),
-  ],
+
 })
 export class Leaderboard {
   activeTab = signal('Global');
@@ -48,6 +35,19 @@ export class Leaderboard {
   TABS = ['Global', 'Local', 'Schools', 'Friends'];
 
   router = inject(Router);
+
+  icons = {
+  Trophy,
+  Crown,
+  Coins,
+  Timer,
+  ChevronRight,
+  TrendingUp,
+  History,
+  ArrowLeft,
+  Sparkles,
+  MapPin,
+}
 
   onNavigate(path: string) {
     this.router.navigate([path]);

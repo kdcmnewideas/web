@@ -27,8 +27,8 @@ import { Router } from '@angular/router';
     ReactiveFormsModule,
     PasswordModule,
     ButtonModule,
-    LucideAngularModule
-],
+    LucideAngularModule,
+  ],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -58,15 +58,26 @@ export class Login {
 
   login = () => {
     const { email, password } = this.loginForm.value;
-    if (email && password)
+    if (email && password) {
       this.authService.login({ email, password }).subscribe({
-        next: () => this.router.navigate(['/']),
+        next: (res: any) => {
+          // store token if present in response (common keys)
+          const token = res?.access_token || res?.token || res?.data?.token || res?.auth?.token;
+          if (token) {
+            try {
+              localStorage.setItem('access_token', token);
+            } catch (e) {
+              console.warn('Failed to persist token to localStorage', e);
+            }
+          }
+          this.router.navigate(['/']);
+        },
         error: (err) => {
           console.log(err);
         },
       });
+    }
   };
-
   navigateTo = (page: string) => {
     this.router.navigate([page]);
   };

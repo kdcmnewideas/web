@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   ArrowUpRight,
   Award,
@@ -24,19 +24,22 @@ import {
   Target,
   Zap,
   Lock,
-  ChevronRight
+  ChevronRight,
 } from 'lucide-angular';
 import { CURRENT_USER } from '../../../shared/constants/mock-data.constant';
 import { CardModule } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../../services/auth/auth.service';
+import { ScreenName } from '../../../shared/constants/screen-names.constant';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user',
+  selector: 'app-user-profile',
   imports: [LucideAngularModule, CardModule, FormsModule],
-  templateUrl: './user.html',
-  styleUrl: './user.css',
+  templateUrl: './user-profile.html',
+  styleUrl: './user-profile.css',
 })
-export class User {
+export class UserProfile {
   user = CURRENT_USER;
   achievements = [
     {
@@ -91,7 +94,7 @@ export class User {
     Target,
     ExternalLink,
     Lock,
-    ChevronRight
+    ChevronRight,
   };
 
   stats = [
@@ -118,6 +121,35 @@ export class User {
     { label: 'History', progress: 88, color: 'bg-amber-500', glow: 'shadow-amber-500/50' },
   ];
 
+  private router = inject(Router);
+  private authService = inject(AuthService);
 
-  onNavigate(path:string){}
+  onNavigate(path: string) {
+    // Handle sign out explicitly
+    if (path === ScreenName.LOGIN) {
+      this.authService.signOut();
+      // navigate to auth login route
+      this.router.navigate(['auth', 'login']);
+      return;
+    }
+
+    // Default: attempt to navigate to a reasonable path mapping
+    switch (path) {
+      case ScreenName.SETTINGS:
+        this.router.navigate(['settings']);
+        break;
+      case ScreenName.GOALS:
+        this.router.navigate(['goals']);
+        break;
+      case ScreenName.CHANGE_PASSWORD:
+        this.router.navigate(['change-password']);
+        break;
+      case ScreenName.ANALYTICS:
+        this.router.navigate(['analytics']);
+        break;
+      default:
+        // fallback: try lowercased path
+        this.router.navigate([String(path).toLowerCase()]);
+    }
+  }
 }

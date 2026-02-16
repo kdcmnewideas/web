@@ -19,11 +19,11 @@
         variant="outlined"
         size="small"
         (click)="handleCapture('share')"
-        class="rounded-xl h-11"
+        class="rounded-lg h-11"
       >
         <lucide-icon [img]="icons.Share2" class="w-4 h-4 mr-2"></lucide-icon> Share
       </p-button>
-      <p-button size="small" (click)="handleCapture('download')" class="rounded-xl h-11">
+      <p-button size="small" (click)="handleCapture('download')" class="rounded-lg h-11">
         <lucide-icon [img]="icons.Download" class="w-4 h-4 mr-2"></lucide-icon> Export
       </p-button>
     </div>
@@ -35,7 +35,7 @@
     >
       <div class="flex items-center space-x-6">
         <div
-          class="p-4 bg-indigo-600 text-white rounded-2xl shadow-lg shadow-indigo-100 group-hover:rotate-6 transition-transform"
+          class="p-4 bg-indigo-600 text-white rounded-lg shadow-lg shadow-indigo-100 group-hover:rotate-6 transition-transform"
         >
           <lucide-icon [img]="icons.Trophy" class="w-7 h-7"></lucide-icon>
         </div>
@@ -57,7 +57,7 @@
     >
       <div class="flex space-x-6 items-center">
         <div
-          class="p-4 bg-teal-500 text-white rounded-2xl shadow-lg shadow-teal-100 group-hover:rotate-6 transition-transform"
+          class="p-4 bg-teal-500 text-white rounded-lg shadow-lg shadow-teal-100 group-hover:rotate-6 transition-transform"
         >
           <lucide-icon [img]="icons.Clock" class="w-7 h-7" />
         </div>
@@ -78,7 +78,7 @@
     >
       <div class="flex items-center space-x-6">
         <div
-          class="p-4 bg-amber-500 text-white rounded-2xl shadow-lg shadow-amber-100 group-hover:rotate-6 transition-transform"
+          class="p-4 bg-amber-500 text-white rounded-lg shadow-lg shadow-amber-100 group-hover:rotate-6 transition-transform"
         >
           <lucide-icon [img]="icons.BookOpen" class="w-7 h-7" />
         </div>
@@ -212,7 +212,7 @@
       <div class="flex justify-between items-center mb-10">
         <div class="flex items-center gap-3">
           <div
-            class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600"
+            class="w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600"
           >
             <lucide-icon [img]="icons.TrendingUp" class="w-5 h-5" />
           </div>
@@ -303,7 +303,7 @@
     <div class="flex justify-between items-center bg-white sticky top-0 z-10">
       <div class="flex items-center gap-4">
         <div
-          class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600"
+          class="w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600"
         >
           <lucide-icon [img]="icons.HistoryIcon" class="w-5 h-5" />
         </div>
@@ -321,7 +321,7 @@
       <div class="flex items-center gap-4">
         <div
           [class]="
-            `w-12 h-12 rounded-2xl flex items-center justify-center ${getSubject(exam.subjectId)?.color || 'bg-slate-500'}/10`
+            `w-12 h-12 rounded-lg flex items-center justify-center ${getSubject(exam.subjectId)?.color || 'bg-slate-500'}/10`
           "
         >
           <lucide-icon

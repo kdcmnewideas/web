@@ -1,14 +1,7 @@
-import { ScreenName } from './../../../shared/constants/screen-names.constant';
 import { Component, computed, inject, signal } from '@angular/core';
 import {
-  Clock,
-  Circle,
   CircleCheck,
-  CircleAlert,
   LucideAngularModule,
-  BookOpen,
-  PenTool,
-  RefreshCw,
   EllipsisVertical,
   ChevronRight,
   Plus,
@@ -25,12 +18,21 @@ import {
 } from '../../../shared/constants/mock-data.constant';
 import { Router } from '@angular/router';
 import { CardModule } from 'primeng/card';
-import { NgClass } from "../../../../../node_modules/@angular/common/types/_common_module-chunk";
 import { RevisionCard } from './revision-card/revision-card';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-revision',
-  imports: [LucideAngularModule, CardModule, RevisionCard],
+  imports: [
+    LucideAngularModule,
+    CardModule,
+    RevisionCard,
+    SelectButtonModule,
+    FormsModule,
+    ButtonModule,
+  ],
   templateUrl: './revision.html',
   styleUrl: './revision.css',
 })
@@ -38,7 +40,6 @@ export class Revision {
   activeTab = signal<'upcoming' | 'history'>('upcoming');
   mockToday = '2023-11-01'; // Mocking today's date
   router = inject(Router);
-  ScreenName = ScreenName;
   icons = {
     EllipsisVertical,
     ChevronRight,
@@ -50,6 +51,11 @@ export class Revision {
     ArrowLeft,
     CircleCheck,
   };
+
+  stateOptions: any[] = [
+    { value: 'upcoming', label: 'Active' },
+    { value: 'history', label: 'Completed' },
+  ];
 
   filteredItems = computed(() => {
     return SCHEDULE_ITEMS.filter((item) => {

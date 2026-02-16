@@ -1,4 +1,3 @@
-import { ScreenName } from './../../../shared/constants/screen-names.constant';
 import { Component, inject } from '@angular/core';
 import {
   ArrowUpRight,
@@ -7,7 +6,6 @@ import {
   Camera,
   Compass,
   Crown,
-  Edit2,
   ExternalLink,
   Flame,
   GraduationCap,
@@ -31,8 +29,9 @@ import {
 import { CURRENT_USER } from '../../../shared/constants/mock-data.constant';
 import { CardModule } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
+import { ScreenName } from '../../../shared/constants/screen-names.constant';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -42,7 +41,6 @@ import { AuthService } from '../../../services/auth/auth.service';
 })
 export class UserProfile {
   user = CURRENT_USER;
-  ScreenName = ScreenName;
   achievements = [
     {
       name: 'Grandmaster',

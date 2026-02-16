@@ -1,24 +1,19 @@
 import { Component } from '@angular/core';
 import {
-  lucideSquareCheckBig,
-  lucideSquare,
-  lucideLayoutGrid,
-  lucideCircleCheck,
-  lucideUsers,
-  lucideGlobe,
-  lucideChartColumn,
-  lucideChartPie,
-  lucideZap,
-} from '@ng-icons/lucide';
-import { NgIcon, provideIcons } from '@ng-icons/core';
+  SquareCheckBig,
+  Square,
+  LayoutGrid,
+  CircleCheck,
+  Users,
+  Globe,
+  ChartColumn,
+  ChartPie,
+  Zap,
+  LucideAngularModule,
+} from 'lucide-angular';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { AuthService } from '../../../services/auth/auth.service';
@@ -27,28 +22,15 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   imports: [
-    NgIcon,
     CheckboxModule,
     InputTextModule,
     ReactiveFormsModule,
     PasswordModule,
     ButtonModule,
+    LucideAngularModule,
   ],
   templateUrl: './login.html',
   styleUrl: './login.css',
-  viewProviders: [
-    provideIcons({
-      lucideSquareCheckBig,
-      lucideSquare,
-      lucideLayoutGrid,
-      lucideCircleCheck,
-      lucideUsers,
-      lucideGlobe,
-      lucideChartColumn,
-      lucideChartPie,
-      lucideZap,
-    }),
-  ],
 })
 export class Login {
   loginForm = new FormGroup({
@@ -56,6 +38,18 @@ export class Login {
     password: new FormControl('', [Validators.required]),
     rememberMe: new FormControl(false),
   });
+
+  icons = {
+    SquareCheckBig,
+    Square,
+    LayoutGrid,
+    CircleCheck,
+    Users,
+    Globe,
+    ChartColumn,
+    ChartPie,
+    Zap,
+  };
 
   constructor(
     private authService: AuthService,
@@ -84,9 +78,8 @@ export class Login {
         },
       });
     }
-  }
-
+  };
   navigateTo = (page: string) => {
-    this.router.navigate([page])
-  }
+    this.router.navigate([page]);
+  };
 }

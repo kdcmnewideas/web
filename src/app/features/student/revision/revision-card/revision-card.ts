@@ -1,4 +1,3 @@
-import { ScreenName } from './../../../../shared/constants/screen-names.constant';
 import { Component, computed, inject, input } from '@angular/core';
 import {
   CircleCheck,
@@ -31,7 +30,6 @@ export class RevisionCard {
   status = computed(() => this.getStatusConfig(this.item().status));
   subject = computed(() => SUBJECTS.find((s) => s.id === this.item().subjectId));
   StatusIcon = computed(() => this.status().icon);
-  ScreenName = ScreenName;
   icons = { ChevronRight, EllipsisVertical, Clock };
 
   getStatusConfig = (status: string) => {

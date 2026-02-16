@@ -1,1 +1,210 @@
-<p>revise works!</p>
+<div class="max-w-5xl mx-auto animate-fade-in pb-20">
+  <button
+    (click)="onNavigate('subject', lesson()?.subjectId)"
+    class="flex items-center mb-6 -ml-2 text-slate-500 hover:text-slate-800 transition-colors"
+  >
+    <lucide-icon [img]="icons.ArrowLeft" class="w-4 h-4 mr-2"></lucide-icon> Back to Subject
+  </button>
+
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-slate-800 mb-2">Revision</h1>
+    <p class="text-slate-500 text-lg">Select a tool to start revising key concepts.</p>
+  </div>
+
+  <div class="flex p-1.5 bg-slate-100 rounded-lg mb-10 w-full md:w-auto md:inline-flex">
+    @for (tab of ['Flashcards', 'Quick Prep', 'Notes']; track tab) {
+      <button
+        (click)="setTab(tab)"
+        [class]="
+          activeTab() === tab
+            ? 'bg-white text-indigo-600 shadow-md'
+            : 'text-slate-500 hover:bg-slate-200/50'
+        "
+        class="flex-1 md:flex-none flex items-center justify-center gap-3 px-8 py-3.5 rounded-lg text-sm font-bold transition-all duration-200"
+      >
+        {{ tab }}
+      </button>
+    }
+  </div>
+
+  <div class="min-h-125">
+    @if (activeTab() === 'Flashcards') {
+      <div class="max-w-3xl mx-auto animate-fade-in">
+        <div class="relative h-112 perspective-1000">
+          <div
+            (click)="isFlipped.set(!isFlipped())"
+            [class.rotate-y-180]="isFlipped()"
+            class="relative w-full h-full text-center transition-transform duration-500 transform-style-3d cursor-pointer"
+          >
+            <div class="absolute inset-0 backface-hidden">
+              <div
+                class="h-full flex flex-col items-center justify-center p-16 bg-linear-to-br from-indigo-500 to-indigo-700 text-white rounded-3xl shadow-2xl"
+              >
+                <span
+                  class="text-indigo-200 text-xs font-bold uppercase tracking-widest mb-8 border border-indigo-400/30 px-3 py-1 rounded-full"
+                  >Question</span
+                >
+                <h3 class="text-3xl md:text-4xl font-bold">
+                  {{ content.flashcards[activeFlashcard()]?.front }}
+                </h3>
+              </div>
+            </div>
+
+            <div class="absolute inset-0 backface-hidden rotate-y-180">
+              <div
+                class="h-full flex flex-col items-center justify-center p-16 bg-white text-slate-800 rounded-3xl shadow-2xl border-2 border-indigo-50"
+              >
+                <span
+                  class="text-emerald-600 bg-emerald-50 text-xs font-bold uppercase tracking-widest mb-8 px-3 py-1 rounded-full"
+                  >Answer</span
+                >
+                <h3 class="text-2xl md:text-3xl font-medium">
+                  {{ content.flashcards[activeFlashcard()]?.back }}
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center items-center gap-8 mt-10">
+          <button (click)="handlePrevCard()" class="px-6 py-2 border rounded-lg hover:bg-slate-50">
+            Previous
+          </button>
+          <span class="text-slate-400 font-bold"
+            >{{ activeFlashcard() + 1 }} / {{ content.flashcards.length }}</span
+          >
+          <button
+            (click)="handleNextCard()"
+            class="px-6 py-2 bg-indigo-600 text-white rounded-lg shadow-lg"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    }
+
+    @if (activeTab() === 'Quick Prep' && currentQA()) {
+      <div class="max-w-4xl mx-auto animate-fade-in">
+        <p-card class="p-0 overflow-hidden border border-slate-200 shadow-xl shadow-slate-200/50">
+          <!-- Question Header -->
+          <div class="bg-slate-50 p-8 md:p-10 border-b border-slate-100">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-6">
+              <h2 class="text-2xl md:text-3xl font-bold text-slate-800 leading-tight">
+                {{ currentQA().question }}
+              </h2>
+              <div class="flex gap-3 shrink-0">
+                <button
+                  class="flex items-center px-4 py-2 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-600 font-bold transition-colors shadow-sm"
+                >
+                  <lucide-angular [img]="icons.Volume2" class="w-4 h-4 mr-2 text-indigo-500" /> Read
+                </button>
+                <button
+                  class="flex items-center px-4 py-2 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-600 font-bold transition-colors shadow-sm"
+                >
+                  <lucide-angular [img]="icons.Sparkles" class="w-4 h-4 mr-2 text-purple-500" /> AI
+                  Hint
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!--Answer Body -->
+          <div class="p-8 md:p-10 bg-white">
+            <div class="flex items-center justify-between mb-8">
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider"
+                >Answer Detail Level</span
+              >
+              <div class="flex gap-2 bg-slate-100 p-1 rounded-lg">
+                @for (tab of prepTabs; track tab) {
+                  <button
+                    (click)="currentPrepTab.set(tab)"
+                    [class]="
+                      `px-4 py-1.5 rounded-md text-xs font-bold transition-all ${
+                        currentPrepTab() === tab
+                          ? 'bg-white text-indigo-600 shadow-sm'
+                          : 'text-slate-500 hover:text-slate-800'
+                      }`
+                    "
+                  >
+                    {{ tab }}
+                  </button>
+                }
+              </div>
+            </div>
+
+            <div class="min-h-50 bg-slate-50/50 rounded-lg p-8 border border-slate-100">
+              <p class="text-lg md:text-xl leading-loose text-slate-700 font-medium">
+                {{ currentQA()[`answer${currentPrepTab()}`] }}
+              </p>
+            </div>
+
+            <div class="flex justify-between items-center mt-10 pt-6 border-t border-slate-100">
+              <button
+                [disabled]="activePrepIndex() === 0"
+                (click)="activePrepIndex.set(activePrepIndex() - 1)"
+                class="px-6 py-2 border rounded-lg hover:bg-slate-50"
+              >
+                Previous
+              </button>
+              <span class="text-slate-400 font-bold"
+                >Topic {{ activePrepIndex() + 1 }} of {{ content.quickPrep.length }}</span
+              >
+              <button
+                [disabled]="activePrepIndex() === content.quickPrep.length - 1"
+                (click)="activePrepIndex.set(activePrepIndex() + 1)"
+                class="px-6 py-2 bg-indigo-600 text-white rounded-lg shadow-lg"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </p-card>
+      </div>
+      )
+    }
+
+    @if (activeTab() === 'Notes') {
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 animate-fade-in">
+        <div class="lg:col-span-5">
+          <div class="bg-white p-6 rounded-3xl border border-slate-200 sticky top-6">
+            <textarea
+              #noteInput
+              class="w-full h-40 p-4 rounded-lg bg-slate-50 border-none focus:ring-2 focus:ring-indigo-200 resize-none"
+              placeholder="Type your note here..."
+            ></textarea>
+            <button
+              (click)="addTextNote(noteInput.value); noteInput.value = ''"
+              class="w-full mt-4 bg-indigo-600 text-white py-3 rounded-lg font-bold shadow-lg shadow-indigo-100"
+            >
+              Add Note
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 space-y-4">
+          @for (note of notesList(); track note.id) {
+            <div
+              class="bg-white p-5 rounded-lg border border-slate-200 group flex items-start gap-4 hover:shadow-md transition-all"
+            >
+              <div
+                class="w-10 h-10 rounded-lg flex items-center justify-center bg-indigo-50 text-indigo-600"
+              >
+                <lucide-icon [img]="icons.FileText" class="w-5 h-5"></lucide-icon>
+              </div>
+              <div class="flex-1">
+                <p class="text-slate-800">{{ note.content }}</p>
+                <span class="text-xs text-slate-400">{{ note.date }}</span>
+              </div>
+              <button
+                (click)="handleDeleteNote(note.id)"
+                class="opacity-0 group-hover:opacity-100 text-slate-300 hover:text-red-500 transition-all"
+              >
+                <lucide-icon [img]="icons.Trash2" class="w-4 h-4"></lucide-icon>
+              </button>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

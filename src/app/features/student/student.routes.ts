@@ -37,6 +37,26 @@ export const STUDENT_ROUTES: Routes = [
     title: 'Revision',
   },
   {
+    path: 'learn/:id',
+    loadComponent: () => import('./learn/learn').then((m) => m.Learn),
+    title: 'Learn',
+  },
+  {
+    path: 'revise/:id',
+    loadComponent: () => import('./revise/revise').then((m) => m.Revise),
+    title: 'Revise',
+  },
+  {
+    path: 'test/:id',
+    loadComponent: () => import('./test/test').then((m) => m.Test),
+    title: 'Test',
+  },
+  {
+    path: 'goals',
+    loadComponent: () => import('./goals/goals').then((m) => m.Goals),
+    title: 'Goals',
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },

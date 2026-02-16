@@ -1,0 +1,147 @@
+<div
+  class="relative overflow-auto select-none transition-all duration-300"
+  [ngClass]="{
+    'fixed inset-0 z-[100] w-screen h-screen rounded-none': isFullScreen,
+    'w-full h-full rounded-lg': !isFullScreen,
+    'bg-[#1e2124]': isDark,
+    'bg-slate-50': !isDark,
+    'cursor-grabbing': isDragging,
+    'cursor-grab': !isDragging,
+  }"
+  (mousedown)="handleMouseDown($event)"
+>
+  <div
+    *ngIf="isFullScreen"
+    class="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-30 pointer-events-none"
+  >
+    <div
+      class="bg-white/80 backdrop-blur-md px-4 py-2 rounded-lg border border-slate-200 shadow-sm pointer-events-auto"
+    >
+      <h2 class="text-lg font-bold text-slate-900">{{ data.label }}</h2>
+    </div>
+    <button
+      (click)="isFullScreen = false"
+      class="p-3 bg-white/80 backdrop-blur-md hover:bg-white rounded-full border border-slate-200 shadow-lg text-slate-600 transition-all pointer-events-auto"
+    >
+      <lucide-icon [img]="icons.X" class="w-5 h-5"></lucide-icon>
+    </button>
+  </div>
+
+  <!-- scrollable flex wrapper: vertically center, horizontally start -->
+  <div class="w-full h-full overflow-auto flex items-center justify-start">
+    <svg
+      width="100%"
+      height="100%"
+      [attr.viewBox]="getViewBox()"
+      [style.minWidth.px]="bounds.width"
+      [style.minHeight.px]="bounds.height"
+      class="block overflow-visible pointer-events-none"
+    >
+      <g
+        [attr.transform]="'translate(' + offset.x + ',' + offset.y + ') scale(' + scale + ')'"
+        class="transition-transform duration-300 ease-out pointer-events-auto"
+      >
+        @for (conn of layoutConnections; track $index) {
+          <path
+            [attr.d]="generatePath(conn)"
+            fill="none"
+            [attr.stroke]="isDark() ? '#4b5563' : '#cbd5e1'"
+            stroke-width="2"
+            class="transition-all duration-300"
+          ></path>
+        }
+
+        @for (node of layoutNodes; track $index) {
+          <svg:foreignObject
+            [attr.x]="node.x - nodeWidth / 2"
+            [attr.y]="node.y - nodeHeight / 2"
+            [attr.width]="nodeWidth"
+            [attr.height]="nodeHeight + 10"
+            class="overflow-visible"
+          >
+            <div
+              class="flex items-center h-full pointer-events-auto"
+              (mousedown)="$event.stopPropagation()"
+            >
+              <div
+                (click)="node.children?.length ? toggleNode(node.id, $event) : null"
+                class="flex-1 border rounded-lg px-4 py-3 shadow-sm flex items-center justify-between hover:scale-[1.02] transition-all cursor-pointer backdrop-blur-sm group"
+                [ngClass]="{
+                  'bg-indigo-600 border-indigo-700': node.id === 'root',
+                  'bg-slate-800 border-slate-700': node.id !== 'root' && isDark,
+                  'bg-white border-slate-200': node.id !== 'root' && !isDark,
+                }"
+              >
+                <span
+                  class="text-sm font-bold truncate"
+                  [ngClass]="{
+                    'text-white': node.id === 'root',
+                    'text-slate-200': node.id !== 'root' && isDark,
+                    'text-slate-800': node.id !== 'root' && !isDark,
+                  }"
+                >
+                  {{ node.label }}
+                </span>
+
+                <div
+                  *ngIf="node.children?.length"
+                  class="w-5 h-5 rounded-full flex items-center justify-center ml-2 transition-colors"
+                  [ngClass]="{
+                    'bg-indigo-500/50 text-white': node.id === 'root',
+                    'bg-slate-50 text-slate-400 group-hover:text-indigo-600': node.id !== 'root',
+                  }"
+                >
+                  <lucide-icon
+                    [img]="expandedIds.has(node.id) ? icons.ChevronDown : icons.ChevronRight"
+                    class="w-3.5 h-3.5"
+                  ></lucide-icon>
+                </div>
+              </div>
+            </div>
+          </svg:foreignObject>
+        }
+      </g>
+    </svg>
+  </div>
+
+  <div
+    class="absolute bottom-6 right-6 flex flex-col gap-2 z-20"
+    (mousedown)="$event.stopPropagation()"
+  >
+    <div
+      class="flex flex-col backdrop-blur-md rounded-lg border overflow-hidden shadow-xl"
+      [ngClass]="isDark() ? 'bg-slate-900/90 border-white/10' : 'bg-white/95 border-slate-200'"
+    >
+      <button
+        (click)="isFullScreen = !isFullScreen"
+        class="p-3 hover:bg-indigo-600/10 hover:text-indigo-600 transition-all text-slate-400"
+      >
+        <lucide-icon
+          [img]="isFullScreen ? icons.Shrink : icons.Expand"
+          class="w-4 h-4"
+        ></lucide-icon>
+      </button>
+      <div class="h-px mx-2" [ngClass]="isDark() ? 'bg-white/10' : 'bg-slate-200'"></div>
+      <button
+        (click)="resetView($event)"
+        class="p-3 hover:bg-indigo-600/10 hover:text-indigo-600 transition-all text-slate-400"
+      >
+        <lucide-icon [img]="icons.Maximize2" class="w-4 h-4"></lucide-icon>
+      </button>
+      <div class="h-px mx-2" [ngClass]="isDark() ? 'bg-white/10' : 'bg-slate-200'"></div>
+      <button
+        (click)="handleZoomIn($event)"
+        class="p-3 hover:bg-indigo-600/10 hover:text-indigo-600 transition-all text-slate-400"
+      >
+        <lucide-icon [img]="icons.Plus" class="w-4 h-4"></lucide-icon>
+      </button>
+      <div class="h-px mx-2" [ngClass]="isDark() ? 'bg-white/10' : 'bg-slate-200'"></div>
+      <button
+        (click)="handleZoomOut($event)"
+        class="p-3 hover:bg-indigo-600/10 hover:text-indigo-600 transition-all text-slate-400"
+      >
+        <lucide-icon [img]="icons.Minus" class="w-4 h-4"></lucide-icon>
+      </button>
+    </div>
+  </div>
+</div>

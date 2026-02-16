@@ -1,4 +1,3 @@
-import { ScreenName } from './../../../shared/constants/screen-names.constant';
 import { Component, computed, inject, signal } from '@angular/core';
 import {
   ArrowLeft,
@@ -103,7 +102,6 @@ export class Subject {
   subjectId = signal('');
   private activatedRoute = inject(ActivatedRoute);
   private router = inject(Router);
-  ScreenName = ScreenName;
   constructor() {
     // Access route parameters
     this.activatedRoute.params.subscribe((params) => {

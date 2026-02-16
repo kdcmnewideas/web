@@ -1,0 +1,40 @@
+<div class="flex flex-col items-center justify-center py-12 space-y-8 text-center">
+
+  <div
+    [class]="'relative w-40 h-40 rounded-full flex items-center justify-center transition-all duration-500 ' +
+      (isRecording() ? 'bg-rose-50' : 'bg-slate-50')"
+  >
+    @if (isRecording()) {
+      <div class="absolute inset-0 bg-rose-400/20 rounded-full animate-ping"></div>
+      <div class="absolute inset-4 bg-rose-400/20 rounded-full animate-pulse"></div>
+    }
+
+    <button
+      (click)="handleToggle()"
+      [class]="'relative z-10 w-24 h-24 rounded-full flex items-center justify-center shadow-xl transition-all ' +
+        (isRecording() ? 'bg-rose-600 text-white scale-110' : 'bg-white text-indigo-600 hover:scale-105')"
+    >
+      @if (isRecording()) {
+        <lucide-icon [img]="SquareIcon" class="w-8 h-8 fill-current"></lucide-icon>
+      } @else {
+        <lucide-icon [img]="MicIcon" class="w-10 h-10"></lucide-icon>
+      }
+    </button>
+  </div>
+
+  <div class="space-y-2">
+    <h3 class="text-2xl font-black text-slate-900">
+      {{ isRecording() ? 'Recording...' : 'Ready to record' }}
+    </h3>
+    <p class="text-slate-500 font-medium">
+      {{ isRecording() ? 'Time elapsed: ' + recordingTime() + 's' : 'Tap to start recording your response.' }}
+    </p>
+  </div>
+
+  @if (answer() && !isRecording()) {
+    <div class="bg-emerald-50 text-emerald-700 px-6 py-3 rounded-full border border-emerald-100 flex items-center gap-2 font-bold animate-fade-in">
+      <lucide-icon [img]="CheckIcon" class="w-5 h-5"></lucide-icon>
+      Recording Saved
+    </div>
+  }
+</div>

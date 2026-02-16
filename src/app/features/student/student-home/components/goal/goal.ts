@@ -1,6 +1,5 @@
 import { Component, computed, input } from '@angular/core';
-import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideBookOpen, lucideClock, lucideTarget } from '@ng-icons/lucide';
+import { BookOpen, Clock, LucideAngularModule, Target } from 'lucide-angular';
 import { CircularProgress } from '../../../../../shared/components/circular-progress/circular-progress';
 import { IGoal } from '../../../../../core/interface/goal.interface';
 import { CardModule } from 'primeng/card';
@@ -8,10 +7,9 @@ import { TagModule } from 'primeng/tag';
 
 @Component({
   selector: 'app-goal',
-  imports: [NgIcon, CircularProgress, CardModule, TagModule],
+  imports: [LucideAngularModule, CircularProgress, CardModule, TagModule],
   templateUrl: './goal.html',
   styleUrl: './goal.css',
-  viewProviders: [provideIcons({ lucideBookOpen, lucideClock, lucideTarget })],
 })
 export class Goal {
   index = input<number>(0);
@@ -44,7 +42,5 @@ export class Goal {
           : 'bg-indigo-600',
   );
 
-
-  softShadow = "shadow-[0_8px_30px_rgba(0,0,0,0.04)]";
-  hoverShadow = "hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-300";
+  icons = {BookOpen, Clock, Target}
 }

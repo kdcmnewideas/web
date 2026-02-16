@@ -1,20 +1,20 @@
 import { Component, computed, signal } from '@angular/core';
-import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
-  lucidePlus,
-  lucideRefreshCw,
-  lucideTrash2,
-  lucideKey,
-  lucideActivity,
-  lucideDollarSign,
-  lucideZap,
-  lucideCheckCircle2,
-  lucideAlertCircle,
-  lucideShieldCheck,
-  lucideSearch,
-  lucideEye,
-  lucideEyeOff,
-} from '@ng-icons/lucide';
+  Plus,
+  RefreshCw,
+  Trash2,
+  Key,
+  Activity,
+  DollarSign,
+  Zap,
+  CircleCheckBig,
+  CircleAlert,
+  ShieldCheck,
+  Search,
+  Eye,
+  EyeOff,
+  LucideAngularModule,
+} from 'lucide-angular'
 import { CardModule } from 'primeng/card';
 import { LineChart } from "../../../shared/components/charts/line-chart/line-chart";
 import { APIKeyData, INITIAL_KEYS } from '../../../shared/constants/mock-data.constant';
@@ -22,26 +22,9 @@ import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-ai-usage',
-  imports: [NgIcon, CardModule, LineChart, CardModule, ButtonModule],
+  imports: [LucideAngularModule, CardModule, LineChart, CardModule, ButtonModule],
   templateUrl: './ai-usage.html',
   styleUrl: './ai-usage.css',
-  viewProviders: [
-    provideIcons({
-      lucidePlus,
-      lucideRefreshCw,
-      lucideTrash2,
-      lucideKey,
-      lucideActivity,
-      lucideDollarSign,
-      lucideZap,
-      lucideCheckCircle2,
-      lucideAlertCircle,
-      lucideShieldCheck,
-      lucideSearch,
-      lucideEye,
-      lucideEyeOff,
-    }),
-  ],
 })
 export class AiUsage {
  // --- State (Signals) ---
@@ -55,6 +38,22 @@ export class AiUsage {
   newKeyName = signal('');
   newKeyVal = signal('');
   newKeyProvider = signal('Gemini');
+
+  icons = {
+  Plus,
+  RefreshCw,
+  Trash2,
+  Key,
+  Activity,
+  DollarSign,
+  Zap,
+  CircleCheckBig,
+  CircleAlert,
+  ShieldCheck,
+  Search,
+  Eye,
+  EyeOff,
+}
 
   // --- Derived State (Computed) ---
   stats = computed(() => {

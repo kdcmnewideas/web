@@ -2,10 +2,11 @@ import { Component, computed, inject, input } from '@angular/core';
 import { getSubjectColorStyles } from '../../../../../shared/utils/subject-color.util';
 import { Router } from '@angular/router';
 import { ChevronRight, LucideAngularModule } from 'lucide-angular';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-subject-card',
-  imports: [LucideAngularModule],
+  imports: [LucideAngularModule, CardModule],
   templateUrl: './subject-card.html',
   styleUrl: './subject-card.css',
 })

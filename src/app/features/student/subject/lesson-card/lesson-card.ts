@@ -1,7 +1,6 @@
-import { ScreenName } from './../../../../shared/constants/screen-names.constant';
 import { Component, computed, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Box, CircleCheck, CirclePlay, Clock, Lock, LucideAngularModule, PenTool } from 'lucide-angular';
+import { Box, CircleCheck, CirclePlay, Clock, Lock, LucideAngularModule, PenTool, RotateCw } from 'lucide-angular';
 
 @Component({
   selector: 'app-lesson-card',
@@ -11,7 +10,6 @@ import { Box, CircleCheck, CirclePlay, Clock, Lock, LucideAngularModule, PenTool
 })
 export class LessonCard {
   router = inject(Router);
-  ScreenName = ScreenName;
   lesson = input.required<any>();
   index = input.required<number>();
   isStarted = computed(() => !this.lesson().isCompleted && this.lesson().lastAccessed);
@@ -24,7 +22,8 @@ export class LessonCard {
     CirclePlay,
     Clock,
     Box,
-    PenTool
+    PenTool,
+    RotateCw
   };
 
   serialNumber = computed(() => String(this.index() + 1).padStart(2, '0'));

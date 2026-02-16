@@ -4,10 +4,11 @@ import { getSubjectColorStyles } from '../../../../../shared/utils/subject-color
 import { SUBJECTS } from '../../../../../shared/constants/mock-data.constant';
 import { Router } from '@angular/router';
 import { ArrowRight, LucideAngularModule, Play } from 'lucide-angular';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-jumpback-card',
-  imports: [CircularProgress, LucideAngularModule],
+  imports: [CircularProgress, LucideAngularModule, CardModule],
   templateUrl: './jumpback-card.html',
   styleUrl: './jumpback-card.css',
 })

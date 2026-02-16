@@ -3,7 +3,7 @@
     <div class="flex items-center gap-4">
       <div
         [class]="
-          'w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-lg ' +
+          'w-12 h-12 rounded-lg flex items-center justify-center text-white shadow-lg ' +
           (subject()?.color || 'bg-indigo-600')
         "
       >
@@ -55,7 +55,7 @@
         >
           <div class="flex items-start gap-4">
             <div
-              class="mt-1 p-1.5 rounded-xl"
+              class="mt-1 p-1.5 rounded-lg"
               [class]="
                 $index === currentSentenceIndex()
                   ? 'bg-white/20'
@@ -92,7 +92,7 @@
       <div class="flex items-center justify-between">
         <button
           (click)="onCycleSpeed.emit()"
-          class="text-[10px] font-black text-slate-500 hover:text-indigo-600 transition-colors bg-white px-3 py-2 rounded-xl border border-slate-200 tracking-tighter shadow-sm uppercase"
+          class="text-[10px] font-black text-slate-500 hover:text-indigo-600 transition-colors bg-white px-3 py-2 rounded-lg border border-slate-200 tracking-tighter shadow-sm uppercase"
         >
           {{ playbackSpeed() }}x Speed
         </button>
@@ -108,7 +108,7 @@
           <button
             (click)="stopOrPlay()"
             [disabled]="!isVoiceReady()"
-            class="w-16 h-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-wait"
+            class="w-16 h-16 bg-indigo-600 text-white rounded-lg flex items-center justify-center shadow-lg shadow-indigo-200 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-wait"
           >
             @if (!isVoiceReady()) {
               <div

@@ -19,10 +19,20 @@ import {
 import { Router } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { RevisionCard } from './revision-card/revision-card';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-revision',
-  imports: [LucideAngularModule, CardModule, RevisionCard],
+  imports: [
+    LucideAngularModule,
+    CardModule,
+    RevisionCard,
+    SelectButtonModule,
+    FormsModule,
+    ButtonModule,
+  ],
   templateUrl: './revision.html',
   styleUrl: './revision.css',
 })
@@ -41,6 +51,11 @@ export class Revision {
     ArrowLeft,
     CircleCheck,
   };
+
+  stateOptions: any[] = [
+    { value: 'upcoming', label: 'Active' },
+    { value: 'history', label: 'Completed' },
+  ];
 
   filteredItems = computed(() => {
     return SCHEDULE_ITEMS.filter((item) => {

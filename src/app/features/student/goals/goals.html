@@ -1,7 +1,7 @@
 <div class="max-w-5xl mx-auto space-y-12 animate-fade-in pb-24 px-4">
   <header class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
     <div class="flex items-center gap-5">
-      <button (click)="handleNavigate()" class="btn-ghost -ml-3 w-12 h-12 rounded-2xl hover:bg-slate-100 flex items-center justify-center">
+      <button (click)="handleNavigate()" class="btn-ghost -ml-3 w-12 h-12 rounded-lg hover:bg-slate-100 flex items-center justify-center">
         <lucide-icon [name]="icons.ArrowLeft" class="w-6 h-6"></lucide-icon>
       </button>
       <div>
@@ -10,7 +10,7 @@
       </div>
     </div>
     @if (!isAdding() && !editingId()) {
-      <button (click)="isAdding.set(true)" class="btn-primary rounded-2xl h-16 px-10 font-black shadow-2xl shadow-indigo-100 group flex items-center bg-indigo-600 text-white">
+      <button (click)="isAdding.set(true)" class="btn-primary rounded-lg h-16 px-10 font-black shadow-2xl shadow-indigo-100 group flex items-center bg-indigo-600 text-white">
         <lucide-icon [name]="icons.Plus" class="w-5 h-5 mr-3 group-hover:rotate-90 transition-transform duration-300"></lucide-icon>
         Define New Goal
       </button>
@@ -36,17 +36,17 @@
           <div [class]="'absolute -right-16 -top-16 w-56 h-56 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-700 ' + theme.iconBg"></div>
 
           <div class="absolute top-8 right-8 flex gap-2 translate-y-[-20px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
-            <button (click)="startEdit(goal)" class="w-10 h-10 bg-white border border-slate-100 rounded-xl flex items-center justify-center text-slate-400 hover:text-indigo-600">
+            <button (click)="startEdit(goal)" class="w-10 h-10 bg-white border border-slate-100 rounded-lg flex items-center justify-center text-slate-400 hover:text-indigo-600">
               <lucide-icon [name]="icons.Edit3" class="w-4 h-4"></lucide-icon>
             </button>
-            <button (click)="handleDelete(goal.id)" class="w-10 h-10 bg-white border border-slate-100 rounded-xl flex items-center justify-center text-slate-400 hover:text-rose-600">
+            <button (click)="handleDelete(goal.id)" class="w-10 h-10 bg-white border border-slate-100 rounded-lg flex items-center justify-center text-slate-400 hover:text-rose-600">
               <lucide-icon [name]="icons.Trash2" class="w-4 h-4"></lucide-icon>
             </button>
           </div>
 
           <div class="relative z-10">
             <div class="flex items-center justify-between mb-8">
-               <div [class]="'w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-all ' + theme.glow + ' ' + theme.iconBg">
+               <div [class]="'w-16 h-16 rounded-lg flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-all ' + theme.glow + ' ' + theme.iconBg">
                   <lucide-icon [name]="icons.Target" class="w-8 h-8"></lucide-icon>
                </div>
                <div [class]="'px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border ' + theme.bg + ' ' + theme.text + ' ' + theme.border">
@@ -83,7 +83,7 @@
       <div class="col-span-full flex flex-col items-center justify-center py-32 text-center bg-white rounded-[4rem] border-2 border-dashed border-slate-100">
          <lucide-icon [name]="icons.Target" class="w-12 h-12 text-slate-200 mb-8"></lucide-icon>
          <h3 class="text-3xl font-black text-slate-900 mb-3">Zero Milestones Defined</h3>
-         <button (click)="isAdding.set(true)" class="mt-6 px-12 h-16 bg-indigo-600 text-white rounded-2xl font-black">Define Your First Goal</button>
+         <button (click)="isAdding.set(true)" class="mt-6 px-12 h-16 bg-indigo-600 text-white rounded-lg font-black">Define Your First Goal</button>
       </div>
     }
   </div>
@@ -93,30 +93,30 @@
   <div class="mb-8 border-indigo-600 border-2 rounded-[2.5rem] p-8 md:p-12 shadow-2xl bg-white relative overflow-hidden">
     <div class="relative z-10">
       <h3 class="text-2xl font-black text-slate-900 mb-8 flex items-center gap-3">
-        <lucide-icon [name]="icons.Sparkles" class="w-6 h-6 p-2 bg-indigo-600 rounded-xl text-white"></lucide-icon>
+        <lucide-icon [name]="icons.Sparkles" class="w-6 h-6 p-2 bg-indigo-600 rounded-lg text-white"></lucide-icon>
         {{ editingId() ? 'Refine Your Milestone' : 'Set a New Peak' }}
       </h3>
 
       <div class="space-y-8">
         <div>
           <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">What is your objective?</label>
-          <input [(ngModel)]="formData().target_type" class="w-full h-14 px-6 rounded-2xl border border-slate-200 focus:border-indigo-600 outline-none" placeholder="e.g. Master Integral Calculus">
+          <input [(ngModel)]="formData().target_type" class="w-full h-14 px-6 rounded-lg border border-slate-200 focus:border-indigo-600 outline-none" placeholder="e.g. Master Integral Calculus">
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Target Score</label>
-            <input type="number" [(ngModel)]="formData().target_score" class="w-full h-14 px-6 rounded-2xl border border-slate-200 focus:border-indigo-600 outline-none">
+            <input type="number" [(ngModel)]="formData().target_score" class="w-full h-14 px-6 rounded-lg border border-slate-200 focus:border-indigo-600 outline-none">
           </div>
           <div>
             <label class="block text-xs font-black uppercase tracking-widest text-slate-400 mb-2">Deadline</label>
-            <input type="date" [(ngModel)]="formData().deadline" class="w-full h-14 px-6 rounded-2xl border border-slate-200 focus:border-indigo-600 outline-none">
+            <input type="date" [(ngModel)]="formData().deadline" class="w-full h-14 px-6 rounded-lg border border-slate-200 focus:border-indigo-600 outline-none">
           </div>
         </div>
 
         <div class="flex flex-col md:flex-row gap-4 justify-end pt-6 border-t border-slate-100">
-           <button (click)="onCancel()" class="font-bold text-slate-500 h-14 px-8 hover:bg-slate-50 rounded-xl">Discard Changes</button>
-           <button (click)="onSave()" class="bg-indigo-600 text-white font-black px-12 h-14 rounded-2xl shadow-xl">
+           <button (click)="onCancel()" class="font-bold text-slate-500 h-14 px-8 hover:bg-slate-50 rounded-lg">Discard Changes</button>
+           <button (click)="onSave()" class="bg-indigo-600 text-white font-black px-12 h-14 rounded-lg shadow-xl">
              {{ editingId() ? 'Commit Updates' : 'Launch Goal' }}
            </button>
         </div>

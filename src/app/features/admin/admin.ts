@@ -15,10 +15,12 @@ import { CURRENT_USER } from '../../shared/constants/mock-data.constant';
 import { Router, RouterOutlet } from '@angular/router';
 import { TooltipModule } from 'primeng/tooltip';
 import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { AvatarModule } from 'primeng/avatar';
 
 @Component({
   selector: 'app-admin',
-  imports: [LucideAngularModule, RouterOutlet, TooltipModule],
+  imports: [LucideAngularModule, RouterOutlet, TooltipModule, ButtonModule, AvatarModule],
   templateUrl: './admin.html',
   styleUrl: './admin.css',
 })

@@ -24,13 +24,13 @@
           <!-- Mode Switcher moved here to maximize space in the main card -->
           <div
             [class]="
-              `${viewMode() === 'mindmap' ? 'bg-slate-200/50' : 'bg-slate-200/50'} p-1.5 rounded-2xl inline-flex items-center shadow-inner`
+              `${viewMode() === 'mindmap' ? 'bg-slate-200/50' : 'bg-slate-200/50'} p-1.5 rounded-lg inline-flex items-center shadow-inner`
             "
           >
             <button
               (click)="viewMode.set('read')"
               [class]="
-                `flex items-center px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${viewMode() === 'read' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
+                `flex items-center px-4 py-2.5 rounded-lg text-xs font-bold transition-all ${viewMode() === 'read' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
               "
             >
               <lucide-angular [img]="icons.FileText" class="w-4 h-4 mr-2" /> Read
@@ -38,7 +38,7 @@
             <button
               (click)="viewMode.set('podcast')"
               [class]="
-                `flex items-center px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${viewMode() === 'podcast' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
+                `flex items-center px-4 py-2.5 rounded-lg text-xs font-bold transition-all ${viewMode() === 'podcast' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
               "
             >
               <lucide-angular [img]="icons.Headphones" class="w-4 h-4 mr-2" /> Podcast
@@ -46,7 +46,7 @@
             <button
               (click)="viewMode.set('mindmap')"
               [class]="
-                `flex items-center px-4 py-2.5 rounded-xl text-xs font-bold transition-all ${viewMode() === 'mindmap' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
+                `flex items-center px-4 py-2.5 rounded-lg text-xs font-bold transition-all ${viewMode() === 'mindmap' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`
               "
             >
               <lucide-angular [img]="icons.Network" class="w-4 h-4 mr-2" /> Map
@@ -114,7 +114,7 @@
                           <select
                             [value]="numSpeakers()"
                             (change)="handleNumSpeakersChange($event)"
-                            class="w-full h-14 pl-12 pr-4 bg-white border-2 border-slate-100 rounded-2xl text-slate-800 font-bold focus:border-indigo-600 focus:ring-0 transition-all appearance-none cursor-pointer shadow-sm"
+                            class="w-full h-14 pl-12 pr-4 bg-white border-2 border-slate-100 rounded-lg text-slate-800 font-bold focus:border-indigo-600 focus:ring-0 transition-all appearance-none cursor-pointer shadow-sm"
                           >
                             <option value="1">1 Speaker (Solo Lecture)</option>
                             <option value="2">2 Speakers (Classic Duo)</option>
@@ -133,7 +133,7 @@
                       </div>
 
                       <div
-                        class="p-5 bg-indigo-50/50 rounded-2xl border border-indigo-100 flex items-start gap-3"
+                        class="p-5 bg-indigo-50/50 rounded-lg border border-indigo-100 flex items-start gap-3"
                       >
                         <lucide-angular
                           [img]="icons.Sparkles"
@@ -152,7 +152,7 @@
                     </div>
 
                     <button
-                      class="w-full max-w-md h-14 text-lg shadow-xl shadow-indigo-100 font-black rounded-2xl"
+                      class="w-full max-w-md h-14 text-lg shadow-xl shadow-indigo-100 font-black rounded-lg"
                       (click)="handleStartPodcast()"
                     >
                       Generate Lesson

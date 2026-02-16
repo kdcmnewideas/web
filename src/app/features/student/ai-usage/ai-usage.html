@@ -8,18 +8,12 @@
       </p>
     </div>
     <div class="flex items-center gap-3 w-full md:w-auto">
-      <!-- <Input
-            placeholder="Search keys..."
-            icon={Search}
-            value={searchTerm}
-            class="md:w-64"
-          /> -->
       <Button
         pButton
         (click)="showAddModal.set(true)"
-        class="h-11 px-6 rounded-xl shadow-lg shadow-indigo-100 font-black"
+        class="h-11 px-6 rounded-lg shadow-lg shadow-indigo-100 font-black"
       >
-        <lucide-angular [img]="icons.Plus" class="mr-2" size="16" /> Add API Key
+        <lucide-angular [img]="icons.Plus" size="16" /> Add API Key
       </Button>
     </div>
   </header>
@@ -29,8 +23,8 @@
     <p-card
       class="p-6 border-indigo-100 bg-white shadow-xl shadow-indigo-50/20 relative overflow-hidden group"
     >
-      <div class=" flex items-center gap-4 mb-4">
-        <div class="p-3 bg-indigo-50 text-indigo-600 rounded-2xl">
+      <div class="flex items-center gap-4 mb-4">
+        <div class="p-3 bg-indigo-50 text-indigo-600 rounded-lg">
           <lucide-angular [img]="icons.Activity" size="24" />
         </div>
         <div>
@@ -53,7 +47,7 @@
       class="p-6 border-emerald-100 bg-white shadow-xl shadow-emerald-50/20 relative overflow-hidden group"
     >
       <div class="flex items-center gap-4 mb-4">
-        <div class="p-3 bg-emerald-50 text-emerald-600 rounded-2xl">
+        <div class="p-3 bg-emerald-50 text-emerald-600 rounded-lg">
           <lucide-angular [img]="icons.DollarSign" size="24" />
         </div>
         <div>
@@ -78,7 +72,7 @@
       class="p-6 border-amber-100 bg-white shadow-xl shadow-amber-50/20 relative overflow-hidden group"
     >
       <div class="flex items-center gap-4 mb-4">
-        <div class="p-3 bg-amber-50 text-amber-600 rounded-2xl">
+        <div class="p-3 bg-amber-50 text-amber-600 rounded-lg">
           <lucide-angular [img]="icons.Key" size="24" />
         </div>
         <div>
@@ -107,7 +101,7 @@
     <div class="p-6 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
       <h2 class="text-lg font-black text-slate-800">Key Inventory</h2>
       <div class="flex gap-2">
-        <button class="p-2 hover:bg-slate-200 rounded-xl transition-colors text-slate-500">
+        <button class="p-2 hover:bg-slate-200 rounded-lg transition-colors text-slate-500">
           <lucide-angular [img]="icons.RefreshCw" size="20" />
         </button>
       </div>
@@ -142,7 +136,7 @@
                 <div class="flex items-center gap-3">
                   <div
                     [class]="
-                      `w-10 h-10 rounded-xl flex items-center justify-center text-white ${k.provider === 'Gemini' ? 'bg-indigo-600' : k.provider === 'OpenAI' ? 'bg-emerald-600' : 'bg-slate-800'}`
+                      `w-10 h-10 rounded-lg flex items-center justify-center text-white ${k.provider === 'Gemini' ? 'bg-indigo-600' : k.provider === 'OpenAI' ? 'bg-emerald-600' : 'bg-slate-800'}`
                     "
                   >
                     <lucide-angular [img]="icons.Zap" size="20" />
@@ -169,9 +163,9 @@
                     class="p-1.5 text-slate-400 hover:text-indigo-600 transition-colors"
                   >
                     @if (visibleKeys().has(k.id)) {
-                      <lucide-angular [img]="icons.EyeOff" size="16"/>
+                      <lucide-angular [img]="icons.EyeOff" size="16" />
                     } @else {
-                      <lucide-angular [img]="icons.Eye" size="16"/>
+                      <lucide-angular [img]="icons.Eye" size="16" />
                     }
                   </button>
                 </div>
@@ -273,7 +267,7 @@
 
         <div class="flex items-center gap-4 mb-8">
           <div
-            class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-indigo-100"
+            class="w-14 h-14 bg-indigo-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-indigo-100"
           >
             <lucide-angular [img]="icons.Key" size="28" />
           </div>
@@ -300,7 +294,7 @@
                 <button
                   (click)="newKeyProvider.set(p)"
                   [class]="
-                    `py-3 rounded-xl border-2 font-black text-xs uppercase tracking-widest transition-all ${
+                    `py-3 rounded-lg border-2 font-black text-xs uppercase tracking-widest transition-all ${
                       newKeyProvider() === p
                         ? 'border-indigo-600 bg-indigo-50 text-indigo-700'
                         : 'border-slate-100 bg-slate-50 text-slate-400 hover:border-slate-200'

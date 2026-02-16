@@ -2,7 +2,7 @@
   class="relative overflow-auto select-none transition-all duration-300"
   [ngClass]="{
     'fixed inset-0 z-[100] w-screen h-screen rounded-none': isFullScreen,
-    'w-full h-full rounded-2xl': !isFullScreen,
+    'w-full h-full rounded-lg': !isFullScreen,
     'bg-[#1e2124]': isDark,
     'bg-slate-50': !isDark,
     'cursor-grabbing': isDragging,
@@ -15,7 +15,7 @@
     class="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-30 pointer-events-none"
   >
     <div
-      class="bg-white/80 backdrop-blur-md px-4 py-2 rounded-xl border border-slate-200 shadow-sm pointer-events-auto"
+      class="bg-white/80 backdrop-blur-md px-4 py-2 rounded-lg border border-slate-200 shadow-sm pointer-events-auto"
     >
       <h2 class="text-lg font-bold text-slate-900">{{ data.label }}</h2>
     </div>
@@ -65,7 +65,7 @@
             >
               <div
                 (click)="node.children?.length ? toggleNode(node.id, $event) : null"
-                class="flex-1 border rounded-xl px-4 py-3 shadow-sm flex items-center justify-between hover:scale-[1.02] transition-all cursor-pointer backdrop-blur-sm group"
+                class="flex-1 border rounded-lg px-4 py-3 shadow-sm flex items-center justify-between hover:scale-[1.02] transition-all cursor-pointer backdrop-blur-sm group"
                 [ngClass]="{
                   'bg-indigo-600 border-indigo-700': node.id === 'root',
                   'bg-slate-800 border-slate-700': node.id !== 'root' && isDark,
@@ -109,7 +109,7 @@
     (mousedown)="$event.stopPropagation()"
   >
     <div
-      class="flex flex-col backdrop-blur-md rounded-xl border overflow-hidden shadow-xl"
+      class="flex flex-col backdrop-blur-md rounded-lg border overflow-hidden shadow-xl"
       [ngClass]="isDark() ? 'bg-slate-900/90 border-white/10' : 'bg-white/95 border-slate-200'"
     >
       <button

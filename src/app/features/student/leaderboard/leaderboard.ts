@@ -15,10 +15,12 @@ import {
 } from 'lucide-angular';
 import { CardModule } from 'primeng/card';
 import { CURRENT_USER, LEADERBOARD_DATA } from '../../../shared/constants/mock-data.constant';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-leaderboard',
-  imports: [CardModule, LucideAngularModule],
+  imports: [CardModule, LucideAngularModule, SelectButtonModule, FormsModule],
   templateUrl: './leaderboard.html',
   styleUrl: './leaderboard.css',
 

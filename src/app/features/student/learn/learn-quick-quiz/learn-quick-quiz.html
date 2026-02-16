@@ -1,4 +1,4 @@
-<div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
+<div class="p-6 bg-white rounded-lg border border-slate-200 shadow-sm">
   <h3 class="font-bold text-slate-800 mb-4 text-lg">Quick Quiz</h3>
   <p class="text-sm text-slate-600 font-medium mb-4">
     {{ quizData().question || question().text }}
@@ -9,7 +9,7 @@
       <button
         [disabled]="hasAnswered()"
         (click)="onAnswer.emit($index)"
-        class="w-full text-left p-3 rounded-xl border flex items-start gap-3 transition-all"
+        class="w-full text-left p-3 rounded-lg border flex items-start gap-3 transition-all"
         [ngClass]="getOptionStyles($index)"
       >
         <div

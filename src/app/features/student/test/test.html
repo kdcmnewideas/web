@@ -80,14 +80,14 @@
           <button
             (click)="prevQuestion()"
             [disabled]="currentQuestionIdx() === 0"
-            class="h-14 px-8 rounded-2xl font-bold hover:bg-slate-100 flex items-center">
+            class="h-14 px-8 rounded-lg font-bold hover:bg-slate-100 flex items-center">
             <lucide-icon [img]="icons.ArrowLeft" class="w-5 h-5 mr-3"></lucide-icon> Back
           </button>
 
           <button
             (click)="nextQuestion()"
             [class.bg-emerald-600]="currentQuestionIdx() === activeQuestions().length - 1"
-            class="h-14 px-12 rounded-2xl bg-indigo-600 text-white font-black shadow-lg flex items-center">
+            class="h-14 px-12 rounded-lg bg-indigo-600 text-white font-black shadow-lg flex items-center">
             {{ currentQuestionIdx() < activeQuestions().length - 1 ? 'Continue' : 'Complete Test' }}
             <lucide-icon [img]="icons.ChevronRight" class="w-5 h-5 ml-3"></lucide-icon>
           </button>

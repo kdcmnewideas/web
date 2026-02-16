@@ -62,7 +62,7 @@ export class Login {
       this.authService.login({ email, password }).subscribe({
         next: () => this.router.navigate(['/']),
         error: (err) => {
-          this.router.navigate(['/']);
+          console.log(err);
         },
       });
   };

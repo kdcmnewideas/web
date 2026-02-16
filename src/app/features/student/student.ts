@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { TooltipModule } from 'primeng/tooltip';
 import { CURRENT_USER } from '../../shared/constants/mock-data.constant';
+import { AvatarModule } from 'primeng/avatar';
 import {
   Calendar,
   ChevronLeft,
@@ -14,10 +15,11 @@ import {
   House,
   ChartNoAxesColumn,
 } from 'lucide-angular';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-student',
-  imports: [RouterOutlet, TooltipModule, LucideAngularModule],
+  imports: [RouterOutlet, TooltipModule, LucideAngularModule, ButtonModule, AvatarModule],
   templateUrl: './student.html',
   styleUrl: './student.css',
 })

@@ -1,4 +1,4 @@
-import { Component, computed, input, output } from '@angular/core';
+import { Component, computed, input, output, signal } from '@angular/core';
 import { Topic } from '../../../../shared/constants/mock-data.constant';
 import { LucideAngularModule, Sparkles, Volume2 } from 'lucide-angular';
 
@@ -18,6 +18,12 @@ export class LearnReadMode {
   // Signal-based Input and Output
   topic = input.required<Topic>();
   readAloud = output<void>();
+  subject = input.required<string>();
+  content = input.required<any>();
+  image = input<any>();
+
+  dataTypes = ['analogy', 'deep_dive', 'mechanism'];
+  currentDataIndex = signal(0);
 
   icons = {
     Volume2,
@@ -26,8 +32,24 @@ export class LearnReadMode {
 
   // Computed signal to parse content whenever topic changes
   parsedBlocks = computed(() => {
-    const content = this.topic()?.content || '';
-    return content.split('\n').map((line): ContentBlock => {
+    return this.modifyingContnet(
+      this.content()
+        ? this.content()?.[this.dataTypes[this.currentDataIndex()]]
+        : this.topic()?.content,
+    );
+  });
+
+  onReadAloudClick() {
+    this.readAloud.emit();
+  }
+
+  handleRegenerateClick() {
+    this.currentDataIndex.set((this.currentDataIndex() + 1) % this.dataTypes.length);
+  }
+
+  modifyingContnet(data: string) {
+    const content = data || '';
+    return content.split('\n').map((line: string): ContentBlock => {
       const trimmed = line.trim();
 
       if (trimmed.startsWith('###')) {
@@ -51,9 +73,5 @@ export class LearnReadMode {
 
       return { type: 'p', parts };
     });
-  });
-
-  onReadAloudClick() {
-    this.readAloud.emit();
   }
 }

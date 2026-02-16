@@ -1,1 +1,17 @@
-<p>written works!</p>
+<div class="space-y-4 flex">
+  <div class="p-4 bg-indigo-50 border border-indigo-100 rounded-lg flex items-start gap-3 mb-6">
+    <lucide-icon
+      [img]="FileTextIcon"
+      class="w-5 h-5 text-indigo-600 mt-1">
+    </lucide-icon>
+    <p class="text-sm text-indigo-800 font-medium">
+      Please provide a detailed response. Your submission will be evaluated for depth and accuracy.
+    </p>
+  </div>
+
+  <textarea
+    class="w-full h-64 p-6 rounded-3xl border-2 border-slate-100 bg-slate-50/50 focus:bg-white focus:border-indigo-600 focus:ring-4 focus:ring-indigo-50 transition-all outline-none text-lg text-slate-700 leading-relaxed placeholder-slate-300"
+    placeholder="Type your answer here..."
+    [(ngModel)]="answer"
+  ></textarea>
+</div>

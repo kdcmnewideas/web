@@ -1,24 +1,35 @@
-<div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm">
+<div class="p-6 bg-white rounded-lg border border-slate-200 shadow-sm">
   <h3 class="font-bold text-slate-800 mb-4 text-lg">Quick Quiz</h3>
-  <p class="text-sm text-slate-600 font-medium mb-4">{{ question().text }}</p>
+  <p class="text-sm text-slate-600 font-medium mb-4">
+    {{ quizData().question || question().text }}
+  </p>
 
   <div class="space-y-3">
-    @for (opt of question().options; track $index) {
+    @for (opt of (quizData() || question()).options; track $index) {
       <button
         [disabled]="hasAnswered()"
         (click)="onAnswer.emit($index)"
-        class="w-full text-left p-3 rounded-xl border flex items-start gap-3 transition-all"
+        class="w-full text-left p-3 rounded-lg border flex items-start gap-3 transition-all"
         [ngClass]="getOptionStyles($index)"
       >
         <div
-          class="w-5 h-5 rounded-full border flex-shrink-0 flex items-center justify-center mt-0.5 transition-colors"
+          class="w-5 h-5 rounded-full border shrink-0 flex items-center justify-center mt-0.5 transition-colors"
           [ngClass]="getCircleStyles($index)"
         >
           <div
             class="w-2 h-2 rounded-full transition-all"
             [ngClass]="{
-              'bg-white': hasAnswered() && (question().correctAnswer === $index || selectedAnswerIndex() === $index),
-              'bg-transparent': !hasAnswered() || (question().correctAnswer !== $index && selectedAnswerIndex() !== $index)
+              'bg-white':
+                hasAnswered() &&
+                ((quizData()
+                  ? this.quizData().answer_index
+                  : question().correctAnswer === $index) ||
+                  selectedAnswerIndex() === $index),
+              'bg-transparent':
+                !hasAnswered() ||
+                (quizData()
+                  ? this.quizData().answer_index
+                  : question().correctAnswer !== $index && selectedAnswerIndex() !== $index),
             }"
           ></div>
         </div>
@@ -29,7 +40,9 @@
   </div>
 
   @if (hasAnswered()) {
-    <div class="mt-4 text-xs bg-slate-100 p-3 rounded-lg text-slate-600 animate-in fade-in slide-in-from-top-1 duration-300">
+    <div
+      class="mt-4 text-xs bg-slate-100 p-3 rounded-lg text-slate-600 animate-in fade-in slide-in-from-top-1 duration-300"
+    >
       <span class="font-bold">Explanation:</span> {{ question().explanation }}
     </div>
   }

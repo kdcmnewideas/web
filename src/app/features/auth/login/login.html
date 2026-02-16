@@ -135,7 +135,7 @@
         <div class="flex-1 p-6 relative">
           <!-- Sidebar -->
           <div
-            class="absolute top-6 bottom-6 left-6 w-16 bg-white/5 rounded-xl flex flex-col gap-3 p-2 border border-white/5"
+            class="absolute top-6 bottom-6 left-6 w-16 bg-white/5 rounded-lg flex flex-col gap-3 p-2 border border-white/5"
           >
             <div class="w-full aspect-square bg-white/20 rounded-lg"></div>
             <div class="w-full aspect-square bg-white/10 rounded-lg"></div>
@@ -147,10 +147,10 @@
           <div class="absolute top-6 bottom-6 left-28 right-6 flex flex-col gap-4">
             <!-- Header Line -->
             <div
-              class="h-14 bg-white/10 rounded-xl flex items-center px-4 gap-4 border border-white/5"
+              class="h-14 bg-white/10 rounded-lg flex items-center px-4 gap-4 border border-white/5"
             >
               <div class="w-8 h-8 rounded-full bg-indigo-400/50 flex items-center justify-center">
-                <ng-icon name="lucideZap" class="w-4 h-4" color="#fff" />
+                <lucide-angular [img]="icons.Zap" class="w-4 h-4" color="#fff" />
               </div>
               <div class="h-2 w-24 bg-white/20 rounded-full"></div>
             </div>
@@ -158,13 +158,13 @@
             <div class="flex-1 grid grid-cols-2 gap-4">
               <!-- Chart Card -->
               <div
-                class="bg-white/5 rounded-xl relative overflow-hidden border border-white/5 flex flex-col justify-end"
+                class="bg-white/5 rounded-lg relative overflow-hidden border border-white/5 flex flex-col justify-end"
               >
                 <div
                   class="absolute top-3 left-3 right-3 flex justify-between items-center text-white/40"
                 >
                   <div class="w-8 h-1 bg-white/20 rounded-full"></div>
-                  <ng-icon name="lucideChartColumn" class="w-4 h-4 text-white/40" />
+                  <lucide-angular [img]="icons.ChartColumn" class="w-4 h-4 text-white/40" />
                 </div>
                 <div class="mx-3 mb-3 flex items-end gap-1 h-1/2">
                   <div class="w-1/4 h-3/4 bg-white/20 rounded-sm"></div>
@@ -175,9 +175,9 @@
               </div>
               <!-- Stats Card -->
               <div
-                class="bg-white/5 rounded-xl flex flex-col items-center justify-center border border-white/5 relative text-white/20"
+                class="bg-white/5 rounded-lg flex flex-col items-center justify-center border border-white/5 relative text-white/20"
               >
-                <ng-icon name="lucideChartPie" class="w-10 h-10 text-white/20 mb-2"></ng-icon>
+                <lucide-angular [img]="icons.ChartPie" class="w-10 h-10 text-white/20 mb-2"></lucide-angular>
                 <div class="w-10 h-1 bg-white/20 rounded-full"></div>
               </div>
             </div>
@@ -189,7 +189,7 @@
 
       <!-- Top Right - Success Notification -->
       <div
-        class="absolute -top-4 -right-2 bg-white rounded-2xl p-4 shadow-xl animate-pulse"
+        class="absolute -top-4 -right-2 bg-white rounded-lg p-4 shadow-xl animate-pulse"
         [style]="{
           animationDuration: '4s',
         }"
@@ -198,7 +198,7 @@
           <div
             class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600"
           >
-            <ng-icon name="lucideCircleCheck" class="w-6 h-6" />
+            <lucide-angular [img]="icons.CircleCheck" class="w-6 h-6" />
           </div>
           <div>
             <div class="w-20 h-2 bg-slate-200 rounded-full mb-1.5"></div>
@@ -209,11 +209,11 @@
 
       <!-- Bottom Left - Community Card -->
       <div
-        class="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur rounded-2xl p-4 shadow-xl border border-white/50 transition-transform hover:scale-105 duration-300"
+        class="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur rounded-lg p-4 shadow-xl border border-white/50 transition-transform hover:scale-105 duration-300"
       >
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
-            <ng-icon name="lucideUsers" class="w-5 h-5 text-indigo-600" />
+            <lucide-angular [img]="icons.Users" class="w-5 h-5 text-indigo-600" />
           </div>
           <div>
             <div class="text-sm font-bold text-slate-800">10k+ Students</div>
@@ -227,10 +227,10 @@
         class="absolute top-1/2 -right-16 text-white/10 animate-spin-slow"
         [style]="{ animationDuration: '20s' }"
       >
-        <ng-icon name="lucideGlobe" class="w-32 h-32" size="128px" />
+        <lucide-angular [img]="icons.Globe" class="w-32 h-32" size="128px" />
       </div>
       <div class="absolute -bottom-10 right-10 text-white/5 rotate-12">
-        <ng-icon name="lucideLayoutGrid" class="w-40 h-40" size="160px" />
+        <lucide-angular [img]="icons.LayoutGrid" class="w-40 h-40" size="160px" />
       </div>
     </div>
 

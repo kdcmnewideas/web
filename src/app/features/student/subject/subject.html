@@ -1,51 +1,67 @@
 <div class="animate-fade-in space-y-6 pb-20">
-
   <!-- Subject Identity Brief -->
   <div class="flex flex-col items-stretch gap-4">
     <div
-      class="flex-3 bg-white p-6 md:p-8 rounded-[2.5rem] border border-slate-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.03)] relative overflow-hidden group">
+      class="flex-3 bg-white p-6 md:p-8 rounded-[2.5rem] border border-slate-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.03)] relative overflow-hidden group"
+    >
       <div
-        class="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-slate-50/30 to-transparent pointer-events-none">
-      </div>
+        class="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-slate-50/30 to-transparent pointer-events-none"
+      ></div>
 
       <div class="flex flex-col md:flex-row items-center gap-6 relative z-10">
         <div class="relative">
           <div
-            [class]="`w-28 h-28 md:w-32 md:h-32 rounded-[2.5rem] p-1 bg-linear-to-br ${theme().gradient} shadow-xl flex items-center justify-center transform transition-transform group-hover:scale-105 duration-700`">
+            [class]="
+              `w-28 h-28 md:w-32 md:h-32 rounded-[2.5rem] p-1 bg-linear-to-br ${theme().gradient} shadow-xl flex items-center justify-center transform transition-transform group-hover:scale-105 duration-700`
+            "
+          >
             <div
-              class="w-full h-full rounded-[2.3rem] border-4 border-white/20 flex items-center justify-center backdrop-blur-sm">
+              class="w-full h-full rounded-[2.3rem] border-4 border-white/20 flex items-center justify-center backdrop-blur-sm"
+            >
               <lucide-angular [img]="icons.Compass" class="w-12 h-12 text-white" />
             </div>
           </div>
           <div
-            class="absolute -bottom-1 -right-1 w-10 h-10 bg-white rounded-xl shadow-lg border border-slate-100 flex items-center justify-center group-hover:rotate-12 transition-transform">
+            class="absolute -bottom-1 -right-1 w-10 h-10 bg-white rounded-lg shadow-lg border border-slate-100 flex items-center justify-center group-hover:rotate-12 transition-transform"
+          >
             <lucide-angular [img]="icons.Star" [class]="`w-5 h-5 ${theme().main} fill-current`" />
           </div>
         </div>
 
         <div class="flex-1 text-center md:text-left">
           <div class="flex flex-wrap justify-center md:justify-start items-center gap-3 mb-3">
-            <button (click)="onNavigate('home')"
-              class="group flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-indigo-600 transition-all">
+            <button
+              (click)="onNavigate('home')"
+              class="group flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.2em] text-slate-400 hover:text-indigo-600 transition-all"
+            >
               <lucide-angular [img]="icons.ArrowLeft" class="w-3.5 h-3.5" /> Home
             </button>
             <span class="w-1 h-1 rounded-full bg-slate-200"></span>
-            <span [class]="`text-[9px] font-black uppercase tracking-[0.2em] ${theme().main}`">Master Track</span>
+            <span [class]="`text-[9px] font-black uppercase tracking-[0.2em] ${theme().main}`"
+              >Master Track</span
+            >
           </div>
 
-          <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter mb-4">{{subject().title}}</h1>
+          <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter mb-4">
+            {{ subject().title }}
+          </h1>
 
           <div class="flex flex-wrap justify-center md:justify-start items-center gap-2">
-            <div class="px-4 py-1.5 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-2.5 shadow-sm">
+            <div
+              class="px-4 py-1.5 bg-slate-50 rounded-lg border border-slate-100 flex items-center gap-2.5 shadow-sm"
+            >
               <lucide-angular [img]="icons.Layers" class="w-3.5 h-3.5 text-slate-400" />
-              <span class="text-[9px] font-black text-slate-500 uppercase tracking-widest">{{lessons().length}}
-                Modules</span>
+              <span class="text-[9px] font-black text-slate-500 uppercase tracking-widest"
+                >{{ lessons().length }} Modules</span
+              >
             </div>
             <div
-              class="px-4 py-1.5 bg-emerald-50 rounded-xl border border-emerald-100 flex items-center gap-2.5 shadow-sm">
+              class="px-4 py-1.5 bg-emerald-50 rounded-lg border border-emerald-100 flex items-center gap-2.5 shadow-sm"
+            >
               <lucide-angular [img]="icons.TrendingUp" class="w-3.5 h-3.5 text-emerald-600" />
-              <span class="text-[9px] font-black text-emerald-600 uppercase tracking-widest">{{subject().progress}}%
-                Sync</span>
+              <span class="text-[9px] font-black text-emerald-600 uppercase tracking-widest"
+                >{{ subject().progress }}% Sync</span
+              >
             </div>
           </div>
         </div>
@@ -55,31 +71,51 @@
     <!-- Dynamic Meta Indicators -->
     <div class="flex-1 grid grid-cols-2 gap-4">
       <p-card
-        class="p-5 border-slate-100 bg-white flex flex-col justify-between hover:shadow-xl transition-all group/stat">
+        class="p-5 border-slate-100 bg-white flex flex-col justify-between hover:shadow-xl transition-all group/stat"
+      >
         <div class="flex justify-between items-start">
-          <div
-            [class]="`p-2.5 rounded-xl ${theme().bg} ${theme().main} group-hover/stat:rotate-6 transition-transform shadow-inner`">
-            <lucide-angular [img]="icons.Clock" class="w-5 h-5" />
+          <div class="flex gap-3">
+            <div
+              [class]="
+                `p-2.5 rounded-lg ${theme().bg} ${theme().main} group-hover/stat:rotate-6 transition-transform shadow-inner flex`
+              "
+            >
+              <lucide-angular [img]="icons.Clock" class="w-5 h-5" />
+            </div>
+            <div>
+              <span class="text-2xl font-black text-slate-900 tracking-tighter leading-none"
+                >12.4h</span
+              >
+              <p class="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">
+                Invested
+              </p>
+            </div>
           </div>
           <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest">Time</span>
         </div>
-        <div class="mt-2">
-          <span class="text-2xl font-black text-slate-900 tracking-tighter leading-none">12.4h</span>
-          <p class="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">Invested</p>
-        </div>
       </p-card>
       <p-card
-        class="p-5 border-slate-100 bg-white flex flex-col justify-between hover:shadow-xl transition-all group/stat">
+        class="p-5 border-slate-100 bg-white flex flex-col justify-between hover:shadow-xl transition-all group/stat"
+      >
         <div class="flex justify-between items-start">
-          <div
-            class="p-2.5 rounded-xl bg-amber-50 text-amber-600 group-hover/stat:rotate-6 transition-transform shadow-inner">
-            <lucide-angular [img]="icons.Trophy" class="w-5 h-5" />
+          <div class="flex gap-3">
+            <div
+              class="p-2.5 rounded-lg bg-amber-50 text-amber-600 group-hover/stat:rotate-6 transition-transform shadow-inner"
+            >
+              <lucide-angular [img]="icons.Trophy" class="w-5 h-5" />
+            </div>
+            <div>
+              <span class="text-2xl font-black text-slate-900 tracking-tighter leading-none"
+                >84%</span
+              >
+              <p class="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">
+                Score
+              </p>
+            </div>
           </div>
-          <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest">Mastery</span>
-        </div>
-        <div class="mt-2">
-          <span class="text-2xl font-black text-slate-900 tracking-tighter leading-none">84%</span>
-          <p class="text-[8px] font-black text-slate-400 uppercase tracking-[0.2em] mt-1">Score</p>
+          <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest"
+            >Mastery</span
+          >
         </div>
       </p-card>
     </div>
@@ -87,12 +123,13 @@
 
   <!-- Curriculum Architecture & Insights -->
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-
     <!-- Left Column: Interactive Syllabus Roadmap -->
     <div class="lg:col-span-8 space-y-6">
       <div class="flex items-center justify-between px-4">
         <h2 class="text-lg font-black text-slate-800 tracking-tight flex items-center gap-3">
-          <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-inner">
+          <div
+            class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shadow-inner"
+          >
             <lucide-angular [img]="icons.Activity" class="w-5 h-5" />
           </div>
           Architecture
@@ -101,14 +138,18 @@
 
       <div class="relative px-1">
         <!-- Structural Connector Line -->
-        <div class="absolute left-13 top-10 bottom-10 w-1 bg-slate-100 hidden md:block rounded-full overflow-hidden">
-          <div [class]="`w-full bg-indigo-500 transition-all duration-1000`"
-            [style]="{ height: `${subject().progress}%` }"></div>
+        <div
+          class="absolute left-13 top-10 bottom-10 w-1 bg-slate-100 hidden md:block rounded-full overflow-hidden"
+        >
+          <div
+            [class]="`w-full bg-indigo-500 transition-all duration-1000`"
+            [style]="{ height: `${subject().progress}%` }"
+          ></div>
         </div>
 
         <div class="flex flex-col space-y-4">
-          @for(lesson of lessons(); track lesson.id; let index = $index){
-          <app-lesson-card [lesson]="lesson" [index]="index" />
+          @for (lesson of lessons(); track lesson.id; let index = $index) {
+            <app-lesson-card [lesson]="lesson" [index]="index" />
           }
         </div>
       </div>
@@ -116,66 +157,96 @@
 
     <!-- Right Column: Neural Intelligence Briefing -->
     <div class="lg:col-span-4 space-y-6">
-
       <!-- Course Intelligence Deck -->
-      <p-card class="p-6 border-slate-100 rounded-[2.5rem] bg-white shadow-xl relative overflow-hidden group/intel">
-        <div class="absolute -top-10 -right-10 w-32 h-32 bg-indigo-50/50 rounded-full blur-3xl"></div>
+      <p-card
+        class="p-6 border-slate-100 rounded-[2.5rem] bg-white shadow-xl relative overflow-hidden group/intel"
+      >
+        <div
+          class="absolute -top-10 -right-10 w-32 h-32 bg-indigo-50/50 rounded-full blur-3xl"
+        ></div>
 
         <div class="flex items-center justify-between mb-6 relative z-10">
           <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Insights</h3>
           <div
-            class="flex items-center gap-1.5 text-[8px] font-black text-emerald-600 uppercase tracking-widest bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">
+            class="flex items-center gap-1.5 text-[8px] font-black text-emerald-600 uppercase tracking-widest bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100"
+          >
             <lucide-angular [img]="icons.Activity" class="w-2.5 h-2.5" /> Synced
           </div>
         </div>
 
         <div class="grid grid-cols-2 gap-3 relative z-10">
-          @for(stat of stats; track i; let i = $index){
-          <div
-            class="p-4 rounded-2xl border border-slate-50 bg-slate-50/40 hover:bg-white transition-all duration-500 group/item cursor-default">
-            <div [class]="`w-8 h-8 rounded-lg ${stat.bg} ${stat.color} flex items-center justify-center mb-3
-              group-hover/item:rotate-12 transition-transform`">
-              <lucide-angular [img]="stat.icon" class="w-4 h-4 fill-current bg-opacity-0 transition-all" />
+          @for (stat of stats; track i; let i = $index) {
+            <div
+              class="p-4 rounded-lg border border-slate-50 bg-slate-50/40 hover:bg-white transition-all duration-500 group/item cursor-default"
+            >
+              <div
+                [class]="
+                  `w-8 h-8 rounded-lg ${stat.bg} ${stat.color} flex items-center justify-center mb-3
+              group-hover/item:rotate-12 transition-transform`
+                "
+              >
+                <lucide-angular
+                  [img]="stat.icon"
+                  class="w-4 h-4 fill-current bg-opacity-0 transition-all"
+                />
+              </div>
+              <span
+                class="block text-xl font-black text-slate-900 tracking-tighter leading-none mb-1"
+                >{{ stat.val }}</span
+              >
+              <span class="text-[8px] font-black text-slate-400 uppercase tracking-widest">{{
+                stat.label
+              }}</span>
             </div>
-            <span class="block text-xl font-black text-slate-900 tracking-tighter leading-none mb-1">{{stat.val}}</span>
-            <span class="text-[8px] font-black text-slate-400 uppercase tracking-widest">{{stat.label}}</span>
-          </div>
           }
         </div>
 
-        <button (click)="onNavigate('analytics')" class="mt-6 w-full py-4 bg-slate-900 hover:bg-indigo-600 text-white rounded-2xl text-[9px] font-black
-          uppercase tracking-widest transition-all flex items-center justify-center gap-3 shadow-lg active:scale-95
-          group/btn">
+        <button
+          (click)="onNavigate('analytics')"
+          class="mt-6 w-full py-4 bg-slate-900 hover:bg-indigo-600 text-white rounded-lg text-[9px] font-black uppercase tracking-widest transition-all items-center justify-center gap-3 shadow-lg active:scale-95 group/btn hidden"
+        >
           Deep Analytics
           <lucide-angular [img]="icons.ArrowUpRight" class="w-3.5 h-3.5" />
         </button>
       </p-card>
 
       <!-- AI Smart Advice -->
-      <p-card class="p-6 border-0 bg-slate-900! text-white! rounded-[2.5rem] shadow-xl relative overflow-hidden group/ai">
+      <p-card
+        class="p-6 border-0 bg-slate-900! text-white! rounded-[2.5rem] shadow-xl relative overflow-hidden group/ai"
+      >
         <div class="relative z-10">
           <div class="flex items-center gap-4 mb-6">
             <div
-              class="w-11 h-11 bg-indigo-500 rounded-xl flex items-center justify-center shadow-lg border border-white/20">
+              class="w-11 h-11 bg-indigo-500 rounded-lg flex items-center justify-center shadow-lg border border-white/20"
+            >
               <lucide-angular [img]="icons.Sparkles" class="w-6 h-6 text-white fill-current" />
             </div>
             <div>
-              <h4 class="text-sm font-black tracking-tight leading-none uppercase text-indigo-400">AI Oracle</h4>
+              <h4 class="text-sm font-black tracking-tight leading-none uppercase text-indigo-400">
+                AI Oracle
+              </h4>
             </div>
           </div>
-          <p class="text-xs text-slate-300 font-bold leading-relaxed mb-8 italic border-l-2 border-indigo-500/50 pl-4">
-            "Cognitive pattern analysis indicates high proficiency in <span
-              class="text-white font-black underline decoration-indigo-500 decoration-2 underline-offset-4">Derivatives</span>."
+          <p
+            class="text-xs text-slate-300 font-bold leading-relaxed mb-8 italic border-l-2 border-indigo-500/50 pl-4"
+          >
+            "Cognitive pattern analysis indicates high proficiency in
+            <span
+              class="text-white font-black underline decoration-indigo-500 decoration-2 underline-offset-4"
+              >Derivatives</span
+            >."
           </p>
-          <button (click)="onNavigate('revision', { lessonId: lessons()[0].id })" class="w-full py-4 bg-white/10 hover:bg-white text-white hover:text-slate-900 rounded-2xl border
-            border-white/10 text-[9px] font-black uppercase tracking-[0.3em] transition-all shadow-lg active:scale-95">
+          <button
+            (click)="onNavigate('revision', { lessonId: lessons()[0].id })"
+            class="w-full py-4 bg-white/10 hover:bg-white text-white hover:text-slate-900 rounded-lg border border-white/10 text-[9px] font-black uppercase tracking-[0.3em] transition-all shadow-lg active:scale-95"
+          >
             Apply Optimization
           </button>
         </div>
         <div
-          class="absolute -bottom-20 -right-20 w-48 h-48 bg-indigo-500/10 rounded-full blur-[80px] pointer-events-none transition-all duration-1000">
-        </div>
+          class="absolute -bottom-20 -right-20 w-48 h-48 bg-indigo-500/10 rounded-full blur-[80px] pointer-events-none transition-all duration-1000"
+        ></div>
       </p-card>
-
+    </div>
   </div>
 </div>

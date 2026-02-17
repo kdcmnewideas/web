@@ -30,7 +30,6 @@ import { CURRENT_USER } from '../../../shared/constants/mock-data.constant';
 import { CardModule } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../services/auth/auth.service';
-import { ScreenName } from '../../../shared/constants/screen-names.constant';
 import { Router } from '@angular/router';
 
 @Component({
@@ -126,7 +125,7 @@ export class UserProfile {
 
   onNavigate(path: string) {
     // Handle sign out explicitly
-    if (path === ScreenName.LOGIN) {
+    if (path === 'login') {
       this.authService.signOut();
       // navigate to auth login route
       this.router.navigate(['auth', 'login']);
@@ -135,16 +134,16 @@ export class UserProfile {
 
     // Default: attempt to navigate to a reasonable path mapping
     switch (path) {
-      case ScreenName.SETTINGS:
+      case 'settings':
         this.router.navigate(['settings']);
         break;
-      case ScreenName.GOALS:
+      case 'goals':
         this.router.navigate(['goals']);
         break;
-      case ScreenName.CHANGE_PASSWORD:
+      case 'change-password':
         this.router.navigate(['change-password']);
         break;
-      case ScreenName.ANALYTICS:
+      case 'analytics':
         this.router.navigate(['analytics']);
         break;
       default:

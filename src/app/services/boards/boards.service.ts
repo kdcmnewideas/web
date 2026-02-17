@@ -52,4 +52,8 @@ export class BoardsService {
   deleteBoardById = (board_id: string): Observable<IBoard> => {
     return this.http.delete<IBoard>(`${this.baseUrl}/boards/${board_id}/`, this.buildOptions());
   };
+
+  getBoadById = (board_id: string): Observable<IBoard> => {
+    return this.http.get<IBoard>(`${this.baseUrl}/boards/${board_id}/`, this.buildOptions());
+  };
 }

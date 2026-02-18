@@ -8,26 +8,26 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class BoardsService {
-  baseUrl = environment.circulumAPI;
+  baseUrl = environment.circulumAPI + '/boards';
   http = inject(HttpClient);
 
   createBoard = (board: IBoardRequestBody): Observable<IBoard> => {
-    return this.http.post<IBoard>(`${this.baseUrl}/boards/`, board);
+    return this.http.post<IBoard>(`${this.baseUrl}/`, board);
   };
 
   getAllBoards = (): Observable<IBoard[]> => {
-    return this.http.get<IBoard[]>(`${this.baseUrl}/boards/`);
+    return this.http.get<IBoard[]>(`${this.baseUrl}/`);
   };
 
   updateBoardById = (board_id: string, board: Partial<IBoardRequestBody>): Observable<IBoard> => {
-    return this.http.patch<IBoard>(`${this.baseUrl}/boards/${board_id}/`, board);
+    return this.http.patch<IBoard>(`${this.baseUrl}/${board_id}`, board);
   };
 
   deleteBoardById = (board_id: string): Observable<IBoard> => {
-    return this.http.delete<IBoard>(`${this.baseUrl}/boards/${board_id}/`);
+    return this.http.delete<IBoard>(`${this.baseUrl}/${board_id}`);
   };
 
   getBoadById = (board_id: string): Observable<IBoard> => {
-    return this.http.get<IBoard>(`${this.baseUrl}/boards/${board_id}/`);
+    return this.http.get<IBoard>(`${this.baseUrl}/${board_id}`);
   };
 }

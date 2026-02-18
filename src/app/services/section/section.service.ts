@@ -26,12 +26,12 @@ export class SectionService {
       params['course_id'] = course_id;
     }
     const headers = this.getHeaders(userDetails);
-    return this.http.get<ISection[]>(this.baseUrl, { headers, params });
+    return this.http.get<ISection[]>(`${this.baseUrl}`, { headers, params });
   };
 
   createSection = (sectionData: ICreateSection, userDetails: any) => {
     const headers = this.getHeaders(userDetails);
-    return this.http.post<ISection>(this.baseUrl, sectionData, { headers });
+    return this.http.post<ISection>(`${this.baseUrl}`, sectionData, { headers });
   };
 
   updateSection = (sectionId: string, sectionData: ISection, userDetails: any) => {

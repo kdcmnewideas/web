@@ -19,7 +19,7 @@ export class PlatformManagementService {
     if (status) {
       params['status'] = status;
     }
-    return this.http.get<IPlatformUser[]>(`${this.baseUrl}`, {
+    return this.http.get<IPlatformUser[]>(`${this.baseUrl}/`, {
       params,
     });
   };

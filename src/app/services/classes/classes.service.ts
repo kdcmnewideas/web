@@ -26,12 +26,12 @@ export class ClassesService {
       params['course_id'] = course_id;
     }
     const headers = this.getHeaders(userDetails);
-    return this.http.get<IClass[]>(this.baseUrl, { headers, params });
+    return this.http.get<IClass[]>(`${this.baseUrl}`, { headers, params });
   };
 
   createClass = (classData: ICreateClass, userDetails: any) => {
     const headers = this.getHeaders(userDetails);
-    return this.http.post<IClass>(this.baseUrl, classData, { headers });
+    return this.http.post<IClass>(`${this.baseUrl}`, classData, { headers });
   };
 
   updateClass = (classId: string, classData: IUpdateClass, userDetails: any) => {

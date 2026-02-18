@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { ILogin, IRegister } from '../../core/interface/user-profile.interface';
+import { ILogin, ILoginSuccessful, IRegister, IRegisterSuccessful } from '../../core/interface/user-profile.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -9,11 +9,18 @@ import { ILogin, IRegister } from '../../core/interface/user-profile.interface';
 export class AuthService {
   baseUrl = environment.userServiceAPI + '/auth';
 
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
-  login = (data: ILogin) => this.http.post(`${this.baseUrl}/login`, data);
+  login = (data: ILogin) => this.http.post<ILoginSuccessful>(`${this.baseUrl}/login`, data);
 
-  register = (data: IRegister) => this.http.post(`${this.baseUrl}/register`, data);
+  register = (data: IRegister) => this.http.post<IRegisterSuccessful>(`${this.baseUrl}/register`, data);
+
+  verify = (token: string) => this.http.post<string>(`${this.baseUrl}/verify`, { token });
+
+  forgotPassword = (email: string) => this.http.post<string>(`${this.baseUrl}/forgot-password`, { email });
+
+  resetPassword = (token: string, password: string) =>
+    this.http.post<string>(`${this.baseUrl}/reset-password`, { token, new_password: password });
 
   /**
    * Clear authentication tokens from storage. This removes common token keys

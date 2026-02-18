@@ -43,6 +43,6 @@ export class SectionService {
 
   deleteSection = (sectionId: string, userDetails: any) => {
     const headers = this.getHeaders(userDetails);
-    return this.http.delete<ISection>(`${this.baseUrl}/${sectionId}`, { headers });
+    return this.http.delete<string>(`${this.baseUrl}/${sectionId}`, { headers });
   };
 }

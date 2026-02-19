@@ -49,7 +49,7 @@ export interface IIngestionJob {
   subject_title: string
 }
 
-export interface IJobContent {
+export interface ISubjectContent {
   id: string
   title: string
   description: string

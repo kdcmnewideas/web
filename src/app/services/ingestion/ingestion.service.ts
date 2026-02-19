@@ -1,17 +1,15 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import {
   IDBHealth,
   IIngestion,
   IIngestionExtimate,
-  IIngestionJob,
   IIngestionJobList,
   IIngestionMetrics,
   IIngestionProgress,
-  IJobContent,
+  ISubjectContent,
 } from '../../core/interface/ingestion.interface';
 
 @Injectable({
@@ -74,8 +72,8 @@ export class IngesionService {
     return this.http.delete<string>(`${this.baseUrl}/jobs/${jobId}/cancel`);
   };
 
-  getJobcontent = (jobId: string): Observable<IJobContent> => {
-    return this.http.get<IJobContent>(`${this.baseUrl}/jobs/${jobId}/content`);
+  getJobcontent = (jobId: string): Observable<ISubjectContent> => {
+    return this.http.get<ISubjectContent>(`${this.baseUrl}/jobs/${jobId}/content`);
   };
 
   getIngestionDbHealth = (): Observable<IDBHealth> => {

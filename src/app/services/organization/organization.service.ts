@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import {
@@ -38,7 +38,11 @@ export class OrganizationService {
   addBulkMembers = (orgId: string, file: File) => {
     const formData = new FormData();
     formData.append('file', file, file.name);
-    return this.http.post<IBulkUpdateResponse>(`${this.baseUrl}/${orgId}/members/bulk`, formData);
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'multipart/form-data');
+    return this.http.post<IBulkUpdateResponse>(`${this.baseUrl}/${orgId}/members/bulk`, formData, {
+      headers,
+    });
   };
 
   joinOrgByKey = (key: string) => this.http.post<string>(`${this.baseUrl}/join`, { join_key: key });
@@ -59,7 +63,7 @@ export class OrganizationService {
     this.http.post<string>(`${this.baseUrl}/${orgId}/accept`, data);
 
   resendInvite = (orgId: string, inviteId: string) =>
-    this.http.post<string>(`${this.baseUrl}/${orgId}/invites/${inviteId}/resend`, {  });
+    this.http.post<string>(`${this.baseUrl}/${orgId}/invites/${inviteId}/resend`, {});
 
   cancelInvite = (orgId: string, inviteId: string) =>
     this.http.delete<string>(`${this.baseUrl}/${orgId}/invites/${inviteId}`);

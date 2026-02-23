@@ -60,9 +60,11 @@
                 >Remember me</label
               >
             </div>
-            <a class="text-primary font-medium cursor-pointer hover:text-primary-emphasis"
-              >Forgot your password?</a
-            >
+            <p-button
+              label="Forgot your password?"
+              link
+              (click)="navigateTo('auth/forget-password')"
+            />
           </div>
         </div>
 
@@ -177,7 +179,10 @@
               <div
                 class="bg-white/5 rounded-lg flex flex-col items-center justify-center border border-white/5 relative text-white/20"
               >
-                <lucide-angular [img]="icons.ChartPie" class="w-10 h-10 text-white/20 mb-2"></lucide-angular>
+                <lucide-angular
+                  [img]="icons.ChartPie"
+                  class="w-10 h-10 text-white/20 mb-2"
+                ></lucide-angular>
                 <div class="w-10 h-1 bg-white/20 rounded-full"></div>
               </div>
             </div>

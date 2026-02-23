@@ -11,6 +11,16 @@ export const AUTH_ROUTES: Routes = [
     title: 'Register',
   },
   {
+    path: 'forget-password',
+    loadComponent: () => import('./forget-password/forget-password').then((m) => m.ForgetPassword),
+    title: 'Forget Password',
+  },
+  {
+    path: 'reset-password',
+    loadComponent: () => import('./reset-password/reset-password').then((m) => m.ResetPassword),
+    title: 'Reset Password',
+  },
+  {
     path: '**',
     redirectTo: 'login',
   },

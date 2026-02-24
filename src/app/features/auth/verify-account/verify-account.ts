@@ -14,7 +14,7 @@ import { InputOtpModule } from 'primeng/inputotp';
 export class VerifyAccount {
   isLoading = signal(false);
   isVerified = signal(false);
-  token = signal<string | null>('123');
+  token = signal<string | null>(null);
   email = signal<string | null>(null);
   router = inject(Router);
 

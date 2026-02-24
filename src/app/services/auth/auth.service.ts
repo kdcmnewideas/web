@@ -1,7 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { ILogin, ILoginSuccessful, IRegister, IRegisterSuccessful } from '../../core/interface/user-profile.interface';
+import {
+  ILogin,
+  ILoginSuccessful,
+  IRegister,
+  IRegisterSuccessful,
+} from '../../core/interface/user-profile.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -11,13 +16,20 @@ export class AuthService {
 
   private http = inject(HttpClient);
 
-  login = (data: ILogin) => this.http.post<ILoginSuccessful>(`${this.baseUrl}/login`, data);
+  login = (data: ILogin) => {
+    const formData = new FormData();
+    formData.append('username', data.username);
+    formData.append('password', data.password);
+    return this.http.post<ILoginSuccessful>(`${this.baseUrl}/login`, formData);
+  };
 
-  register = (data: IRegister) => this.http.post<IRegisterSuccessful>(`${this.baseUrl}/register`, data);
+  register = (data: IRegister) =>
+    this.http.post<IRegisterSuccessful>(`${this.baseUrl}/register`, data);
 
   verify = (token: string) => this.http.post<string>(`${this.baseUrl}/verify`, { token });
 
-  forgotPassword = (email: string) => this.http.post<string>(`${this.baseUrl}/forgot-password`, { email });
+  forgotPassword = (email: string) =>
+    this.http.post<string>(`${this.baseUrl}/forgot-password`, { email });
 
   resetPassword = (token: string, password: string) =>
     this.http.post<string>(`${this.baseUrl}/reset-password`, { token, new_password: password });

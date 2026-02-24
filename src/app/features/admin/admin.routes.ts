@@ -12,19 +12,9 @@ export const ADMIN_ROUTES: Routes = [
     loadComponent: () => import('./boards/boards').then((m) => m.Boards),
   },
   {
-    path: 'classes',
-    title: 'Classes',
-    loadComponent: () => import('./classes/classes').then((m) => m.Classes),
-  },
-  {
-    path: 'sections',
-    title: 'Sections',
-    loadComponent: () => import('./sections/sections').then((m) => m.Sections),
-  },
-  {
-    path: 'courses',
-    title: 'Courses',
-    loadComponent: () => import('./courses/courses').then((m) => m.Courses),
+    path: 'org',
+    title: 'Organization',
+    loadComponent: () => import('./organization/organization').then((m) => m.Organization),
   },
   {
     path: '**',

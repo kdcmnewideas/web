@@ -9,13 +9,20 @@ export const routes: Routes = [
     path: 'admin',
     loadChildren: () => import('./features/admin/admin.routes').then((m) => m.ADMIN_ROUTES),
     loadComponent: () => import('./features/admin/admin').then((m) => m.Admin),
-    title: 'Admin'
+    title: 'Admin',
+  },
+  {
+    path: 'org-admin',
+    loadChildren: () =>
+      import('./features/org-admin/org-admin.routes').then((m) => m.ORG_ADMIN_ROUTES),
+    loadComponent: () => import('./features/org-admin/org-admin').then((m) => m.OrgAdmin),
+    title: 'Organization Admin',
   },
   {
     path: '',
     loadChildren: () => import('./features/student/student.routes').then((m) => m.STUDENT_ROUTES),
     loadComponent: () => import('./features/student/student').then((m) => m.Student),
-    title: 'Aile Learning'
+    title: 'Aile Learning',
   },
   {
     path: '**',

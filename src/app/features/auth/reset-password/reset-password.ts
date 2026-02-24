@@ -11,10 +11,12 @@ import {
   ShieldCheck,
   LucideAngularModule,
 } from 'lucide-angular';
+import { PasswordModule } from 'primeng/password';
+import { ButtonDirective } from 'primeng/button';
 
 @Component({
   selector: 'app-reset-password',
-  imports: [LucideAngularModule, ReactiveFormsModule],
+  imports: [LucideAngularModule, ReactiveFormsModule, PasswordModule, ButtonDirective],
   templateUrl: './reset-password.html',
   styleUrl: './reset-password.css',
 })

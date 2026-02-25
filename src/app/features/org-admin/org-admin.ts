@@ -16,10 +16,22 @@ import { Router, RouterOutlet } from '@angular/router';
 import { TooltipModule } from 'primeng/tooltip';
 import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
+import { Header } from '../../shared/components/header/header';
+import { MobileNav } from '../../shared/components/mobile-nav/mobile-nav';
+import { SideNav } from '../../shared/components/side-nav/side-nav';
 
 @Component({
   selector: 'app--org-admin',
-  imports: [LucideAngularModule, RouterOutlet, TooltipModule, ButtonModule, AvatarModule],
+  imports: [
+    LucideAngularModule,
+    RouterOutlet,
+    TooltipModule,
+    ButtonModule,
+    AvatarModule,
+    Header,
+    MobileNav,
+    SideNav,
+  ],
   templateUrl: './org-admin.html',
   styleUrl: './org-admin.css',
 })

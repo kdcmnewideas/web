@@ -1,0 +1,59 @@
+<aside
+  [class]="
+    `hidden md:flex flex-col ${isSidebarCollapsed() ? 'w-24' : 'w-64'} bg-white border-r border-slate-100 fixed h-full z-30 transition-all duration-500 ease-in-out shadow-[10px_0_40px_rgba(0,0,0,0.02)]`
+  "
+>
+  <!-- Toggle Button -->
+  <button
+    (click)="isSidebarCollapsed.set(!isSidebarCollapsed())"
+    class="absolute -right-3 top-25 bg-white border border-slate-200 rounded-full p-1 shadow-sm text-slate-400 hover:text-primary-600 hover:border-primary-200 z-20 transition-colors cursor-pointer h-10"
+  >
+    <lucide-icon [img]="isSidebarCollapsed() ? icons.ChevronRight : icons.ChevronLeft" size="12" />
+  </button>
+
+  <div [class]="`h-24 flex items-center ${isSidebarCollapsed() ? 'justify-center px-0' : 'px-6'}`">
+    <div
+      class="flex items-center gap-4 overflow-hidden group cursor-pointer"
+      (click)="navigateTo.emit('home')"
+    >
+      <div class="flex items-center justify-center shrink-0 transition-all duration-300">
+        <img src="assets/logo.png" alt="Logo" class="h-10" />
+      </div>
+      <h1
+        [class]="
+          `text-xl font-bold text-slate-900 tracking-tight transition-opacity duration-200 ${isSidebarCollapsed() ? 'opacity-0 w-0' : 'opacity-100'}`
+        "
+      >
+        Aile Learning
+      </h1>
+    </div>
+  </div>
+
+  <nav class="flex-1 p-4 space-y-2 overflow-y-auto scrollbar-hide">
+    @for (item of navItems(); track item.id) {
+      <button
+        (click)="navigateTo.emit(item.id.toLowerCase())"
+        [class]="
+          `
+                w-full flex items-center ${isSidebarCollapsed() ? 'justify-center px-0' : 'space-x-4 px-4'} py-3.5 rounded-lg transition-all duration-300 font-bold relative group cursor-pointer
+                ${
+                  router.url.toLowerCase().includes(item.id.toLowerCase())
+                    ? 'bg-primary-100 text-primary-700'
+                    : ' hover:bg-slate-50 hover:text-slate-900'
+                }
+              `
+        "
+        [pTooltip]="isSidebarCollapsed() ? item.label : ''"
+      >
+        <lucide-angular [img]="item.icon" size="20" />
+        <span
+          [class]="
+            `whitespace-nowrap text-sm tracking-tight transition-all duration-300 ${isSidebarCollapsed() ? 'opacity-0 w-0 hidden' : 'opacity-100'}`
+          "
+        >
+          {{ item.label }}
+        </span>
+      </button>
+    }
+  </nav>
+</aside>

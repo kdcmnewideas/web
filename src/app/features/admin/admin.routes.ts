@@ -17,6 +17,11 @@ export const ADMIN_ROUTES: Routes = [
     loadComponent: () => import('./organization/organization').then((m) => m.Organization),
   },
   {
+    path: 'profile',
+    title: 'Profile',
+    loadComponent: () => import('../user-profile/user-profile').then((m) => m.UserProfile),
+  },
+  {
     path: '**',
     redirectTo: 'users',
   },

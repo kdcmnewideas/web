@@ -22,6 +22,11 @@ export const ORG_ADMIN_ROUTES: Routes = [
     loadComponent: () => import('./courses/courses').then((m) => m.Courses),
   },
   {
+    path: 'profile',
+    title: 'Profile',
+    loadComponent: () => import('../user-profile/user-profile').then((m) => m.UserProfile),
+  },
+  {
     path: '**',
     redirectTo: 'users',
   },

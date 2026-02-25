@@ -22,11 +22,6 @@ export const STUDENT_ROUTES: Routes = [
     title: 'Analytics',
   },
   {
-    path: 'profile',
-    loadComponent: () => import('./user-profile/user-profile').then((m) => m.UserProfile),
-    title: 'Profile',
-  },
-  {
     path: 'subject/:id',
     loadComponent: () => import('./subject/subject').then((m) => m.Subject),
     title: 'Subject',

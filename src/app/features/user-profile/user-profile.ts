@@ -26,10 +26,10 @@ import {
   Lock,
   ChevronRight,
 } from 'lucide-angular';
-import { CURRENT_USER } from '../../../shared/constants/mock-data.constant';
+import { CURRENT_USER } from '../../shared/constants/mock-data.constant';
 import { CardModule } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../../services/auth/auth.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({

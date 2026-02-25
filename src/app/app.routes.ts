@@ -25,6 +25,11 @@ export const routes: Routes = [
     title: 'Aile Learning',
   },
   {
+    path: 'profile',
+    loadComponent: () => import('./features/user-profile/user-profile').then((m) => m.UserProfile),
+    title: 'Profile',
+  },
+  {
     path: '**',
     redirectTo: '',
   },

@@ -52,6 +52,11 @@ export const STUDENT_ROUTES: Routes = [
     title: 'Goals',
   },
   {
+    path: 'profile',
+    loadComponent: () => import('../user-profile/user-profile').then((m) => m.UserProfile),
+    title: 'Profile',
+  },
+  {
     path: '**',
     redirectTo: 'home',
   },

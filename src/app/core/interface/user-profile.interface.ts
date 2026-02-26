@@ -24,3 +24,18 @@ export interface ILoginSuccessful {
   token_type: string;
   expires_in: number;
 }
+
+export interface IUser {
+  id: string;
+  email: string;
+  name: string;
+  platform_role: string;
+  memberships: IMembership[];
+}
+
+export interface IMembership {
+  org_id: string;
+  org_name: string;
+  org_role: string;
+  status: string;
+}

@@ -6,6 +6,7 @@ import {
   ILoginSuccessful,
   IRegister,
   IRegisterSuccessful,
+  IUser,
 } from '../../core/interface/user-profile.interface';
 
 @Injectable({
@@ -20,19 +21,45 @@ export class AuthService {
     const formData = new FormData();
     formData.append('username', data.username);
     formData.append('password', data.password);
-    return this.http.post<ILoginSuccessful>(`${this.baseUrl}/login`, formData);
+    return this.http.post<ILoginSuccessful>(`${this.baseUrl}/login`, formData, {
+      headers: { 'skip-auth': 'true' },
+    });
   };
 
   register = (data: IRegister) =>
-    this.http.post<IRegisterSuccessful>(`${this.baseUrl}/register`, data);
+    this.http.post<IRegisterSuccessful>(`${this.baseUrl}/register`, data, {
+      headers: { 'skip-auth': 'true' },
+    });
 
-  verify = (token: string) => this.http.post<string>(`${this.baseUrl}/verify`, { token });
+  verify = (token: string) =>
+    this.http.post<string>(
+      `${this.baseUrl}/verify`,
+      { token },
+      { headers: { 'skip-auth': 'true' } },
+    );
 
   forgotPassword = (email: string) =>
-    this.http.post<string>(`${this.baseUrl}/forgot-password`, { email });
+    this.http.post<string>(
+      `${this.baseUrl}/forgot-password`,
+      { email },
+      { headers: { 'skip-auth': 'true' } },
+    );
 
   resetPassword = (token: string, password: string) =>
-    this.http.post<string>(`${this.baseUrl}/reset-password`, { token, new_password: password });
+    this.http.post<string>(
+      `${this.baseUrl}/reset-password`,
+      { token, new_password: password },
+      { headers: { 'skip-auth': 'true' } },
+    );
+
+  refreshToken = (token: string) =>
+    this.http.post<ILoginSuccessful>(
+      `${this.baseUrl}/refresh?refresh_token=${token}`,
+      {},
+      { headers: { 'skip-auth': 'true' } },
+    );
+
+  getUserDetails = () => this.http.get<IUser>(`${this.baseUrl}/me`);
 
   /**
    * Clear authentication tokens from storage. This removes common token keys

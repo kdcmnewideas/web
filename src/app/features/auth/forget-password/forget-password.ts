@@ -12,12 +12,16 @@ import {
 import { Router } from '@angular/router';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { AuthService } from '../../../services/auth/auth.service';
+import { finalize } from 'rxjs';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-forget-password',
   imports: [LucideAngularModule, FormsModule, InputTextModule, ButtonModule],
   templateUrl: './forget-password.html',
   styleUrl: './forget-password.css',
+  providers: [MessageService],
 })
 export class ForgetPassword {
   icons = {
@@ -33,6 +37,8 @@ export class ForgetPassword {
   email = '';
 
   isLoading = signal<boolean>(false);
+  authService = inject(AuthService);
+  messageService = inject(MessageService);
 
   onNavigate(screenName: string) {
     this.router.navigate([screenName]);
@@ -40,5 +46,25 @@ export class ForgetPassword {
 
   openEmailApp() {
     window.open('mailto:', '_blank');
+  }
+
+  handleSubmit() {
+    this.isLoading.set(true);
+    this.authService
+      .forgotPassword(this.email)
+      .pipe(finalize(() => this.isLoading.set(false)))
+      .subscribe({
+        next: () => {
+          this.isSubmitted.set(true);
+        },
+        error: (err) => {
+          this.isSubmitted.set(false);
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: err.error.message,
+          });
+        },
+      });
   }
 }

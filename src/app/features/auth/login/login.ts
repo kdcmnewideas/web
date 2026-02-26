@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {
   SquareCheckBig,
   Square,
@@ -17,7 +17,9 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { AuthService } from '../../../services/auth/auth.service';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-login',
@@ -28,9 +30,11 @@ import { Router, RouterLink } from '@angular/router';
     PasswordModule,
     ButtonModule,
     LucideAngularModule,
+    ToastModule,
   ],
   templateUrl: './login.html',
   styleUrl: './login.css',
+  providers: [MessageService],
 })
 export class Login {
   loginForm = new FormGroup({
@@ -51,12 +55,11 @@ export class Login {
     Zap,
   };
 
+  error = signal('');
   loading = signal(false);
-
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-  ) {}
+  authService = inject(AuthService);
+  router = inject(Router);
+  messageService = inject(MessageService);
 
   login = () => {
     const { username, password } = this.loginForm.value;
@@ -71,22 +74,32 @@ export class Login {
             localStorage.setItem('refresh_token', res?.refresh_token);
             localStorage.setItem('expires_in', expireTime.toString());
           }
+          this.loading.set(false);
+          this.error.set('');
           this.router.navigate(['/']);
         },
         error: (err) => {
-          console.log(err);
-        },
-        complete: () => {
+          if (err.status === 401) {
+            this.error.set('Invalid credentials');
+          } else {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: 'Failed to login',
+            });
+          }
           this.loading.set(false);
         },
       });
     }
   };
+
   getExpireTime = (expires_in: number) => {
     const date = new Date();
     date.setSeconds(date.getSeconds() + expires_in - 5);
     return date;
   };
+
   navigateTo = (page: string) => {
     this.router.navigate([page]);
   };

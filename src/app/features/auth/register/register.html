@@ -9,98 +9,117 @@
       <span class="text-xl font-bold text-slate-900">Aile Learning</span>
     </div>
 
-    <div class="max-w-md w-full mx-auto mt-12 lg:mt-0">
-      <h1 class="text-3xl font-bold text-slate-900 mb-2">Create an account</h1>
+    @if (screen() === 0) {
+      <div class="max-w-md w-full mx-auto mt-12 lg:mt-0">
+        <h1 class="text-3xl font-bold text-slate-900 mb-2">Create an account</h1>
 
-      <form onSubmit="{handleSubmit}" class="space-y-5" [formGroup]="registerForm">
-        <div class="flex flex-col gap-2 w-full">
-          <label for="name" class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
-            >Name</label
-          >
-          <input
-            pInputText
-            id="name"
-            type="text"
-            placeholder="Name"
-            class="w-full px-3 py-2 shadow-sm rounded-lg"
-            formControlName="name"
-          />
-        </div>
+        <form onSubmit="{handleSubmit}" class="space-y-5" [formGroup]="registerForm">
+          <div class="flex flex-col gap-2 w-full">
+            <label
+              for="name"
+              class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
+              >Name</label
+            >
+            <input
+              pInputText
+              id="name"
+              type="text"
+              placeholder="Name"
+              class="w-full px-3 py-2 shadow-sm rounded-lg"
+              formControlName="name"
+            />
+          </div>
 
-        <div class="flex flex-col gap-2 w-full">
-          <label
-            for="email1"
-            class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
-            >Email Address</label
-          >
-          <input
-            pInputText
-            id="email1"
-            type="text"
-            placeholder="Email address"
-            class="w-full px-3 py-2 shadow-sm rounded-lg"
-            formControlName="email"
-          />
-        </div>
-        <div class="flex flex-col gap-2 w-full">
-          <label
-            for="password1"
-            class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
-            >Password</label
-          >
-          <p-password
-            [toggleMask]="true"
-            autocomplete="off"
-            formControlName="password"
-            [feedback]="false"
-            className="w-full px-3 py-2 shadow-sm rounded-lg"
-            fluid="true"
-            placeholder="Password"
-          />
-        </div>
+          <div class="flex flex-col gap-2 w-full">
+            <label
+              for="email1"
+              class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
+              >Email Address</label
+            >
+            <input
+              pInputText
+              id="email1"
+              type="text"
+              placeholder="Email address"
+              class="w-full px-3 py-2 shadow-sm rounded-lg"
+              formControlName="email"
+            />
+          </div>
+          <div class="flex flex-col gap-2 w-full">
+            <label
+              for="password1"
+              class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
+              >Password</label
+            >
+            <p-password
+              [toggleMask]="true"
+              autocomplete="off"
+              formControlName="password"
+              [feedback]="false"
+              className="w-full px-3 py-2 shadow-sm rounded-lg"
+              fluid="true"
+              placeholder="Password"
+            />
+          </div>
 
-        <div class="flex flex-col gap-2 w-full">
-          <label
-            for="join_key"
-            class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
-            >Join Key</label
-          >
-          <input
-            pInputText
-            id="join_key"
-            type="text"
-            placeholder="Join Key"
-            class="w-full px-3 py-2 shadow-sm rounded-lg"
-            formControlName="join_key"
-          />
-        </div>
+          <div class="flex flex-col gap-2 w-full">
+            <label
+              for="join_key"
+              class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
+              >Join Key</label
+            >
+            <input
+              pInputText
+              id="join_key"
+              type="text"
+              placeholder="Join Key"
+              class="w-full px-3 py-2 shadow-sm rounded-lg"
+              formControlName="join_key"
+            />
+          </div>
 
-        <div class="space-y-4 pt-2">
-          <button type="submit" pButton class="h-11 w-full"> Get started </button>
+          <div class="space-y-4 pt-2">
+            <button
+              type="submit"
+              pButton
+              class="h-11 w-full"
+              [loading]="loading()"
+              [disabled]="registerForm.invalid"
+            >
+              Get started
+            </button>
 
+            <p-button
+              type="button"
+              class="w-full flex items-center justify-center gap-3"
+              variant="outlined"
+              fluid="true"
+              severity="secondary"
+            >
+              <img src="assets/images/google.svg" alt="Google Logo" class="w-5 h-5" />
+              Sign in with Google
+            </p-button>
+          </div>
+        </form>
+
+        <p class="text-center mt-8 text-sm text-slate-600">
+          Already have an account?
           <p-button
-            type="button"
-            class="w-full flex items-center justify-center gap-3"
-            variant="outlined"
-            fluid="true"
-            severity="secondary"
-          >
-            <img src="assets/images/google.svg" alt="Google Logo" class="w-5 h-5" />
-            Sign in with Google
-          </p-button>
-        </div>
-      </form>
-
-      <p class="text-center mt-8 text-sm text-slate-600">
-        Already have an account?
-        <p-button
-          label="Login"
-          link
-          (click)="navigateTo('auth/login')"
-          styleClass="text-sm! font-semibold! p-0!"
-        />
-      </p>
-    </div>
+            label="Login"
+            link
+            (click)="navigateTo('auth/login')"
+            styleClass="text-sm! font-semibold! p-0!"
+          />
+        </p>
+      </div>
+    }
+    @if (screen() === 1) {
+      <div class="flex flex-col gap-2 w-full items-center">
+        <lucide-angular [img]="icons.CircleCheckBig" size="64" class="text-emerald-500" />
+        <p class="text-emerald-500">Registered successfully</p>
+        <p class="text-slate-600">Check your email for a verification link.</p>
+      </div>
+    }
   </div>
 
   <!-- Right Side - Visual -->

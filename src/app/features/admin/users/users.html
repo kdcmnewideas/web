@@ -1,106 +1,154 @@
+<p-toast />
 <div class="animate-fade-in flex flex-col gap-8 pb-24">
-  <header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
-    <div>
-      <h1 class="text-3xl font-black text-slate-900 tracking-tight">User Management</h1>
-    </div>
-    <div class="flex items-center gap-3 w-full md:w-auto">
-      <p-iconfield iconPosition="left">
-        <p-inputicon>
-          <lucide-angular [img]="icons.Search" class="size-4" />
-        </p-inputicon>
-        <input type="text" pInputText placeholder="Search" [(ngModel)]="searchTerm" class="h-11" />
-      </p-iconfield>
-      <button pButton class="h-11 px-6 rounded-xl shadow-lg shadow-indigo-100">
-        <lucide-angular [img]="icons.Plus" class="w-4 h-4 mr-2" /> Add User
-      </button>
-    </div>
-  </header>
   <div class="lg:col-span-9">
-    <p-card
-      class="p-0 border-slate-200/60 overflow-hidden rounded-[2.5rem] shadow-2xl shadow-slate-100 flex flex-col"
-    >
-      <div class="flex-1">
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr class="bg-slate-50 border-b border-slate-200">
-                <th class="px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">
-                  Name
-                </th>
-                <th class="px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">
-                  Email
-                </th>
-                <th class="px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">
-                  Role
-                </th>
-                <th class="px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest">
-                  Status
-                </th>
-                <th
-                  class="px-6 py-4 text-xs font-black text-slate-400 uppercase tracking-widest text-right"
-                >
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100">
-              @for (u of users; track u.id) {
-                <tr key="{u.id}" class="hover:bg-slate-50/50 transition-colors">
-                  <td class="px-6 py-4">
-                    <div class="flex items-center gap-3">
-                      <div>
-                        <p class="font-bold text-slate-800">{{ u.name }}</p>
+    <p-card class="p-6" [style]="{ 'min-height': 'calc(100vh - 25rem)' }">
+      <p-table
+        #dt2
+        [value]="users()"
+        dataKey="id"
+        [rows]="10"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading()"
+        [paginator]="true"
+        [globalFilterFields]="['name', 'email', 'platform_role', 'status']"
+        [tableStyle]="{ 'min-width': '75rem' }"
+      >
+        <ng-template #caption>
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+            <div>
+              <h1 class="text-3xl font-black text-slate-900 tracking-tight">User Management</h1>
+            </div>
+            <div class="flex items-center gap-3 w-full md:w-auto">
+              <p-iconfield iconPosition="left" class="ml-auto">
+                <p-inputicon>
+                  <lucide-angular [img]="icons.Search" class="size-4" />
+                </p-inputicon>
+                <input
+                  pInputText
+                  type="text"
+                  (input)="dt2.filterGlobal($event.target.value, 'contains')"
+                  placeholder="Search keyword"
+                />
+              </p-iconfield>
+              <button pButton class="h-11 px-6 rounded-xl shadow-lg shadow-indigo-100">
+                <lucide-angular [img]="icons.Plus" class="w-4 h-4 mr-2" /> Add User
+              </button>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template #header>
+          <tr>
+            <th style="width: 22%">Name</th>
+            <th style="width: 22%">Email</th>
+            <th style="width: 22%">Role</th>
+            <th style="width: 22%">Status</th>
+            <th style="width: 12%">Actions</th>
+          </tr>
+          <tr>
+            <th>
+              <p-columnFilter
+                type="text"
+                field="name"
+                placeholder="Type to search"
+                ariaLabel="Filter Name"
+                filterOn="input"
+                [showMenu]="false"
+              ></p-columnFilter>
+            </th>
+            <th>
+              <p-columnFilter
+                type="text"
+                field="email"
+                placeholder="Enter key to search"
+                ariaLabel="Filter Email"
+                filterOn="input"
+                [showMenu]="false"
+              ></p-columnFilter>
+            </th>
+            <th>
+              <p-columnFilter field="platform_role" matchMode="in" [showMenu]="false">
+                <ng-template #filter let-value let-filter="filterCallback">
+                  <p-multiSelect
+                    [options]="platformRoles"
+                    placeholder="Any"
+                    (onChange)="filter($event.value)"
+                    style="min-width: 14rem"
+                    class="z-100"
+                    appendTo="body"
+                  >
+                    <ng-template let-option #item>
+                      <div class="flex items-center gap-2">
+                        <span>{{ option.label }}</span>
                       </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4">
-                    {{ u.email }}
-                  </td>
-                  <td class="px-6 py-4 font-bold text-slate-600">{{ u.platform_role }} pts</td>
-                  <td class="px-6 py-4">
-                    @if (u.status === 'active') {
-                      <div class="flex items-center gap-1.5 text-emerald-500 font-bold text-xs">
-                        <lucide-angular [img]="icons.CircleCheck" class="w-4 h-4" /> Active
-                      </div>
-                    }
-                    @if (u.status === 'inactive') {
-                      <div class="flex items-center gap-1.5 text-red-500 font-bold text-xs">
-                        <lucide-angular [img]="icons.CircleCheck" class="w-4 h-4" /> Inactive
-                      </div>
-                    }
-                  </td>
-                  <td class="px-6 py-4 text-right">
-                    <button class="text-slate-400 hover:text-indigo-600 p-2">
-                      <lucide-angular [img]="icons.SquarePen" class="w-4 h-4" />
-                    </button>
-                    <button class="text-slate-400 hover:text-red-600 p-2">
-                      <lucide-angular [img]="icons.Trash2" class="w-4 h-4" />
-                    </button>
-                  </td>
-                </tr>
+                    </ng-template>
+                  </p-multiSelect>
+                </ng-template>
+              </p-columnFilter>
+            </th>
+            <th>
+              <p-columnFilter field="status" matchMode="equals" [showMenu]="false">
+                <ng-template #filter let-filter="filterCallback">
+                  <p-select
+                    [options]="statuses"
+                    (onChange)="filter($event.value)"
+                    placeholder="Select One"
+                    [showClear]="true"
+                    style="min-width: 12rem"
+                    appendTo="body"
+                  >
+                    <ng-template let-option #item>
+                      <p-tag [value]="option.label" [severity]="getSeverity(option.value)" />
+                    </ng-template>
+                  </p-select>
+                </ng-template>
+              </p-columnFilter>
+            </th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template #body let-user>
+          <tr>
+            <td>
+              <div class="flex items-center gap-3">
+                <div>
+                  <p class="font-bold text-slate-800">{{ user.name }}</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              {{ user.email }}
+            </td>
+            <td class="px-6 py-4 font-bold text-slate-600">
+              {{ user.platform_role }}
+            </td>
+            <td>
+              @if (user.status === 'active') {
+                <div class="flex items-center gap-1.5 text-emerald-500 font-bold text-xs">
+                  <lucide-angular [img]="icons.CircleCheck" class="w-4 h-4" /> Active
+                </div>
               }
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <!-- Pagination Placeholder -->
-      <div class="p-6 border-t border-slate-100 bg-slate-50/30 flex items-center justify-between">
-        <span class="text-xs font-black text-slate-400 uppercase tracking-widest"
-          >Showing 1-10 of {{ users.length }} results</span
-        >
-        <div class="flex gap-2">
-          <p-button
-            variant="outlined"
-            size="small"
-            class="rounded-lg h-9 px-4 font-black text-xs"
-            disabled
-            >Previous</p-button
-          >
-          <p-button variant="outlined" size="small" class="rounded-lg h-9 px-4 font-black text-xs"
-            >Next</p-button
-          >
-        </div>
-      </div>
+              @if (user.status === 'inactive') {
+                <div class="flex items-center gap-1.5 text-red-500 font-bold text-xs">
+                  <lucide-angular [img]="icons.CircleCheck" class="w-4 h-4" /> Inactive
+                </div>
+              }
+            </td>
+            <td class="px-6 py-4 text-right">
+              <button class="text-slate-400 hover:text-indigo-600 p-2">
+                <lucide-angular [img]="icons.SquarePen" class="w-4 h-4" />
+              </button>
+              <button class="text-slate-400 hover:text-red-600 p-2">
+                <lucide-angular [img]="icons.Trash2" class="w-4 h-4" />
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+          <tr>
+            <td colspan="5">No users found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
     </p-card>
   </div>
 </div>

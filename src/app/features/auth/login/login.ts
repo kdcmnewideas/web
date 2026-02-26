@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {
   SquareCheckBig,
   Square,
@@ -51,6 +51,8 @@ export class Login {
     Zap,
   };
 
+  loading = signal(false);
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -59,12 +61,11 @@ export class Login {
   login = () => {
     const { username, password } = this.loginForm.value;
     if (username && password) {
+      this.loading.set(true);
       this.authService.login({ username, password }).subscribe({
         next: (res) => {
           const token = res?.access_token;
           const expireTime = this.getExpireTime(res?.expires_in);
-          console.log(expireTime);
-          console.log(expireTime);
           if (token) {
             localStorage.setItem('access_token', token);
             localStorage.setItem('refresh_token', res?.refresh_token);
@@ -74,6 +75,9 @@ export class Login {
         },
         error: (err) => {
           console.log(err);
+        },
+        complete: () => {
+          this.loading.set(false);
         },
       });
     }

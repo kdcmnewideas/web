@@ -21,7 +21,7 @@
       "email": "Emelia.Nolan@yahoo.com",
       "name": "Holly Halvorson",
       "status": "Inactive",
-      "platform_role": "subadmin",
+      "platform_role": "super_admin",
       "created_at": "2025-08-27T14:59:02.171Z"
     },
     {
@@ -29,7 +29,7 @@
       "email": "Kaley_Lakin@yahoo.com",
       "name": "Harvey Rice",
       "status": "Active",
-      "platform_role": "student",
+      "platform_role": "user",
       "created_at": "2025-09-21T21:12:50.831Z"
     },
     {
@@ -37,7 +37,7 @@
       "email": "Giuseppe.Koss11@yahoo.com",
       "name": "Nelson Rowe",
       "status": "Inactive",
-      "platform_role": "student",
+      "platform_role": "user",
       "created_at": "2025-06-02T04:31:04.637Z"
     },
     {
@@ -45,15 +45,15 @@
       "email": "Marco2@hotmail.com",
       "name": "Yoshiko Upton IV",
       "status": "Active",
-      "platform_role": "student",
+      "platform_role": "user",
       "created_at": "2025-10-21T12:23:35.286Z"
     },
     {
       "id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
       "email": "Phillip44@yahoo.com",
       "name": "Guillermo Ruecker",
-      "status": "Pending",
-      "platform_role": "student",
+      "status": "active",
+      "platform_role": "user",
       "created_at": "2026-03-04T03:03:54.753Z"
     },
     {
@@ -61,7 +61,7 @@
       "email": "Homer20@hotmail.com",
       "name": "Jeannie MacGyver",
       "status": "Inactive",
-      "platform_role": "student",
+      "platform_role": "user",
       "created_at": "2025-11-26T01:47:11.471Z"
     },
     {
@@ -76,7 +76,7 @@
       "id": "f544a945-347a-4ae3-a022-39ba6aa55735",
       "email": "Charles.Schiller@gmail.com",
       "name": "Eusebio Conroy",
-      "status": "Pending",
+      "status": "active",
       "platform_role": "admin",
       "created_at": "2025-06-11T05:23:13.838Z"
     },
@@ -85,14 +85,14 @@
       "email": "Evan89@hotmail.com",
       "name": "Rose Sawayn",
       "status": "Inactive",
-      "platform_role": "student",
+      "platform_role": "user",
       "created_at": "2025-05-24T09:52:51.658Z"
     },
     {
       "id": "74f13f79-4276-49bf-81c1-7a8deaac6385",
       "email": "Amelia_Huel85@hotmail.com",
       "name": "Delfina Emmerich-Bauch Sr.",
-      "status": "Pending",
+      "status": "active",
       "platform_role": "teacher",
       "created_at": "2025-07-04T14:02:53.386Z"
     },
@@ -101,22 +101,22 @@
       "email": "Franklin.Sawayn@yahoo.com",
       "name": "Cindy Heaney I",
       "status": "Inactive",
-      "platform_role": "subadmin",
+      "platform_role": "super_admin",
       "created_at": "2026-03-20T13:24:33.305Z"
     },
     {
       "id": "a8a64f45-78d6-4b37-980a-2e6890633923",
       "email": "Malika72@hotmail.com",
       "name": "Karen D'Amore IV",
-      "status": "Pending",
-      "platform_role": "student",
+      "status": "active",
+      "platform_role": "user",
       "created_at": "2026-01-15T16:37:48.962Z"
     },
     {
       "id": "0cb2ed1c-bd44-41ff-b48a-885d84bb50d6",
       "email": "George_Gerhold@hotmail.com",
       "name": "Candice Pollich",
-      "status": "Pending",
+      "status": "active",
       "platform_role": "admin",
       "created_at": "2025-06-01T20:11:12.809Z"
     },
@@ -124,15 +124,15 @@
       "id": "d35e4e89-6e52-4070-b30a-3729b9a43036",
       "email": "Beth.Graham@gmail.com",
       "name": "Marcos Rath",
-      "status": "Pending",
-      "platform_role": "subadmin",
+      "status": "active",
+      "platform_role": "super_admin",
       "created_at": "2025-08-18T18:59:58.106Z"
     },
     {
       "id": "cbbb4f1c-2e95-4444-aea2-0c633d52764c",
       "email": "Claudie55@hotmail.com",
       "name": "Lorraine Pagac",
-      "status": "Pending",
+      "status": "active",
       "platform_role": "admin",
       "created_at": "2025-06-24T22:02:53.196Z"
     },
@@ -149,7 +149,7 @@
       "email": "Maiya_Hoeger32@hotmail.com",
       "name": "Ms. Miriam Witting IV",
       "status": "Inactive",
-      "platform_role": "subadmin",
+      "platform_role": "super_admin",
       "created_at": "2026-03-13T06:40:53.603Z"
     },
     {
@@ -157,7 +157,7 @@
       "email": "Eugene88@hotmail.com",
       "name": "Marcus Stark",
       "status": "Active",
-      "platform_role": "student",
+      "platform_role": "user",
       "created_at": "2025-04-14T18:47:53.313Z"
     },
     {
@@ -196,7 +196,7 @@
       "id": "164356c3-92f7-4409-a238-cb1bb1dd68cc",
       "email": "Rey.Friesen@yahoo.com",
       "name": "Peter Daugherty-Jacobs",
-      "status": "Pending",
+      "status": "active",
       "platform_role": "teacher",
       "created_at": "2025-06-27T23:36:31.548Z"
     },
@@ -205,23 +205,23 @@
       "email": "Brandi_Padberg17@gmail.com",
       "name": "Jenny Schiller",
       "status": "Active",
-      "platform_role": "student",
+      "platform_role": "user",
       "created_at": "2025-05-12T00:22:33.057Z"
     },
     {
       "id": "ae931f66-ea9d-46c5-977f-d7ffa488c907",
       "email": "Ruben_Ratke62@gmail.com",
       "name": "Quinn Dibbert",
-      "status": "Pending",
-      "platform_role": "subadmin",
+      "status": "active",
+      "platform_role": "super_admin",
       "created_at": "2025-08-12T15:24:02.953Z"
     },
     {
       "id": "8bd999c5-82a6-496d-ad0e-c50148d3ca65",
       "email": "Baron.Luettgen34@yahoo.com",
       "name": "Anastasia Kessler",
-      "status": "Pending",
-      "platform_role": "subadmin",
+      "status": "active",
+      "platform_role": "super_admin",
       "created_at": "2025-05-27T09:23:29.921Z"
     },
     {
@@ -229,14 +229,14 @@
       "email": "Itzel_Lemke90@gmail.com",
       "name": "Dario Trantow",
       "status": "Inactive",
-      "platform_role": "student",
+      "platform_role": "user",
       "created_at": "2025-05-19T10:55:09.832Z"
     },
     {
       "id": "b004e741-6092-4689-a5ca-24f2f3306034",
       "email": "Efren31@gmail.com",
       "name": "Ruben Hand",
-      "status": "Pending",
+      "status": "active",
       "platform_role": "teacher",
       "created_at": "2025-10-09T04:28:42.753Z"
     }
@@ -274,7 +274,7 @@
       "id": "b0f63095-a890-4f09-abb2-3e4c3ce02289",
       "email": "Emelia.Nolan@yahoo.com",
       "name": "Holly Halvorson",
-      "platform_role": "subadmin",
+      "platform_role": "super_admin",
       "memberships": [
         {
           "org_id": "30bd6404-14fd-42e2-9b7d-669176d069fc",
@@ -288,7 +288,7 @@
       "id": "e25ef4d9-f4eb-4ab7-a992-0cc042301f9c",
       "email": "Kaley_Lakin@yahoo.com",
       "name": "Harvey Rice",
-      "platform_role": "student",
+      "platform_role": "user",
       "memberships": [
         {
           "org_id": "8c95c52a-20f8-4790-95db-d070a855de39",
@@ -302,7 +302,7 @@
       "id": "2c336a34-27e6-4027-a1ef-7416623d9d55",
       "email": "Giuseppe.Koss11@yahoo.com",
       "name": "Nelson Rowe",
-      "platform_role": "student",
+      "platform_role": "user",
       "memberships": [
         {
           "org_id": "588efdbe-168a-4fdd-999b-4b0a5d538745",
@@ -316,7 +316,7 @@
       "id": "9278651e-bf09-4c82-ac92-12c5b7caf1f3",
       "email": "Marco2@hotmail.com",
       "name": "Yoshiko Upton IV",
-      "platform_role": "student",
+      "platform_role": "user",
       "memberships": [
         {
           "org_id": "62e6007b-cbaf-4504-b2f4-0f07e84745ba",
@@ -330,7 +330,7 @@
       "id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
       "email": "Phillip44@yahoo.com",
       "name": "Guillermo Ruecker",
-      "platform_role": "student",
+      "platform_role": "user",
       "memberships": [
         {
           "org_id": "3954964d-1bff-4e09-8bf1-5edfef5e2e55",
@@ -344,7 +344,7 @@
       "id": "54a080e7-a372-43bb-a6b3-87df2f7d4c98",
       "email": "Homer20@hotmail.com",
       "name": "Jeannie MacGyver",
-      "platform_role": "student",
+      "platform_role": "user",
       "memberships": [
         {
           "org_id": "8a092af4-4d3b-4621-b438-9b79b0595233",
@@ -386,7 +386,7 @@
       "id": "929c79e0-0bbb-4ccc-ae03-35100157036d",
       "email": "Evan89@hotmail.com",
       "name": "Rose Sawayn",
-      "platform_role": "student",
+      "platform_role": "user",
       "memberships": [
         {
           "org_id": "31874e2f-cd4e-4261-a160-860e83ff0abf",
@@ -414,7 +414,7 @@
       "id": "32e520b2-b6df-4d83-8b57-b94aca76be3a",
       "email": "Franklin.Sawayn@yahoo.com",
       "name": "Cindy Heaney I",
-      "platform_role": "subadmin",
+      "platform_role": "super_admin",
       "memberships": [
         {
           "org_id": "4e1d1ec6-51ca-4952-b529-6b9259699707",
@@ -428,7 +428,7 @@
       "id": "a8a64f45-78d6-4b37-980a-2e6890633923",
       "email": "Malika72@hotmail.com",
       "name": "Karen D'Amore IV",
-      "platform_role": "student",
+      "platform_role": "user",
       "memberships": [
         {
           "org_id": "717bd1f7-13b7-43d6-9422-57379ab058e2",
@@ -456,7 +456,7 @@
       "id": "d35e4e89-6e52-4070-b30a-3729b9a43036",
       "email": "Beth.Graham@gmail.com",
       "name": "Marcos Rath",
-      "platform_role": "subadmin",
+      "platform_role": "super_admin",
       "memberships": [
         {
           "org_id": "8b70b5c9-c356-4b91-b2ef-5ad5288eba1e",
@@ -498,7 +498,7 @@
       "id": "7921fe5c-942b-4be8-aee6-dae72b3010c4",
       "email": "Maiya_Hoeger32@hotmail.com",
       "name": "Ms. Miriam Witting IV",
-      "platform_role": "subadmin",
+      "platform_role": "super_admin",
       "memberships": [
         {
           "org_id": "e677645e-dbaf-49d9-bdb3-333e61f184e8",
@@ -512,7 +512,7 @@
       "id": "a3b020e9-99b2-4c94-84ac-d4bfce66048d",
       "email": "Eugene88@hotmail.com",
       "name": "Marcus Stark",
-      "platform_role": "student",
+      "platform_role": "user",
       "memberships": [
         {
           "org_id": "df4792f1-a555-4687-9ac9-81a425923d5e",
@@ -596,7 +596,7 @@
       "id": "b8594deb-380c-45b2-a4d6-4454c9c872df",
       "email": "Brandi_Padberg17@gmail.com",
       "name": "Jenny Schiller",
-      "platform_role": "student",
+      "platform_role": "user",
       "memberships": [
         {
           "org_id": "a2ed02fb-6803-483b-ba24-4226acb6ddd0",
@@ -610,7 +610,7 @@
       "id": "ae931f66-ea9d-46c5-977f-d7ffa488c907",
       "email": "Ruben_Ratke62@gmail.com",
       "name": "Quinn Dibbert",
-      "platform_role": "subadmin",
+      "platform_role": "super_admin",
       "memberships": [
         {
           "org_id": "04e31832-180f-4015-9ada-db9631e4f0af",
@@ -624,7 +624,7 @@
       "id": "8bd999c5-82a6-496d-ad0e-c50148d3ca65",
       "email": "Baron.Luettgen34@yahoo.com",
       "name": "Anastasia Kessler",
-      "platform_role": "subadmin",
+      "platform_role": "super_admin",
       "memberships": [
         {
           "org_id": "ab33e436-854e-4d57-9837-a5b8d3d042ee",
@@ -638,7 +638,7 @@
       "id": "a1eab087-8eb3-4448-ba81-de6e8f9b256a",
       "email": "Itzel_Lemke90@gmail.com",
       "name": "Dario Trantow",
-      "platform_role": "student",
+      "platform_role": "user",
       "memberships": [
         {
           "org_id": "72212959-f486-432a-8ca8-a62e86c09224",
@@ -735,7 +735,7 @@
       "user_id": "e25ef4d9-f4eb-4ab7-a992-0cc042301f9c",
       "org_id": "821068eb-fe15-49dc-9e42-b93151d01f8f",
       "org_role": "teacher",
-      "status": "pending",
+      "status": "active",
       "user_email": "Kaley_Lakin@yahoo.com"
     },
     {
@@ -743,7 +743,7 @@
       "user_id": "2c336a34-27e6-4027-a1ef-7416623d9d55",
       "org_id": "19a25f86-cb14-4ba3-8de0-eca3d1c8099a",
       "org_role": "member",
-      "status": "pending",
+      "status": "active",
       "user_email": "Giuseppe.Koss11@yahoo.com"
     },
     {
@@ -751,7 +751,7 @@
       "user_id": "9278651e-bf09-4c82-ac92-12c5b7caf1f3",
       "org_id": "0d9a8d36-55be-4b0b-990c-be37805cf44e",
       "org_role": "member",
-      "status": "pending",
+      "status": "active",
       "user_email": "Marco2@hotmail.com"
     },
     {
@@ -759,7 +759,7 @@
       "user_id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
       "org_id": "19a25f86-cb14-4ba3-8de0-eca3d1c8099a",
       "org_role": "member",
-      "status": "pending",
+      "status": "active",
       "user_email": "Phillip44@yahoo.com"
     },
     {
@@ -791,7 +791,7 @@
       "user_id": "929c79e0-0bbb-4ccc-ae03-35100157036d",
       "org_id": "19a25f86-cb14-4ba3-8de0-eca3d1c8099a",
       "org_role": "teacher",
-      "status": "pending",
+      "status": "active",
       "user_email": "Evan89@hotmail.com"
     },
     {
@@ -823,7 +823,7 @@
       "user_id": "0cb2ed1c-bd44-41ff-b48a-885d84bb50d6",
       "org_id": "19a25f86-cb14-4ba3-8de0-eca3d1c8099a",
       "org_role": "member",
-      "status": "pending",
+      "status": "active",
       "user_email": "George_Gerhold@hotmail.com"
     },
     {
@@ -831,7 +831,7 @@
       "user_id": "d35e4e89-6e52-4070-b30a-3729b9a43036",
       "org_id": "0d9a8d36-55be-4b0b-990c-be37805cf44e",
       "org_role": "member",
-      "status": "pending",
+      "status": "active",
       "user_email": "Beth.Graham@gmail.com"
     },
     {
@@ -863,7 +863,7 @@
       "user_id": "a3b020e9-99b2-4c94-84ac-d4bfce66048d",
       "org_id": "0d9a8d36-55be-4b0b-990c-be37805cf44e",
       "org_role": "admin",
-      "status": "pending",
+      "status": "active",
       "user_email": "Eugene88@hotmail.com"
     },
     {
@@ -895,7 +895,7 @@
       "user_id": "fe4b25d2-c950-4b66-9088-0fbb1e773c96",
       "org_id": "821068eb-fe15-49dc-9e42-b93151d01f8f",
       "org_role": "teacher",
-      "status": "pending",
+      "status": "active",
       "user_email": "Amber32@gmail.com"
     },
     {
@@ -903,7 +903,7 @@
       "user_id": "164356c3-92f7-4409-a238-cb1bb1dd68cc",
       "org_id": "7fa0782a-3a6c-41c1-a36f-3fa8835ec80e",
       "org_role": "teacher",
-      "status": "pending",
+      "status": "active",
       "user_email": "Rey.Friesen@yahoo.com"
     },
     {
@@ -911,7 +911,7 @@
       "user_id": "b8594deb-380c-45b2-a4d6-4454c9c872df",
       "org_id": "821068eb-fe15-49dc-9e42-b93151d01f8f",
       "org_role": "teacher",
-      "status": "pending",
+      "status": "active",
       "user_email": "Brandi_Padberg17@gmail.com"
     },
     {
@@ -919,7 +919,7 @@
       "user_id": "ae931f66-ea9d-46c5-977f-d7ffa488c907",
       "org_id": "1d346816-f11b-4530-8cbc-159393f02fce",
       "org_role": "admin",
-      "status": "pending",
+      "status": "active",
       "user_email": "Ruben_Ratke62@gmail.com"
     },
     {
@@ -1682,7 +1682,7 @@
       "id": "0269fd1d-a9b4-4809-80fa-44b7960e5d95",
       "subject_id": "37aa6e8e-d6fc-4c48-8c23-881eb9c04cbb",
       "subject_title": "Calculus I",
-      "status": "PENDING",
+      "status": "active",
       "current_stage": "EXTRACTING",
       "progress_percentage": 73,
       "created_at": "2026-01-12T06:31:20.627Z",
@@ -1692,7 +1692,7 @@
       "id": "cb275730-5302-4ad5-89ea-b4ea1aa0c525",
       "subject_id": "c8397cdb-1b38-4f7f-be86-a0d6b08387ec",
       "subject_title": "Newtonian Mechanics",
-      "status": "PENDING",
+      "status": "active",
       "current_stage": "FINALIZING",
       "progress_percentage": 63,
       "created_at": "2025-04-26T15:26:40.301Z",
@@ -1712,7 +1712,7 @@
       "id": "3d0b7899-257e-48f5-8f3e-d95ba7a30d4b",
       "subject_id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
       "subject_title": "Thermodynamics",
-      "status": "PENDING",
+      "status": "active",
       "current_stage": "EXTRACTING",
       "progress_percentage": 52,
       "created_at": "2025-07-31T20:08:29.386Z",
@@ -1732,7 +1732,7 @@
       "id": "03db8fdd-24e8-40b3-a63c-5673beff77a0",
       "subject_id": "88c75cd6-3725-4595-8400-7b2c061d8530",
       "subject_title": "Electrochemistry",
-      "status": "PENDING",
+      "status": "active",
       "current_stage": "EXTRACTING",
       "progress_percentage": 14,
       "created_at": "2025-07-24T16:27:14.419Z",
@@ -1782,7 +1782,7 @@
       "id": "3f35183b-ad6c-4944-a977-2ad7f575867d",
       "subject_id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
       "subject_title": "Thermodynamics",
-      "status": "PENDING",
+      "status": "active",
       "current_stage": "FINALIZING",
       "progress_percentage": 75,
       "created_at": "2025-09-07T22:41:28.527Z",
@@ -1832,7 +1832,7 @@
       "id": "b8bce97b-1cbb-4fc7-83fe-a442da15a067",
       "subject_id": "ab1a0123-7ecc-4132-9621-85ea0e65b442",
       "subject_title": "Algebra Fundamentals",
-      "status": "PENDING",
+      "status": "active",
       "current_stage": "STRUCTURING",
       "progress_percentage": 13,
       "created_at": "2025-08-26T20:28:24.296Z",
@@ -2449,11 +2449,7 @@
       "provider": "anthropic",
       "label": "staging",
       "user_id": "fe4b25d2-c950-4b66-9088-0fbb1e773c96",
-      "capabilities": [
-        "IMAGE",
-        "AUDIO",
-        "EMBEDDING"
-      ],
+      "capabilities": ["IMAGE", "AUDIO", "EMBEDDING"],
       "total_cost": 4.7363,
       "is_active": true,
       "created_at": "2026-03-05T13:26:08.204Z"
@@ -2463,9 +2459,7 @@
       "provider": "google",
       "label": "dev",
       "user_id": "929c79e0-0bbb-4ccc-ae03-35100157036d",
-      "capabilities": [
-        "AUDIO"
-      ],
+      "capabilities": ["AUDIO"],
       "total_cost": 27.4249,
       "is_active": true,
       "created_at": "2026-03-21T15:58:42.107Z"
@@ -2475,9 +2469,7 @@
       "provider": "anthropic",
       "label": "staging",
       "user_id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
-      "capabilities": [
-        "EMBEDDING"
-      ],
+      "capabilities": ["EMBEDDING"],
       "total_cost": 10.2684,
       "is_active": true,
       "created_at": "2025-09-24T03:52:29.886Z"
@@ -2487,10 +2479,7 @@
       "provider": "anthropic",
       "label": "production",
       "user_id": "728aa531-81ab-4c95-87ae-9223ddbac2a5",
-      "capabilities": [
-        "IMAGE",
-        "TEXT"
-      ],
+      "capabilities": ["IMAGE", "TEXT"],
       "total_cost": 26.2958,
       "is_active": true,
       "created_at": "2025-06-17T16:07:08.655Z"
@@ -2500,11 +2489,7 @@
       "provider": "anthropic",
       "label": "staging",
       "user_id": "ae61f786-98df-4457-9af6-79f22390c27c",
-      "capabilities": [
-        "EMBEDDING",
-        "AUDIO",
-        "IMAGE"
-      ],
+      "capabilities": ["EMBEDDING", "AUDIO", "IMAGE"],
       "total_cost": 23.5428,
       "is_active": true,
       "created_at": "2026-01-06T03:03:26.095Z"
@@ -2514,10 +2499,7 @@
       "provider": "anthropic",
       "label": "dev",
       "user_id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
-      "capabilities": [
-        "IMAGE",
-        "AUDIO"
-      ],
+      "capabilities": ["IMAGE", "AUDIO"],
       "total_cost": 7.1718,
       "is_active": true,
       "created_at": "2025-08-25T07:31:03.316Z"
@@ -2527,9 +2509,7 @@
       "provider": "openai",
       "label": "production",
       "user_id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
-      "capabilities": [
-        "AUDIO"
-      ],
+      "capabilities": ["AUDIO"],
       "total_cost": 30.5648,
       "is_active": true,
       "created_at": "2025-04-29T22:02:13.251Z"
@@ -2539,11 +2519,7 @@
       "provider": "openai",
       "label": "personal",
       "user_id": "d35e4e89-6e52-4070-b30a-3729b9a43036",
-      "capabilities": [
-        "IMAGE",
-        "AUDIO",
-        "EMBEDDING"
-      ],
+      "capabilities": ["IMAGE", "AUDIO", "EMBEDDING"],
       "total_cost": 31.3121,
       "is_active": true,
       "created_at": "2025-12-29T07:36:23.162Z"

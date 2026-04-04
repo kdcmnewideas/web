@@ -1,0 +1,2552 @@
+{
+  "users": [
+    {
+      "id": "a8560552-0209-4cf5-9e8b-6bd5f4915caa",
+      "email": "Antwon.Hagenes@gmail.com",
+      "name": "Heidi McClure II",
+      "status": "Active",
+      "platform_role": "admin",
+      "created_at": "2026-01-28T09:24:36.065Z"
+    },
+    {
+      "id": "0f8defdd-dd97-4bcb-a424-69acd896d44b",
+      "email": "Daisy23@yahoo.com",
+      "name": "Isabell Kemmer",
+      "status": "Inactive",
+      "platform_role": "admin",
+      "created_at": "2025-10-19T00:57:20.329Z"
+    },
+    {
+      "id": "b0f63095-a890-4f09-abb2-3e4c3ce02289",
+      "email": "Emelia.Nolan@yahoo.com",
+      "name": "Holly Halvorson",
+      "status": "Inactive",
+      "platform_role": "subadmin",
+      "created_at": "2025-08-27T14:59:02.171Z"
+    },
+    {
+      "id": "e25ef4d9-f4eb-4ab7-a992-0cc042301f9c",
+      "email": "Kaley_Lakin@yahoo.com",
+      "name": "Harvey Rice",
+      "status": "Active",
+      "platform_role": "student",
+      "created_at": "2025-09-21T21:12:50.831Z"
+    },
+    {
+      "id": "2c336a34-27e6-4027-a1ef-7416623d9d55",
+      "email": "Giuseppe.Koss11@yahoo.com",
+      "name": "Nelson Rowe",
+      "status": "Inactive",
+      "platform_role": "student",
+      "created_at": "2025-06-02T04:31:04.637Z"
+    },
+    {
+      "id": "9278651e-bf09-4c82-ac92-12c5b7caf1f3",
+      "email": "Marco2@hotmail.com",
+      "name": "Yoshiko Upton IV",
+      "status": "Active",
+      "platform_role": "student",
+      "created_at": "2025-10-21T12:23:35.286Z"
+    },
+    {
+      "id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
+      "email": "Phillip44@yahoo.com",
+      "name": "Guillermo Ruecker",
+      "status": "Pending",
+      "platform_role": "student",
+      "created_at": "2026-03-04T03:03:54.753Z"
+    },
+    {
+      "id": "54a080e7-a372-43bb-a6b3-87df2f7d4c98",
+      "email": "Homer20@hotmail.com",
+      "name": "Jeannie MacGyver",
+      "status": "Inactive",
+      "platform_role": "student",
+      "created_at": "2025-11-26T01:47:11.471Z"
+    },
+    {
+      "id": "ae61f786-98df-4457-9af6-79f22390c27c",
+      "email": "Raphael_Christiansen@hotmail.com",
+      "name": "Archibald Nader-Hyatt",
+      "status": "Inactive",
+      "platform_role": "admin",
+      "created_at": "2025-04-24T15:09:03.308Z"
+    },
+    {
+      "id": "f544a945-347a-4ae3-a022-39ba6aa55735",
+      "email": "Charles.Schiller@gmail.com",
+      "name": "Eusebio Conroy",
+      "status": "Pending",
+      "platform_role": "admin",
+      "created_at": "2025-06-11T05:23:13.838Z"
+    },
+    {
+      "id": "929c79e0-0bbb-4ccc-ae03-35100157036d",
+      "email": "Evan89@hotmail.com",
+      "name": "Rose Sawayn",
+      "status": "Inactive",
+      "platform_role": "student",
+      "created_at": "2025-05-24T09:52:51.658Z"
+    },
+    {
+      "id": "74f13f79-4276-49bf-81c1-7a8deaac6385",
+      "email": "Amelia_Huel85@hotmail.com",
+      "name": "Delfina Emmerich-Bauch Sr.",
+      "status": "Pending",
+      "platform_role": "teacher",
+      "created_at": "2025-07-04T14:02:53.386Z"
+    },
+    {
+      "id": "32e520b2-b6df-4d83-8b57-b94aca76be3a",
+      "email": "Franklin.Sawayn@yahoo.com",
+      "name": "Cindy Heaney I",
+      "status": "Inactive",
+      "platform_role": "subadmin",
+      "created_at": "2026-03-20T13:24:33.305Z"
+    },
+    {
+      "id": "a8a64f45-78d6-4b37-980a-2e6890633923",
+      "email": "Malika72@hotmail.com",
+      "name": "Karen D'Amore IV",
+      "status": "Pending",
+      "platform_role": "student",
+      "created_at": "2026-01-15T16:37:48.962Z"
+    },
+    {
+      "id": "0cb2ed1c-bd44-41ff-b48a-885d84bb50d6",
+      "email": "George_Gerhold@hotmail.com",
+      "name": "Candice Pollich",
+      "status": "Pending",
+      "platform_role": "admin",
+      "created_at": "2025-06-01T20:11:12.809Z"
+    },
+    {
+      "id": "d35e4e89-6e52-4070-b30a-3729b9a43036",
+      "email": "Beth.Graham@gmail.com",
+      "name": "Marcos Rath",
+      "status": "Pending",
+      "platform_role": "subadmin",
+      "created_at": "2025-08-18T18:59:58.106Z"
+    },
+    {
+      "id": "cbbb4f1c-2e95-4444-aea2-0c633d52764c",
+      "email": "Claudie55@hotmail.com",
+      "name": "Lorraine Pagac",
+      "status": "Pending",
+      "platform_role": "admin",
+      "created_at": "2025-06-24T22:02:53.196Z"
+    },
+    {
+      "id": "8a9d128c-d5fc-4f74-80cc-a89ce5be4dc0",
+      "email": "Gary.Johnston@gmail.com",
+      "name": "Camilla O'Keefe",
+      "status": "Inactive",
+      "platform_role": "teacher",
+      "created_at": "2026-01-09T11:46:07.614Z"
+    },
+    {
+      "id": "7921fe5c-942b-4be8-aee6-dae72b3010c4",
+      "email": "Maiya_Hoeger32@hotmail.com",
+      "name": "Ms. Miriam Witting IV",
+      "status": "Inactive",
+      "platform_role": "subadmin",
+      "created_at": "2026-03-13T06:40:53.603Z"
+    },
+    {
+      "id": "a3b020e9-99b2-4c94-84ac-d4bfce66048d",
+      "email": "Eugene88@hotmail.com",
+      "name": "Marcus Stark",
+      "status": "Active",
+      "platform_role": "student",
+      "created_at": "2025-04-14T18:47:53.313Z"
+    },
+    {
+      "id": "bbb02afe-de3a-4c32-8be5-27b2ad2b0c24",
+      "email": "Anderson41@yahoo.com",
+      "name": "Darlene Bayer",
+      "status": "Active",
+      "platform_role": "teacher",
+      "created_at": "2025-05-11T20:18:46.183Z"
+    },
+    {
+      "id": "e9d2e2d7-6fe0-4831-8a5e-2c66945d7ee1",
+      "email": "Baylee_Klocko@gmail.com",
+      "name": "Marion Ondricka",
+      "status": "Active",
+      "platform_role": "admin",
+      "created_at": "2025-06-03T13:50:18.914Z"
+    },
+    {
+      "id": "728aa531-81ab-4c95-87ae-9223ddbac2a5",
+      "email": "Craig_Harris63@yahoo.com",
+      "name": "Marcelino Rutherford",
+      "status": "Active",
+      "platform_role": "teacher",
+      "created_at": "2025-10-09T10:25:34.501Z"
+    },
+    {
+      "id": "fe4b25d2-c950-4b66-9088-0fbb1e773c96",
+      "email": "Amber32@gmail.com",
+      "name": "Else Smith",
+      "status": "Active",
+      "platform_role": "admin",
+      "created_at": "2026-02-27T20:47:36.105Z"
+    },
+    {
+      "id": "164356c3-92f7-4409-a238-cb1bb1dd68cc",
+      "email": "Rey.Friesen@yahoo.com",
+      "name": "Peter Daugherty-Jacobs",
+      "status": "Pending",
+      "platform_role": "teacher",
+      "created_at": "2025-06-27T23:36:31.548Z"
+    },
+    {
+      "id": "b8594deb-380c-45b2-a4d6-4454c9c872df",
+      "email": "Brandi_Padberg17@gmail.com",
+      "name": "Jenny Schiller",
+      "status": "Active",
+      "platform_role": "student",
+      "created_at": "2025-05-12T00:22:33.057Z"
+    },
+    {
+      "id": "ae931f66-ea9d-46c5-977f-d7ffa488c907",
+      "email": "Ruben_Ratke62@gmail.com",
+      "name": "Quinn Dibbert",
+      "status": "Pending",
+      "platform_role": "subadmin",
+      "created_at": "2025-08-12T15:24:02.953Z"
+    },
+    {
+      "id": "8bd999c5-82a6-496d-ad0e-c50148d3ca65",
+      "email": "Baron.Luettgen34@yahoo.com",
+      "name": "Anastasia Kessler",
+      "status": "Pending",
+      "platform_role": "subadmin",
+      "created_at": "2025-05-27T09:23:29.921Z"
+    },
+    {
+      "id": "a1eab087-8eb3-4448-ba81-de6e8f9b256a",
+      "email": "Itzel_Lemke90@gmail.com",
+      "name": "Dario Trantow",
+      "status": "Inactive",
+      "platform_role": "student",
+      "created_at": "2025-05-19T10:55:09.832Z"
+    },
+    {
+      "id": "b004e741-6092-4689-a5ca-24f2f3306034",
+      "email": "Efren31@gmail.com",
+      "name": "Ruben Hand",
+      "status": "Pending",
+      "platform_role": "teacher",
+      "created_at": "2025-10-09T04:28:42.753Z"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "a8560552-0209-4cf5-9e8b-6bd5f4915caa",
+      "email": "Antwon.Hagenes@gmail.com",
+      "name": "Heidi McClure II",
+      "platform_role": "admin",
+      "memberships": [
+        {
+          "org_id": "d68ecca6-89ac-41ef-82be-2242e789bdbd",
+          "org_name": "Hoppe - Keeling",
+          "org_role": "admin",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "0f8defdd-dd97-4bcb-a424-69acd896d44b",
+      "email": "Daisy23@yahoo.com",
+      "name": "Isabell Kemmer",
+      "platform_role": "admin",
+      "memberships": [
+        {
+          "org_id": "63118401-80a1-42b9-9fcd-c6e1dd72bec7",
+          "org_name": "Goodwin - Wiegand",
+          "org_role": "member",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "b0f63095-a890-4f09-abb2-3e4c3ce02289",
+      "email": "Emelia.Nolan@yahoo.com",
+      "name": "Holly Halvorson",
+      "platform_role": "subadmin",
+      "memberships": [
+        {
+          "org_id": "30bd6404-14fd-42e2-9b7d-669176d069fc",
+          "org_name": "Hermiston - Harber",
+          "org_role": "teacher",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "e25ef4d9-f4eb-4ab7-a992-0cc042301f9c",
+      "email": "Kaley_Lakin@yahoo.com",
+      "name": "Harvey Rice",
+      "platform_role": "student",
+      "memberships": [
+        {
+          "org_id": "8c95c52a-20f8-4790-95db-d070a855de39",
+          "org_name": "Welch and Sons",
+          "org_role": "teacher",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "2c336a34-27e6-4027-a1ef-7416623d9d55",
+      "email": "Giuseppe.Koss11@yahoo.com",
+      "name": "Nelson Rowe",
+      "platform_role": "student",
+      "memberships": [
+        {
+          "org_id": "588efdbe-168a-4fdd-999b-4b0a5d538745",
+          "org_name": "Christiansen, Leuschke and Turner",
+          "org_role": "member",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "9278651e-bf09-4c82-ac92-12c5b7caf1f3",
+      "email": "Marco2@hotmail.com",
+      "name": "Yoshiko Upton IV",
+      "platform_role": "student",
+      "memberships": [
+        {
+          "org_id": "62e6007b-cbaf-4504-b2f4-0f07e84745ba",
+          "org_name": "Willms, Conn and Maggio",
+          "org_role": "teacher",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
+      "email": "Phillip44@yahoo.com",
+      "name": "Guillermo Ruecker",
+      "platform_role": "student",
+      "memberships": [
+        {
+          "org_id": "3954964d-1bff-4e09-8bf1-5edfef5e2e55",
+          "org_name": "Crona, Fahey and Friesen",
+          "org_role": "teacher",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "54a080e7-a372-43bb-a6b3-87df2f7d4c98",
+      "email": "Homer20@hotmail.com",
+      "name": "Jeannie MacGyver",
+      "platform_role": "student",
+      "memberships": [
+        {
+          "org_id": "8a092af4-4d3b-4621-b438-9b79b0595233",
+          "org_name": "Kuhic Inc",
+          "org_role": "member",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "ae61f786-98df-4457-9af6-79f22390c27c",
+      "email": "Raphael_Christiansen@hotmail.com",
+      "name": "Archibald Nader-Hyatt",
+      "platform_role": "admin",
+      "memberships": [
+        {
+          "org_id": "ae423d60-dfe1-482c-aec2-7536f23f1f39",
+          "org_name": "Jacobi - Raynor",
+          "org_role": "member",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "f544a945-347a-4ae3-a022-39ba6aa55735",
+      "email": "Charles.Schiller@gmail.com",
+      "name": "Eusebio Conroy",
+      "platform_role": "admin",
+      "memberships": [
+        {
+          "org_id": "939a27ee-dafd-4277-8ebc-3e3e586413d9",
+          "org_name": "Huels, Rolfson and Gorczany",
+          "org_role": "teacher",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "929c79e0-0bbb-4ccc-ae03-35100157036d",
+      "email": "Evan89@hotmail.com",
+      "name": "Rose Sawayn",
+      "platform_role": "student",
+      "memberships": [
+        {
+          "org_id": "31874e2f-cd4e-4261-a160-860e83ff0abf",
+          "org_name": "Goyette, Lebsack and Zulauf",
+          "org_role": "member",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "74f13f79-4276-49bf-81c1-7a8deaac6385",
+      "email": "Amelia_Huel85@hotmail.com",
+      "name": "Delfina Emmerich-Bauch Sr.",
+      "platform_role": "teacher",
+      "memberships": [
+        {
+          "org_id": "c5c814ed-9370-4b4e-97e9-8e6c19c9e04a",
+          "org_name": "O'Hara, Osinski and Pacocha",
+          "org_role": "member",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "32e520b2-b6df-4d83-8b57-b94aca76be3a",
+      "email": "Franklin.Sawayn@yahoo.com",
+      "name": "Cindy Heaney I",
+      "platform_role": "subadmin",
+      "memberships": [
+        {
+          "org_id": "4e1d1ec6-51ca-4952-b529-6b9259699707",
+          "org_name": "Spencer and Sons",
+          "org_role": "admin",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "a8a64f45-78d6-4b37-980a-2e6890633923",
+      "email": "Malika72@hotmail.com",
+      "name": "Karen D'Amore IV",
+      "platform_role": "student",
+      "memberships": [
+        {
+          "org_id": "717bd1f7-13b7-43d6-9422-57379ab058e2",
+          "org_name": "Kuvalis LLC",
+          "org_role": "admin",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "0cb2ed1c-bd44-41ff-b48a-885d84bb50d6",
+      "email": "George_Gerhold@hotmail.com",
+      "name": "Candice Pollich",
+      "platform_role": "admin",
+      "memberships": [
+        {
+          "org_id": "f2fc8fa4-4827-4287-bf8a-1cfb8e933010",
+          "org_name": "Dicki Inc",
+          "org_role": "member",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "d35e4e89-6e52-4070-b30a-3729b9a43036",
+      "email": "Beth.Graham@gmail.com",
+      "name": "Marcos Rath",
+      "platform_role": "subadmin",
+      "memberships": [
+        {
+          "org_id": "8b70b5c9-c356-4b91-b2ef-5ad5288eba1e",
+          "org_name": "Schultz - Hansen",
+          "org_role": "member",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "cbbb4f1c-2e95-4444-aea2-0c633d52764c",
+      "email": "Claudie55@hotmail.com",
+      "name": "Lorraine Pagac",
+      "platform_role": "admin",
+      "memberships": [
+        {
+          "org_id": "9bc4718a-3437-42cf-9e2d-11b074778fdf",
+          "org_name": "Rolfson, Gulgowski and Schinner",
+          "org_role": "teacher",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "8a9d128c-d5fc-4f74-80cc-a89ce5be4dc0",
+      "email": "Gary.Johnston@gmail.com",
+      "name": "Camilla O'Keefe",
+      "platform_role": "teacher",
+      "memberships": [
+        {
+          "org_id": "4b2a4e6d-a0ef-43b0-8413-0bfa8dff3a23",
+          "org_name": "Nienow Group",
+          "org_role": "member",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "7921fe5c-942b-4be8-aee6-dae72b3010c4",
+      "email": "Maiya_Hoeger32@hotmail.com",
+      "name": "Ms. Miriam Witting IV",
+      "platform_role": "subadmin",
+      "memberships": [
+        {
+          "org_id": "e677645e-dbaf-49d9-bdb3-333e61f184e8",
+          "org_name": "Lockman - Feest",
+          "org_role": "member",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "a3b020e9-99b2-4c94-84ac-d4bfce66048d",
+      "email": "Eugene88@hotmail.com",
+      "name": "Marcus Stark",
+      "platform_role": "student",
+      "memberships": [
+        {
+          "org_id": "df4792f1-a555-4687-9ac9-81a425923d5e",
+          "org_name": "Mosciski Group",
+          "org_role": "teacher",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "bbb02afe-de3a-4c32-8be5-27b2ad2b0c24",
+      "email": "Anderson41@yahoo.com",
+      "name": "Darlene Bayer",
+      "platform_role": "teacher",
+      "memberships": [
+        {
+          "org_id": "c585d5e7-a662-4a13-974f-9ca7c7272002",
+          "org_name": "Bahringer, Kub and Marks",
+          "org_role": "member",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "e9d2e2d7-6fe0-4831-8a5e-2c66945d7ee1",
+      "email": "Baylee_Klocko@gmail.com",
+      "name": "Marion Ondricka",
+      "platform_role": "admin",
+      "memberships": [
+        {
+          "org_id": "a3f756d2-04d3-494c-a0f8-b8a3417e547a",
+          "org_name": "Yundt, Witting and Howell",
+          "org_role": "member",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "728aa531-81ab-4c95-87ae-9223ddbac2a5",
+      "email": "Craig_Harris63@yahoo.com",
+      "name": "Marcelino Rutherford",
+      "platform_role": "teacher",
+      "memberships": [
+        {
+          "org_id": "8cf31a30-b8cd-4c75-ac88-f31ffa46f8d7",
+          "org_name": "Abbott, Lemke and Considine-Monahan",
+          "org_role": "teacher",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "fe4b25d2-c950-4b66-9088-0fbb1e773c96",
+      "email": "Amber32@gmail.com",
+      "name": "Else Smith",
+      "platform_role": "admin",
+      "memberships": [
+        {
+          "org_id": "c7a180d9-9bb8-466c-9f7b-c6833ae6e41f",
+          "org_name": "Turner, Trantow and Stark",
+          "org_role": "member",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "164356c3-92f7-4409-a238-cb1bb1dd68cc",
+      "email": "Rey.Friesen@yahoo.com",
+      "name": "Peter Daugherty-Jacobs",
+      "platform_role": "teacher",
+      "memberships": [
+        {
+          "org_id": "073f8ff7-59ab-4647-b06d-bc6fbee069d2",
+          "org_name": "Hansen, Cronin-Lubowitz and Brakus",
+          "org_role": "member",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "b8594deb-380c-45b2-a4d6-4454c9c872df",
+      "email": "Brandi_Padberg17@gmail.com",
+      "name": "Jenny Schiller",
+      "platform_role": "student",
+      "memberships": [
+        {
+          "org_id": "a2ed02fb-6803-483b-ba24-4226acb6ddd0",
+          "org_name": "Bode, Stamm and McKenzie",
+          "org_role": "teacher",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "ae931f66-ea9d-46c5-977f-d7ffa488c907",
+      "email": "Ruben_Ratke62@gmail.com",
+      "name": "Quinn Dibbert",
+      "platform_role": "subadmin",
+      "memberships": [
+        {
+          "org_id": "04e31832-180f-4015-9ada-db9631e4f0af",
+          "org_name": "Pfeffer, Purdy and Weissnat-Krajcik",
+          "org_role": "member",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "8bd999c5-82a6-496d-ad0e-c50148d3ca65",
+      "email": "Baron.Luettgen34@yahoo.com",
+      "name": "Anastasia Kessler",
+      "platform_role": "subadmin",
+      "memberships": [
+        {
+          "org_id": "ab33e436-854e-4d57-9837-a5b8d3d042ee",
+          "org_name": "Kunze, Osinski and VonRueden",
+          "org_role": "teacher",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "a1eab087-8eb3-4448-ba81-de6e8f9b256a",
+      "email": "Itzel_Lemke90@gmail.com",
+      "name": "Dario Trantow",
+      "platform_role": "student",
+      "memberships": [
+        {
+          "org_id": "72212959-f486-432a-8ca8-a62e86c09224",
+          "org_name": "Homenick and Sons",
+          "org_role": "member",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "id": "b004e741-6092-4689-a5ca-24f2f3306034",
+      "email": "Efren31@gmail.com",
+      "name": "Ruben Hand",
+      "platform_role": "teacher",
+      "memberships": [
+        {
+          "org_id": "7b04346f-a594-438a-bacd-1b9c0d7ffea1",
+          "org_name": "Veum Inc",
+          "org_role": "teacher",
+          "status": "active"
+        }
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "id": "1d346816-f11b-4530-8cbc-159393f02fce",
+      "name": "Spinka - Huels",
+      "org_type": "Corporate",
+      "tenant_code": "HGKXE",
+      "join_mode": "invite",
+      "created_at": "2025-10-24T01:45:15.155Z"
+    },
+    {
+      "id": "19a25f86-cb14-4ba3-8de0-eca3d1c8099a",
+      "name": "Bode Group",
+      "org_type": "University",
+      "tenant_code": "LZX2V",
+      "join_mode": "open",
+      "created_at": "2025-04-21T22:52:11.720Z"
+    },
+    {
+      "id": "0d9a8d36-55be-4b0b-990c-be37805cf44e",
+      "name": "Koepp, Cartwright and Hackett",
+      "org_type": "University",
+      "tenant_code": "TCYTX",
+      "join_mode": "request",
+      "created_at": "2025-05-25T07:58:42.371Z"
+    },
+    {
+      "id": "7fa0782a-3a6c-41c1-a36f-3fa8835ec80e",
+      "name": "Bergnaum - Hermann",
+      "org_type": "Bootcamp",
+      "tenant_code": "C82X4",
+      "join_mode": "open",
+      "created_at": "2025-11-13T00:58:29.855Z"
+    },
+    {
+      "id": "821068eb-fe15-49dc-9e42-b93151d01f8f",
+      "name": "Waters Inc",
+      "org_type": "Bootcamp",
+      "tenant_code": "LMOYX",
+      "join_mode": "invite",
+      "created_at": "2025-09-06T08:06:29.351Z"
+    }
+  ],
+  "members": [
+    {
+      "id": "43addcc9-8068-4593-bd64-c7f2760cca9d",
+      "user_id": "a8560552-0209-4cf5-9e8b-6bd5f4915caa",
+      "org_id": "1d346816-f11b-4530-8cbc-159393f02fce",
+      "org_role": "admin",
+      "status": "active",
+      "user_email": "Antwon.Hagenes@gmail.com"
+    },
+    {
+      "id": "3916f758-920a-4f0e-bdde-ffd054e16c9b",
+      "user_id": "0f8defdd-dd97-4bcb-a424-69acd896d44b",
+      "org_id": "821068eb-fe15-49dc-9e42-b93151d01f8f",
+      "org_role": "admin",
+      "status": "active",
+      "user_email": "Daisy23@yahoo.com"
+    },
+    {
+      "id": "372d21ed-97fa-4912-b701-431831693e8d",
+      "user_id": "b0f63095-a890-4f09-abb2-3e4c3ce02289",
+      "org_id": "19a25f86-cb14-4ba3-8de0-eca3d1c8099a",
+      "org_role": "teacher",
+      "status": "active",
+      "user_email": "Emelia.Nolan@yahoo.com"
+    },
+    {
+      "id": "0dc2bdbd-8d7b-4b64-b39c-1e41d1d3863e",
+      "user_id": "e25ef4d9-f4eb-4ab7-a992-0cc042301f9c",
+      "org_id": "821068eb-fe15-49dc-9e42-b93151d01f8f",
+      "org_role": "teacher",
+      "status": "pending",
+      "user_email": "Kaley_Lakin@yahoo.com"
+    },
+    {
+      "id": "a0d4e00f-a0b7-4934-8e6c-9cca0b0f461f",
+      "user_id": "2c336a34-27e6-4027-a1ef-7416623d9d55",
+      "org_id": "19a25f86-cb14-4ba3-8de0-eca3d1c8099a",
+      "org_role": "member",
+      "status": "pending",
+      "user_email": "Giuseppe.Koss11@yahoo.com"
+    },
+    {
+      "id": "b15281bf-7ee6-4d79-ad0c-784905b28c1d",
+      "user_id": "9278651e-bf09-4c82-ac92-12c5b7caf1f3",
+      "org_id": "0d9a8d36-55be-4b0b-990c-be37805cf44e",
+      "org_role": "member",
+      "status": "pending",
+      "user_email": "Marco2@hotmail.com"
+    },
+    {
+      "id": "6699efff-bdfd-49a0-9e45-45c15b774746",
+      "user_id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
+      "org_id": "19a25f86-cb14-4ba3-8de0-eca3d1c8099a",
+      "org_role": "member",
+      "status": "pending",
+      "user_email": "Phillip44@yahoo.com"
+    },
+    {
+      "id": "e14adabb-7dbf-4de2-8f8a-64c7b8788900",
+      "user_id": "54a080e7-a372-43bb-a6b3-87df2f7d4c98",
+      "org_id": "19a25f86-cb14-4ba3-8de0-eca3d1c8099a",
+      "org_role": "member",
+      "status": "active",
+      "user_email": "Homer20@hotmail.com"
+    },
+    {
+      "id": "e463fff5-a9e7-4ebd-bd79-2600ba5d9f60",
+      "user_id": "ae61f786-98df-4457-9af6-79f22390c27c",
+      "org_id": "821068eb-fe15-49dc-9e42-b93151d01f8f",
+      "org_role": "teacher",
+      "status": "inactive",
+      "user_email": "Raphael_Christiansen@hotmail.com"
+    },
+    {
+      "id": "d345ccb0-6bb6-4e4a-b656-02056c0f717b",
+      "user_id": "f544a945-347a-4ae3-a022-39ba6aa55735",
+      "org_id": "821068eb-fe15-49dc-9e42-b93151d01f8f",
+      "org_role": "member",
+      "status": "active",
+      "user_email": "Charles.Schiller@gmail.com"
+    },
+    {
+      "id": "7045ed85-59b7-4dbc-a206-15d9116de8f6",
+      "user_id": "929c79e0-0bbb-4ccc-ae03-35100157036d",
+      "org_id": "19a25f86-cb14-4ba3-8de0-eca3d1c8099a",
+      "org_role": "teacher",
+      "status": "pending",
+      "user_email": "Evan89@hotmail.com"
+    },
+    {
+      "id": "79ee4c61-b52f-4f4b-865a-fe22e5125c90",
+      "user_id": "74f13f79-4276-49bf-81c1-7a8deaac6385",
+      "org_id": "0d9a8d36-55be-4b0b-990c-be37805cf44e",
+      "org_role": "member",
+      "status": "inactive",
+      "user_email": "Amelia_Huel85@hotmail.com"
+    },
+    {
+      "id": "f910784b-de23-4d8d-9c27-aa0ba75ed50e",
+      "user_id": "32e520b2-b6df-4d83-8b57-b94aca76be3a",
+      "org_id": "821068eb-fe15-49dc-9e42-b93151d01f8f",
+      "org_role": "admin",
+      "status": "active",
+      "user_email": "Franklin.Sawayn@yahoo.com"
+    },
+    {
+      "id": "9499b21e-34be-4fb4-ba38-8a7f713fa43a",
+      "user_id": "a8a64f45-78d6-4b37-980a-2e6890633923",
+      "org_id": "19a25f86-cb14-4ba3-8de0-eca3d1c8099a",
+      "org_role": "admin",
+      "status": "active",
+      "user_email": "Malika72@hotmail.com"
+    },
+    {
+      "id": "114efcc8-925f-49a9-83c0-7c2f1fcd0a87",
+      "user_id": "0cb2ed1c-bd44-41ff-b48a-885d84bb50d6",
+      "org_id": "19a25f86-cb14-4ba3-8de0-eca3d1c8099a",
+      "org_role": "member",
+      "status": "pending",
+      "user_email": "George_Gerhold@hotmail.com"
+    },
+    {
+      "id": "5491cef6-70f9-45e9-a716-50bd7e00e13d",
+      "user_id": "d35e4e89-6e52-4070-b30a-3729b9a43036",
+      "org_id": "0d9a8d36-55be-4b0b-990c-be37805cf44e",
+      "org_role": "member",
+      "status": "pending",
+      "user_email": "Beth.Graham@gmail.com"
+    },
+    {
+      "id": "b6802cab-ff75-495c-8e48-063d36f02579",
+      "user_id": "cbbb4f1c-2e95-4444-aea2-0c633d52764c",
+      "org_id": "1d346816-f11b-4530-8cbc-159393f02fce",
+      "org_role": "member",
+      "status": "active",
+      "user_email": "Claudie55@hotmail.com"
+    },
+    {
+      "id": "f4287733-28f4-4360-81fd-82efe443611d",
+      "user_id": "8a9d128c-d5fc-4f74-80cc-a89ce5be4dc0",
+      "org_id": "7fa0782a-3a6c-41c1-a36f-3fa8835ec80e",
+      "org_role": "admin",
+      "status": "active",
+      "user_email": "Gary.Johnston@gmail.com"
+    },
+    {
+      "id": "2ac4b0c7-a364-45f6-ae31-68c6b03f0612",
+      "user_id": "7921fe5c-942b-4be8-aee6-dae72b3010c4",
+      "org_id": "1d346816-f11b-4530-8cbc-159393f02fce",
+      "org_role": "teacher",
+      "status": "inactive",
+      "user_email": "Maiya_Hoeger32@hotmail.com"
+    },
+    {
+      "id": "878cbe35-bd98-4f74-bf3c-d378afa610ef",
+      "user_id": "a3b020e9-99b2-4c94-84ac-d4bfce66048d",
+      "org_id": "0d9a8d36-55be-4b0b-990c-be37805cf44e",
+      "org_role": "admin",
+      "status": "pending",
+      "user_email": "Eugene88@hotmail.com"
+    },
+    {
+      "id": "4abcc005-2a2c-4109-8d96-d0572c63cb66",
+      "user_id": "bbb02afe-de3a-4c32-8be5-27b2ad2b0c24",
+      "org_id": "1d346816-f11b-4530-8cbc-159393f02fce",
+      "org_role": "member",
+      "status": "active",
+      "user_email": "Anderson41@yahoo.com"
+    },
+    {
+      "id": "df121a76-f3c5-4e80-8536-0dea65fe15f8",
+      "user_id": "e9d2e2d7-6fe0-4831-8a5e-2c66945d7ee1",
+      "org_id": "821068eb-fe15-49dc-9e42-b93151d01f8f",
+      "org_role": "member",
+      "status": "active",
+      "user_email": "Baylee_Klocko@gmail.com"
+    },
+    {
+      "id": "2f73a16a-2bdf-4ea9-a0c4-7619c33d04dc",
+      "user_id": "728aa531-81ab-4c95-87ae-9223ddbac2a5",
+      "org_id": "0d9a8d36-55be-4b0b-990c-be37805cf44e",
+      "org_role": "teacher",
+      "status": "active",
+      "user_email": "Craig_Harris63@yahoo.com"
+    },
+    {
+      "id": "2bcb7fc0-122e-4ad4-91d0-019a3e4a5b20",
+      "user_id": "fe4b25d2-c950-4b66-9088-0fbb1e773c96",
+      "org_id": "821068eb-fe15-49dc-9e42-b93151d01f8f",
+      "org_role": "teacher",
+      "status": "pending",
+      "user_email": "Amber32@gmail.com"
+    },
+    {
+      "id": "83fbd6e4-6f38-4363-b59a-49552bd4fb6b",
+      "user_id": "164356c3-92f7-4409-a238-cb1bb1dd68cc",
+      "org_id": "7fa0782a-3a6c-41c1-a36f-3fa8835ec80e",
+      "org_role": "teacher",
+      "status": "pending",
+      "user_email": "Rey.Friesen@yahoo.com"
+    },
+    {
+      "id": "3b39239f-7614-4ca9-9fe1-98e8e29fc426",
+      "user_id": "b8594deb-380c-45b2-a4d6-4454c9c872df",
+      "org_id": "821068eb-fe15-49dc-9e42-b93151d01f8f",
+      "org_role": "teacher",
+      "status": "pending",
+      "user_email": "Brandi_Padberg17@gmail.com"
+    },
+    {
+      "id": "c0568ea8-a3f4-4d07-a6d7-d5124b049093",
+      "user_id": "ae931f66-ea9d-46c5-977f-d7ffa488c907",
+      "org_id": "1d346816-f11b-4530-8cbc-159393f02fce",
+      "org_role": "admin",
+      "status": "pending",
+      "user_email": "Ruben_Ratke62@gmail.com"
+    },
+    {
+      "id": "1375f4ab-8e41-48d3-8e2d-7dbe7f9e5dc2",
+      "user_id": "8bd999c5-82a6-496d-ad0e-c50148d3ca65",
+      "org_id": "0d9a8d36-55be-4b0b-990c-be37805cf44e",
+      "org_role": "member",
+      "status": "active",
+      "user_email": "Baron.Luettgen34@yahoo.com"
+    },
+    {
+      "id": "359dc5e5-c538-4e11-bdce-c4d8c2ea50d5",
+      "user_id": "a1eab087-8eb3-4448-ba81-de6e8f9b256a",
+      "org_id": "821068eb-fe15-49dc-9e42-b93151d01f8f",
+      "org_role": "teacher",
+      "status": "inactive",
+      "user_email": "Itzel_Lemke90@gmail.com"
+    },
+    {
+      "id": "5be598c1-abf3-46d8-8128-d3ce181ba476",
+      "user_id": "b004e741-6092-4689-a5ca-24f2f3306034",
+      "org_id": "821068eb-fe15-49dc-9e42-b93151d01f8f",
+      "org_role": "member",
+      "status": "active",
+      "user_email": "Efren31@gmail.com"
+    }
+  ],
+  "boards": [
+    {
+      "id": "e53f7684-c60f-4584-9437-3d473dcc2b1f",
+      "name": "State Board",
+      "code": "WJP0",
+      "country": "Tokelau",
+      "state": "Hawaii",
+      "is_active": false,
+      "description": "Libero benigne celer damnatio celo thema advenio suppono decens."
+    },
+    {
+      "id": "4e0f399c-2fbb-48d8-83b4-eaf3819d38fc",
+      "name": "CBSE",
+      "code": "UMOR",
+      "country": "Mozambique",
+      "state": "Utah",
+      "is_active": false,
+      "description": "Temporibus amor beatus asperiores itaque."
+    },
+    {
+      "id": "5297ed48-6b1a-4b63-a148-4dcea7ceab20",
+      "name": "CBSE",
+      "code": "0PHX",
+      "country": "Heard Island and McDonald Islands",
+      "state": "Missouri",
+      "is_active": false,
+      "description": "Curia artificiose cervus magnam."
+    },
+    {
+      "id": "7b9a4c42-0ef8-4618-9bfb-a25a9d76b711",
+      "name": "Cambridge",
+      "code": "DY1X",
+      "country": "Barbados",
+      "state": "West Virginia",
+      "is_active": true,
+      "description": "Alii tamquam depopulo desolo vis amissio dolores annus."
+    },
+    {
+      "id": "450ac985-1637-4cdf-b57b-f27fe2b6cc3c",
+      "name": "Cambridge",
+      "code": "GDSR",
+      "country": "Nicaragua",
+      "state": "Wisconsin",
+      "is_active": false,
+      "description": "Alioqui terror voco comburo alias dapifer dolore."
+    },
+    {
+      "id": "8ce54b9d-005e-4975-8b9f-a77993902d2b",
+      "name": "State Board",
+      "code": "XX6I",
+      "country": "Finland",
+      "state": "California",
+      "is_active": true,
+      "description": "Cado sub contego abeo usitas tondeo inventore quae."
+    }
+  ],
+  "courses": [
+    {
+      "id": "d0a46c9f-0079-4741-9585-31e9909db35a",
+      "name": "Physics Grade 11",
+      "code": "EDZWVN",
+      "board_id": "4e0f399c-2fbb-48d8-83b4-eaf3819d38fc",
+      "is_active": true
+    },
+    {
+      "id": "e30c8b42-d9a2-4b51-8da6-adf922e96f08",
+      "name": "Biology Grade 10",
+      "code": "ACX21O",
+      "board_id": "4e0f399c-2fbb-48d8-83b4-eaf3819d38fc",
+      "is_active": true
+    },
+    {
+      "id": "e0366061-d13a-4ce8-a859-8859f6d568e3",
+      "name": "Computer Science Grade 10",
+      "code": "WPBNZJ",
+      "board_id": "4e0f399c-2fbb-48d8-83b4-eaf3819d38fc",
+      "is_active": true
+    },
+    {
+      "id": "6165f5cf-471e-45c1-a3fe-e8072d6d9714",
+      "name": "Physics Grade 11",
+      "code": "UVOS2F",
+      "board_id": "5297ed48-6b1a-4b63-a148-4dcea7ceab20",
+      "is_active": true
+    },
+    {
+      "id": "8b248911-79f3-421f-be6e-f59e312b5018",
+      "name": "Chemistry Grade 9",
+      "code": "DK5UKK",
+      "board_id": "450ac985-1637-4cdf-b57b-f27fe2b6cc3c",
+      "is_active": true
+    },
+    {
+      "id": "ce321d81-68ef-41ca-bbca-e38cd912a084",
+      "name": "Biology Grade 10",
+      "code": "E0JC7Z",
+      "board_id": "e53f7684-c60f-4584-9437-3d473dcc2b1f",
+      "is_active": true
+    },
+    {
+      "id": "1a241923-7510-437c-8a28-e99c3f1bbd9f",
+      "name": "Computer Science Grade 9",
+      "code": "XS8F9K",
+      "board_id": "7b9a4c42-0ef8-4618-9bfb-a25a9d76b711",
+      "is_active": false
+    },
+    {
+      "id": "e978f71e-b0b5-4712-b593-c95afb687a86",
+      "name": "Physics Grade 9",
+      "code": "6BOV2D",
+      "board_id": "4e0f399c-2fbb-48d8-83b4-eaf3819d38fc",
+      "is_active": false
+    },
+    {
+      "id": "54a49cf0-6fad-4601-bb65-998551732680",
+      "name": "History Grade 12",
+      "code": "IA7DXQ",
+      "board_id": "e53f7684-c60f-4584-9437-3d473dcc2b1f",
+      "is_active": true
+    },
+    {
+      "id": "446cc019-f42a-4510-950d-61a3263f84a3",
+      "name": "English Grade 10",
+      "code": "7T0GV0",
+      "board_id": "5297ed48-6b1a-4b63-a148-4dcea7ceab20",
+      "is_active": true
+    },
+    {
+      "id": "0ad9dc86-6581-4d08-8fd0-a5631fdf7c74",
+      "name": "English Grade 9",
+      "code": "47C9G7",
+      "board_id": "4e0f399c-2fbb-48d8-83b4-eaf3819d38fc",
+      "is_active": false
+    },
+    {
+      "id": "ef2b91dc-b027-490c-9bc1-bc5d87f2115c",
+      "name": "Biology Grade 12",
+      "code": "DHGZB8",
+      "board_id": "8ce54b9d-005e-4975-8b9f-a77993902d2b",
+      "is_active": true
+    }
+  ],
+  "classes": [
+    {
+      "id": "ec720121-a654-4c30-9c7b-552a9a85bc5b",
+      "name": "Batch CP - 2026",
+      "join_code": "NLOEO2",
+      "allow_join_requests": false,
+      "org_id": "1d346816-f11b-4530-8cbc-159393f02fce",
+      "course_id": "e978f71e-b0b5-4712-b593-c95afb687a86",
+      "is_active": true,
+      "is_published": true,
+      "is_archived": false,
+      "published_at": "2025-04-17T07:49:10.556Z",
+      "created_at": "2025-07-30T11:19:02.141Z",
+      "updated_at": "2026-04-02T15:44:16.457Z"
+    },
+    {
+      "id": "a6a835be-e8bd-448f-87ee-216ecb039eac",
+      "name": "Batch ID - 2026",
+      "join_code": "8ZVTYN",
+      "allow_join_requests": false,
+      "org_id": "19a25f86-cb14-4ba3-8de0-eca3d1c8099a",
+      "course_id": "0ad9dc86-6581-4d08-8fd0-a5631fdf7c74",
+      "is_active": true,
+      "is_published": true,
+      "is_archived": false,
+      "published_at": "2025-11-04T08:17:41.692Z",
+      "created_at": "2025-12-21T00:56:20.774Z",
+      "updated_at": "2026-04-01T21:21:21.965Z"
+    },
+    {
+      "id": "f281d6e7-b9cb-4af6-83ff-3dd107e91b38",
+      "name": "Batch OP - 2026",
+      "join_code": "FX8GSF",
+      "allow_join_requests": true,
+      "org_id": "1d346816-f11b-4530-8cbc-159393f02fce",
+      "course_id": "6165f5cf-471e-45c1-a3fe-e8072d6d9714",
+      "is_active": true,
+      "is_published": true,
+      "is_archived": false,
+      "published_at": "2026-01-22T19:30:52.324Z",
+      "created_at": "2025-06-25T23:26:17.949Z",
+      "updated_at": "2026-04-02T04:35:40.378Z"
+    },
+    {
+      "id": "1f546b94-6d50-4140-992b-7adf8044ed06",
+      "name": "Batch BW - 2026",
+      "join_code": "JDW0X4",
+      "allow_join_requests": true,
+      "org_id": "0d9a8d36-55be-4b0b-990c-be37805cf44e",
+      "course_id": "e0366061-d13a-4ce8-a859-8859f6d568e3",
+      "is_active": true,
+      "is_published": true,
+      "is_archived": false,
+      "published_at": "2026-01-26T10:33:27.533Z",
+      "created_at": "2025-10-12T17:45:10.229Z",
+      "updated_at": "2026-04-01T23:15:15.475Z"
+    },
+    {
+      "id": "9fd276f1-3bfc-441d-82d7-6ed57e40620f",
+      "name": "Batch DA - 2026",
+      "join_code": "BN3IX1",
+      "allow_join_requests": false,
+      "org_id": "1d346816-f11b-4530-8cbc-159393f02fce",
+      "course_id": "e978f71e-b0b5-4712-b593-c95afb687a86",
+      "is_active": true,
+      "is_published": true,
+      "is_archived": false,
+      "published_at": "2025-04-05T15:39:09.734Z",
+      "created_at": "2025-04-10T00:58:18.984Z",
+      "updated_at": "2026-04-02T09:05:13.472Z"
+    },
+    {
+      "id": "8453b16f-22cb-4e06-b6b1-0ea37b6bc29f",
+      "name": "Batch HX - 2026",
+      "join_code": "QMQXTA",
+      "allow_join_requests": true,
+      "org_id": "0d9a8d36-55be-4b0b-990c-be37805cf44e",
+      "course_id": "446cc019-f42a-4510-950d-61a3263f84a3",
+      "is_active": true,
+      "is_published": true,
+      "is_archived": false,
+      "published_at": "2025-04-03T21:25:01.827Z",
+      "created_at": "2025-06-04T01:21:20.321Z",
+      "updated_at": "2026-04-02T02:31:46.411Z"
+    },
+    {
+      "id": "b876690f-89ec-45fb-91be-0db368ad18f8",
+      "name": "Batch RW - 2026",
+      "join_code": "BEGOOG",
+      "allow_join_requests": false,
+      "org_id": "1d346816-f11b-4530-8cbc-159393f02fce",
+      "course_id": "e978f71e-b0b5-4712-b593-c95afb687a86",
+      "is_active": true,
+      "is_published": false,
+      "is_archived": false,
+      "published_at": "2025-10-21T13:31:58.308Z",
+      "created_at": "2026-01-13T23:35:00.181Z",
+      "updated_at": "2026-04-02T15:32:50.795Z"
+    },
+    {
+      "id": "6116c4df-1b24-414d-9d54-08a2ce7b5115",
+      "name": "Batch RN - 2026",
+      "join_code": "VT06H2",
+      "allow_join_requests": true,
+      "org_id": "7fa0782a-3a6c-41c1-a36f-3fa8835ec80e",
+      "course_id": "e0366061-d13a-4ce8-a859-8859f6d568e3",
+      "is_active": true,
+      "is_published": true,
+      "is_archived": false,
+      "published_at": "2025-07-10T00:46:27.834Z",
+      "created_at": "2026-02-23T04:53:59.516Z",
+      "updated_at": "2026-04-02T11:46:19.344Z"
+    },
+    {
+      "id": "90f59feb-647a-4679-b5e6-76806f163aea",
+      "name": "Batch ST - 2026",
+      "join_code": "WEYQAX",
+      "allow_join_requests": false,
+      "org_id": "1d346816-f11b-4530-8cbc-159393f02fce",
+      "course_id": "0ad9dc86-6581-4d08-8fd0-a5631fdf7c74",
+      "is_active": true,
+      "is_published": false,
+      "is_archived": false,
+      "published_at": "2025-07-07T05:08:40.290Z",
+      "created_at": "2025-06-16T17:44:53.092Z",
+      "updated_at": "2026-04-02T00:49:20.009Z"
+    },
+    {
+      "id": "9033d4b6-f341-438e-9ae5-77153f75e73e",
+      "name": "Batch TC - 2026",
+      "join_code": "QOVOC0",
+      "allow_join_requests": false,
+      "org_id": "19a25f86-cb14-4ba3-8de0-eca3d1c8099a",
+      "course_id": "1a241923-7510-437c-8a28-e99c3f1bbd9f",
+      "is_active": true,
+      "is_published": false,
+      "is_archived": false,
+      "published_at": "2025-07-11T04:53:49.920Z",
+      "created_at": "2025-11-20T23:44:36.564Z",
+      "updated_at": "2026-04-02T13:20:05.147Z"
+    }
+  ],
+  "sections": [
+    {
+      "id": "95f35450-c1e5-49df-9a2d-2814c06bc246",
+      "name": "Section B",
+      "join_code": "SEAXWY",
+      "course_id": "e30c8b42-d9a2-4b51-8da6-adf922e96f08",
+      "class_id": "8453b16f-22cb-4e06-b6b1-0ea37b6bc29f",
+      "is_active": true,
+      "created_at": "2025-08-01T13:08:12.601Z",
+      "updated_at": "2026-04-01T22:49:40.508Z"
+    },
+    {
+      "id": "d84a5259-61ed-49d7-a7f0-ac0b6751fe00",
+      "name": "Section B",
+      "join_code": "DQOR23",
+      "course_id": "0ad9dc86-6581-4d08-8fd0-a5631fdf7c74",
+      "class_id": "8453b16f-22cb-4e06-b6b1-0ea37b6bc29f",
+      "is_active": true,
+      "created_at": "2025-08-29T01:16:39.816Z",
+      "updated_at": "2026-04-02T03:13:25.737Z"
+    },
+    {
+      "id": "b1e25030-0373-41cd-8ec0-8698db748cf8",
+      "name": "Section B",
+      "join_code": "ESYYHC",
+      "course_id": "6165f5cf-471e-45c1-a3fe-e8072d6d9714",
+      "class_id": "f281d6e7-b9cb-4af6-83ff-3dd107e91b38",
+      "is_active": true,
+      "created_at": "2026-03-05T12:01:36.895Z",
+      "updated_at": "2026-04-02T08:24:22.666Z"
+    },
+    {
+      "id": "9c362da7-a62c-485f-a047-0f73971d52aa",
+      "name": "Section A",
+      "join_code": "HDVA84",
+      "course_id": "ef2b91dc-b027-490c-9bc1-bc5d87f2115c",
+      "class_id": "1f546b94-6d50-4140-992b-7adf8044ed06",
+      "is_active": true,
+      "created_at": "2026-03-03T10:55:26.324Z",
+      "updated_at": "2026-04-02T10:26:00.133Z"
+    },
+    {
+      "id": "2e9362a5-9663-4010-bd03-d3b1fc8a34ac",
+      "name": "Section D",
+      "join_code": "REQHRX",
+      "course_id": "ef2b91dc-b027-490c-9bc1-bc5d87f2115c",
+      "class_id": "90f59feb-647a-4679-b5e6-76806f163aea",
+      "is_active": true,
+      "created_at": "2025-05-31T17:37:43.118Z",
+      "updated_at": "2026-04-01T21:09:45.470Z"
+    },
+    {
+      "id": "eda33637-c70f-4503-b260-da8a6d3c0b5e",
+      "name": "Section C",
+      "join_code": "TL2LPI",
+      "course_id": "e0366061-d13a-4ce8-a859-8859f6d568e3",
+      "class_id": "9033d4b6-f341-438e-9ae5-77153f75e73e",
+      "is_active": true,
+      "created_at": "2025-05-03T00:26:25.171Z",
+      "updated_at": "2026-04-02T01:52:16.557Z"
+    },
+    {
+      "id": "96a9874b-1ed9-4f20-95c2-c500bc7d1c7a",
+      "name": "Section A",
+      "join_code": "RGDIGD",
+      "course_id": "e0366061-d13a-4ce8-a859-8859f6d568e3",
+      "class_id": "9033d4b6-f341-438e-9ae5-77153f75e73e",
+      "is_active": true,
+      "created_at": "2025-08-24T08:31:13.041Z",
+      "updated_at": "2026-04-02T01:42:12.335Z"
+    },
+    {
+      "id": "71e98418-5226-4e66-b54d-d45ca2e32f0d",
+      "name": "Section C",
+      "join_code": "WVK94A",
+      "course_id": "8b248911-79f3-421f-be6e-f59e312b5018",
+      "class_id": "ec720121-a654-4c30-9c7b-552a9a85bc5b",
+      "is_active": true,
+      "created_at": "2025-08-28T02:03:06.945Z",
+      "updated_at": "2026-04-02T02:54:54.681Z"
+    },
+    {
+      "id": "9e26a0b2-f0ca-4b79-a215-7e2be42fe5f7",
+      "name": "Section B",
+      "join_code": "BFLADI",
+      "course_id": "8b248911-79f3-421f-be6e-f59e312b5018",
+      "class_id": "f281d6e7-b9cb-4af6-83ff-3dd107e91b38",
+      "is_active": true,
+      "created_at": "2025-08-14T02:37:17.879Z",
+      "updated_at": "2026-04-02T01:06:54.090Z"
+    },
+    {
+      "id": "4a632a71-2a25-40d3-9a1a-304035c6e988",
+      "name": "Section B",
+      "join_code": "XKMNUM",
+      "course_id": "54a49cf0-6fad-4601-bb65-998551732680",
+      "class_id": "b876690f-89ec-45fb-91be-0db368ad18f8",
+      "is_active": true,
+      "created_at": "2025-09-17T08:13:40.126Z",
+      "updated_at": "2026-04-02T07:40:59.381Z"
+    },
+    {
+      "id": "fedcc945-7e3d-499e-9718-0ca1d246e892",
+      "name": "Section B",
+      "join_code": "ZGZOYN",
+      "course_id": "6165f5cf-471e-45c1-a3fe-e8072d6d9714",
+      "class_id": "a6a835be-e8bd-448f-87ee-216ecb039eac",
+      "is_active": true,
+      "created_at": "2026-01-26T16:26:39.570Z",
+      "updated_at": "2026-04-02T08:08:36.499Z"
+    },
+    {
+      "id": "9225441b-4673-43fa-8d1a-b912894ca3bc",
+      "name": "Section B",
+      "join_code": "FJOXMM",
+      "course_id": "54a49cf0-6fad-4601-bb65-998551732680",
+      "class_id": "6116c4df-1b24-414d-9d54-08a2ce7b5115",
+      "is_active": true,
+      "created_at": "2025-05-27T17:49:31.467Z",
+      "updated_at": "2026-04-02T01:48:24.825Z"
+    },
+    {
+      "id": "b195945e-b60d-438d-bb5c-a2c1fd19fbb5",
+      "name": "Section C",
+      "join_code": "BGBQHO",
+      "course_id": "54a49cf0-6fad-4601-bb65-998551732680",
+      "class_id": "9fd276f1-3bfc-441d-82d7-6ed57e40620f",
+      "is_active": true,
+      "created_at": "2025-06-19T10:06:40.386Z",
+      "updated_at": "2026-04-02T07:14:48.158Z"
+    },
+    {
+      "id": "6b17a867-9caa-4bce-88ff-2e9ef1b2543c",
+      "name": "Section A",
+      "join_code": "XOJTOR",
+      "course_id": "e0366061-d13a-4ce8-a859-8859f6d568e3",
+      "class_id": "a6a835be-e8bd-448f-87ee-216ecb039eac",
+      "is_active": true,
+      "created_at": "2025-10-14T14:45:09.198Z",
+      "updated_at": "2026-04-01T23:53:01.831Z"
+    },
+    {
+      "id": "4251cf89-af2e-4e1e-91af-8d8f70b9204b",
+      "name": "Section C",
+      "join_code": "QUN0UQ",
+      "course_id": "e978f71e-b0b5-4712-b593-c95afb687a86",
+      "class_id": "6116c4df-1b24-414d-9d54-08a2ce7b5115",
+      "is_active": true,
+      "created_at": "2025-08-30T05:55:51.839Z",
+      "updated_at": "2026-04-02T06:50:34.095Z"
+    }
+  ],
+  "subjects": [
+    {
+      "id": "ab1a0123-7ecc-4132-9621-85ea0e65b442",
+      "title": "Algebra Fundamentals",
+      "description": "Thema vitae pecto ventosus tibi spoliatio cauda conicio thorax. Explicabo sol cogito vetus. Correptius aeger agnosco amplexus sponte ager.",
+      "thumbnail_url": "https://picsum.photos/seed/bbu8BYGO/400/250",
+      "org_id": "1d346816-f11b-4530-8cbc-159393f02fce",
+      "created_at": "2025-08-09T20:46:14.286Z"
+    },
+    {
+      "id": "c8397cdb-1b38-4f7f-be86-a0d6b08387ec",
+      "title": "Newtonian Mechanics",
+      "description": "Caste thymbra cruentus. Dens aqua auxilium tyrannus nemo tyrannus. Adamo cognomen utique suscipio.",
+      "thumbnail_url": "https://picsum.photos/seed/Ac0NIyD6/400/250",
+      "org_id": "0d9a8d36-55be-4b0b-990c-be37805cf44e",
+      "created_at": "2026-03-28T15:25:37.895Z"
+    },
+    {
+      "id": "6ae3ad62-7fe3-456f-8fa0-0d8f813bbb6d",
+      "title": "Organic Chemistry",
+      "description": "Somniculosus alter comptus animus. Antepono tactus audacia laboriosam vito aveho excepturi. Non suffoco capitulus correptius audio vigor valde charisma.",
+      "thumbnail_url": "https://picsum.photos/seed/a1zRysEi/400/250",
+      "org_id": "19a25f86-cb14-4ba3-8de0-eca3d1c8099a",
+      "created_at": "2026-01-17T12:55:19.042Z"
+    },
+    {
+      "id": "bfbf2007-0063-47c1-b26a-11650ebfb101",
+      "title": "Cell Biology",
+      "description": "Celo depono canto tenus causa. Eaque volutabrum cito terror curia. Adamo depereo coniuratio crastinus video bellicus derideo supra.",
+      "thumbnail_url": "https://picsum.photos/seed/NzGXozYi/400/250",
+      "org_id": "1d346816-f11b-4530-8cbc-159393f02fce",
+      "created_at": "2026-02-14T23:00:20.782Z"
+    },
+    {
+      "id": "3e4ff3d1-4e14-4816-b96a-f465e3661538",
+      "title": "World History",
+      "description": "Tantum talus curto acsi textor avarus. Suasoria audentia curatio callide valens cupiditate. Accusamus appello basium clamo combibo tutamen.",
+      "thumbnail_url": "https://picsum.photos/seed/AKRGetg3/400/250",
+      "org_id": "0d9a8d36-55be-4b0b-990c-be37805cf44e",
+      "created_at": "2025-06-09T18:41:22.741Z"
+    },
+    {
+      "id": "2c008193-06a6-4cb9-b54b-68a9caa25a9b",
+      "title": "English Literature",
+      "description": "Cruentus reiciendis vomica calamitas cado ascit aegrotatio celer. Thymbra turbo aspernatur cotidie trans denego tolero. Quis caelum cibus.",
+      "thumbnail_url": "https://picsum.photos/seed/gXvPa9F8/400/250",
+      "org_id": "19a25f86-cb14-4ba3-8de0-eca3d1c8099a",
+      "created_at": "2025-11-05T04:39:15.801Z"
+    },
+    {
+      "id": "cc009d15-0508-4953-9833-93a2cc0df3c5",
+      "title": "Data Structures",
+      "description": "Suffragium decor caterva xiphias. Amitto modi crustulum curia ante nostrum celer subiungo. Vix validus absque.",
+      "thumbnail_url": "https://picsum.photos/seed/CGaF4DST/400/250",
+      "org_id": "1d346816-f11b-4530-8cbc-159393f02fce",
+      "created_at": "2025-07-25T05:18:20.324Z"
+    },
+    {
+      "id": "37aa6e8e-d6fc-4c48-8c23-881eb9c04cbb",
+      "title": "Calculus I",
+      "description": "Adimpleo acceptus recusandae deficio. Cognomen numquam voco valeo velum. Stultus clam confugo.",
+      "thumbnail_url": "https://picsum.photos/seed/YyimMCpZ/400/250",
+      "org_id": "7fa0782a-3a6c-41c1-a36f-3fa8835ec80e",
+      "created_at": "2025-05-30T22:07:40.895Z"
+    },
+    {
+      "id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
+      "title": "Thermodynamics",
+      "description": "Surculus celo currus. Cito amita tersus corrigo utroque deinde ustulo audeo video. Decet at vae coniecto copiose conforto ocer valde aggero tepesco.",
+      "thumbnail_url": "https://picsum.photos/seed/OaN66Aaa/400/250",
+      "org_id": "0d9a8d36-55be-4b0b-990c-be37805cf44e",
+      "created_at": "2026-03-15T08:02:18.294Z"
+    },
+    {
+      "id": "8e93fccf-bb95-46b9-9675-ff5794610126",
+      "title": "Genetics",
+      "description": "Demonstro adiuvo aperio ea vae bibo pauci. Succedo minima circumvenio suffoco. Corrupti possimus vita asporto aliquam vaco degero creo aedificium suus.",
+      "thumbnail_url": "https://picsum.photos/seed/7JTmIoM6/400/250",
+      "org_id": "7fa0782a-3a6c-41c1-a36f-3fa8835ec80e",
+      "created_at": "2026-01-19T11:27:00.947Z"
+    },
+    {
+      "id": "4667a332-2179-4d33-9865-b2e6955921de",
+      "title": "Trigonometry",
+      "description": "Coaegresco tamen arcus cras sophismata cornu. Alienus trans autem vulpes crepusculum textilis carus carus utor deserunt. Enim talio appono.",
+      "thumbnail_url": "https://picsum.photos/seed/hBzBk3hN/400/250",
+      "org_id": "1d346816-f11b-4530-8cbc-159393f02fce",
+      "created_at": "2025-12-12T00:56:08.923Z"
+    },
+    {
+      "id": "88c75cd6-3725-4595-8400-7b2c061d8530",
+      "title": "Electrochemistry",
+      "description": "Quibusdam solitudo cervus vicinus aqua venia vae suffoco vomito bos. Bardus tertius tempus uxor curatio dedico animi tertius creo thalassinus. Tenetur perferendis desolo tero corporis capio ab illum articulus.",
+      "thumbnail_url": "https://picsum.photos/seed/VuIM8P61/400/250",
+      "org_id": "821068eb-fe15-49dc-9e42-b93151d01f8f",
+      "created_at": "2026-02-13T17:31:27.193Z"
+    },
+    {
+      "id": "dc09b5a1-6e70-47a5-bce8-0cac6b42042b",
+      "title": "Modern Physics",
+      "description": "Vulticulus recusandae enim texo vetus. Vorax administratio velut terra uterque admiratio. Crebro carmen arcus molestias.",
+      "thumbnail_url": "https://picsum.photos/seed/Q2JChyYq/400/250",
+      "org_id": "821068eb-fe15-49dc-9e42-b93151d01f8f",
+      "created_at": "2026-01-04T23:06:29.912Z"
+    },
+    {
+      "id": "3325770a-cb79-4f6d-ae46-6ed577c337e3",
+      "title": "Ecology",
+      "description": "Tot sumo aestas amita adduco. Cohibeo suffragium vociferor cognomen cunabula triduana crux volo. Dolorem desipio taedium cenaculum ventus odio vorago statua deficio defungo.",
+      "thumbnail_url": "https://picsum.photos/seed/5bD9pXM4/400/250",
+      "org_id": "1d346816-f11b-4530-8cbc-159393f02fce",
+      "created_at": "2025-09-06T13:21:51.306Z"
+    },
+    {
+      "id": "c884a8d9-bdf3-4d88-8c57-56d0fbc9b194",
+      "title": "Analytical Chemistry",
+      "description": "Tabgo defaeco astrum amplitudo coma fuga amicitia. Video sollers addo hic suscipio atqui via. Caste timor texo.",
+      "thumbnail_url": "https://picsum.photos/seed/50IwY2Br/400/250",
+      "org_id": "0d9a8d36-55be-4b0b-990c-be37805cf44e",
+      "created_at": "2025-11-06T07:23:58.235Z"
+    }
+  ],
+  "enrollments": [
+    {
+      "id": "aaa60ab4-18fd-4293-827d-fcf831fd86b9",
+      "user_id": "8a9d128c-d5fc-4f74-80cc-a89ce5be4dc0",
+      "subject_id": "2c008193-06a6-4cb9-b54b-68a9caa25a9b",
+      "created_at": "2026-02-19T14:31:04.584Z"
+    },
+    {
+      "id": "ec03e1de-74d8-41e3-a56e-95cc81c2867b",
+      "user_id": "32e520b2-b6df-4d83-8b57-b94aca76be3a",
+      "subject_id": "3e4ff3d1-4e14-4816-b96a-f465e3661538",
+      "created_at": "2025-07-01T01:00:11.419Z"
+    },
+    {
+      "id": "ff4121d0-4249-4df8-ad37-3f321638b146",
+      "user_id": "b004e741-6092-4689-a5ca-24f2f3306034",
+      "subject_id": "ab1a0123-7ecc-4132-9621-85ea0e65b442",
+      "created_at": "2025-11-17T03:00:15.125Z"
+    },
+    {
+      "id": "81c4bc80-75b7-4d76-b8ed-668339968502",
+      "user_id": "ae931f66-ea9d-46c5-977f-d7ffa488c907",
+      "subject_id": "2c008193-06a6-4cb9-b54b-68a9caa25a9b",
+      "created_at": "2025-12-18T11:22:18.103Z"
+    },
+    {
+      "id": "658645ca-5c56-4b05-b487-cc3f8138149e",
+      "user_id": "b8594deb-380c-45b2-a4d6-4454c9c872df",
+      "subject_id": "88c75cd6-3725-4595-8400-7b2c061d8530",
+      "created_at": "2026-02-10T03:53:12.196Z"
+    },
+    {
+      "id": "74be19ef-c106-41e1-8f3e-fd35175b31b9",
+      "user_id": "b0f63095-a890-4f09-abb2-3e4c3ce02289",
+      "subject_id": "c8397cdb-1b38-4f7f-be86-a0d6b08387ec",
+      "created_at": "2026-01-20T10:26:18.259Z"
+    },
+    {
+      "id": "ca7e0aaf-ca29-416b-be6f-c0c90c5fbc0a",
+      "user_id": "74f13f79-4276-49bf-81c1-7a8deaac6385",
+      "subject_id": "3325770a-cb79-4f6d-ae46-6ed577c337e3",
+      "created_at": "2025-12-16T15:28:38.507Z"
+    },
+    {
+      "id": "afea772d-16db-4197-8199-02271f083847",
+      "user_id": "728aa531-81ab-4c95-87ae-9223ddbac2a5",
+      "subject_id": "2c008193-06a6-4cb9-b54b-68a9caa25a9b",
+      "created_at": "2025-09-03T16:25:10.457Z"
+    },
+    {
+      "id": "1c7a6591-dddf-4eb8-b1e8-82513dd3ec94",
+      "user_id": "a1eab087-8eb3-4448-ba81-de6e8f9b256a",
+      "subject_id": "bfbf2007-0063-47c1-b26a-11650ebfb101",
+      "created_at": "2025-10-19T13:52:28.176Z"
+    },
+    {
+      "id": "683f0e5d-6e12-4279-8a6e-0e94327e43a8",
+      "user_id": "9278651e-bf09-4c82-ac92-12c5b7caf1f3",
+      "subject_id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
+      "created_at": "2026-02-03T05:05:13.328Z"
+    },
+    {
+      "id": "bff64478-73c7-4ade-a09f-7c12e023a64d",
+      "user_id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
+      "subject_id": "2c008193-06a6-4cb9-b54b-68a9caa25a9b",
+      "created_at": "2025-07-03T05:51:32.418Z"
+    },
+    {
+      "id": "14ee457e-315f-4f4f-8a38-499399bfc3e1",
+      "user_id": "8a9d128c-d5fc-4f74-80cc-a89ce5be4dc0",
+      "subject_id": "4667a332-2179-4d33-9865-b2e6955921de",
+      "created_at": "2026-03-20T14:11:28.441Z"
+    },
+    {
+      "id": "8455f609-7b7e-4269-acd6-fd26d15dfc3e",
+      "user_id": "f544a945-347a-4ae3-a022-39ba6aa55735",
+      "subject_id": "cc009d15-0508-4953-9833-93a2cc0df3c5",
+      "created_at": "2025-08-25T16:58:50.316Z"
+    },
+    {
+      "id": "5060a122-4ad3-44ed-8a17-3d28fbcbb4bf",
+      "user_id": "7921fe5c-942b-4be8-aee6-dae72b3010c4",
+      "subject_id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
+      "created_at": "2026-03-14T07:18:29.031Z"
+    },
+    {
+      "id": "9948e179-9f2d-4512-992b-6f2ded1fe23d",
+      "user_id": "a1eab087-8eb3-4448-ba81-de6e8f9b256a",
+      "subject_id": "6ae3ad62-7fe3-456f-8fa0-0d8f813bbb6d",
+      "created_at": "2026-01-20T19:02:34.355Z"
+    },
+    {
+      "id": "668d1e24-491e-4fa9-a02d-61655dab310e",
+      "user_id": "ae931f66-ea9d-46c5-977f-d7ffa488c907",
+      "subject_id": "cc009d15-0508-4953-9833-93a2cc0df3c5",
+      "created_at": "2025-04-23T14:39:36.457Z"
+    },
+    {
+      "id": "4ef7a7b0-4ebf-42be-862d-349c737a759b",
+      "user_id": "ae61f786-98df-4457-9af6-79f22390c27c",
+      "subject_id": "8e93fccf-bb95-46b9-9675-ff5794610126",
+      "created_at": "2025-04-07T13:26:20.107Z"
+    },
+    {
+      "id": "e1490466-25e1-42ac-84ef-283bb05bc901",
+      "user_id": "e25ef4d9-f4eb-4ab7-a992-0cc042301f9c",
+      "subject_id": "88c75cd6-3725-4595-8400-7b2c061d8530",
+      "created_at": "2025-11-13T18:17:08.791Z"
+    },
+    {
+      "id": "4aa1ed22-34f5-40f7-b7c0-fcd8c654f5df",
+      "user_id": "f544a945-347a-4ae3-a022-39ba6aa55735",
+      "subject_id": "37aa6e8e-d6fc-4c48-8c23-881eb9c04cbb",
+      "created_at": "2025-09-06T16:34:31.000Z"
+    },
+    {
+      "id": "ba8b3492-8b43-4e62-94fd-6a4a4814a54e",
+      "user_id": "f544a945-347a-4ae3-a022-39ba6aa55735",
+      "subject_id": "dc09b5a1-6e70-47a5-bce8-0cac6b42042b",
+      "created_at": "2025-10-14T15:06:03.937Z"
+    },
+    {
+      "id": "7d08ca98-7cc1-47a5-8ccc-50fcd441e87f",
+      "user_id": "a1eab087-8eb3-4448-ba81-de6e8f9b256a",
+      "subject_id": "dc09b5a1-6e70-47a5-bce8-0cac6b42042b",
+      "created_at": "2025-06-07T01:05:15.995Z"
+    },
+    {
+      "id": "fab49233-186f-43be-bd91-fe89f060fd29",
+      "user_id": "fe4b25d2-c950-4b66-9088-0fbb1e773c96",
+      "subject_id": "4667a332-2179-4d33-9865-b2e6955921de",
+      "created_at": "2025-05-12T16:09:36.420Z"
+    },
+    {
+      "id": "711a28c1-c329-4468-9b76-f2b05c629a1c",
+      "user_id": "b8594deb-380c-45b2-a4d6-4454c9c872df",
+      "subject_id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
+      "created_at": "2025-10-25T00:24:50.880Z"
+    },
+    {
+      "id": "b84f316c-75a6-42eb-964f-104fd55d21d5",
+      "user_id": "8a9d128c-d5fc-4f74-80cc-a89ce5be4dc0",
+      "subject_id": "c8397cdb-1b38-4f7f-be86-a0d6b08387ec",
+      "created_at": "2025-12-22T03:44:34.417Z"
+    },
+    {
+      "id": "213a2704-ad9a-4ec6-9c4a-1cf0e9826a24",
+      "user_id": "0cb2ed1c-bd44-41ff-b48a-885d84bb50d6",
+      "subject_id": "ab1a0123-7ecc-4132-9621-85ea0e65b442",
+      "created_at": "2025-12-20T09:17:49.937Z"
+    }
+  ],
+  "ingestion_jobs": [
+    {
+      "id": "d7237092-2de1-4063-97a9-7136362b17da",
+      "subject_id": "6ae3ad62-7fe3-456f-8fa0-0d8f813bbb6d",
+      "subject_title": "Organic Chemistry",
+      "status": "PROCESSING",
+      "current_stage": "COMPLETED",
+      "progress_percentage": 36,
+      "created_at": "2025-05-10T13:32:50.513Z",
+      "completed_at": null
+    },
+    {
+      "id": "4c80a757-c28f-4938-8340-1cbe26e3b98f",
+      "subject_id": "37aa6e8e-d6fc-4c48-8c23-881eb9c04cbb",
+      "subject_title": "Calculus I",
+      "status": "FAILED",
+      "current_stage": "COMPLETED",
+      "progress_percentage": 8,
+      "created_at": "2025-05-01T02:30:22.859Z",
+      "completed_at": null
+    },
+    {
+      "id": "0269fd1d-a9b4-4809-80fa-44b7960e5d95",
+      "subject_id": "37aa6e8e-d6fc-4c48-8c23-881eb9c04cbb",
+      "subject_title": "Calculus I",
+      "status": "PENDING",
+      "current_stage": "EXTRACTING",
+      "progress_percentage": 73,
+      "created_at": "2026-01-12T06:31:20.627Z",
+      "completed_at": null
+    },
+    {
+      "id": "cb275730-5302-4ad5-89ea-b4ea1aa0c525",
+      "subject_id": "c8397cdb-1b38-4f7f-be86-a0d6b08387ec",
+      "subject_title": "Newtonian Mechanics",
+      "status": "PENDING",
+      "current_stage": "FINALIZING",
+      "progress_percentage": 63,
+      "created_at": "2025-04-26T15:26:40.301Z",
+      "completed_at": null
+    },
+    {
+      "id": "859b5e45-90ca-4710-9287-2ee437616f78",
+      "subject_id": "8e93fccf-bb95-46b9-9675-ff5794610126",
+      "subject_title": "Genetics",
+      "status": "FAILED",
+      "current_stage": "COMPLETED",
+      "progress_percentage": 66,
+      "created_at": "2025-05-10T02:57:56.926Z",
+      "completed_at": null
+    },
+    {
+      "id": "3d0b7899-257e-48f5-8f3e-d95ba7a30d4b",
+      "subject_id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
+      "subject_title": "Thermodynamics",
+      "status": "PENDING",
+      "current_stage": "EXTRACTING",
+      "progress_percentage": 52,
+      "created_at": "2025-07-31T20:08:29.386Z",
+      "completed_at": null
+    },
+    {
+      "id": "fdc7f34d-4e73-48d1-94db-74ce03714e43",
+      "subject_id": "ab1a0123-7ecc-4132-9621-85ea0e65b442",
+      "subject_title": "Algebra Fundamentals",
+      "status": "COMPLETED",
+      "current_stage": "EXTRACTING",
+      "progress_percentage": 100,
+      "created_at": "2025-05-25T23:41:17.785Z",
+      "completed_at": "2026-04-02T08:01:37.844Z"
+    },
+    {
+      "id": "03db8fdd-24e8-40b3-a63c-5673beff77a0",
+      "subject_id": "88c75cd6-3725-4595-8400-7b2c061d8530",
+      "subject_title": "Electrochemistry",
+      "status": "PENDING",
+      "current_stage": "EXTRACTING",
+      "progress_percentage": 14,
+      "created_at": "2025-07-24T16:27:14.419Z",
+      "completed_at": null
+    },
+    {
+      "id": "8f42aa2e-3f56-4a47-9895-c3daf5d1745c",
+      "subject_id": "ab1a0123-7ecc-4132-9621-85ea0e65b442",
+      "subject_title": "Algebra Fundamentals",
+      "status": "PROCESSING",
+      "current_stage": "STRUCTURING",
+      "progress_percentage": 16,
+      "created_at": "2025-06-12T03:20:49.139Z",
+      "completed_at": null
+    },
+    {
+      "id": "a1708f98-71a3-4796-95e1-cb17338c8d0d",
+      "subject_id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
+      "subject_title": "Thermodynamics",
+      "status": "PROCESSING",
+      "current_stage": "GENERATING",
+      "progress_percentage": 3,
+      "created_at": "2025-10-13T09:51:36.049Z",
+      "completed_at": null
+    },
+    {
+      "id": "318cea71-3f82-4077-908f-084d3bcfaa3a",
+      "subject_id": "c8397cdb-1b38-4f7f-be86-a0d6b08387ec",
+      "subject_title": "Newtonian Mechanics",
+      "status": "COMPLETED",
+      "current_stage": "STRUCTURING",
+      "progress_percentage": 100,
+      "created_at": "2025-07-22T14:54:26.805Z",
+      "completed_at": "2026-04-02T08:04:35.069Z"
+    },
+    {
+      "id": "0e2cfa6a-db11-47a2-9879-7448f0d2d68c",
+      "subject_id": "88c75cd6-3725-4595-8400-7b2c061d8530",
+      "subject_title": "Electrochemistry",
+      "status": "PROCESSING",
+      "current_stage": "FINALIZING",
+      "progress_percentage": 89,
+      "created_at": "2025-11-12T03:52:57.596Z",
+      "completed_at": null
+    },
+    {
+      "id": "3f35183b-ad6c-4944-a977-2ad7f575867d",
+      "subject_id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
+      "subject_title": "Thermodynamics",
+      "status": "PENDING",
+      "current_stage": "FINALIZING",
+      "progress_percentage": 75,
+      "created_at": "2025-09-07T22:41:28.527Z",
+      "completed_at": null
+    },
+    {
+      "id": "6d2f9135-2a76-4675-98bc-6f9c407ab2d1",
+      "subject_id": "4667a332-2179-4d33-9865-b2e6955921de",
+      "subject_title": "Trigonometry",
+      "status": "FAILED",
+      "current_stage": "COMPLETED",
+      "progress_percentage": 16,
+      "created_at": "2025-08-05T06:55:58.119Z",
+      "completed_at": null
+    },
+    {
+      "id": "5e5a9913-2815-44c8-bc49-03c17958f1e8",
+      "subject_id": "c8397cdb-1b38-4f7f-be86-a0d6b08387ec",
+      "subject_title": "Newtonian Mechanics",
+      "status": "COMPLETED",
+      "current_stage": "COMPLETED",
+      "progress_percentage": 100,
+      "created_at": "2026-03-07T16:16:23.497Z",
+      "completed_at": "2026-04-02T16:01:55.422Z"
+    },
+    {
+      "id": "bbb0626b-6fa2-48c9-aead-9e9b247cc322",
+      "subject_id": "ab1a0123-7ecc-4132-9621-85ea0e65b442",
+      "subject_title": "Algebra Fundamentals",
+      "status": "PROCESSING",
+      "current_stage": "COMPLETED",
+      "progress_percentage": 42,
+      "created_at": "2026-04-01T08:03:42.751Z",
+      "completed_at": null
+    },
+    {
+      "id": "db37fcfb-3285-4e57-8232-03002b00bfa9",
+      "subject_id": "4667a332-2179-4d33-9865-b2e6955921de",
+      "subject_title": "Trigonometry",
+      "status": "PROCESSING",
+      "current_stage": "GENERATING",
+      "progress_percentage": 64,
+      "created_at": "2025-11-16T05:20:51.348Z",
+      "completed_at": null
+    },
+    {
+      "id": "b8bce97b-1cbb-4fc7-83fe-a442da15a067",
+      "subject_id": "ab1a0123-7ecc-4132-9621-85ea0e65b442",
+      "subject_title": "Algebra Fundamentals",
+      "status": "PENDING",
+      "current_stage": "STRUCTURING",
+      "progress_percentage": 13,
+      "created_at": "2025-08-26T20:28:24.296Z",
+      "completed_at": null
+    },
+    {
+      "id": "72977dd6-820b-4e92-8a11-75af84b94174",
+      "subject_id": "3e4ff3d1-4e14-4816-b96a-f465e3661538",
+      "subject_title": "World History",
+      "status": "FAILED",
+      "current_stage": "STRUCTURING",
+      "progress_percentage": 63,
+      "created_at": "2025-04-13T06:05:42.589Z",
+      "completed_at": null
+    },
+    {
+      "id": "b26667eb-c23e-4d38-9359-1660d39e327b",
+      "subject_id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
+      "subject_title": "Thermodynamics",
+      "status": "FAILED",
+      "current_stage": "FINALIZING",
+      "progress_percentage": 47,
+      "created_at": "2025-11-28T12:16:10.622Z",
+      "completed_at": null
+    }
+  ],
+  "assessments": [
+    {
+      "id": 1249,
+      "reference_id": "3e4ff3d1-4e14-4816-b96a-f465e3661538",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-02T06:12:43.904Z",
+      "percentage": 81.2,
+      "user_id": "728aa531-81ab-4c95-87ae-9223ddbac2a5"
+    },
+    {
+      "id": 2453,
+      "reference_id": "c884a8d9-bdf3-4d88-8c57-56d0fbc9b194",
+      "assignment_type": "TEXT",
+      "completed_at": "2026-04-01T21:31:05.011Z",
+      "percentage": 35.7,
+      "user_id": "ae931f66-ea9d-46c5-977f-d7ffa488c907"
+    },
+    {
+      "id": 3000,
+      "reference_id": "dc09b5a1-6e70-47a5-bce8-0cac6b42042b",
+      "assignment_type": "QUIZ",
+      "completed_at": "2026-04-02T00:03:02.783Z",
+      "percentage": 49.4,
+      "user_id": "929c79e0-0bbb-4ccc-ae03-35100157036d"
+    },
+    {
+      "id": 7535,
+      "reference_id": "cc009d15-0508-4953-9833-93a2cc0df3c5",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-01T20:20:21.878Z",
+      "percentage": 45.3,
+      "user_id": "0f8defdd-dd97-4bcb-a424-69acd896d44b"
+    },
+    {
+      "id": 7168,
+      "reference_id": "bfbf2007-0063-47c1-b26a-11650ebfb101",
+      "assignment_type": "QUIZ",
+      "completed_at": "2026-04-02T07:02:56.650Z",
+      "percentage": 95.3,
+      "user_id": "0cb2ed1c-bd44-41ff-b48a-885d84bb50d6"
+    },
+    {
+      "id": 1310,
+      "reference_id": "ab1a0123-7ecc-4132-9621-85ea0e65b442",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-02T10:48:56.933Z",
+      "percentage": 95.1,
+      "user_id": "a8a64f45-78d6-4b37-980a-2e6890633923"
+    },
+    {
+      "id": 5567,
+      "reference_id": "37aa6e8e-d6fc-4c48-8c23-881eb9c04cbb",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-01T16:57:03.489Z",
+      "percentage": 51.6,
+      "user_id": "728aa531-81ab-4c95-87ae-9223ddbac2a5"
+    },
+    {
+      "id": 3688,
+      "reference_id": "88c75cd6-3725-4595-8400-7b2c061d8530",
+      "assignment_type": "QUIZ",
+      "completed_at": "2026-04-02T08:33:15.045Z",
+      "percentage": 33.8,
+      "user_id": "a8560552-0209-4cf5-9e8b-6bd5f4915caa"
+    },
+    {
+      "id": 7439,
+      "reference_id": "8e93fccf-bb95-46b9-9675-ff5794610126",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-01T19:11:03.673Z",
+      "percentage": 32.6,
+      "user_id": "a8a64f45-78d6-4b37-980a-2e6890633923"
+    },
+    {
+      "id": 5816,
+      "reference_id": "3325770a-cb79-4f6d-ae46-6ed577c337e3",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-02T08:04:46.450Z",
+      "percentage": 32,
+      "user_id": "e25ef4d9-f4eb-4ab7-a992-0cc042301f9c"
+    },
+    {
+      "id": 4807,
+      "reference_id": "3325770a-cb79-4f6d-ae46-6ed577c337e3",
+      "assignment_type": "QUIZ",
+      "completed_at": "2026-04-02T13:37:35.489Z",
+      "percentage": 71,
+      "user_id": "a8a64f45-78d6-4b37-980a-2e6890633923"
+    },
+    {
+      "id": 6466,
+      "reference_id": "c8397cdb-1b38-4f7f-be86-a0d6b08387ec",
+      "assignment_type": "TEXT",
+      "completed_at": "2026-04-01T16:18:47.754Z",
+      "percentage": 47.9,
+      "user_id": "e25ef4d9-f4eb-4ab7-a992-0cc042301f9c"
+    },
+    {
+      "id": 1066,
+      "reference_id": "cc009d15-0508-4953-9833-93a2cc0df3c5",
+      "assignment_type": "QUIZ",
+      "completed_at": "2026-04-02T09:44:54.281Z",
+      "percentage": 39.9,
+      "user_id": "a8a64f45-78d6-4b37-980a-2e6890633923"
+    },
+    {
+      "id": 2909,
+      "reference_id": "cc009d15-0508-4953-9833-93a2cc0df3c5",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-02T03:01:34.043Z",
+      "percentage": 82.7,
+      "user_id": "54a080e7-a372-43bb-a6b3-87df2f7d4c98"
+    },
+    {
+      "id": 7371,
+      "reference_id": "c884a8d9-bdf3-4d88-8c57-56d0fbc9b194",
+      "assignment_type": "QUIZ",
+      "completed_at": "2026-04-01T22:03:24.927Z",
+      "percentage": 82.9,
+      "user_id": "f544a945-347a-4ae3-a022-39ba6aa55735"
+    },
+    {
+      "id": 4707,
+      "reference_id": "4667a332-2179-4d33-9865-b2e6955921de",
+      "assignment_type": "QUIZ",
+      "completed_at": "2026-04-02T01:16:32.809Z",
+      "percentage": 82.6,
+      "user_id": "a8560552-0209-4cf5-9e8b-6bd5f4915caa"
+    },
+    {
+      "id": 9136,
+      "reference_id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
+      "assignment_type": "QUIZ",
+      "completed_at": "2026-04-01T17:44:49.555Z",
+      "percentage": 32,
+      "user_id": "32e520b2-b6df-4d83-8b57-b94aca76be3a"
+    },
+    {
+      "id": 4762,
+      "reference_id": "ab1a0123-7ecc-4132-9621-85ea0e65b442",
+      "assignment_type": "TEXT",
+      "completed_at": "2026-04-01T20:47:51.945Z",
+      "percentage": 39.3,
+      "user_id": "b004e741-6092-4689-a5ca-24f2f3306034"
+    },
+    {
+      "id": 8904,
+      "reference_id": "c8397cdb-1b38-4f7f-be86-a0d6b08387ec",
+      "assignment_type": "TEXT",
+      "completed_at": "2026-04-02T08:57:38.140Z",
+      "percentage": 59.6,
+      "user_id": "a3b020e9-99b2-4c94-84ac-d4bfce66048d"
+    },
+    {
+      "id": 6809,
+      "reference_id": "3325770a-cb79-4f6d-ae46-6ed577c337e3",
+      "assignment_type": "CODE",
+      "completed_at": "2026-04-02T13:25:54.320Z",
+      "percentage": 35.9,
+      "user_id": "7921fe5c-942b-4be8-aee6-dae72b3010c4"
+    },
+    {
+      "id": 5521,
+      "reference_id": "37aa6e8e-d6fc-4c48-8c23-881eb9c04cbb",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-02T01:33:31.979Z",
+      "percentage": 97.7,
+      "user_id": "54a080e7-a372-43bb-a6b3-87df2f7d4c98"
+    },
+    {
+      "id": 6333,
+      "reference_id": "4667a332-2179-4d33-9865-b2e6955921de",
+      "assignment_type": "TEXT",
+      "completed_at": "2026-04-02T03:32:31.976Z",
+      "percentage": 67.2,
+      "user_id": "a1eab087-8eb3-4448-ba81-de6e8f9b256a"
+    },
+    {
+      "id": 1334,
+      "reference_id": "2c008193-06a6-4cb9-b54b-68a9caa25a9b",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-02T13:47:14.208Z",
+      "percentage": 78.3,
+      "user_id": "32e520b2-b6df-4d83-8b57-b94aca76be3a"
+    },
+    {
+      "id": 2242,
+      "reference_id": "8e93fccf-bb95-46b9-9675-ff5794610126",
+      "assignment_type": "QUIZ",
+      "completed_at": "2026-04-02T02:44:05.474Z",
+      "percentage": 57.3,
+      "user_id": "728aa531-81ab-4c95-87ae-9223ddbac2a5"
+    },
+    {
+      "id": 6390,
+      "reference_id": "c884a8d9-bdf3-4d88-8c57-56d0fbc9b194",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-02T15:47:51.857Z",
+      "percentage": 94.6,
+      "user_id": "164356c3-92f7-4409-a238-cb1bb1dd68cc"
+    },
+    {
+      "id": 4182,
+      "reference_id": "37aa6e8e-d6fc-4c48-8c23-881eb9c04cbb",
+      "assignment_type": "CODE",
+      "completed_at": "2026-04-01T23:48:02.825Z",
+      "percentage": 74.6,
+      "user_id": "2c336a34-27e6-4027-a1ef-7416623d9d55"
+    },
+    {
+      "id": 8413,
+      "reference_id": "c884a8d9-bdf3-4d88-8c57-56d0fbc9b194",
+      "assignment_type": "TEXT",
+      "completed_at": "2026-04-02T09:20:14.698Z",
+      "percentage": 89.4,
+      "user_id": "3361c26e-a9f5-4406-a77b-afc2d91803a1"
+    },
+    {
+      "id": 5107,
+      "reference_id": "ab1a0123-7ecc-4132-9621-85ea0e65b442",
+      "assignment_type": "CODE",
+      "completed_at": "2026-04-02T09:21:32.397Z",
+      "percentage": 76.3,
+      "user_id": "9278651e-bf09-4c82-ac92-12c5b7caf1f3"
+    },
+    {
+      "id": 4750,
+      "reference_id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
+      "assignment_type": "QUIZ",
+      "completed_at": "2026-04-01T20:32:37.383Z",
+      "percentage": 76.5,
+      "user_id": "54a080e7-a372-43bb-a6b3-87df2f7d4c98"
+    },
+    {
+      "id": 1643,
+      "reference_id": "bfbf2007-0063-47c1-b26a-11650ebfb101",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-02T05:51:32.117Z",
+      "percentage": 48.7,
+      "user_id": "a1eab087-8eb3-4448-ba81-de6e8f9b256a"
+    },
+    {
+      "id": 7807,
+      "reference_id": "c8397cdb-1b38-4f7f-be86-a0d6b08387ec",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-01T17:41:03.870Z",
+      "percentage": 77,
+      "user_id": "0f8defdd-dd97-4bcb-a424-69acd896d44b"
+    },
+    {
+      "id": 9914,
+      "reference_id": "8e93fccf-bb95-46b9-9675-ff5794610126",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-02T15:44:40.581Z",
+      "percentage": 58.1,
+      "user_id": "54a080e7-a372-43bb-a6b3-87df2f7d4c98"
+    },
+    {
+      "id": 5407,
+      "reference_id": "6ae3ad62-7fe3-456f-8fa0-0d8f813bbb6d",
+      "assignment_type": "CODE",
+      "completed_at": "2026-04-02T12:13:56.698Z",
+      "percentage": 37.9,
+      "user_id": "ae931f66-ea9d-46c5-977f-d7ffa488c907"
+    },
+    {
+      "id": 3378,
+      "reference_id": "2c008193-06a6-4cb9-b54b-68a9caa25a9b",
+      "assignment_type": "TEXT",
+      "completed_at": "2026-04-02T04:04:38.714Z",
+      "percentage": 68.2,
+      "user_id": "8a9d128c-d5fc-4f74-80cc-a89ce5be4dc0"
+    },
+    {
+      "id": 4634,
+      "reference_id": "cc009d15-0508-4953-9833-93a2cc0df3c5",
+      "assignment_type": "CODE",
+      "completed_at": "2026-04-02T10:22:52.169Z",
+      "percentage": 47.5,
+      "user_id": "8a9d128c-d5fc-4f74-80cc-a89ce5be4dc0"
+    },
+    {
+      "id": 5704,
+      "reference_id": "ab1a0123-7ecc-4132-9621-85ea0e65b442",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-02T10:16:02.188Z",
+      "percentage": 35.3,
+      "user_id": "d35e4e89-6e52-4070-b30a-3729b9a43036"
+    },
+    {
+      "id": 3051,
+      "reference_id": "cc009d15-0508-4953-9833-93a2cc0df3c5",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-02T06:27:43.932Z",
+      "percentage": 47.7,
+      "user_id": "fe4b25d2-c950-4b66-9088-0fbb1e773c96"
+    },
+    {
+      "id": 8267,
+      "reference_id": "c8397cdb-1b38-4f7f-be86-a0d6b08387ec",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-02T10:57:47.372Z",
+      "percentage": 32.6,
+      "user_id": "a1eab087-8eb3-4448-ba81-de6e8f9b256a"
+    },
+    {
+      "id": 3464,
+      "reference_id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
+      "assignment_type": "VOICE",
+      "completed_at": "2026-04-01T17:15:28.385Z",
+      "percentage": 67.1,
+      "user_id": "7921fe5c-942b-4be8-aee6-dae72b3010c4"
+    },
+    {
+      "id": 4091,
+      "reference_id": "c8397cdb-1b38-4f7f-be86-a0d6b08387ec",
+      "assignment_type": "CODE",
+      "completed_at": "2026-04-02T16:00:43.422Z",
+      "percentage": 32.2,
+      "user_id": "a1eab087-8eb3-4448-ba81-de6e8f9b256a"
+    }
+  ],
+  "goals": [
+    {
+      "id": 3902,
+      "user_id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
+      "target_type": "subject",
+      "target_id": "ab1a0123-7ecc-4132-9621-85ea0e65b442",
+      "target_score": 98,
+      "current_score": 18,
+      "deadline": "2026-04-25T16:25:31.226Z",
+      "is_active": true,
+      "is_achieved": false,
+      "created_at": "2025-12-03T04:26:45.484Z",
+      "updated_at": "2026-04-02T13:36:09.289Z"
+    },
+    {
+      "id": 6362,
+      "user_id": "929c79e0-0bbb-4ccc-ae03-35100157036d",
+      "target_type": "subject",
+      "target_id": "4667a332-2179-4d33-9865-b2e6955921de",
+      "target_score": 83,
+      "current_score": 75.3,
+      "deadline": "2027-03-10T09:50:37.565Z",
+      "is_active": true,
+      "is_achieved": true,
+      "created_at": "2026-02-09T19:17:15.991Z",
+      "updated_at": "2026-04-01T16:57:15.535Z"
+    },
+    {
+      "id": 160,
+      "user_id": "32e520b2-b6df-4d83-8b57-b94aca76be3a",
+      "target_type": "subject",
+      "target_id": "8e93fccf-bb95-46b9-9675-ff5794610126",
+      "target_score": 89,
+      "current_score": 37.2,
+      "deadline": "2026-10-31T06:30:33.571Z",
+      "is_active": true,
+      "is_achieved": false,
+      "created_at": "2026-03-29T21:48:03.087Z",
+      "updated_at": "2026-04-01T19:29:57.472Z"
+    },
+    {
+      "id": 7298,
+      "user_id": "ae931f66-ea9d-46c5-977f-d7ffa488c907",
+      "target_type": "subject",
+      "target_id": "3e4ff3d1-4e14-4816-b96a-f465e3661538",
+      "target_score": 85,
+      "current_score": 42.6,
+      "deadline": "2026-05-30T12:40:20.682Z",
+      "is_active": true,
+      "is_achieved": true,
+      "created_at": "2025-11-25T17:28:44.487Z",
+      "updated_at": "2026-04-01T22:17:44.998Z"
+    },
+    {
+      "id": 5606,
+      "user_id": "32e520b2-b6df-4d83-8b57-b94aca76be3a",
+      "target_type": "subject",
+      "target_id": "8e93fccf-bb95-46b9-9675-ff5794610126",
+      "target_score": 61,
+      "current_score": 43.7,
+      "deadline": "2026-12-20T22:18:42.870Z",
+      "is_active": true,
+      "is_achieved": false,
+      "created_at": "2025-07-18T14:24:47.788Z",
+      "updated_at": "2026-04-02T14:14:22.864Z"
+    },
+    {
+      "id": 7419,
+      "user_id": "e25ef4d9-f4eb-4ab7-a992-0cc042301f9c",
+      "target_type": "subject",
+      "target_id": "88c75cd6-3725-4595-8400-7b2c061d8530",
+      "target_score": 89,
+      "current_score": 20.3,
+      "deadline": "2026-05-13T06:54:46.330Z",
+      "is_active": true,
+      "is_achieved": true,
+      "created_at": "2025-09-18T10:42:14.371Z",
+      "updated_at": "2026-04-02T12:44:38.747Z"
+    },
+    {
+      "id": 2437,
+      "user_id": "54a080e7-a372-43bb-a6b3-87df2f7d4c98",
+      "target_type": "subject",
+      "target_id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
+      "target_score": 67,
+      "current_score": 67.3,
+      "deadline": "2026-09-18T02:43:07.813Z",
+      "is_active": true,
+      "is_achieved": true,
+      "created_at": "2025-09-15T17:42:29.152Z",
+      "updated_at": "2026-04-01T19:52:34.717Z"
+    },
+    {
+      "id": 1025,
+      "user_id": "b0f63095-a890-4f09-abb2-3e4c3ce02289",
+      "target_type": "subject",
+      "target_id": "37aa6e8e-d6fc-4c48-8c23-881eb9c04cbb",
+      "target_score": 98,
+      "current_score": 0.3,
+      "deadline": "2026-10-07T12:06:03.130Z",
+      "is_active": true,
+      "is_achieved": true,
+      "created_at": "2025-06-30T12:18:45.199Z",
+      "updated_at": "2026-04-01T18:26:57.206Z"
+    },
+    {
+      "id": 2627,
+      "user_id": "0f8defdd-dd97-4bcb-a424-69acd896d44b",
+      "target_type": "subject",
+      "target_id": "4667a332-2179-4d33-9865-b2e6955921de",
+      "target_score": 83,
+      "current_score": 10.8,
+      "deadline": "2026-04-27T01:24:14.164Z",
+      "is_active": true,
+      "is_achieved": true,
+      "created_at": "2025-10-24T18:41:55.159Z",
+      "updated_at": "2026-04-01T17:16:44.521Z"
+    },
+    {
+      "id": 5028,
+      "user_id": "2c336a34-27e6-4027-a1ef-7416623d9d55",
+      "target_type": "subject",
+      "target_id": "c8397cdb-1b38-4f7f-be86-a0d6b08387ec",
+      "target_score": 78,
+      "current_score": 4.6,
+      "deadline": "2026-04-09T22:16:36.456Z",
+      "is_active": true,
+      "is_achieved": false,
+      "created_at": "2025-04-16T21:46:03.676Z",
+      "updated_at": "2026-04-02T14:13:51.844Z"
+    },
+    {
+      "id": 7648,
+      "user_id": "54a080e7-a372-43bb-a6b3-87df2f7d4c98",
+      "target_type": "subject",
+      "target_id": "cc009d15-0508-4953-9833-93a2cc0df3c5",
+      "target_score": 83,
+      "current_score": 34.7,
+      "deadline": "2026-04-15T11:43:05.817Z",
+      "is_active": true,
+      "is_achieved": false,
+      "created_at": "2026-02-25T11:01:05.600Z",
+      "updated_at": "2026-04-01T18:03:12.795Z"
+    },
+    {
+      "id": 5063,
+      "user_id": "e25ef4d9-f4eb-4ab7-a992-0cc042301f9c",
+      "target_type": "subject",
+      "target_id": "dc09b5a1-6e70-47a5-bce8-0cac6b42042b",
+      "target_score": 75,
+      "current_score": 98.9,
+      "deadline": "2026-10-05T19:55:23.403Z",
+      "is_active": true,
+      "is_achieved": true,
+      "created_at": "2026-03-03T17:10:54.496Z",
+      "updated_at": "2026-04-02T11:39:12.657Z"
+    },
+    {
+      "id": 1628,
+      "user_id": "74f13f79-4276-49bf-81c1-7a8deaac6385",
+      "target_type": "subject",
+      "target_id": "c884a8d9-bdf3-4d88-8c57-56d0fbc9b194",
+      "target_score": 84,
+      "current_score": 38.8,
+      "deadline": "2027-02-09T17:21:39.133Z",
+      "is_active": true,
+      "is_achieved": true,
+      "created_at": "2025-05-21T21:42:29.635Z",
+      "updated_at": "2026-04-02T04:07:05.890Z"
+    },
+    {
+      "id": 8940,
+      "user_id": "ae931f66-ea9d-46c5-977f-d7ffa488c907",
+      "target_type": "subject",
+      "target_id": "ab1a0123-7ecc-4132-9621-85ea0e65b442",
+      "target_score": 77,
+      "current_score": 85.9,
+      "deadline": "2027-03-09T08:46:02.763Z",
+      "is_active": true,
+      "is_achieved": true,
+      "created_at": "2026-03-08T16:35:05.864Z",
+      "updated_at": "2026-04-01T23:39:41.428Z"
+    },
+    {
+      "id": 844,
+      "user_id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
+      "target_type": "subject",
+      "target_id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
+      "target_score": 92,
+      "current_score": 13.9,
+      "deadline": "2027-02-14T00:49:50.217Z",
+      "is_active": true,
+      "is_achieved": true,
+      "created_at": "2025-08-21T18:08:44.895Z",
+      "updated_at": "2026-04-02T08:06:57.115Z"
+    },
+    {
+      "id": 1301,
+      "user_id": "929c79e0-0bbb-4ccc-ae03-35100157036d",
+      "target_type": "subject",
+      "target_id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
+      "target_score": 99,
+      "current_score": 29.4,
+      "deadline": "2026-08-16T21:17:55.654Z",
+      "is_active": true,
+      "is_achieved": false,
+      "created_at": "2026-02-21T15:55:47.942Z",
+      "updated_at": "2026-04-02T13:48:02.364Z"
+    },
+    {
+      "id": 8996,
+      "user_id": "728aa531-81ab-4c95-87ae-9223ddbac2a5",
+      "target_type": "subject",
+      "target_id": "3325770a-cb79-4f6d-ae46-6ed577c337e3",
+      "target_score": 87,
+      "current_score": 9.6,
+      "deadline": "2026-11-17T00:30:08.642Z",
+      "is_active": true,
+      "is_achieved": false,
+      "created_at": "2025-04-25T09:35:59.169Z",
+      "updated_at": "2026-04-02T06:35:10.457Z"
+    },
+    {
+      "id": 5356,
+      "user_id": "32e520b2-b6df-4d83-8b57-b94aca76be3a",
+      "target_type": "subject",
+      "target_id": "9161db5c-83bf-4a44-8b00-c69cc192f2ae",
+      "target_score": 81,
+      "current_score": 66.5,
+      "deadline": "2026-11-15T18:56:41.176Z",
+      "is_active": true,
+      "is_achieved": false,
+      "created_at": "2025-11-16T23:18:22.885Z",
+      "updated_at": "2026-04-02T14:04:23.717Z"
+    },
+    {
+      "id": 6823,
+      "user_id": "164356c3-92f7-4409-a238-cb1bb1dd68cc",
+      "target_type": "subject",
+      "target_id": "3325770a-cb79-4f6d-ae46-6ed577c337e3",
+      "target_score": 72,
+      "current_score": 38,
+      "deadline": "2027-02-16T15:07:01.859Z",
+      "is_active": true,
+      "is_achieved": true,
+      "created_at": "2025-05-15T05:28:22.546Z",
+      "updated_at": "2026-04-02T01:34:18.184Z"
+    },
+    {
+      "id": 4217,
+      "user_id": "b0f63095-a890-4f09-abb2-3e4c3ce02289",
+      "target_type": "subject",
+      "target_id": "c884a8d9-bdf3-4d88-8c57-56d0fbc9b194",
+      "target_score": 82,
+      "current_score": 84,
+      "deadline": "2026-09-16T13:14:00.573Z",
+      "is_active": true,
+      "is_achieved": false,
+      "created_at": "2026-03-27T11:53:09.120Z",
+      "updated_at": "2026-04-01T22:59:52.286Z"
+    }
+  ],
+  "ai_keys": [
+    {
+      "id": 608,
+      "provider": "anthropic",
+      "label": "staging",
+      "user_id": "fe4b25d2-c950-4b66-9088-0fbb1e773c96",
+      "capabilities": [
+        "IMAGE",
+        "AUDIO",
+        "EMBEDDING"
+      ],
+      "total_cost": 4.7363,
+      "is_active": true,
+      "created_at": "2026-03-05T13:26:08.204Z"
+    },
+    {
+      "id": 202,
+      "provider": "google",
+      "label": "dev",
+      "user_id": "929c79e0-0bbb-4ccc-ae03-35100157036d",
+      "capabilities": [
+        "AUDIO"
+      ],
+      "total_cost": 27.4249,
+      "is_active": true,
+      "created_at": "2026-03-21T15:58:42.107Z"
+    },
+    {
+      "id": 169,
+      "provider": "anthropic",
+      "label": "staging",
+      "user_id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
+      "capabilities": [
+        "EMBEDDING"
+      ],
+      "total_cost": 10.2684,
+      "is_active": true,
+      "created_at": "2025-09-24T03:52:29.886Z"
+    },
+    {
+      "id": 78,
+      "provider": "anthropic",
+      "label": "production",
+      "user_id": "728aa531-81ab-4c95-87ae-9223ddbac2a5",
+      "capabilities": [
+        "IMAGE",
+        "TEXT"
+      ],
+      "total_cost": 26.2958,
+      "is_active": true,
+      "created_at": "2025-06-17T16:07:08.655Z"
+    },
+    {
+      "id": 650,
+      "provider": "anthropic",
+      "label": "staging",
+      "user_id": "ae61f786-98df-4457-9af6-79f22390c27c",
+      "capabilities": [
+        "EMBEDDING",
+        "AUDIO",
+        "IMAGE"
+      ],
+      "total_cost": 23.5428,
+      "is_active": true,
+      "created_at": "2026-01-06T03:03:26.095Z"
+    },
+    {
+      "id": 479,
+      "provider": "anthropic",
+      "label": "dev",
+      "user_id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
+      "capabilities": [
+        "IMAGE",
+        "AUDIO"
+      ],
+      "total_cost": 7.1718,
+      "is_active": true,
+      "created_at": "2025-08-25T07:31:03.316Z"
+    },
+    {
+      "id": 539,
+      "provider": "openai",
+      "label": "production",
+      "user_id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
+      "capabilities": [
+        "AUDIO"
+      ],
+      "total_cost": 30.5648,
+      "is_active": true,
+      "created_at": "2025-04-29T22:02:13.251Z"
+    },
+    {
+      "id": 547,
+      "provider": "openai",
+      "label": "personal",
+      "user_id": "d35e4e89-6e52-4070-b30a-3729b9a43036",
+      "capabilities": [
+        "IMAGE",
+        "AUDIO",
+        "EMBEDDING"
+      ],
+      "total_cost": 31.3121,
+      "is_active": true,
+      "created_at": "2025-12-29T07:36:23.162Z"
+    }
+  ]
+}

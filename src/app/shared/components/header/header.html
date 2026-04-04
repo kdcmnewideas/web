@@ -1,0 +1,44 @@
+<header
+  class="h-16 px-8 flex items-center justify-between backdrop-blur-xl border-b border-slate-50/50"
+>
+  <div class="flex items-center gap-8 flex-1"></div>
+
+  <div class="flex items-center gap-4">
+    <p-button
+      [outlined]="true"
+      severity="secondary"
+      styleClass="p-3! bg-white! dark:bg-dark! hover:bg-slate-50!"
+    >
+      <lucide-icon [img]="icons.Bell" size="20" />
+      <span
+        class="absolute top-2.5 right-2.5 w-2 h-2 bg-rose-500 rounded-full border-2 border-white group-hover:scale-110 transition-transform"
+      ></span>
+    </p-button>
+
+    <p-button
+      (click)="navigateTo.emit('profile')"
+      [outlined]="true"
+      severity="secondary"
+      styleClass="py-1! bg-white! dark:bg-dark! hover:bg-slate-50!"
+    >
+      <div class="hidden sm:block text-right">
+        <p class="text-xs font-black text-slate-900 leading-none mb-0.5">
+          {{ currentUser()?.name }}
+        </p>
+        <p class="text-[9px] font-black text-primary-500 uppercase tracking-widest">
+          {{ currentUser()?.role }}
+        </p>
+      </div>
+      <p-avatar
+        [label]="currentUser()?.avatarUrl ? '' : currentUser()?.name[0]"
+        class="border border-slate-50 h-9!"
+      >
+        <img
+          [src]="currentUser()?.avatarUrl"
+          class="w-full h-full object-cover rounded-lg"
+          alt="Profile"
+        />
+      </p-avatar>
+    </p-button>
+  </div>
+</header>

@@ -16,10 +16,22 @@ import {
   ChartNoAxesColumn,
 } from 'lucide-angular';
 import { ButtonModule } from 'primeng/button';
+import { Header } from '../../shared/components/header/header';
+import { MobileNav } from '../../shared/components/mobile-nav/mobile-nav';
+import { SideNav } from '../../shared/components/side-nav/side-nav';
 
 @Component({
   selector: 'app-student',
-  imports: [RouterOutlet, TooltipModule, LucideAngularModule, ButtonModule, AvatarModule],
+  imports: [
+    RouterOutlet,
+    TooltipModule,
+    LucideAngularModule,
+    ButtonModule,
+    AvatarModule,
+    Header,
+    MobileNav,
+    SideNav,
+  ],
   templateUrl: './student.html',
   styleUrl: './student.css',
 })

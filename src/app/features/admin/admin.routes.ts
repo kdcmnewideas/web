@@ -12,19 +12,14 @@ export const ADMIN_ROUTES: Routes = [
     loadComponent: () => import('./boards/boards').then((m) => m.Boards),
   },
   {
-    path: 'classes',
-    title: 'Classes',
-    loadComponent: () => import('./classes/classes').then((m) => m.Classes),
+    path: 'org',
+    title: 'Organization',
+    loadComponent: () => import('./organization/organization').then((m) => m.Organization),
   },
   {
-    path: 'sections',
-    title: 'Sections',
-    loadComponent: () => import('./sections/sections').then((m) => m.Sections),
-  },
-  {
-    path: 'courses',
-    title: 'Courses',
-    loadComponent: () => import('./courses/courses').then((m) => m.Courses),
+    path: 'profile',
+    title: 'Profile',
+    loadComponent: () => import('../user-profile/user-profile').then((m) => m.UserProfile),
   },
   {
     path: '**',

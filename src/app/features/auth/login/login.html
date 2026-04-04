@@ -1,3 +1,4 @@
+<p-toast />
 <div class="min-h-screen flex bg-white animate-fade-in">
   <!-- Left Side - Form -->
   <div class="w-full lg:w-1/2 p-8 md:p-16 flex flex-col justify-center relative bg-white z-10">
@@ -27,7 +28,7 @@
               type="text"
               placeholder="Email address"
               class="w-full px-3 py-2 shadow-sm rounded-lg"
-              formControlName="email"
+              formControlName="username"
             />
           </div>
           <div class="flex flex-col gap-2 w-full">
@@ -46,6 +47,7 @@
               placeholder="Password"
             />
           </div>
+          <div class="text-red-500 text-center">{{ error() }}</div>
           <div
             class="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full gap-3 sm:gap-0"
           >
@@ -60,14 +62,24 @@
                 >Remember me</label
               >
             </div>
-            <a class="text-primary font-medium cursor-pointer hover:text-primary-emphasis"
-              >Forgot your password?</a
-            >
+            <p-button
+              label="Forgot your password?"
+              link
+              (click)="navigateTo('auth/forget-password')"
+            />
           </div>
         </div>
 
         <div class="space-y-4 pt-2">
-          <button type="submit" pButton class="h-11 w-full">Sign in</button>
+          <button
+            type="submit"
+            pButton
+            class="h-11 w-full"
+            [loading]="loading()"
+            [disabled]="loginForm.invalid"
+          >
+            Sign in
+          </button>
           <p-button
             type="button"
             class="w-full flex items-center justify-center gap-3"
@@ -177,7 +189,10 @@
               <div
                 class="bg-white/5 rounded-lg flex flex-col items-center justify-center border border-white/5 relative text-white/20"
               >
-                <lucide-angular [img]="icons.ChartPie" class="w-10 h-10 text-white/20 mb-2"></lucide-angular>
+                <lucide-angular
+                  [img]="icons.ChartPie"
+                  class="w-10 h-10 text-white/20 mb-2"
+                ></lucide-angular>
                 <div class="w-10 h-1 bg-white/20 rounded-full"></div>
               </div>
             </div>

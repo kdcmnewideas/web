@@ -22,11 +22,6 @@ export const STUDENT_ROUTES: Routes = [
     title: 'Analytics',
   },
   {
-    path: 'profile',
-    loadComponent: () => import('./user-profile/user-profile').then((m) => m.UserProfile),
-    title: 'Profile',
-  },
-  {
     path: 'subject/:id',
     loadComponent: () => import('./subject/subject').then((m) => m.Subject),
     title: 'Subject',
@@ -55,6 +50,11 @@ export const STUDENT_ROUTES: Routes = [
     path: 'goals',
     loadComponent: () => import('./goals/goals').then((m) => m.Goals),
     title: 'Goals',
+  },
+  {
+    path: 'profile',
+    loadComponent: () => import('../user-profile/user-profile').then((m) => m.UserProfile),
+    title: 'Profile',
   },
   {
     path: '**',

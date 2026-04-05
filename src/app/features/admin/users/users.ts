@@ -9,6 +9,7 @@ import {
   SquarePen,
   Trash2,
   Search,
+  CircleMinus,
 } from 'lucide-angular';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -60,6 +61,7 @@ export class Users implements OnInit {
     SquarePen,
     Trash2,
     Search,
+    CircleMinus,
   };
   users = signal<IPlatformUser[]>([]);
   CURRENT_USER = CURRENT_USER;

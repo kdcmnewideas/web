@@ -13,7 +13,7 @@
       <div class="max-w-md w-full mx-auto mt-12 lg:mt-0">
         <h1 class="text-3xl font-bold text-slate-900 mb-2">Create an account</h1>
 
-        <form onSubmit="{handleSubmit}" class="space-y-5" [formGroup]="registerForm">
+        <form (ngSubmit)="handleSubmit()" class="space-y-5" [formGroup]="registerForm">
           <div class="flex flex-col gap-2 w-full">
             <label
               for="name"
@@ -66,7 +66,7 @@
             <label
               for="join_key"
               class="text-surface-900 dark:text-surface-0 font-medium leading-normal"
-              >Join Key</label
+              >Join Key <span class="text-slate-500 text-sm">(Optional)</span></label
             >
             <input
               pInputText

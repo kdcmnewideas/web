@@ -56,4 +56,26 @@
       </button>
     }
   </nav>
+
+  <!-- Logout Button -->
+  <div class="border-t border-slate-100 p-4">
+    <button
+      (click)="logout()"
+      [class]="
+        `
+          w-full flex items-center ${isSidebarCollapsed() ? 'justify-center px-0' : 'space-x-4 px-4'} py-3.5 rounded-lg transition-all duration-300 font-bold text-slate-600 hover:bg-red-50 hover:text-red-600 cursor-pointer
+        `
+      "
+      [pTooltip]="isSidebarCollapsed() ? 'Logout' : ''"
+    >
+      <lucide-icon [img]="icons.LogOut" size="20" />
+      <span
+        [class]="
+          `whitespace-nowrap text-sm tracking-tight transition-all duration-300 ${isSidebarCollapsed() ? 'opacity-0 w-0 hidden' : 'opacity-100'}`
+        "
+      >
+        Logout
+      </span>
+    </button>
+  </div>
 </aside>

@@ -3,29 +3,31 @@
   <div
     class="bg-white p-8 md:p-12 rounded-[3.5rem] border border-slate-100 shadow-[0_30px_100px_rgba(0,0,0,0.03)] relative overflow-hidden flex flex-col xl:flex-row items-center justify-between gap-12 group"
   >
-   <!-- Absolute Actions - Top Right -->
-        <div class="absolute top-6 right-6 md:top-10 md:right-10 flex gap-3 z-20">
-          @if(isEditing){
-            <button  class="rounded-lg h-12 px-8 bg-indigo-600 hover:bg-indigo-700 shadow-xl shadow-indigo-100 text-xs font-black uppercase tracking-widest">
-              <lucide-angular [img]="icons.Save" class="w-4 h-4 mr-2" /> Save Profile
-            </button>
-          } @else {
-            <button
-              (click)="isEditing=true"
-              class="p-3.5 bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white rounded-lg transition-all border border-indigo-100 shadow-sm active:scale-90"
-              title="Edit Profile"
-            >
-              <lucide-angular [img]="icons.SquarePen" class="w-5 h-5" />
-            </button>
-          }
-          <button
-            (click)="onNavigate('settings')"
-            class="p-3.5 bg-slate-50 hover:bg-slate-900 text-slate-400 hover:text-white rounded-lg transition-all border border-slate-100 shadow-sm active:scale-90"
-            title="Settings"
-          >
-            <lucide-angular [img]="icons.Settings" class="w-5 h-5" />
-          </button>
-        </div>
+    <!-- Absolute Actions - Top Right -->
+    <div class="absolute top-6 right-6 md:top-10 md:right-10 flex gap-3 z-20">
+      @if (isEditing) {
+        <button
+          class="rounded-lg h-12 px-8 bg-indigo-600 hover:bg-indigo-700 shadow-xl shadow-indigo-100 text-xs font-black uppercase tracking-widest"
+        >
+          <lucide-angular [img]="icons.Save" class="w-4 h-4 mr-2" /> Save Profile
+        </button>
+      } @else {
+        <button
+          (click)="isEditing = true"
+          class="p-3.5 bg-indigo-50 hover:bg-indigo-600 text-indigo-600 hover:text-white rounded-lg transition-all border border-indigo-100 shadow-sm active:scale-90"
+          title="Edit Profile"
+        >
+          <lucide-angular [img]="icons.SquarePen" class="w-5 h-5" />
+        </button>
+      }
+      <button
+        (click)="onNavigate('settings')"
+        class="p-3.5 bg-slate-50 hover:bg-slate-900 text-slate-400 hover:text-white rounded-lg transition-all border border-slate-100 shadow-sm active:scale-90"
+        title="Settings"
+      >
+        <lucide-angular [img]="icons.Settings" class="w-5 h-5" />
+      </button>
+    </div>
     <!-- Background Accents -->
     <div
       class="absolute top-0 right-0 w-[40%] h-full bg-linear-to-l from-indigo-50/30 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
@@ -42,11 +44,18 @@
           <div
             class="w-full h-full rounded-[3.3rem] border-[6px] border-white overflow-hidden bg-white shadow-inner"
           >
-            <img
-              [src]="user.avatarUrl"
-              [alt]="user.name"
-              class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
-            />
+            <p-avatar
+              [label]="user().avatarUrl ? '' : getAvatarLabel()"
+              shape="circle"
+              class="w-full h-full flex items-center justify-center"
+            >
+              <img
+                *ngIf="user().avatarUrl"
+                [src]="user().avatarUrl"
+                [alt]="user().name"
+                class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+              />
+            </p-avatar>
           </div>
         </div>
         @if (isEditing) {
@@ -63,14 +72,14 @@
           @if (isEditing) {
             <input
               type="text"
-              [value]="user.name"
+              [value]="user().name"
               class="text-4xl font-black border-b-4 border-indigo-600 focus:outline-none bg-transparent pb-1 text-slate-900 w-full md:w-auto"
             />
           } @else {
             <h1
               class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter flex items-center gap-3"
             >
-              {{ user.name }}
+              {{ user().name }}
               <lucide-angular
                 [img]="icons.BadgeCheck"
                 class="w-8 h-8 text-indigo-500 fill-indigo-50/50"
@@ -85,7 +94,7 @@
           >
             <lucide-angular [img]="icons.MapPin" class="w-3.5 h-3.5 text-indigo-500" />
             <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">{{
-              user.location || 'Toronto, Canada'
+              user().location || 'Toronto, Canada'
             }}</span>
           </div>
           <div
@@ -93,7 +102,7 @@
           >
             <lucide-angular [img]="icons.GraduationCap" class="w-3.5 h-3.5 text-purple-500" />
             <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">{{
-              user.grade
+              user().grade
             }}</span>
           </div>
           <div
@@ -156,14 +165,14 @@
         @if (isEditing) {
           <textarea
             class="w-full p-6 rounded-3xl border-2 border-slate-50 bg-slate-50 focus:bg-white focus:border-indigo-600 h-48 resize-none text-slate-700 text-sm font-bold leading-relaxed outline-none transition-all shadow-inner"
-            [(ngModel)]="user.bio"
+            [(ngModel)]="user().bio"
           ></textarea>
         } @else {
           <p
             class="text-slate-500 leading-relaxed font-bold italic text-base mb-12 border-l-4 border-indigo-50 pl-6"
           >
             "{{
-              user.bio ||
+              user().bio ||
                 'Architecting the future through rigorous study and persistent curiosity. I believe in the power of continuous learning.'
             }}"
           </p>
@@ -179,7 +188,7 @@
               <lucide-angular [img]="icons.Mail" class="w-5 h-5" />
             </div>
             <span class="text-xs font-black text-slate-600 uppercase tracking-widest">{{
-              user.email
+              user().email
             }}</span>
           </div>
           <div
@@ -191,7 +200,7 @@
               <lucide-angular [img]="icons.Phone" class="w-5 h-5" />
             </div>
             <span class="text-xs font-black text-slate-600 uppercase tracking-widest">{{
-              user.phone || '+1 (555) 000-0000'
+              user().phone || '+1 (555) 000-0000'
             }}</span>
           </div>
         </div>

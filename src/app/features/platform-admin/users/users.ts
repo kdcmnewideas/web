@@ -1,4 +1,5 @@
-import { CURRENT_USER } from './../../../shared/constants/mock-data.constant';
+import { CURRENT_USER } from '../../../shared/constants/mock-data.constant';
+import { AVAILABLE_ROLES } from '../../../shared/constants/roles.constant';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
@@ -74,11 +75,7 @@ export class Users implements OnInit {
       { label: 'Active', value: 'active' },
       { label: 'Inactive', value: 'inactive' },
     ];
-    this.platformRoles = [
-      { label: 'Super Admin', value: 'super_admin' },
-      { label: 'Admin', value: 'admin' },
-      { label: 'User', value: 'user' },
-    ];
+    this.platformRoles = AVAILABLE_ROLES;
   }
 
   clear(table: Table) {

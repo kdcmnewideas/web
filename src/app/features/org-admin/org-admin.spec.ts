@@ -8,8 +8,9 @@ describe('OrgAdmin', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OrgAdmin],
-    }).compileComponents();
+      imports: [OrgAdmin]
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(OrgAdmin);
     component = fixture.componentInstance;

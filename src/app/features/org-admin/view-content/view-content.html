@@ -1,0 +1,97 @@
+<div class="space-y-6 p-6 min-h-screen bg-slate-50">
+  <!-- Breadcrumbs -->
+  <nav class="flex items-center space-x-2 text-sm text-slate-600">
+    <button (click)="goBack()" class="text-indigo-600 hover:text-indigo-700 font-medium transition">
+      Org Admin
+    </button>
+    <span class="text-slate-400">/</span>
+    <button (click)="goBack()" class="text-indigo-600 hover:text-indigo-700 font-medium transition">
+      Subjects
+    </button>
+    <span class="text-slate-400">/</span>
+    <span class="text-slate-900 font-medium">{{ subject()?.title || 'Loading...' }}</span>
+  </nav>
+
+  <div class="mt-6">
+    <ng-container *ngIf="loading(); else loaded">
+      <p class="text-sm text-slate-500">Loading content...</p>
+    </ng-container>
+
+    <ng-template #loaded>
+      <div *ngIf="subject(); else noSubject">
+        <div *ngIf="subject()?.chapters?.length > 0; else noContent">
+          <div style="height: calc(100vh - 12rem)">
+            <app-dynamic-tree
+              [nodes]="treeData()"
+              [initialExpandedLevel]="0"
+              (nodeSelected)="onNodeSelected($event)"
+              (nodeAdded)="onNodeAdded($event)"
+              (nodeUpdated)="onNodeUpdated($event)"
+              (nodeDeleted)="onNodeDeleted($event)"
+            >
+              <!-- Projected content area -->
+              <div *ngIf="selectedNode(); else noSelection">
+                <h2 class="text-lg font-semibold text-slate-800 mb-2">
+                  {{ selectedNode()!.label }}
+                </h2>
+                <p class="text-sm text-slate-600 whitespace-pre-wrap">
+                  {{ selectedNode()!.content || 'No content available for this item.' }}
+                </p>
+              </div>
+              <ng-template #noSelection>
+                <div class="flex items-center justify-center h-full text-slate-400 text-sm">
+                  Select an item to view its content
+                </div>
+              </ng-template>
+            </app-dynamic-tree>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #noSubject>
+      <p class="text-sm text-slate-500">Subject not selected.</p>
+    </ng-template>
+
+    <ng-template #noContent>
+      <div class="no-content-outer">
+        <div class="text-center">
+          <h2 class="text-xl font-semibold text-slate-700">No content available</h2>
+          <p class="text-sm text-slate-500 mt-2">
+            There are no chapters or content for this subject yet.
+          </p>
+
+          <div class="mt-4">
+            <label
+              class="upload-label inline-flex items-center px-6 py-6 bg-white border rounded cursor-pointer"
+            >
+              <input
+                type="file"
+                accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation"
+                (change)="onFileSelected($event)"
+                style="display: none"
+              />
+              <lucide-angular
+                [img]="icons.UploadCloud"
+                class="w-6 h-6 text-indigo-600 mr-3"
+              ></lucide-angular>
+              <span class="text-sm text-slate-700">Upload document (PDF, DOCX, PPTX, TXT)</span>
+            </label>
+
+            <div *ngIf="selectedFile()" class="mt-3">
+              <p class="text-sm text-slate-600">Selected: {{ selectedFile()?.name }}</p>
+              <button
+                (click)="addContent()"
+                [disabled]="uploading()"
+                class="mt-2 inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+              >
+                <span *ngIf="!uploading()">Add content</span>
+                <span *ngIf="uploading()">Uploading...</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

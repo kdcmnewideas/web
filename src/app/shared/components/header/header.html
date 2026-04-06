@@ -30,7 +30,13 @@
         </p>
       </div>
       <p-avatar
-        [label]="currentUser()?.avatarUrl ? '' : currentUser()?.name[0]"
+        [label]="
+          currentUser()?.avatarUrl
+            ? ''
+            : currentUser()?.email
+              ? currentUser()?.email[0].toUpperCase()
+              : currentUser()?.name[0]
+        "
         class="border border-slate-50 h-9!"
       >
         <img

@@ -17,7 +17,7 @@ export class LeaderBoardService {
   http = inject(HttpClient);
 
   getTop10 = (body: ITop10Request, scope: 'GLOBAL' | 'LOCAL' | 'SCHOOL' | 'FRIENDS' = 'GLOBAL') => {
-    return this.http.post<IRanking>(`${this.baseURL}/top-10`, body, {
+    return this.http.post<IRanking[]>(`${this.baseURL}/top-10`, body, {
       params: {
         scope,
       },
@@ -25,7 +25,7 @@ export class LeaderBoardService {
   };
 
   contentLevel = (body: IContentLevel) =>
-    this.http.post<IRanking>(`${this.baseURL}/content-level`, body);
+    this.http.post<IRanking[]>(`${this.baseURL}/content-level`, body);
 
   getMyRank = (
     orgId?: string,
@@ -43,6 +43,6 @@ export class LeaderBoardService {
     if (userId) {
       params['user_id'] = userId;
     }
-    this.http.get<IMyRank>(`${this.baseURL}/my-rank`, { params });
+    return this.http.get<IMyRank>(`${this.baseURL}/my-rank`, { params });
   };
 }

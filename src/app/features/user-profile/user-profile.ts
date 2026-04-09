@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import {
   ArrowUpRight,
   Award,
@@ -29,17 +29,25 @@ import {
 import { CURRENT_USER } from '../../shared/constants/mock-data.constant';
 import { CardModule } from 'primeng/card';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { AvatarModule } from 'primeng/avatar';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
+import { IUser } from '../../core/interface/user-profile.interface';
 
 @Component({
   selector: 'app-user-profile',
-  imports: [LucideAngularModule, CardModule, FormsModule],
+  imports: [LucideAngularModule, CardModule, FormsModule, CommonModule, AvatarModule],
   templateUrl: './user-profile.html',
   styleUrl: './user-profile.css',
 })
-export class UserProfile {
-  user = CURRENT_USER;
+export class UserProfile implements OnInit {
+  user = signal<IUser | any>(CURRENT_USER);
+  loading = signal(false);
+  error = signal('');
+
+  private authService = inject(AuthService);
+  private router = inject(Router);
   achievements = [
     {
       name: 'Grandmaster',
@@ -97,15 +105,10 @@ export class UserProfile {
   };
 
   stats = [
-    { label: 'Growth', value: this.user.streakDays, icon: Flame, color: 'text-orange-500' },
+    { label: 'Growth', icon: Flame, color: 'text-orange-500' },
     { label: 'Intellect', value: '1.4k', icon: Award, color: 'text-indigo-600' },
-    {
-      label: 'Milestones',
-      value: this.user.goalsCompleted,
-      icon: Target,
-      color: 'text-emerald-600',
-    },
-    { label: 'Standing', value: `#${this.user.rank}`, icon: Sparkles, color: 'text-purple-600' },
+    { label: 'Milestones', icon: Target, color: 'text-emerald-600' },
+    { label: 'Standing', icon: Sparkles, color: 'text-purple-600' },
   ];
 
   examResults = [
@@ -120,8 +123,35 @@ export class UserProfile {
     { label: 'History', progress: 88, color: 'bg-amber-500', glow: 'shadow-amber-500/50' },
   ];
 
-  private router = inject(Router);
-  private authService = inject(AuthService);
+  ngOnInit() {
+    this.loadUserDetails();
+  }
+
+  loadUserDetails() {
+    this.loading.set(true);
+    this.authService.getUserDetails().subscribe({
+      next: (userData) => {
+        this.user.set(userData);
+        this.error.set('');
+      },
+      error: (err) => {
+        console.error('Failed to load user details:', err);
+        this.error.set('Failed to load user details');
+        // Keep mock data as fallback
+      },
+      complete: () => {
+        this.loading.set(false);
+      },
+    });
+  }
+
+  getAvatarLabel(): string {
+    const userData = this.user();
+    if (userData?.email) {
+      return userData.email[0].toUpperCase();
+    }
+    return userData?.name ? userData.name[0] : '?';
+  }
 
   onNavigate(path: string) {
     // Handle sign out explicitly

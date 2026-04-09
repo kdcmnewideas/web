@@ -7,4 +7,6 @@ export const environment = {
   contentAPI: 'http://localhost:3000',
   aiwrapper: 'http://localhost:3000',
   mock: true,
+  geminiApiKey: '',
+  orgId: '',
 };

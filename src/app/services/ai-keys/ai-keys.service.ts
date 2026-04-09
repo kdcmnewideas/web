@@ -11,7 +11,7 @@ export class AiKeysService {
 
   http = inject(HttpClient);
 
-  getKeys = () => this.http.get<IKey>(this.baseURL);
+  getKeys = () => this.http.get<IKey[]>(this.baseURL);
 
   addKey = (key: IAddKey) => this.http.post<IKey>(this.baseURL, key);
 

@@ -81,7 +81,7 @@ export class Register implements OnInit {
     name: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
-    join_key: new FormControl('', [Validators.required]),
+    join_key: new FormControl(''),
   });
 
   router = inject(Router);
@@ -115,8 +115,8 @@ export class Register implements OnInit {
   registerUser = () => {
     const { name, email, password, join_key } = this.registerForm.value;
     this.loading.set(true);
-    if (name && email && password && join_key)
-      this.authService.register({ name, email, password, join_key }).subscribe({
+    if (name && email && password)
+      this.authService.register({ name, email, password, join_key: join_key || '' }).subscribe({
         next: () => {
           this.screen.set(1);
           this.loading.set(false);
@@ -130,5 +130,9 @@ export class Register implements OnInit {
           });
         },
       });
+  };
+
+  handleSubmit = () => {
+    this.registerUser();
   };
 }

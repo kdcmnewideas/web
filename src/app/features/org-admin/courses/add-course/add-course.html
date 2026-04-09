@@ -1,0 +1,47 @@
+<div class="flex flex-col gap-4">
+  <form [formGroup]="addCourseForm" class="space-y-4">
+    <div class="flex flex-col gap-2">
+      <label for="name" class="block text-sm font-black text-slate-700 uppercase tracking-widest"
+        >Course Name</label
+      >
+      <input pInputText formControlName="name" placeholder="e.g. Intro to Algebra" />
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="flex flex-col gap-2">
+        <label for="code" class="block text-sm font-black text-slate-700 uppercase tracking-widest"
+          >Course Code</label
+        >
+        <input pInputText formControlName="code" placeholder="e.g. MTH101" />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label
+          for="board_id"
+          class="block text-sm font-black text-slate-700 uppercase tracking-widest"
+          >Board</label
+        >
+        <p-select [options]="boardOptions" formControlName="board_id" appendTo="body" styleClass="w-full" placeholder="Select Board" />
+      </div>
+    </div>
+
+    @if (config.data?.course) {
+      <div class="flex flex-col gap-2 mt-4">
+        <label
+          for="status"
+          class="block text-sm font-black text-slate-700 uppercase tracking-widest"
+          >Status</label
+        >
+        <p-select [options]="statuses" formControlName="is_active" appendTo="body" styleClass="w-full" />
+      </div>
+    }
+  </form>
+  <div class="flex justify-end gap-2 pt-4">
+    <p-button severity="secondary" outlined label="Cancel" (click)="close()" />
+    <p-button
+      [label]="config.data?.course ? 'Update Course' : 'Create Course'"
+      (click)="config.data?.course ? updateCourse() : addCourse()"
+      [disabled]="addCourseForm.invalid"
+    />
+  </div>
+</div>

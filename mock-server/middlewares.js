@@ -26,7 +26,6 @@ module.exports = (req, res, next) => {
   // AUTH SERVICE  (userServiceAPI + '/auth')
   // ══════════════════════════════════════════════════════════════════
   if (reqPath.startsWith('/auth')) {
-
     // POST /auth/login
     if (method === 'POST' && reqPath === '/auth/login') {
       return ok({
@@ -75,7 +74,8 @@ module.exports = (req, res, next) => {
 
     // GET /auth/me
     if (method === 'GET' && reqPath === '/auth/me') {
-      return ok(db.profiles[0]);
+      const value = db.profiles.find((data) => data.platform_role === 'user');
+      return ok(value);
     }
   }
 
@@ -93,22 +93,26 @@ module.exports = (req, res, next) => {
     }
     // POST /admin/users/  (create user)
     if (method === 'POST' && !userId) {
-      const newUser = { id: require('crypto').randomUUID(), ...req.body, created_at: new Date().toISOString() };
+      const newUser = {
+        id: require('crypto').randomUUID(),
+        ...req.body,
+        created_at: new Date().toISOString(),
+      };
       return created(newUser);
     }
     // PUT /admin/users/:id
     if (method === 'PUT' && userId && !action) {
-      const user = db.users.find(u => u.id === userId) || db.users[0];
+      const user = db.users.find((u) => u.id === userId) || db.users[0];
       return ok({ ...user, ...req.body });
     }
     // POST /admin/users/:id/role
     if (method === 'POST' && userId && action === 'role') {
-      const user = db.users.find(u => u.id === userId) || db.users[0];
+      const user = db.users.find((u) => u.id === userId) || db.users[0];
       return ok({ ...user, platform_role: req.body?.platform_role });
     }
     // POST /admin/users/:id/disable
     if (method === 'POST' && userId && action === 'disable') {
-      const user = db.users.find(u => u.id === userId) || db.users[0];
+      const user = db.users.find((u) => u.id === userId) || db.users[0];
       return ok({ ...user, status: 'Inactive' });
     }
   }
@@ -133,12 +137,17 @@ module.exports = (req, res, next) => {
 
     // POST /orgs/  (create org)
     if (method === 'POST' && !orgId) {
-      return created({ id: require('crypto').randomUUID(), ...req.body, join_mode: 'invite', created_at: new Date().toISOString() });
+      return created({
+        id: require('crypto').randomUUID(),
+        ...req.body,
+        join_mode: 'invite',
+        created_at: new Date().toISOString(),
+      });
     }
 
     // GET /orgs/:id
     if (method === 'GET' && orgId && !segment) {
-      return ok(db.organizations.find(o => o.id === orgId) || db.organizations[0]);
+      return ok(db.organizations.find((o) => o.id === orgId) || db.organizations[0]);
     }
 
     // PATCH /orgs/:id
@@ -148,12 +157,17 @@ module.exports = (req, res, next) => {
 
     // GET /orgs/:id/members
     if (method === 'GET' && orgId && segment === 'members' && !subId) {
-      return ok(db.members.filter(m => m.org_id === orgId) || db.members.slice(0, 5));
+      return ok(db.members.filter((m) => m.org_id === orgId) || db.members.slice(0, 5));
     }
 
     // POST /orgs/:id/members
     if (method === 'POST' && orgId && segment === 'members' && !subId) {
-      return created({ id: require('crypto').randomUUID(), org_id: orgId, ...req.body, status: 'pending' });
+      return created({
+        id: require('crypto').randomUUID(),
+        org_id: orgId,
+        ...req.body,
+        status: 'pending',
+      });
     }
 
     // PATCH /orgs/:id/members/:memberId
@@ -178,7 +192,10 @@ module.exports = (req, res, next) => {
 
     // POST /orgs/:id/rotate-join-key
     if (method === 'POST' && orgId && segment === 'rotate-join-key') {
-      return ok({ join_key: Math.random().toString(36).slice(2, 10).toUpperCase(), expires_at: new Date(Date.now() + 86400000).toISOString() });
+      return ok({
+        join_key: Math.random().toString(36).slice(2, 10).toUpperCase(),
+        expires_at: new Date(Date.now() + 86400000).toISOString(),
+      });
     }
 
     // POST /orgs/:id/accept
@@ -250,12 +267,15 @@ module.exports = (req, res, next) => {
 
     // GET /subjects/:id/content
     if (method === 'GET' && subjectId && segment === 'content') {
-      const sub = db.subjects.find(s => s.id === subjectId) || db.subjects[0];
+      const sub = db.subjects.find((s) => s.id === subjectId) || db.subjects[0];
       return ok({
-        id: sub.id, title: sub.title, description: sub.description,
+        id: sub.id,
+        title: sub.title,
+        description: sub.description,
         chapters: [
           {
-            id: require('crypto').randomUUID(), title: 'Chapter 1: Introduction',
+            id: require('crypto').randomUUID(),
+            title: 'Chapter 1: Introduction',
             topics: [
               { id: require('crypto').randomUUID(), title: 'Topic 1.1', subtopics: [] },
               { id: require('crypto').randomUUID(), title: 'Topic 1.2', subtopics: [] },
@@ -267,14 +287,21 @@ module.exports = (req, res, next) => {
 
     // GET /subjects/:id/complete
     if (method === 'GET' && subjectId && segment === 'complete') {
-      const sub = db.subjects.find(s => s.id === subjectId) || db.subjects[0];
+      const sub = db.subjects.find((s) => s.id === subjectId) || db.subjects[0];
       return ok({
-        id: sub.id, title: sub.title, description: sub.description,
-        thumbnail_url: sub.thumbnail_url, org_id: sub.org_id,
-        board_id: require('crypto').randomUUID(), class_id: require('crypto').randomUUID(),
-        category_id: require('crypto').randomUUID(), created_by: db.users[0]?.id,
-        created_at: sub.created_at, total_input_tokens: 15000,
-        total_output_tokens: 4500, estimated_cost_usd: 0.042,
+        id: sub.id,
+        title: sub.title,
+        description: sub.description,
+        thumbnail_url: sub.thumbnail_url,
+        org_id: sub.org_id,
+        board_id: require('crypto').randomUUID(),
+        class_id: require('crypto').randomUUID(),
+        category_id: require('crypto').randomUUID(),
+        created_by: db.users[0]?.id,
+        created_at: sub.created_at,
+        total_input_tokens: 15000,
+        total_output_tokens: 4500,
+        estimated_cost_usd: 0.042,
         chapters: [
           { id: require('crypto').randomUUID(), title: 'Chapter 1', topics: [] },
           { id: require('crypto').randomUUID(), title: 'Chapter 2', topics: [] },
@@ -285,16 +312,37 @@ module.exports = (req, res, next) => {
     // GET /subjects/:id/questions
     if (method === 'GET' && subjectId && segment === 'questions') {
       return ok([
-        { id: require('crypto').randomUUID(), question: 'What is Newton\'s First Law?', type: 'MCQ', options: ['A', 'B', 'C', 'D'] },
-        { id: require('crypto').randomUUID(), question: 'Define kinetic energy.', type: 'DESCRIPTIVE', options: [] },
+        {
+          id: require('crypto').randomUUID(),
+          question: "What is Newton's First Law?",
+          type: 'MCQ',
+          options: ['A', 'B', 'C', 'D'],
+        },
+        {
+          id: require('crypto').randomUUID(),
+          question: 'Define kinetic energy.',
+          type: 'DESCRIPTIVE',
+          options: [],
+        },
       ]);
     }
 
     // GET /subjects/:id/questions/generate-test
     if (method === 'GET' && subjectId && segment === 'questions' && parts[3] === 'generate-test') {
       return ok([
-        { id: require('crypto').randomUUID(), question: 'Mock test question 1?', type: 'MCQ', options: ['Option A', 'Option B', 'Option C', 'Option D'], correct: 'A' },
-        { id: require('crypto').randomUUID(), question: 'Mock test question 2?', type: 'FILL_BLANK', options: [] },
+        {
+          id: require('crypto').randomUUID(),
+          question: 'Mock test question 1?',
+          type: 'MCQ',
+          options: ['Option A', 'Option B', 'Option C', 'Option D'],
+          correct: 'A',
+        },
+        {
+          id: require('crypto').randomUUID(),
+          question: 'Mock test question 2?',
+          type: 'FILL_BLANK',
+          options: [],
+        },
       ]);
     }
   }
@@ -310,7 +358,8 @@ module.exports = (req, res, next) => {
     // GET /chapters/:id/content
     if (method === 'GET' && chapterId && segment === 'content') {
       return ok({
-        id: chapterId, title: 'Mock Chapter',
+        id: chapterId,
+        title: 'Mock Chapter',
         topics: [
           { id: require('crypto').randomUUID(), title: 'Topic A', subtopics: [] },
           { id: require('crypto').randomUUID(), title: 'Topic B', subtopics: [] },
@@ -322,9 +371,24 @@ module.exports = (req, res, next) => {
     // GET /chapters/:id/topics/all
     if (method === 'GET' && chapterId && segment === 'topics' && parts[3] === 'all') {
       return ok([
-        { id: require('crypto').randomUUID(), title: 'Topic 1', chapter_id: chapterId, subtopics: [] },
-        { id: require('crypto').randomUUID(), title: 'Topic 2', chapter_id: chapterId, subtopics: [] },
-        { id: require('crypto').randomUUID(), title: 'Topic 3', chapter_id: chapterId, subtopics: [] },
+        {
+          id: require('crypto').randomUUID(),
+          title: 'Topic 1',
+          chapter_id: chapterId,
+          subtopics: [],
+        },
+        {
+          id: require('crypto').randomUUID(),
+          title: 'Topic 2',
+          chapter_id: chapterId,
+          subtopics: [],
+        },
+        {
+          id: require('crypto').randomUUID(),
+          title: 'Topic 3',
+          chapter_id: chapterId,
+          subtopics: [],
+        },
       ]);
     }
   }
@@ -349,7 +413,12 @@ module.exports = (req, res, next) => {
 
     // PATCH /topics/:id/status
     if (method === 'PATCH' && topicId && segment === 'status') {
-      return ok({ id: topicId, title: 'Mock Topic', status: req.body?.status || 'active', subtopics: [] });
+      return ok({
+        id: topicId,
+        title: 'Mock Topic',
+        status: req.body?.status || 'active',
+        subtopics: [],
+      });
     }
 
     // POST /topics/:id/subtopics/generate
@@ -399,7 +468,7 @@ module.exports = (req, res, next) => {
   // GET /jobs/:id/status
   if (method === 'GET' && reqPath.startsWith('/jobs/') && reqPath.includes('/status')) {
     const jobId = reqPath.split('/')[2];
-    const job = db.ingestion_jobs.find(j => j.id === jobId) || db.ingestion_jobs[0];
+    const job = db.ingestion_jobs.find((j) => j.id === jobId) || db.ingestion_jobs[0];
     return ok({
       job_id: job?.id || jobId,
       status: job?.status || 'PROCESSING',
@@ -432,7 +501,9 @@ module.exports = (req, res, next) => {
       category_id: require('crypto').randomUUID(),
       created_by: db.users[0]?.id,
       created_at: sub.created_at || new Date().toISOString(),
-      total_input_tokens: 10000, total_output_tokens: 3500, estimated_cost_usd: 0.02,
+      total_input_tokens: 10000,
+      total_output_tokens: 3500,
+      estimated_cost_usd: 0.02,
       chapters: [
         { id: require('crypto').randomUUID(), title: 'Chapter 1', topics: [] },
         { id: require('crypto').randomUUID(), title: 'Chapter 2', topics: [] },
@@ -453,10 +524,10 @@ module.exports = (req, res, next) => {
   if (method === 'GET' && reqPath === '/metrics') {
     return ok({
       total_jobs: db.ingestion_jobs.length,
-      completed: db.ingestion_jobs.filter(j => j.status === 'COMPLETED').length,
-      processing: db.ingestion_jobs.filter(j => j.status === 'PROCESSING').length,
-      pending: db.ingestion_jobs.filter(j => j.status === 'PENDING').length,
-      failed: db.ingestion_jobs.filter(j => j.status === 'FAILED').length,
+      completed: db.ingestion_jobs.filter((j) => j.status === 'COMPLETED').length,
+      processing: db.ingestion_jobs.filter((j) => j.status === 'PROCESSING').length,
+      pending: db.ingestion_jobs.filter((j) => j.status === 'PENDING').length,
+      failed: db.ingestion_jobs.filter((j) => j.status === 'FAILED').length,
       success_rate: 0.92,
       average_cost_usd: 0.028,
       queue_backend: 'redis',
@@ -525,7 +596,7 @@ module.exports = (req, res, next) => {
 
     // GET /assessments/:id
     if (method === 'GET' && segment && segment !== 'history') {
-      const assessment = db.assessments.find(a => String(a.id) === segment) || db.assessments[0];
+      const assessment = db.assessments.find((a) => String(a.id) === segment) || db.assessments[0];
       return ok({
         ...assessment,
         status: 'completed',
@@ -549,7 +620,11 @@ module.exports = (req, res, next) => {
 
     // GET /dashboard  (user stats)
     if (method === 'GET' && !segment) {
-      return ok({ average_score: 74.5, total_exams_taken: db.assessments.length, goals_met_count: 3 });
+      return ok({
+        average_score: 74.5,
+        total_exams_taken: db.assessments.length,
+        goals_met_count: 3,
+      });
     }
 
     // GET /dashboard/recent
@@ -564,7 +639,7 @@ module.exports = (req, res, next) => {
           exam_date: new Date(Date.now() - i * 86400000).toISOString(),
           score: Math.round(50 + Math.random() * 50),
           assignment_type: ['QUIZ', 'TEXT', 'MCQ'][i % 3],
-        }))
+        })),
       );
     }
 
@@ -572,7 +647,7 @@ module.exports = (req, res, next) => {
     if (method === 'GET' && segment === 'mastery') {
       return ok({
         overall_ers: 72.4,
-        subject_breakdown: db.subjects.slice(0, 4).map(s => ({
+        subject_breakdown: db.subjects.slice(0, 4).map((s) => ({
           subject_id: s.id,
           average_score: Math.round(50 + Math.random() * 50),
           exams_taken: Math.floor(Math.random() * 10) + 1,
@@ -613,7 +688,7 @@ module.exports = (req, res, next) => {
         status: ['Beginner', 'Intermediate', 'Expert'][Math.floor(Math.random() * 3)],
         total_study_time_minutes: Math.floor(Math.random() * 300),
         total_assessment_time_minutes: Math.floor(Math.random() * 60),
-        hesitation_ratio: parseFloat((Math.random()).toFixed(2)),
+        hesitation_ratio: parseFloat(Math.random().toFixed(2)),
         velocity_score: parseFloat((Math.random() * 10).toFixed(2)),
       });
     }
@@ -657,12 +732,20 @@ module.exports = (req, res, next) => {
 
     // POST /goals/
     if (method === 'POST' && !goalId) {
-      return created({ id: Math.floor(Math.random() * 9000) + 1000, ...req.body, current_score: 0, is_active: true, is_achieved: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString() });
+      return created({
+        id: Math.floor(Math.random() * 9000) + 1000,
+        ...req.body,
+        current_score: 0,
+        is_active: true,
+        is_achieved: false,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      });
     }
 
     // GET /goals/:id
     if (method === 'GET' && goalId) {
-      return ok(db.goals.find(g => String(g.id) === goalId) || db.goals[0]);
+      return ok(db.goals.find((g) => String(g.id) === goalId) || db.goals[0]);
     }
 
     // PUT /goals/:id
@@ -678,13 +761,20 @@ module.exports = (req, res, next) => {
     const parts = reqPath.split('/').filter(Boolean);
     const keyId = parts[1];
     const segment = parts[2]; // 'usage' or 'analytics'
-
+    console.log(method);
     // GET /key/
-    if (method === 'GET' && !keyId) return ok(db.ai_keys[0] || {});
+    if (method === 'GET' && !keyId) return ok(db.ai_keys || []);
 
     // POST /key/
     if (method === 'POST' && !keyId) {
-      return created({ id: Math.floor(Math.random() * 900) + 100, ...req.body, is_active: true, capabilities: ['TEXT'], total_cost: 0, created_at: new Date().toISOString() });
+      return created({
+        id: Math.floor(Math.random() * 900) + 100,
+        ...req.body,
+        is_active: true,
+        capabilities: ['TEXT'],
+        total_cost: 0,
+        created_at: new Date().toISOString(),
+      });
     }
 
     // DELETE /key/:id
@@ -704,7 +794,7 @@ module.exports = (req, res, next) => {
           total_tokens: Math.floor(Math.random() * 5000) + 500,
           cost: parseFloat((Math.random() * 0.1).toFixed(5)),
           timestamp: new Date(Date.now() - i * 3600000).toISOString(),
-        }))
+        })),
       );
     }
   }
@@ -712,8 +802,10 @@ module.exports = (req, res, next) => {
   // ══════════════════════════════════════════════════════════════════
   // Error simulation endpoints (for testing)
   // ══════════════════════════════════════════════════════════════════
-  if (reqPath === '/api/error-500') return res.status(500).json({ error: 'Simulated 500 Internal Server Error' });
-  if (reqPath === '/api/error-404') return res.status(404).json({ error: 'Simulated 404 Not Found' });
+  if (reqPath === '/api/error-500')
+    return res.status(500).json({ error: 'Simulated 500 Internal Server Error' });
+  if (reqPath === '/api/error-404')
+    return res.status(404).json({ error: 'Simulated 404 Not Found' });
 
   // ── Pass everything else to json-server's built-in router ─────────
   next();

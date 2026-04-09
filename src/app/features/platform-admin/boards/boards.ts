@@ -3,11 +3,11 @@ import { FormsModule } from '@angular/forms';
 import {
   EllipsisVertical,
   LucideAngularModule,
-  Pencil,
   Plus,
   Search,
   Trash2,
   X,
+  SquarePen,
 } from 'lucide-angular';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -17,10 +17,15 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { BoardsService } from '../../../services/boards/boards.service';
 import { IBoard, IBoardRequestBody } from '../../../core/interface/boards.interface';
+import { TableModule, Table } from 'primeng/table';
+import { CommonModule } from '@angular/common';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-boards',
   imports: [
+    CommonModule,
     FormsModule,
     LucideAngularModule,
     CardModule,
@@ -29,12 +34,16 @@ import { IBoard, IBoardRequestBody } from '../../../core/interface/boards.interf
     InputIconModule,
     InputTextModule,
     DialogModule,
+    TableModule,
+    ToastModule,
   ],
   templateUrl: './boards.html',
   styleUrl: './boards.css',
+  providers: [MessageService],
 })
 export class Boards implements OnInit {
   private boardsService = inject(BoardsService);
+  private messageService = inject(MessageService);
 
   searchTerm = '';
   boards = signal<IBoard[]>([]);
@@ -56,7 +65,7 @@ export class Boards implements OnInit {
   icons = {
     Plus,
     EllipsisVertical,
-    Pencil,
+    SquarePen,
     Trash2,
     Search,
     X,
@@ -64,6 +73,10 @@ export class Boards implements OnInit {
 
   ngOnInit() {
     this.loadBoards();
+  }
+
+  clear(table: Table) {
+    table.clear();
   }
 
   loadBoards() {
@@ -77,6 +90,11 @@ export class Boards implements OnInit {
       error: (err) => {
         this.error.set('Failed to load boards');
         this.loading.set(false);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Failed to fetch boards',
+        });
         console.error('Error loading boards:', err);
       },
     });
@@ -122,10 +140,12 @@ export class Boards implements OnInit {
           this.showDialog.set(false);
           this.formLoading.set(false);
           this.error.set(null);
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Board updated successfully' });
         },
         error: (err) => {
           this.error.set('Failed to update board');
           this.formLoading.set(false);
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to update board' });
           console.error('Error updating board:', err);
         },
       });
@@ -136,10 +156,12 @@ export class Boards implements OnInit {
           this.showDialog.set(false);
           this.formLoading.set(false);
           this.error.set(null);
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Board created successfully' });
         },
         error: (err) => {
           this.error.set('Failed to create board');
           this.formLoading.set(false);
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to create board' });
           console.error('Error creating board:', err);
         },
       });
@@ -151,9 +173,11 @@ export class Boards implements OnInit {
       this.boardsService.deleteBoardById(boardId).subscribe({
         next: () => {
           this.loadBoards();
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Board deleted successfully' });
         },
         error: (err) => {
           this.error.set('Failed to delete board');
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to delete board' });
           console.error('Error deleting board:', err);
         },
       });

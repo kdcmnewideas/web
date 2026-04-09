@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { IPlatformUser } from '../../core/interface/platform-users.interface';
+import { ICreateUser, IPlatformUser } from '../../core/interface/platform-users.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -30,5 +30,13 @@ export class PlatformManagementService {
 
   disableUser = (userId: string) => {
     return this.http.post<IPlatformUser>(`${this.baseUrl}/${userId}/disable`, {});
+  };
+
+  addUser = (user: ICreateUser) => {
+    return this.http.post<IPlatformUser>(`${this.baseUrl}/`, user);
+  };
+
+  updateUser = (user: IPlatformUser) => {
+    return this.http.put<IPlatformUser>(`${this.baseUrl}/${user.id}`, user);
   };
 }

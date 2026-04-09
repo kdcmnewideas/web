@@ -1,0 +1,56 @@
+<div class="flex flex-col gap-4">
+  <form [formGroup]="addUserForm" class="space-y-4">
+    @if (!config.data) {
+      <div class="flex flex-col gap-2">
+        <label for="name" class="block text-sm font-black text-slate-700 uppercase tracking-widest"
+          >Name</label
+        >
+        <input pInputText formControlName="name" />
+      </div>
+      <div class="flex flex-col gap-2">
+        <label for="email" class="block text-sm font-black text-slate-700 uppercase tracking-widest"
+          >Email</label
+        >
+        <input pInputText formControlName="email" />
+      </div>
+    } @else {
+      <div class="flex gap-2">
+        <label for="name" class="block text-sm font-black text-slate-700 uppercase tracking-widest"
+          >Name</label
+        >
+        <p>{{ config.data?.name }}</p>
+      </div>
+      <div class="flex gap-2">
+        <label for="email" class="block text-sm font-black text-slate-700 uppercase tracking-widest"
+          >Email</label
+        >
+        <p>{{ config.data?.email }}</p>
+      </div>
+    }
+    @if (!config.data) {
+      <div class="flex flex-col gap-2">
+        <label
+          for="password"
+          class="block text-sm font-black text-slate-700 uppercase tracking-widest"
+          >Password</label
+        >
+        <input pInputText formControlName="password" />
+      </div>
+    }
+    <div class="flex flex-col gap-2">
+      <label
+        for="platform_role"
+        class="block text-sm font-black text-slate-700 uppercase tracking-widest"
+        >Platform Role</label
+      >
+      <p-select [options]="platformRoles" formControlName="platform_role" />
+    </div>
+  </form>
+  <div class="flex justify-end gap-2">
+    <p-button severity="secondary" outlined label="Cancel" (click)="close()" />
+    <p-button
+      [label]="config.data ? 'Update User' : 'Add User'"
+      (click)="config.data ? updateUser() : addUser()"
+    />
+  </div>
+</div>

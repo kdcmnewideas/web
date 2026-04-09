@@ -10,10 +10,10 @@ import {
   SquarePen,
   Trash2,
   Search,
+  CircleMinus,
 } from 'lucide-angular';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
-import { LEADERBOARD_DATA } from '../../../shared/constants/mock-data.constant';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
@@ -26,6 +26,8 @@ import { Tag } from 'primeng/tag';
 import { CommonModule } from '@angular/common';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { AddUser } from './add-user/add-user';
 
 @Component({
   selector: 'app-users',
@@ -47,9 +49,11 @@ import { MessageService } from 'primeng/api';
   ],
   templateUrl: './users.html',
   styleUrl: './users.css',
-  providers: [MessageService],
+  providers: [MessageService, DialogService],
 })
 export class Users implements OnInit {
+  ref: DynamicDialogRef | null = null;
+
   searchTerm = '';
   icons = {
     Plus,
@@ -58,6 +62,7 @@ export class Users implements OnInit {
     SquarePen,
     Trash2,
     Search,
+    CircleMinus,
   };
   users = signal<IPlatformUser[]>([]);
   CURRENT_USER = CURRENT_USER;
@@ -68,6 +73,7 @@ export class Users implements OnInit {
 
   platformService = inject(PlatformManagementService);
   private messageService = inject(MessageService);
+  private dialogService = inject(DialogService);
 
   ngOnInit(): void {
     this.getUsers();
@@ -111,5 +117,32 @@ export class Users implements OnInit {
       default:
         return null;
     }
+  }
+
+  openAddUserDialog() {
+    this.ref = this.dialogService.open(AddUser, {
+      header: 'Add User',
+      width: '25rem',
+    });
+
+    this.ref?.onClose.subscribe((res) => {
+      if (res) {
+        this.getUsers();
+      }
+    });
+  }
+
+  openEditUserDialog(user: IPlatformUser) {
+    this.ref = this.dialogService.open(AddUser, {
+      header: 'Edit User',
+      width: '25rem',
+      data: user,
+    });
+
+    this.ref?.onClose.subscribe((res) => {
+      if (res) {
+        this.getUsers();
+      }
+    });
   }
 }

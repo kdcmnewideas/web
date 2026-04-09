@@ -16,6 +16,7 @@ import {
   GraduationCap,
   ChartNoAxesCombined,
   LayoutDashboardIcon,
+  Presentation,
 } from 'lucide-angular';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
@@ -60,6 +61,7 @@ export class OrgAdmin implements OnInit {
   navItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboardIcon },
     { id: 'users', label: 'Members', icon: Users },
+    { id: 'classes', label: 'Classes', icon: Presentation },
     { id: 'subjects', label: 'Subjects', icon: BookOpen },
     { id: 'courses', label: 'Courses', icon: GraduationCap },
     { id: 'analytics', label: 'Analytics', icon: ChartNoAxesCombined },

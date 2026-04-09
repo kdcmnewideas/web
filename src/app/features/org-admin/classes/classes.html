@@ -1,0 +1,237 @@
+<p-toast />
+
+<div class="animate-fade-in flex flex-col gap-8 pb-24">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+    <div>
+      <h1 class="text-3xl font-black text-slate-900 tracking-tight">Classes & Sections</h1>
+      <p class="text-slate-500 mt-1 font-medium italic text-sm">
+        Manage academic classes and their localized sections
+      </p>
+    </div>
+    <div class="flex items-center gap-3">
+      <button
+        pButton
+        class="h-11 px-6 rounded-xl shadow-lg shadow-indigo-100 bg-indigo-600 border-none hover:bg-indigo-700 transition-colors"
+        (click)="openAddClassDialog()"
+      >
+        <lucide-angular [img]="icons.Plus" class="w-4 h-4 mr-2" /> New Class
+      </button>
+    </div>
+  </div>
+
+  <p-card
+    class="overflow-hidden border-none shadow-sm rounded-3xl"
+    [style]="{ 'min-height': 'calc(100vh - 25rem)' }"
+  >
+    <p-table
+      [value]="classes()"
+      dataKey="id"
+      [rows]="10"
+      [paginator]="true"
+      [loading]="loading()"
+      [rowExpandMode]="'single'"
+      styleClass="p-datatable-sm"
+    >
+      <ng-template pTemplate="header">
+        <tr class="h-16">
+          <th style="width: 3rem"></th>
+          <th pSortableColumn="name">Class Name <p-sortIcon field="name"></p-sortIcon></th>
+          <th pSortableColumn="course_id">Course <p-sortIcon field="course_id"></p-sortIcon></th>
+          <th pSortableColumn="join_code">Join Code <p-sortIcon field="join_code"></p-sortIcon></th>
+          <th pSortableColumn="is_active">Status <p-sortIcon field="is_active"></p-sortIcon></th>
+          <th class="text-right pr-10">Actions</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-cls let-expanded="expanded">
+        <tr class="hover:bg-slate-50 transition-colors cursor-pointer" [pRowToggler]="cls">
+          <td>
+            <lucide-angular
+              [img]="expanded ? icons.ChevronDown : icons.ChevronRight"
+              class="w-4 h-4 text-slate-400"
+            />
+          </td>
+          <td>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 font-bold"
+              >
+                {{ cls.name.charAt(0) }}
+              </div>
+              <span class="font-bold text-slate-800">{{ cls.name }}</span>
+            </div>
+          </td>
+          <td>
+            <span
+              class="px-3 py-1 bg-slate-100 rounded-lg text-xs font-bold text-slate-600 uppercase tracking-wider"
+            >
+              {{ getCourseName(cls.course_id) }}
+            </span>
+          </td>
+          <td>
+            <code class="px-2 py-1 bg-indigo-50 text-indigo-700 rounded font-mono text-xs">{{
+              cls.join_code
+            }}</code>
+          </td>
+          <td>
+            <p-tag
+              [value]="cls.is_active ? 'Active' : 'Inactive'"
+              [severity]="cls.is_active ? 'success' : 'danger'"
+              rounded="true"
+            ></p-tag>
+          </td>
+          <td class="text-right pr-6">
+            <div class="flex items-center justify-end gap-1">
+              <button
+                pButton
+                icon="pi pi-plus"
+                [rounded]="true"
+                [text]="true"
+                pTooltip="Add Section"
+                tooltipPosition="left"
+                class="text-emerald-600 hover:bg-emerald-50"
+                (click)="$event.stopPropagation(); openAddSectionDialog(cls)"
+              >
+                <lucide-angular [img]="icons.Plus" class="w-4 h-4" />
+              </button>
+              <button
+                pButton
+                [rounded]="true"
+                [text]="true"
+                severity="secondary"
+                (click)="$event.stopPropagation(); openEditClassDialog(cls)"
+              >
+                <lucide-angular [img]="icons.SquarePen" class="w-4 h-4" />
+              </button>
+              <button
+                pButton
+                [rounded]="true"
+                [text]="true"
+                severity="danger"
+                (click)="$event.stopPropagation(); deleteClass(cls.id)"
+              >
+                <lucide-angular [img]="icons.Trash2" class="w-4 h-4" />
+              </button>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="rowexpansion" let-cls>
+        <tr>
+          <td colspan="6" class="p-0 bg-slate-50 border-y border-slate-100">
+            <div class="p-8">
+              <div class="flex items-center justify-between mb-6">
+                <h3
+                  class="text-sm font-black text-slate-900 uppercase tracking-widest flex items-center"
+                >
+                  Sections in {{ cls.name }}
+                  <span
+                    class="ml-3 px-2 py-0.5 bg-indigo-600 text-white text-[10px] rounded-full"
+                    >{{ getSectionsForClass(cls.id).length }}</span
+                  >
+                </h3>
+              </div>
+
+              <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+                <p-table
+                  [value]="getSectionsForClass(cls.id)"
+                  styleClass="p-datatable-sm no-border"
+                >
+                  <ng-template pTemplate="header">
+                    <tr class="bg-slate-50/50">
+                      <th
+                        class="pl-8 uppercase text-[10px] font-black text-slate-400 tracking-widest"
+                      >
+                        Section Name
+                      </th>
+                      <th class="uppercase text-[10px] font-black text-slate-400 tracking-widest">
+                        Join Code
+                      </th>
+                      <th
+                        class="uppercase text-[10px] font-black text-slate-400 tracking-widest text-right pr-8"
+                      >
+                        Actions
+                      </th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-section>
+                    <tr class="h-12 hover:bg-slate-50/50">
+                      <td class="pl-8 font-bold text-slate-700">{{ section.name }}</td>
+                      <td>
+                        <span class="font-mono text-xs text-indigo-500">{{
+                          section.join_code
+                        }}</span>
+                      </td>
+                      <td class="text-right pr-8">
+                        <div class="flex justify-end gap-2">
+                          <button
+                            pButton
+                            [rounded]="true"
+                            [text]="true"
+                            severity="secondary"
+                            size="small"
+                            (click)="openEditSectionDialog(section, cls)"
+                          >
+                            <lucide-angular [img]="icons.SquarePen" class="w-3 h-3" />
+                          </button>
+                          <button
+                            pButton
+                            [rounded]="true"
+                            [text]="true"
+                            severity="danger"
+                            size="small"
+                            (click)="deleteSection(section.id)"
+                          >
+                            <lucide-angular [img]="icons.Trash2" class="w-3 h-3" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="emptymessage">
+                    <tr>
+                      <td colspan="3" class="text-center py-10">
+                        <p class="text-slate-400 italic text-sm">
+                          No sections defined for this class.
+                        </p>
+                        <button
+                          pButton
+                          size="small"
+                          class="mt-3 p-button-outlined p-button-indigo"
+                          (click)="openAddSectionDialog(cls)"
+                        >
+                          Add Your First Section
+                        </button>
+                      </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td
+            colspan="6"
+            class="text-center py-32 bg-white flex flex-col items-center justify-center"
+          >
+            <lucide-angular [img]="icons.Presentation" class="w-12 h-12 text-slate-200 mb-4" />
+            <h3 class="text-lg font-black text-slate-900">Academic Structure Empty</h3>
+            <p class="text-slate-500 mt-2">Start by creating your first academic class.</p>
+            <button
+              pButton
+              class="mt-8 px-8 h-12 rounded-xl bg-indigo-600 border-none"
+              (click)="openAddClassDialog()"
+            >
+              Create First Class
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+</div>

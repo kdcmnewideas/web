@@ -34,10 +34,10 @@ import { SideNav } from '../../shared/components/side-nav/side-nav';
     MobileNav,
     SideNav,
   ],
-  templateUrl: './admin.html',
-  styleUrl: './admin.css',
+  templateUrl: './platform-admin.html',
+  styleUrl: './platform-admin.css',
 })
-export class Admin {
+export class PlatformAdmin {
   isSidebarCollapsed = signal<boolean>(false);
   router = inject(Router);
   currentUser = CURRENT_USER;

@@ -1,5 +1,5 @@
 import { Atom, BookOpen, Calculator, Dna, Hourglass } from 'lucide-angular';
-import { MIND_MAP_MOCK_DATA } from '../mocks/learn-mind-map-mock.constant';
+import { PlatformRole } from './roles.constant';
 import { LESSON_CONTENTS_MOCK } from '../mocks/lesson-contents-mock.clean.constant';
 
 export enum QuestionType {
@@ -24,7 +24,7 @@ export interface User {
   grade?: string;
   bio?: string;
   phone?: string;
-  role: 'user' | 'admin';
+  role: PlatformRole;
   location: string;
 }
 
@@ -235,7 +235,7 @@ export const CURRENT_USER: User = {
   grade: 'User',
   bio: 'Architecting the future through rigorous study and persistent curiosity. I believe in the power of continuous learning.',
   phone: '+91-9123445567',
-  role: 'user',
+  role: PlatformRole.USER,
   location: 'Bangalore, India',
 };
 

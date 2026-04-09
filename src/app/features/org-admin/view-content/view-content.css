@@ -1,0 +1,43 @@
+:host {
+  display: block;
+}
+
+/* Status badge animations */
+.status-badge {
+  transition: all 0.3s ease;
+}
+
+/* Card hover effects */
+::ng-deep .p-card {
+  transition: box-shadow 0.3s ease;
+}
+
+::ng-deep .p-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Thumbnail image styling */
+.subject-thumbnail {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+/* Center the no-content placeholder horizontally and vertically */
+.no-content-outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 6rem);
+}
+
+/* Upload label styling */
+.upload-label {
+  border: 2px dashed #e6e9f2;
+  background: #ffffff;
+  color: #475569;
+  align-items: center;
+}
+.upload-label:hover {
+  border-color: #c7d2fe;
+  background: #fbfbff;
+}

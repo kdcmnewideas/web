@@ -2,32 +2,28 @@ import { Routes } from '@angular/router';
 
 export const ORG_ADMIN_ROUTES: Routes = [
   {
-    path: 'users',
-    title: 'Users',
-    loadComponent: () => import('./users/users').then((m) => m.Users),
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
   },
   {
-    path: 'classes',
-    title: 'Classes',
-    loadComponent: () => import('./classes/classes').then((m) => m.Classes),
+    path: 'dashboard',
+    loadComponent: () => import('./dashboard/dashboard').then((m) => m.Dashboard),
+    title: 'Dashboard',
   },
   {
-    path: 'sections',
-    title: 'Sections',
-    loadComponent: () => import('./sections/sections').then((m) => m.Sections),
+    path: 'subjects',
+    loadComponent: () => import('./subject/subject').then((m) => m.Subject),
+    title: 'Subjects',
   },
   {
     path: 'courses',
-    title: 'Courses',
     loadComponent: () => import('./courses/courses').then((m) => m.Courses),
+    title: 'Courses',
   },
   {
-    path: 'profile',
-    title: 'Profile',
-    loadComponent: () => import('../user-profile/user-profile').then((m) => m.UserProfile),
-  },
-  {
-    path: '**',
-    redirectTo: 'users',
+    path: 'view-content',
+    loadComponent: () => import('./view-content/view-content').then((m) => m.ViewContent),
+    title: 'View Content',
   },
 ];

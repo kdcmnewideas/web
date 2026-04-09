@@ -31,6 +31,27 @@ export interface IUser {
   name: string;
   platform_role: string;
   memberships: IMembership[];
+  // Profile fields
+  bio?: string;
+  phone?: string;
+  location?: string;
+  avatarUrl?: string;
+  streakDays?: number;
+  totalPoints?: number;
+  goalsCompleted?: number;
+  rank?: number;
+  age?: number;
+  grade?: string;
+}
+
+export interface IUserProfileUpdate {
+  name?: string;
+  bio?: string;
+  phone?: string;
+  location?: string;
+  avatarUrl?: string;
+  age?: number;
+  grade?: string;
 }
 
 export interface IMembership {

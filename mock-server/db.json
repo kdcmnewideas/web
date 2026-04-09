@@ -1381,6 +1381,13 @@
       "is_active": true,
       "created_at": "2025-08-30T05:55:51.839Z",
       "updated_at": "2026-04-02T06:50:34.095Z"
+    },
+    {
+      "name": "A",
+      "join_code": "SEC",
+      "course_id": "1a241923-7510-437c-8a28-e99c3f1bbd9f",
+      "class_id": "9033d4b6-f341-438e-9ae5-77153f75e73e",
+      "id": "hdUJ3P3"
     }
   ],
   "subjects": [
@@ -2449,7 +2456,11 @@
       "provider": "anthropic",
       "label": "staging",
       "user_id": "fe4b25d2-c950-4b66-9088-0fbb1e773c96",
-      "capabilities": ["IMAGE", "AUDIO", "EMBEDDING"],
+      "capabilities": [
+        "IMAGE",
+        "AUDIO",
+        "EMBEDDING"
+      ],
       "total_cost": 4.7363,
       "is_active": true,
       "created_at": "2026-03-05T13:26:08.204Z"
@@ -2459,7 +2470,9 @@
       "provider": "google",
       "label": "dev",
       "user_id": "929c79e0-0bbb-4ccc-ae03-35100157036d",
-      "capabilities": ["AUDIO"],
+      "capabilities": [
+        "AUDIO"
+      ],
       "total_cost": 27.4249,
       "is_active": true,
       "created_at": "2026-03-21T15:58:42.107Z"
@@ -2469,7 +2482,9 @@
       "provider": "anthropic",
       "label": "staging",
       "user_id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
-      "capabilities": ["EMBEDDING"],
+      "capabilities": [
+        "EMBEDDING"
+      ],
       "total_cost": 10.2684,
       "is_active": true,
       "created_at": "2025-09-24T03:52:29.886Z"
@@ -2479,7 +2494,10 @@
       "provider": "anthropic",
       "label": "production",
       "user_id": "728aa531-81ab-4c95-87ae-9223ddbac2a5",
-      "capabilities": ["IMAGE", "TEXT"],
+      "capabilities": [
+        "IMAGE",
+        "TEXT"
+      ],
       "total_cost": 26.2958,
       "is_active": true,
       "created_at": "2025-06-17T16:07:08.655Z"
@@ -2489,7 +2507,11 @@
       "provider": "anthropic",
       "label": "staging",
       "user_id": "ae61f786-98df-4457-9af6-79f22390c27c",
-      "capabilities": ["EMBEDDING", "AUDIO", "IMAGE"],
+      "capabilities": [
+        "EMBEDDING",
+        "AUDIO",
+        "IMAGE"
+      ],
       "total_cost": 23.5428,
       "is_active": true,
       "created_at": "2026-01-06T03:03:26.095Z"
@@ -2499,7 +2521,10 @@
       "provider": "anthropic",
       "label": "dev",
       "user_id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
-      "capabilities": ["IMAGE", "AUDIO"],
+      "capabilities": [
+        "IMAGE",
+        "AUDIO"
+      ],
       "total_cost": 7.1718,
       "is_active": true,
       "created_at": "2025-08-25T07:31:03.316Z"
@@ -2509,7 +2534,9 @@
       "provider": "openai",
       "label": "production",
       "user_id": "3361c26e-a9f5-4406-a77b-afc2d91803a1",
-      "capabilities": ["AUDIO"],
+      "capabilities": [
+        "AUDIO"
+      ],
       "total_cost": 30.5648,
       "is_active": true,
       "created_at": "2025-04-29T22:02:13.251Z"
@@ -2519,7 +2546,11 @@
       "provider": "openai",
       "label": "personal",
       "user_id": "d35e4e89-6e52-4070-b30a-3729b9a43036",
-      "capabilities": ["IMAGE", "AUDIO", "EMBEDDING"],
+      "capabilities": [
+        "IMAGE",
+        "AUDIO",
+        "EMBEDDING"
+      ],
       "total_cost": 31.3121,
       "is_active": true,
       "created_at": "2025-12-29T07:36:23.162Z"

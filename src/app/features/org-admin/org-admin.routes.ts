@@ -31,4 +31,9 @@ export const ORG_ADMIN_ROUTES: Routes = [
     loadComponent: () => import('./members/members').then((m) => m.Members),
     title: 'Members',
   },
+  {
+    path: 'classes',
+    loadComponent: () => import('./classes/classes').then((m) => m.Classes),
+    title: 'Classes',
+  },
 ];

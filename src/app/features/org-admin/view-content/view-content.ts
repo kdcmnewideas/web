@@ -1,5 +1,6 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../services/auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ChevronLeft, UploadCloud } from 'lucide-angular';
 import { LucideAngularModule } from 'lucide-angular';
@@ -39,6 +40,7 @@ export class ViewContent implements OnInit {
   private subjectService = inject(SubjectService);
   private messageService = inject(MessageService);
   private selectionService = inject(SubjectSelectionService);
+  private authService = inject(AuthService);
 
   subject = signal<any | null>(null);
   treeData = signal<AcademicNode[]>([]);
@@ -47,9 +49,19 @@ export class ViewContent implements OnInit {
   selectedFile = signal<File | null>(null);
   uploading = signal(false);
   icons = { ChevronLeft, UploadCloud };
+  orgId = '';
 
   ngOnInit() {
-    this.loadSubjectDetails();
+    this.authService.getUserDetails().subscribe({
+      next: (user) => {
+        this.orgId = user?.memberships?.[0]?.org_id || environment.orgId;
+        this.loadSubjectDetails();
+      },
+      error: () => {
+        this.orgId = environment.orgId;
+        this.loadSubjectDetails();
+      }
+    });
   }
 
   loadSubjectDetails() {
@@ -158,7 +170,7 @@ export class ViewContent implements OnInit {
 
     this.uploading.set(true);
     this.subjectService
-      .ingestPdf(subjectId, file, environment.orgId, environment.geminiApiKey)
+      .ingestPdf(subjectId, file, this.orgId, environment.geminiApiKey)
       .subscribe({
         next: (res) => {
           this.uploading.set(false);

@@ -1,5 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../../services/auth/auth.service';
+import { environment } from '../../../../environments/environment';
 import {
   Plus,
   LucideAngularModule,
@@ -70,12 +72,26 @@ export class Members implements OnInit {
   orgRoles: any[] = [];
 
   orgService = inject(OrganizationService);
+  authService = inject(AuthService);
   private messageService = inject(MessageService);
   private dialogService = inject(DialogService);
 
-  orgId = '1d346816-f11b-4530-8cbc-159393f02fce'; // Using Mock Server ID
+  orgId = '';
 
   ngOnInit(): void {
+    this.authService.getUserDetails().subscribe({
+      next: (user) => {
+        this.orgId = user?.memberships?.[0]?.org_id || environment.orgId;
+        this.initMembers();
+      },
+      error: () => {
+        this.orgId = environment.orgId;
+        this.initMembers();
+      }
+    });
+  }
+
+  initMembers() {
     this.getMembers();
     this.statuses = [
       { label: 'Active', value: 'active' },

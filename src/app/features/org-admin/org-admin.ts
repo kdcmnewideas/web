@@ -1,5 +1,6 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
+import { environment } from '../../../environments/environment';
 import { TooltipModule } from 'primeng/tooltip';
 import { CURRENT_USER } from '../../shared/constants/mock-data.constant';
 import { AvatarModule } from 'primeng/avatar';
@@ -82,8 +83,7 @@ export class OrgAdmin implements OnInit {
           user.platform_role === OrganizationRole.ORG_ADMIN ||
           user.platform_role === OrganizationRole.ORG_FACULTY
         ) {
-          // Hardcoded org_id for now - TODO: Get from user membership data
-          const orgId = 'e1d088b1-a603-4950-b93a-f72634e0644e';
+          const orgId = user.memberships?.[0]?.org_id || environment.orgId;
 
           this.organizationService.getOrganization(orgId).subscribe({
             next: (orgData) => {

@@ -19,6 +19,7 @@ import { MessageService } from 'primeng/api';
 import { SubjectService } from '../../../services/subject/subject.service';
 import { SubjectSelectionService } from '../../../../app/services/subject/subject-selection.service';
 import { ISubjectDetails } from '../../../core/interface/subject.interface';
+import { AuthService } from '../../../services/auth/auth.service';
 import { environment } from '../../../../environments/environment';
 import { Router } from '@angular/router';
 
@@ -65,13 +66,23 @@ export class Subject implements OnInit {
   };
 
   private subjectService = inject(SubjectService);
+  private authService = inject(AuthService);
   private messageService = inject(MessageService);
-  private orgId = environment.orgId;
+  private orgId = '';
   private router = inject(Router);
   private selectionService = inject(SubjectSelectionService);
 
   ngOnInit() {
-    this.loadSubjects();
+    this.authService.getUserDetails().subscribe({
+      next: (user) => {
+        this.orgId = user?.memberships?.[0]?.org_id || environment.orgId;
+        this.loadSubjects();
+      },
+      error: () => {
+        this.orgId = environment.orgId;
+        this.loadSubjects();
+      }
+    });
   }
 
   loadSubjects() {

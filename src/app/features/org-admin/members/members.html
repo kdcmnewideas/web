@@ -1,0 +1,136 @@
+<p-toast />
+<div class="animate-fade-in flex flex-col gap-8 pb-24">
+  <div class="lg:col-span-9">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-4">
+      <div>
+        <h1 class="text-3xl font-black text-slate-900 tracking-tight">Member Management</h1>
+      </div>
+      <div class="flex items-center gap-3 w-full md:w-auto">
+        <button
+          pButton
+          class="h-11 px-6 rounded-xl shadow-lg shadow-indigo-100"
+          (click)="openAddMemberDialog()"
+        >
+          <lucide-angular [img]="icons.Plus" class="w-4 h-4" /> Add Member
+        </button>
+      </div>
+    </div>
+    <p-card class="p-6" [style]="{ 'min-height': 'calc(100vh - 25rem)' }">
+      <p-table
+        #dt2
+        [value]="members()"
+        dataKey="id"
+        [rows]="10"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading()"
+        [paginator]="true"
+        [globalFilterFields]="['user_email', 'org_role', 'status']"
+        [tableStyle]="{ 'min-width': '75rem' }"
+      >
+        <ng-template #header>
+          <tr>
+            <th style="width: 33%" pSortableColumn="user_email">Email</th>
+            <th style="width: 33%" pSortableColumn="org_role">Role</th>
+            <th style="width: 22%" pSortableColumn="status">Status</th>
+            <th style="width: 12%">Actions</th>
+          </tr>
+          <tr>
+            <th>
+              <p-columnFilter
+                type="text"
+                field="user_email"
+                placeholder="Type to search"
+                ariaLabel="Filter Email"
+                filterOn="input"
+                [showMenu]="false"
+              ></p-columnFilter>
+            </th>
+            <th>
+              <p-columnFilter field="org_role" matchMode="in" [showMenu]="false">
+                <ng-template #filter let-value let-filter="filterCallback">
+                  <p-multiSelect
+                    [options]="orgRoles"
+                    placeholder="Any"
+                    (onChange)="filter($event.value)"
+                    style="min-width: 14rem"
+                    class="z-100"
+                    appendTo="body"
+                  >
+                    <ng-template let-option #item>
+                      <div class="flex items-center gap-2">
+                        <span>{{ option.label }}</span>
+                      </div>
+                    </ng-template>
+                  </p-multiSelect>
+                </ng-template>
+              </p-columnFilter>
+            </th>
+            <th>
+              <p-columnFilter field="status" matchMode="equals" [showMenu]="false">
+                <ng-template #filter let-filter="filterCallback">
+                  <p-select
+                    [options]="statuses"
+                    (onChange)="filter($event.value)"
+                    placeholder="Select One"
+                    [showClear]="true"
+                    style="min-width: 12rem"
+                    appendTo="body"
+                  >
+                    <ng-template let-option #item>
+                      <p-tag [value]="option.label" [severity]="getSeverity(option.value)" />
+                    </ng-template>
+                  </p-select>
+                </ng-template>
+              </p-columnFilter>
+            </th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template #body let-member>
+          <tr>
+            <td>
+              <div class="flex items-center gap-3">
+                <div>
+                  <p class="font-bold text-slate-800">{{ member.user_email }}</p>
+                </div>
+              </div>
+            </td>
+            <td class="px-6 py-4 font-bold text-slate-600 capitalize">
+               {{ member.org_role?.replace('_', ' ') }}
+            </td>
+            <td>
+              @if (member.status?.toLowerCase() === 'active') {
+                <div class="flex items-center gap-1.5 text-emerald-500 font-bold text-xs">
+                  <lucide-angular [img]="icons.CircleCheck" class="w-4 h-4" /> Active
+                </div>
+              }
+              @if (member.status?.toLowerCase() === 'inactive') {
+                <div class="flex items-center gap-1.5 text-red-500 font-bold text-xs">
+                  <lucide-angular [img]="icons.CircleMinus" class="w-4 h-4" /> Inactive
+                </div>
+              }
+            </td>
+            <td class="px-6 py-4 text-right">
+              <p-button
+                (click)="openEditMemberDialog(member)"
+                [rounded]="true"
+                [text]="true"
+                severity="secondary"
+              >
+                <lucide-angular [img]="icons.SquarePen" class="w-4 h-4" />
+              </p-button>
+              <p-button [rounded]="true" [text]="true" severity="danger">
+                <lucide-angular [img]="icons.Trash2" class="w-4 h-4" />
+              </p-button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+          <tr>
+            <td colspan="4">No members found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+  </div>
+</div>

@@ -2,27 +2,143 @@
   display: block;
 }
 
-/* Status badge animations */
-.status-badge {
-  transition: all 0.3s ease;
+/* ─── Viewer shell: sidebar + content ─── */
+.viewer-shell {
+  display: flex;
+  height: calc(100vh - 10rem);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
 }
 
-/* Card hover effects */
-::ng-deep .p-card {
-  transition: box-shadow 0.3s ease;
+/* ─── Sidebar ─── */
+.viewer-sidebar {
+  width: 260px;
+  min-width: 200px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e2e8f0;
+  background: #fafbfc;
 }
 
-::ng-deep .p-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.sidebar-header {
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid #e2e8f0;
 }
 
-/* Thumbnail image styling */
-.subject-thumbnail {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e2e8f0;
+.sidebar-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
 }
 
-/* Center the no-content placeholder horizontally and vertically */
+.sidebar-tree {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 4px;
+}
+
+/* ─── Content pane ─── */
+.viewer-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px 40px;
+  scroll-behavior: smooth;
+}
+
+/* ─── Chapter sections ─── */
+.chapter-section {
+  margin-bottom: 48px;
+}
+
+.chapter-section:last-child {
+  margin-bottom: 0;
+}
+
+.chapter-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* ─── Topic blocks ─── */
+.topic-block {
+  margin-bottom: 28px;
+}
+
+.topic-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 12px;
+  padding-left: 12px;
+  border-left: 3px solid #a5b4fc;
+}
+
+/* ─── Subtopic cards ─── */
+.subtopic-card {
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background: #f8fafc;
+  border: 1px solid transparent;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+
+.subtopic-card:hover {
+  background: #f1f5f9;
+}
+
+.subtopic-card.subtopic-active {
+  border-color: #818cf8;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.04), rgba(99, 102, 241, 0.01));
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.15);
+}
+
+.subtopic-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.subtopic-body {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #64748b;
+  white-space: pre-wrap;
+}
+
+/* ─── Empty state ─── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 12px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.empty-icon {
+  font-size: 36px;
+  opacity: 0.5;
+}
+
+/* ─── No-content upload placeholder ─── */
 .no-content-outer {
   display: flex;
   align-items: center;
@@ -30,7 +146,6 @@
   min-height: calc(100vh - 6rem);
 }
 
-/* Upload label styling */
 .upload-label {
   border: 2px dashed #e6e9f2;
   background: #ffffff;
@@ -40,4 +155,16 @@
 .upload-label:hover {
   border-color: #c7d2fe;
   background: #fbfbff;
+}
+
+/* ─── Highlighted (JS-driven + Angular class-driven) ─── */
+.highlighted,
+.section-active {
+  border-radius: 8px;
+  border-color: #818cf8;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(99, 102, 241, 0.01));
+  box-shadow: inset 3px 0 0 0 #6366f1;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
 }

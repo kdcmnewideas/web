@@ -1,6 +1,8 @@
-<div class="space-y-6 p-6 min-h-screen bg-slate-50">
+<div class="p-6 min-h-screen bg-slate-50">
   <!-- Breadcrumbs -->
-  <nav class="flex items-center space-x-2 text-sm text-slate-600">
+  <nav
+    class="sticky top-0 z-10 bg-slate-50 pb-4 flex items-center space-x-2 text-sm text-slate-600"
+  >
     <button (click)="goBack()" class="text-indigo-600 hover:text-indigo-700 font-medium transition">
       Org Admin
     </button>
@@ -12,7 +14,7 @@
     <span class="text-slate-900 font-medium">{{ subject()?.title || 'Loading...' }}</span>
   </nav>
 
-  <div class="mt-6">
+  <div class="mt-4">
     <ng-container *ngIf="loading(); else loaded">
       <p class="text-sm text-slate-500">Loading content...</p>
     </ng-container>
@@ -20,30 +22,66 @@
     <ng-template #loaded>
       <div *ngIf="subject(); else noSubject">
         <div *ngIf="subject()?.chapters?.length > 0; else noContent">
-          <div style="height: calc(100vh - 12rem)">
-            <app-dynamic-tree
-              [nodes]="treeData()"
-              [initialExpandedLevel]="0"
-              (nodeSelected)="onNodeSelected($event)"
-              (nodeAdded)="onNodeAdded($event)"
-              (nodeUpdated)="onNodeUpdated($event)"
-              (nodeDeleted)="onNodeDeleted($event)"
-            >
-              <!-- Projected content area -->
-              <div *ngIf="selectedNode(); else noSelection">
-                <h2 class="text-lg font-semibold text-slate-800 mb-2">
-                  {{ selectedNode()!.label }}
-                </h2>
-                <p class="text-sm text-slate-600 whitespace-pre-wrap">
-                  {{ selectedNode()!.content || 'No content available for this item.' }}
-                </p>
+          <div class="viewer-shell">
+            <!-- Sidebar -->
+            <aside class="viewer-sidebar">
+              <div class="sidebar-header">
+                <span class="sidebar-title">Outline</span>
               </div>
-              <ng-template #noSelection>
-                <div class="flex items-center justify-center h-full text-slate-400 text-sm">
-                  Select an item to view its content
+              <div class="sidebar-tree">
+                <app-dynamic-tree
+                  [nodes]="treeData()"
+                  [initialExpandedLevel]="0"
+                  (nodeSelected)="onNodeSelected($event)"
+                  (nodeToggled)="onNodeToggled($event)"
+                  (nodeAdded)="onNodeAdded($event)"
+                  (nodeUpdated)="onNodeUpdated($event)"
+                  (nodeDeleted)="onNodeDeleted($event)"
+                ></app-dynamic-tree>
+              </div>
+            </aside>
+
+            <!-- Content -->
+            <main class="viewer-content" id="content-pane" (scroll)="onContentScroll($event)">
+              <ng-container
+                *ngIf="displayedChapters() && displayedChapters().length; else noLoaded"
+              >
+                <section
+                  *ngFor="let ch of displayedChapters(); trackBy: trackById"
+                  class="chapter-section"
+                  [attr.id]="'chapter-' + ch.id"
+                  [class.section-active]="selectedNode() && selectedNode()!.id === ch.id"
+                >
+                  <h2 class="chapter-title">{{ ch.title }}</h2>
+
+                  <div
+                    *ngFor="let t of ch.topics || []; trackBy: trackById"
+                    class="topic-block"
+                    [attr.id]="'topic-' + t.id"
+                    [class.section-active]="selectedNode() && selectedNode()!.id === t.id"
+                  >
+                    <h3 class="topic-title">{{ t.title }}</h3>
+
+                    <article
+                      *ngFor="let st of t.subtopics || []; trackBy: trackById"
+                      class="subtopic-card"
+                      [attr.id]="'content-' + st.id"
+                      [class.subtopic-active]="selectedNode() && selectedNode()!.id === st.id"
+                    >
+                      <h4 class="subtopic-title">{{ st.title }}</h4>
+                      <p class="subtopic-body">{{ getSubtopicText(st) }}</p>
+                    </article>
+                  </div>
+                </section>
+              </ng-container>
+
+              <ng-template #noLoaded>
+                <div class="empty-state">
+                  <span class="empty-icon">📄</span>
+                  <p>No chapter content loaded yet.</p>
                 </div>
               </ng-template>
-            </app-dynamic-tree>
+            </main>
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@ import { CommonModule } from '@angular/common';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { AddUser } from './add-user/add-user';
+import { AddUser } from '../../admin/users/add-user/add-user';
 
 @Component({
   selector: 'app-users',

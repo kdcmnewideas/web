@@ -1,30 +1,141 @@
-<div class="flex flex-col md:flex-row h-full min-h-0">
-  <!-- ─── Sidebar: Tree ─── -->
-  <div class="w-full md:w-1/3 lg:w-[30%] flex flex-col min-h-0 max-h-[40vh] md:max-h-none">
-    <div class="overflow-y-auto flex-1 py-2 px-3">
-      <ul class="tree-root">
-        <ng-container
-          *ngTemplateOutlet="nodeList; context: { $implicit: treeItems() }"
-        ></ng-container>
-      </ul>
-    </div>
-
-    <p-confirmDialog />
+<div class="tree-wrap">
+  <div class="tree-scroll">
+    <ng-container
+      *ngTemplateOutlet="nodeList; context: { $implicit: treeItems(), depth: 0 }"
+    ></ng-container>
   </div>
-
-  <!-- ─── Content Area ─── -->
-  <div class="w-full md:w-2/3 lg:w-[70%] p-4 md:p-6 overflow-y-auto">
-    <ng-content></ng-content>
-  </div>
+  <p-confirmDialog />
 </div>
 
-<!-- Recursive node list template -->
-<ng-template #nodeList let-items>
-  @for (item of items; track item.id; let last = $last) {
-    <li [class.last-child]="last">
-      <div class="node-row group" (click)="onItemClick(item)">
-        <span class="dot"></span>
+<ng-template #nodeList let-items let-depth="depth">
+  @for (item of items; track item.id) {
+    <!-- ── Depth 0 = Chapter ── -->
+    @if (depth === 0) {
+      <div class="ch-group">
+        <div
+          class="ch-header group"
+          [class.ch-active]="selectedId() === item.id"
+          (click)="onItemClick(item, $event)"
+        >
+          <i
+            class="pi text-xs transition-transform duration-150"
+            [ngClass]="item.expanded ? 'pi-angle-down' : 'pi-angle-right'"
+          ></i>
+          <span class="ch-label">{{ item.label | titleCaseFirst }}</span>
+          <span class="ch-actions opacity-0 group-hover:opacity-100">
+            <button type="button" class="act" (click)="startAdd(item, $event)" title="Add">
+              <i class="pi pi-plus"></i>
+            </button>
+            <button type="button" class="act" (click)="startEdit(item, $event)" title="Rename">
+              <i class="pi pi-pencil"></i>
+            </button>
+            <button
+              type="button"
+              class="act act-del"
+              (click)="confirmDelete(item, $event)"
+              title="Delete"
+            >
+              <i class="pi pi-trash"></i>
+            </button>
+          </span>
+        </div>
+        @if (item.editing) {
+          <div class="ch-edit-row">
+            <input
+              class="edit-input"
+              [(ngModel)]="item.label"
+              [ngModelOptions]="{ standalone: true }"
+              (keydown.enter)="saveEdit(item, $event)"
+              (keydown.escape)="cancelEdit(item, $event)"
+              (click)="$event.stopPropagation()"
+            />
+            <button type="button" class="act act-ok" (click)="saveEdit(item, $event)">
+              <i class="pi pi-check"></i>
+            </button>
+            <button type="button" class="act" (click)="cancelEdit(item, $event)">
+              <i class="pi pi-times"></i>
+            </button>
+          </div>
+        }
+        @if (item.expanded && item.children.length) {
+          <div class="ch-body">
+            <ng-container
+              *ngTemplateOutlet="nodeList; context: { $implicit: item.children, depth: 1 }"
+            ></ng-container>
+          </div>
+        }
+      </div>
+    }
 
+    <!-- ── Depth 1 = Topic ── -->
+    @if (depth === 1) {
+      <div class="tp-group">
+        <div
+          class="tp-row group"
+          [class.tp-active]="selectedId() === item.id"
+          (click)="onItemClick(item, $event)"
+        >
+          @if (item.children.length) {
+            <i
+              class="pi text-[10px] transition-transform duration-150"
+              [ngClass]="item.expanded ? 'pi-angle-down' : 'pi-angle-right'"
+            ></i>
+          } @else {
+            <span class="tp-dot"></span>
+          }
+          @if (item.editing) {
+            <input
+              class="edit-input"
+              [(ngModel)]="item.label"
+              [ngModelOptions]="{ standalone: true }"
+              (keydown.enter)="saveEdit(item, $event)"
+              (keydown.escape)="cancelEdit(item, $event)"
+              (click)="$event.stopPropagation()"
+            />
+            <button type="button" class="act act-ok" (click)="saveEdit(item, $event)">
+              <i class="pi pi-check"></i>
+            </button>
+            <button type="button" class="act" (click)="cancelEdit(item, $event)">
+              <i class="pi pi-times"></i>
+            </button>
+          } @else {
+            <span class="tp-label">{{ item.label | titleCaseFirst }}</span>
+            <span class="tp-actions opacity-0 group-hover:opacity-100">
+              <button type="button" class="act" (click)="startAdd(item, $event)" title="Add">
+                <i class="pi pi-plus"></i>
+              </button>
+              <button type="button" class="act" (click)="startEdit(item, $event)" title="Rename">
+                <i class="pi pi-pencil"></i>
+              </button>
+              <button
+                type="button"
+                class="act act-del"
+                (click)="confirmDelete(item, $event)"
+                title="Delete"
+              >
+                <i class="pi pi-trash"></i>
+              </button>
+            </span>
+          }
+        </div>
+        @if (item.expanded && item.children.length) {
+          <div class="tp-children">
+            <ng-container
+              *ngTemplateOutlet="nodeList; context: { $implicit: item.children, depth: 2 }"
+            ></ng-container>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- ── Depth 2+ = Subtopic / leaf ── -->
+    @if (depth >= 2) {
+      <div
+        class="st-row group"
+        [class.st-active]="selectedId() === item.id"
+        (click)="onItemClick(item, $event)"
+      >
+        <span class="st-marker"></span>
         @if (item.editing) {
           <input
             class="edit-input"
@@ -34,38 +145,29 @@
             (keydown.escape)="cancelEdit(item, $event)"
             (click)="$event.stopPropagation()"
           />
-          <button class="action-btn save" (click)="saveEdit(item, $event)" title="Save">
+          <button type="button" class="act act-ok" (click)="saveEdit(item, $event)">
             <i class="pi pi-check"></i>
           </button>
-          <button class="action-btn cancel" (click)="cancelEdit(item, $event)" title="Cancel">
+          <button type="button" class="act" (click)="cancelEdit(item, $event)">
             <i class="pi pi-times"></i>
           </button>
         } @else {
-          <span class="node-label" [class.selected]="selectedId() === item.id">
-            {{ item.label }}
-          </span>
-
-          <span class="actions invisible group-hover:visible">
-            <button class="action-btn" (click)="startAdd(item, $event)" title="Add child">
-              <i class="pi pi-plus"></i>
-            </button>
-            <button class="action-btn" (click)="startEdit(item, $event)" title="Rename">
+          <span class="st-label">{{ item.label | titleCaseFirst }}</span>
+          <span class="st-actions opacity-0 group-hover:opacity-100">
+            <button type="button" class="act" (click)="startEdit(item, $event)" title="Rename">
               <i class="pi pi-pencil"></i>
             </button>
-            <button class="action-btn delete" (click)="confirmDelete(item, $event)" title="Delete">
+            <button
+              type="button"
+              class="act act-del"
+              (click)="confirmDelete(item, $event)"
+              title="Delete"
+            >
               <i class="pi pi-trash"></i>
             </button>
           </span>
         }
       </div>
-
-      @if (item.children.length && item.expanded) {
-        <ul class="tree-children">
-          <ng-container
-            *ngTemplateOutlet="nodeList; context: { $implicit: item.children }"
-          ></ng-container>
-        </ul>
-      }
-    </li>
+    }
   }
 </ng-template>

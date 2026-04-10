@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ConfirmationService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
 import { AcademicNode } from './academic-node.interface';
+import { TitleCaseFirstPipe } from '../../pipes/title-case-first.pipe';
 
 export interface TreeItem {
   id: string;
@@ -18,7 +19,7 @@ export interface TreeItem {
 
 @Component({
   selector: 'app-dynamic-tree',
-  imports: [CommonModule, FormsModule, ConfirmDialog],
+  imports: [CommonModule, FormsModule, ConfirmDialog, TitleCaseFirstPipe],
   templateUrl: './dynamic-tree.html',
   styleUrl: './dynamic-tree.css',
   providers: [ConfirmationService],
@@ -33,9 +34,12 @@ export class DynamicTree {
   nodeAdded = output<AcademicNode>();
   nodeUpdated = output<AcademicNode>();
   nodeDeleted = output<string>();
+  nodeToggled = output<{ node: AcademicNode; expanded: boolean }>();
 
   treeItems = signal<TreeItem[]>([]);
   selectedId = signal<string | null>(null);
+  // Track expanded node ids so expansion survives treeData resets
+  private expandedIds = new Set<string>();
 
   constructor() {
     effect(() => {
@@ -52,7 +56,8 @@ export class DynamicTree {
       content: n.content,
       editing: false,
       originalLabel: n.label,
-      expanded: depth < expandLevel,
+      // preserve user toggles; default to expanded when depth < expandLevel
+      expanded: this.expandedIds.has(n.id) || depth < expandLevel,
       children: n.children?.length ? this.toTreeItems(n.children, depth + 1, expandLevel) : [],
       source: n,
     }));
@@ -60,13 +65,22 @@ export class DynamicTree {
 
   /* ───── Click ───── */
 
-  onItemClick(item: TreeItem) {
-    if (item.children.length) {
-      item.expanded = !item.expanded;
-    } else {
-      this.selectedId.set(item.id);
-      this.nodeSelected.emit(item.source);
+  onItemClick(item: TreeItem, event?: Event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
     }
+    if (item.children.length) {
+      // toggle expanded state and track by id so rebuilds keep it
+      item.expanded = !item.expanded;
+      if (item.expanded) this.expandedIds.add(item.id);
+      else this.expandedIds.delete(item.id);
+      console.debug('[DynamicTree] toggle', item.id, item.expanded);
+      this.nodeToggled.emit({ node: item.source, expanded: item.expanded });
+    }
+    // Always emit selection so the parent can scroll/highlight
+    this.selectedId.set(item.id);
+    this.nodeSelected.emit(item.source);
   }
 
   /* ───── Add ───── */

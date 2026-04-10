@@ -40,6 +40,26 @@ export class SubjectService {
     return this.http.get<any>(`${this.baseUrl}/${subject_id}/complete`);
   };
 
+  /**
+   * Fetch a single chapter with its topics, subtopics and assets.
+   * Used for lazy-loading chapter content on demand.
+   */
+  getChapterContent = (chapter_id: string): Observable<any> => {
+    const url = `${environment.contentAPI.replace(/\/$/, '')}/chapters/${chapter_id}/content`;
+    console.debug('[SubjectService] GET', url);
+    return this.http.get<any>(url);
+  };
+
+  /**
+   * Try to fetch a single subtopic by id. Some deployments may not expose
+   * this endpoint; callers should handle 404 by falling back to topic/chapter fetch.
+   */
+  getSubtopicContent = (subtopic_id: string): Observable<any> => {
+    const url = `${environment.contentAPI.replace(/\/$/, '')}/subtopics/${subtopic_id}/content`;
+    console.debug('[SubjectService] GET', url);
+    return this.http.get<any>(url);
+  };
+
   updateSubjectById = (
     subject_id: string,
     subject: IUpdateSubject,

@@ -33,20 +33,34 @@ import { CommonModule } from '@angular/common';
 import { AvatarModule } from 'primeng/avatar';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
-import { IUser } from '../../core/interface/user-profile.interface';
+import { IUser, IUserProfileUpdate } from '../../core/interface/user-profile.interface';
+import { UserDashboardService } from '../../services/user-dashboard/user-dashboard.service';
+import { GoalService } from '../../services/goal/goal.service';
+import { LeaderBoardService } from '../../services/leader-board/leader-board.service';
+import { UserProfileService } from '../../services/user-profile/user-profile.service';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { IAssessment } from '../../core/interface/assessment.interface';
+import { IGoal } from '../../core/interface/goal.interface';
 
 @Component({
   selector: 'app-user-profile',
-  imports: [LucideAngularModule, CardModule, FormsModule, CommonModule, AvatarModule],
+  imports: [LucideAngularModule, CardModule, FormsModule, CommonModule, AvatarModule, ToastModule],
   templateUrl: './user-profile.html',
   styleUrl: './user-profile.css',
 })
 export class UserProfile implements OnInit {
   user = signal<IUser | any>(CURRENT_USER);
   loading = signal(false);
+  isSaving = signal(false);
   error = signal('');
 
   private authService = inject(AuthService);
+  private dashboardService = inject(UserDashboardService);
+  private goalService = inject(GoalService);
+  private leaderboardService = inject(LeaderBoardService);
+  private profileService = inject(UserProfileService);
+  private messageService = inject(MessageService);
   private router = inject(Router);
   achievements = [
     {
@@ -124,24 +138,103 @@ export class UserProfile implements OnInit {
   ];
 
   ngOnInit() {
-    this.loadUserDetails();
-  }
-
-  loadUserDetails() {
-    this.loading.set(true);
     this.authService.getUserDetails().subscribe({
       next: (userData) => {
-        this.user.set(userData);
+        this.user.set({ ...CURRENT_USER, ...userData });
         this.error.set('');
+        this.loadProfileData();
       },
       error: (err) => {
         console.error('Failed to load user details:', err);
         this.error.set('Failed to load user details');
-        // Keep mock data as fallback
+        this.loadProfileData(); // Try to load other data anyway
       },
       complete: () => {
         this.loading.set(false);
       },
+    });
+  }
+
+  loadProfileData() {
+    const userId = this.user().id;
+    if (!userId) return;
+
+    // 1. Fetch Stats
+    this.dashboardService.getUserStats(userId).subscribe({
+      next: (stats) => {
+        this.stats = [
+          { label: 'Growth', value: stats.average_score.toString() + '%', icon: Flame, color: 'text-orange-500' },
+          { label: 'Intellect', value: stats.total_exams_taken.toString(), icon: Award, color: 'text-indigo-600' },
+          { label: 'Milestones', value: stats.goals_met_count.toString(), icon: Target, color: 'text-emerald-600' },
+          { label: 'Standing', value: '...', icon: Sparkles, color: 'text-purple-600' },
+        ];
+      }
+    });
+
+    // 2. Fetch Recent Exams
+    this.dashboardService.getRecentExams(userId).subscribe({
+      next: (assessments: IAssessment[]) => {
+        this.examResults = assessments.slice(0, 3).map(a => ({
+          title: `Assessment ${a.id}`,
+          score: a.percentage.toString() + '%',
+          date: a.completed_at.split('T')[0],
+          color: a.percentage >= 80 ? 'bg-emerald-500' : 'bg-indigo-500'
+        }));
+      }
+    });
+
+    // 3. Fetch Goals
+    this.goalService.getGoal(userId).subscribe({
+      next: (goals: IGoal[]) => {
+        this.goals = goals.slice(0, 3).map(g => ({
+          label: g.target_type,
+          progress: Math.round((g.current_score / (g.target_score || 1)) * 100),
+          color: 'bg-indigo-500',
+          glow: 'shadow-indigo-500/50'
+        }));
+      }
+    });
+
+    // 4. Fetch Rank
+    this.leaderboardService.getMyRank(undefined, undefined, userId).subscribe({
+      next: (rankData) => {
+        const standingStat = this.stats.find(s => s.label === 'Standing');
+        if (standingStat) {
+          standingStat.value = rankData.global_rank.toString();
+        }
+      }
+    });
+  }
+
+  saveProfile() {
+    this.isSaving.set(true);
+    const updateData: IUserProfileUpdate = {
+      name: this.user().name,
+      bio: this.user().bio,
+      location: this.user().location,
+      phone: this.user().phone,
+      grade: this.user().grade
+    };
+
+    this.profileService.updateProfile(updateData).subscribe({
+      next: (updatedUser) => {
+        this.user.set({ ...this.user(), ...updatedUser });
+        this.isEditing = false;
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'Profile updated successfully'
+        });
+      },
+      error: (err) => {
+        console.error('Update profile failed:', err);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Failed to update profile'
+        });
+      },
+      complete: () => this.isSaving.set(false)
     });
   }
 

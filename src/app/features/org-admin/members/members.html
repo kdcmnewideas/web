@@ -3,69 +3,58 @@
   <div class="lg:col-span-9">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-4">
       <div>
-        <h1 class="text-3xl font-black text-slate-900 tracking-tight">Course Management</h1>
+        <h1 class="text-3xl font-black text-slate-900 tracking-tight">Member Management</h1>
       </div>
       <div class="flex items-center gap-3 w-full md:w-auto">
         <button
           pButton
           class="h-11 px-6 rounded-xl shadow-lg shadow-indigo-100"
-          (click)="openAddCourseDialog()"
+          (click)="openAddMemberDialog()"
         >
-          <lucide-angular [img]="icons.Plus" class="w-4 h-4" /> Add Course
+          <lucide-angular [img]="icons.Plus" class="w-4 h-4" /> Add Member
         </button>
       </div>
     </div>
     <p-card class="p-6" [style]="{ 'min-height': 'calc(100vh - 25rem)' }">
       <p-table
         #dt2
-        [value]="courses()"
+        [value]="members()"
         dataKey="id"
         [rows]="10"
         [rowsPerPageOptions]="[10, 25, 50]"
         [loading]="loading()"
         [paginator]="true"
-        [globalFilterFields]="['name', 'code', 'board_id']"
+        [globalFilterFields]="['user_email', 'org_role', 'status']"
         [tableStyle]="{ 'min-width': '75rem' }"
       >
         <ng-template #header>
           <tr>
-            <th style="width: 25%" pSortableColumn="name">Name</th>
-            <th style="width: 20%" pSortableColumn="code">Code</th>
-            <th style="width: 25%" pSortableColumn="board_id">Board</th>
-            <th style="width: 18%" pSortableColumn="is_active">Status</th>
+            <th style="width: 33%" pSortableColumn="user_email">Email</th>
+            <th style="width: 33%" pSortableColumn="org_role">Role</th>
+            <th style="width: 22%" pSortableColumn="status">Status</th>
             <th style="width: 12%">Actions</th>
           </tr>
           <tr>
             <th>
               <p-columnFilter
                 type="text"
-                field="name"
+                field="user_email"
                 placeholder="Type to search"
-                ariaLabel="Filter Name"
+                ariaLabel="Filter Email"
                 filterOn="input"
                 [showMenu]="false"
               ></p-columnFilter>
             </th>
             <th>
-              <p-columnFilter
-                type="text"
-                field="code"
-                placeholder="Type to search"
-                ariaLabel="Filter Code"
-                filterOn="input"
-                [showMenu]="false"
-              ></p-columnFilter>
-            </th>
-            <th>
-              <p-columnFilter field="board_id" matchMode="in" [showMenu]="false">
+              <p-columnFilter field="org_role" matchMode="in" [showMenu]="false">
                 <ng-template #filter let-value let-filter="filterCallback">
                   <p-multiSelect
-                     [options]="boardOptions"
-                     placeholder="Any"
-                     (onChange)="filter($event.value)"
-                     style="min-width: 14rem"
-                     class="z-100"
-                     appendTo="body"
+                    [options]="orgRoles"
+                    placeholder="Any"
+                    (onChange)="filter($event.value)"
+                    style="min-width: 14rem"
+                    class="z-100"
+                    appendTo="body"
                   >
                     <ng-template let-option #item>
                       <div class="flex items-center gap-2">
@@ -77,11 +66,10 @@
               </p-columnFilter>
             </th>
             <th>
-              <p-columnFilter field="is_active" matchMode="equals" [showMenu]="false">
+              <p-columnFilter field="status" matchMode="equals" [showMenu]="false">
                 <ng-template #filter let-filter="filterCallback">
-                  <!-- Custom implementation mapping true=active, false=inactive could be complex for primeNG direct equals filter if value uses primitive boolean, but keeping it simple below -->
                   <p-select
-                    [options]="[{label:'Active', value:true}, {label:'Inactive', value:false}]"
+                    [options]="statuses"
                     (onChange)="filter($event.value)"
                     placeholder="Select One"
                     [showClear]="true"
@@ -98,28 +86,25 @@
             <th></th>
           </tr>
         </ng-template>
-        <ng-template #body let-course>
+        <ng-template #body let-member>
           <tr>
             <td>
               <div class="flex items-center gap-3">
                 <div>
-                  <p class="font-bold text-slate-800">{{ course.name }}</p>
+                  <p class="font-bold text-slate-800">{{ member.user_email }}</p>
                 </div>
               </div>
             </td>
-            <td class="font-bold text-slate-600">
-               {{ course.code }}
-            </td>
-            <td class="px-6 py-4 font-medium text-slate-500">
-               {{ getBoardName(course.board_id) }}
+            <td class="px-6 py-4 font-bold text-slate-600 capitalize">
+               {{ member.org_role?.replace('_', ' ') }}
             </td>
             <td>
-              @if (course.is_active) {
+              @if (member.status?.toLowerCase() === 'active') {
                 <div class="flex items-center gap-1.5 text-emerald-500 font-bold text-xs">
                   <lucide-angular [img]="icons.CircleCheck" class="w-4 h-4" /> Active
                 </div>
               }
-              @if (!course.is_active) {
+              @if (member.status?.toLowerCase() === 'inactive') {
                 <div class="flex items-center gap-1.5 text-red-500 font-bold text-xs">
                   <lucide-angular [img]="icons.CircleMinus" class="w-4 h-4" /> Inactive
                 </div>
@@ -127,7 +112,7 @@
             </td>
             <td class="px-6 py-4 text-right">
               <p-button
-                (click)="openEditCourseDialog(course)"
+                (click)="openEditMemberDialog(member)"
                 [rounded]="true"
                 [text]="true"
                 severity="secondary"
@@ -142,7 +127,7 @@
         </ng-template>
         <ng-template #emptymessage>
           <tr>
-            <td colspan="5">No courses found.</td>
+            <td colspan="4">No members found.</td>
           </tr>
         </ng-template>
       </p-table>

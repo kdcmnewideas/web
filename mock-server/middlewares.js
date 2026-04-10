@@ -74,7 +74,15 @@ module.exports = (req, res, next) => {
 
     // GET /auth/me
     if (method === 'GET' && reqPath === '/auth/me') {
-      return ok(db.profiles[0]);
+      // const value = db.profiles.find((data) => data.platform_role === 'user');
+      const value = {
+        id: 'e25ef4d9-f4eb-4ab7-a992-0cc042301f9c',
+        email: 'Kaley_Lakin@yahoo.com',
+        name: 'Harvey Rice',
+        platform_role: 'user',
+        memberships: [],
+      };
+      return ok(value);
     }
   }
 

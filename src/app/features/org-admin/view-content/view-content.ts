@@ -1,5 +1,6 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../services/auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ChevronLeft, UploadCloud } from 'lucide-angular';
 import { LucideAngularModule } from 'lucide-angular';
@@ -39,6 +40,7 @@ export class ViewContent implements OnInit {
   private subjectService = inject(SubjectService);
   private messageService = inject(MessageService);
   private selectionService = inject(SubjectSelectionService);
+  private authService = inject(AuthService);
 
   subject = signal<any | null>(null);
   treeData = signal<AcademicNode[]>([]);
@@ -57,10 +59,21 @@ export class ViewContent implements OnInit {
   selectedFile = signal<File | null>(null);
   uploading = signal(false);
   icons = { ChevronLeft, UploadCloud };
+  orgId = '';
 
   ngOnInit() {
     this.loadCacheFromSession();
     this.loadSubjectDetails();
+    this.authService.getUserDetails().subscribe({
+      next: (user) => {
+        this.orgId = user?.memberships?.[0]?.org_id || environment.orgId;
+        this.loadSubjectDetails();
+      },
+      error: () => {
+        this.orgId = environment.orgId;
+        this.loadSubjectDetails();
+      },
+    });
   }
 
   loadSubjectDetails() {
@@ -140,14 +153,22 @@ export class ViewContent implements OnInit {
           this.persistCachesToSession();
           this.insertChapterSorted(data);
           // Keep the loading guard on briefly to prevent scroll-triggered re-entry
-          setTimeout(() => { this.isLoadingChapters = false; }, 300);
+          setTimeout(() => {
+            this.isLoadingChapters = false;
+          }, 300);
           this.loading.set(false);
           resolve();
         },
         error: (err) => {
-          setTimeout(() => { this.isLoadingChapters = false; }, 300);
+          setTimeout(() => {
+            this.isLoadingChapters = false;
+          }, 300);
           this.loading.set(false);
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to load chapter' });
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Failed to load chapter',
+          });
           resolve();
         },
       });
@@ -217,7 +238,10 @@ export class ViewContent implements OnInit {
     // remove previous highlights
     const prev = document.querySelectorAll('.highlighted');
     prev.forEach((el) => el.classList.remove('highlighted'));
-    const target = document.getElementById('content-' + nodeId) || document.getElementById('topic-' + nodeId) || document.getElementById('chapter-' + nodeId);
+    const target =
+      document.getElementById('content-' + nodeId) ||
+      document.getElementById('topic-' + nodeId) ||
+      document.getElementById('chapter-' + nodeId);
     if (target) {
       target.classList.add('highlighted');
       const isChapter = target.id.startsWith('chapter-');
@@ -277,7 +301,9 @@ export class ViewContent implements OnInit {
     // Topic-level click: find parent chapter, ensure loaded, scroll to topic
     const parentChapterId = this.findParentChapterId(node.id);
     if (parentChapterId) {
-      const alreadyDisplayed = this.displayedChapters().some((ch: any) => ch.id === parentChapterId);
+      const alreadyDisplayed = this.displayedChapters().some(
+        (ch: any) => ch.id === parentChapterId,
+      );
       if (alreadyDisplayed) {
         this.highlightContent(node.id);
         return;
@@ -328,22 +354,28 @@ export class ViewContent implements OnInit {
           this.loading.set(false);
           const chapterIdFallback = this.findParentChapterId(node.id);
           if (!chapterIdFallback) {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unable to locate chapter for item' });
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: 'Unable to locate chapter for item',
+            });
             return;
           }
           this.fetchChapterAndShow(node, chapterIdFallback);
         } else {
           this.loading.set(false);
           // other errors -> show message and stop
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to fetch content' });
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Failed to fetch content',
+          });
         }
       },
     });
 
     // We've initiated a subtopic-specific fetch; wait for its result (or fallback handler).
     return;
-
-    
   }
 
   private findParentChapterId(nodeId: string): string | null {
@@ -359,7 +391,8 @@ export class ViewContent implements OnInit {
     if (!children) return false;
     for (const c of children) {
       if (c.id === nodeId) return true;
-      if (c.children && c.children.length && this.nodeExistsInChildren(c.children, nodeId)) return true;
+      if (c.children && c.children.length && this.nodeExistsInChildren(c.children, nodeId))
+        return true;
     }
     return false;
   }
@@ -383,7 +416,11 @@ export class ViewContent implements OnInit {
     this.treeData.set(patched);
   }
 
-  private patchChildrenContent(children: AcademicNode[], nodeId: string, content: any): AcademicNode[] {
+  private patchChildrenContent(
+    children: AcademicNode[],
+    nodeId: string,
+    content: any,
+  ): AcademicNode[] {
     return children.map((c) => {
       const copy = { ...c } as AcademicNode;
       if (copy.id === nodeId) {
@@ -402,7 +439,11 @@ export class ViewContent implements OnInit {
     if (typeof payload === 'string') return payload;
     // Prefer the full original content when available, otherwise fall back to difficulty variants
     return (
-      payload.content_original || payload.content_easy || payload.content_medium || payload.content_hard || undefined
+      payload.content_original ||
+      payload.content_easy ||
+      payload.content_medium ||
+      payload.content_hard ||
+      undefined
     );
   }
 
@@ -443,7 +484,11 @@ export class ViewContent implements OnInit {
   /** Fetch a chapter payload, index its subtopics, and show the requested node's content */
   private fetchChapterAndShow(node: AcademicNode, chapterId: string) {
     if (!chapterId) {
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unable to locate chapter for item' });
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Unable to locate chapter for item',
+      });
       return;
     }
 
@@ -479,13 +524,21 @@ export class ViewContent implements OnInit {
           this.selectedNode.set({ ...node, content: txt });
           this.highlightContent(node.id);
         } else {
-          this.messageService.add({ severity: 'warn', summary: 'Not found', detail: 'Content not available' });
+          this.messageService.add({
+            severity: 'warn',
+            summary: 'Not found',
+            detail: 'Content not available',
+          });
         }
         this.loading.set(false);
       },
       error: (err) => {
         this.loading.set(false);
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to load content' });
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Failed to load content',
+        });
       },
     });
   }
@@ -521,7 +574,12 @@ export class ViewContent implements OnInit {
               id: t.id,
               label: t.title,
               content: t.subtopics?.length ? undefined : this.getSubtopicText(t),
-              children: t.subtopics?.map((st: any) => ({ id: st.id, label: st.title, content: this.getSubtopicText(st) })) || [],
+              children:
+                t.subtopics?.map((st: any) => ({
+                  id: st.id,
+                  label: st.title,
+                  content: this.getSubtopicText(st),
+                })) || [],
             }));
             return { ...ch, children: topics } as AcademicNode;
           }
@@ -532,7 +590,11 @@ export class ViewContent implements OnInit {
       },
       error: (err) => {
         this.loading.set(false);
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to load chapter' });
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: 'Failed to load chapter',
+        });
         console.error('Failed to fetch chapter:', err);
       },
     });
@@ -588,29 +650,27 @@ export class ViewContent implements OnInit {
     }
 
     this.uploading.set(true);
-    this.subjectService
-      .ingestPdf(subjectId, file, environment.orgId, environment.geminiApiKey)
-      .subscribe({
-        next: (res) => {
-          this.uploading.set(false);
-          this.selectedFile.set(null);
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Uploaded',
-            detail: 'Document ingested successfully',
-          });
-          // Refresh subject details to show new chapters/content
-          this.loadSubjectDetails();
-        },
-        error: (err) => {
-          this.uploading.set(false);
-          console.error('Ingestion failed', err);
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Upload failed',
-            detail: err.error?.detail || 'Ingestion API failed',
-          });
-        },
-      });
+    this.subjectService.ingestPdf(subjectId, file, this.orgId, environment.geminiApiKey).subscribe({
+      next: (res) => {
+        this.uploading.set(false);
+        this.selectedFile.set(null);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Uploaded',
+          detail: 'Document ingested successfully',
+        });
+        // Refresh subject details to show new chapters/content
+        this.loadSubjectDetails();
+      },
+      error: (err) => {
+        this.uploading.set(false);
+        console.error('Ingestion failed', err);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Upload failed',
+          detail: err.error?.detail || 'Ingestion API failed',
+        });
+      },
+    });
   }
 }

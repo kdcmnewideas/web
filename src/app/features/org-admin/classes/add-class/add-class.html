@@ -1,0 +1,42 @@
+<div class="p-2 pt-0">
+  <form [formGroup]="classForm" class="flex flex-col gap-6">
+    <div class="flex flex-col gap-2">
+      <label class="text-xs font-black text-slate-400 uppercase tracking-widest">Class Identifier</label>
+      <input pInputText formControlName="name" placeholder="e.g. Grade 10 - Mathematics" class="h-12 rounded-xl border-slate-200" />
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div class="flex flex-col gap-2">
+        <label class="text-xs font-black text-slate-400 uppercase tracking-widest">Join Code</label>
+        <input pInputText formControlName="join_code" placeholder="e.g. MTH10" class="h-12 rounded-xl border-slate-200 font-mono" />
+      </div>
+      <div class="flex flex-col gap-2">
+        <label class="text-xs font-black text-slate-400 uppercase tracking-widest">Target Course</label>
+        <p-select [options]="courseOptions" formControlName="course_id" placeholder="Select Course" appendTo="body" styleClass="w-full h-12 rounded-xl"></p-select>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-4 mt-2">
+       <div class="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+          <p-checkbox formControlName="allow_join_requests" [binary]="true"></p-checkbox>
+          <div class="flex flex-col">
+            <span class="text-sm font-bold text-slate-800">Allow Join Requests</span>
+            <span class="text-[10px] text-slate-500 font-medium">Allow students to request to join this class</span>
+          </div>
+       </div>
+
+       <div *ngIf="isEdit" class="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100">
+          <p-checkbox formControlName="is_active" [binary]="true"></p-checkbox>
+          <div class="flex flex-col">
+            <span class="text-sm font-bold text-slate-800">Is Active</span>
+            <span class="text-[10px] text-slate-500 font-medium">Control visibility and access to this class</span>
+          </div>
+       </div>
+    </div>
+
+    <div class="flex justify-end gap-3 pt-4">
+      <button pButton label="Cancel" class="p-button-text text-slate-600 font-bold" (click)="onCancel()"></button>
+      <button pButton [label]="isEdit ? 'Save Changes' : 'Create Class'" class="px-8 h-12 rounded-xl bg-indigo-600 border-none font-bold shadow-lg shadow-indigo-100" (click)="onSave()" [disabled]="classForm.invalid"></button>
+    </div>
+  </form>
+</div>

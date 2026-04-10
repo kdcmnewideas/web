@@ -1,0 +1,53 @@
+<div class="flex flex-col gap-4">
+  <form [formGroup]="addMemberForm" class="space-y-4">
+    @if (!config.data?.member) {
+      <div class="flex flex-col gap-2">
+        <label for="name" class="block text-sm font-black text-slate-700 uppercase tracking-widest"
+          >Name</label
+        >
+        <input pInputText formControlName="name" placeholder="User's Full Name" />
+      </div>
+      <div class="flex flex-col gap-2">
+        <label for="email" class="block text-sm font-black text-slate-700 uppercase tracking-widest"
+          >Email</label
+        >
+        <input pInputText formControlName="email" placeholder="email@address.com" />
+      </div>
+    } @else {
+      <div class="flex gap-2">
+        <label for="email" class="block text-sm font-black text-slate-700 uppercase tracking-widest"
+          >Email</label
+        >
+        <p>{{ config.data?.member?.user_email }}</p>
+      </div>
+    }
+
+    <div class="flex flex-col gap-2">
+      <label
+        for="role"
+        class="block text-sm font-black text-slate-700 uppercase tracking-widest"
+        >Org Role</label
+      >
+      <p-select [options]="orgRoles" formControlName="role" appendTo="body" styleClass="w-full" />
+    </div>
+
+    @if (config.data?.member) {
+      <div class="flex flex-col gap-2">
+        <label
+          for="status"
+          class="block text-sm font-black text-slate-700 uppercase tracking-widest"
+          >Status</label
+        >
+        <p-select [options]="statuses" formControlName="status" appendTo="body" styleClass="w-full" />
+      </div>
+    }
+  </form>
+  <div class="flex justify-end gap-2 pt-4">
+    <p-button severity="secondary" outlined label="Cancel" (click)="close()" />
+    <p-button
+      [label]="config.data?.member ? 'Update Member' : 'Invite Member'"
+      (click)="config.data?.member ? updateMember() : addMember()"
+      [disabled]="addMemberForm.invalid"
+    />
+  </div>
+</div>

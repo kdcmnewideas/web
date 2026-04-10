@@ -1,0 +1,24 @@
+<div class="p-2 pt-0">
+  <form [formGroup]="sectionForm" class="flex flex-col gap-6">
+    <div class="bg-indigo-50/50 p-4 rounded-2xl border border-indigo-100/50 mb-2">
+       <span class="text-[10px] font-black text-indigo-400 uppercase tracking-widest block mb-1">Target Class</span>
+       <span class="text-sm font-bold text-indigo-700">{{ class?.name }}</span>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <label class="text-xs font-black text-slate-400 uppercase tracking-widest">Section Name</label>
+      <input pInputText formControlName="name" placeholder="e.g. Section A" class="h-12 rounded-xl border-slate-200" />
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <label class="text-xs font-black text-slate-400 uppercase tracking-widest">Section Join Code</label>
+      <input pInputText formControlName="join_code" placeholder="e.g. SEC-A1" class="h-12 rounded-xl border-slate-200 font-mono" />
+      <p class="text-[10px] text-slate-400 font-medium leading-relaxed">Choose a unique code for students to identify and join this specific section directly.</p>
+    </div>
+
+    <div class="flex justify-end gap-3 pt-6 border-t border-slate-100">
+      <button pButton label="Cancel" class="p-button-text text-slate-600 font-bold" (click)="onCancel()"></button>
+      <button pButton [label]="isEdit ? 'Save Section' : 'Add Section'" class="px-8 h-12 rounded-xl bg-indigo-600 border-none font-bold shadow-lg shadow-indigo-100" (click)="onSave()" [disabled]="sectionForm.invalid"></button>
+    </div>
+  </form>
+</div>

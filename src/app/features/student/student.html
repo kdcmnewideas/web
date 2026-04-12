@@ -3,6 +3,7 @@
   <app-side-nav
     [navItems]="navItems"
     [(isSidebarCollapsed)]="isSidebarCollapsed"
+    [currentUser]="currentUser"
     (navigateTo)="navigateTo($event)"
   />
 
@@ -12,13 +13,6 @@
       `flex-1 flex flex-col transition-all duration-500 ${isSidebarCollapsed() ? 'md:ml-24' : 'md:ml-64'}`
     "
   >
-    <!-- Sleek Global Top Header -->
-    <app-header
-      [currentUser]="currentUser"
-      (navigateTo)="navigateTo($event)"
-      class="sticky top-0 z-20"
-    />
-
     <main class="flex-1 p-4 md:p-10">
       <div class="max-w-400 mx-auto">
         <router-outlet />

@@ -57,8 +57,69 @@
     }
   </nav>
 
-  <!-- Logout Button -->
-  <div class="border-t border-slate-100 p-4">
+  <!-- User Profile + Notifications + Logout -->
+  <div class="border-t border-slate-100 p-4 space-y-2">
+    <!-- Notification Bell -->
+    <button
+      [class]="
+        `w-full flex items-center ${isSidebarCollapsed() ? 'justify-center px-0' : 'space-x-4 px-4'} py-3.5 rounded-lg transition-all duration-300 font-bold text-slate-600 hover:bg-slate-50 hover:text-slate-900 cursor-pointer relative`
+      "
+      [pTooltip]="isSidebarCollapsed() ? 'Notifications' : ''"
+    >
+      <div class="relative shrink-0">
+        <lucide-icon [img]="icons.Bell" size="20" />
+        <span
+          class="absolute -top-1 -right-1 w-2 h-2 bg-rose-500 rounded-full border-2 border-white"
+        ></span>
+      </div>
+      <span
+        [class]="
+          `whitespace-nowrap text-sm tracking-tight transition-all duration-300 ${isSidebarCollapsed() ? 'opacity-0 w-0 hidden' : 'opacity-100'}`
+        "
+      >
+        Notifications
+      </span>
+    </button>
+
+    <!-- User Profile -->
+    <button
+      (click)="navigateTo.emit('profile')"
+      [class]="
+        `w-full flex items-center ${isSidebarCollapsed() ? 'justify-center px-0' : 'gap-3 px-4'} py-2.5 rounded-lg transition-all duration-300 hover:bg-slate-50 cursor-pointer`
+      "
+      [pTooltip]="isSidebarCollapsed() ? (currentUser()?.name || 'Profile') : ''"
+    >
+      <p-avatar
+        [label]="
+          currentUser()?.avatarUrl
+            ? ''
+            : currentUser()?.email
+              ? currentUser()?.email[0].toUpperCase()
+              : currentUser()?.name?.[0]
+        "
+        class="border border-slate-200 shrink-0 h-9!"
+      >
+        <img
+          [src]="currentUser()?.avatarUrl"
+          class="w-full h-full object-cover rounded-lg"
+          alt="Profile"
+        />
+      </p-avatar>
+      <div
+        [class]="
+          `text-left transition-all duration-300 overflow-hidden ${isSidebarCollapsed() ? 'opacity-0 w-0 hidden' : 'opacity-100'}`
+        "
+      >
+        <p class="text-xs font-black text-slate-900 leading-none mb-0.5 truncate">
+          {{ currentUser()?.name }}
+        </p>
+        <p class="text-[9px] font-black text-primary-500 uppercase tracking-widest truncate">
+          {{ currentUser()?.role }}
+        </p>
+      </div>
+    </button>
+
+    <!-- Logout Button -->
     <button
       (click)="logout()"
       [class]="

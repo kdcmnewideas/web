@@ -3,12 +3,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { TooltipModule } from 'primeng/tooltip';
 import { CURRENT_USER } from '../../shared/constants/mock-data.constant';
-import { AvatarModule } from 'primeng/avatar';
 import {
-  ChevronLeft,
-  ChevronRight,
-  Bell,
-  Search,
   LucideAngularModule,
   Users,
   BookOpen,
@@ -18,9 +13,7 @@ import {
   LayoutDashboardIcon,
   Presentation,
 } from 'lucide-angular';
-import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
-import { Header } from '../../shared/components/header/header';
 import { MobileNav } from '../../shared/components/mobile-nav/mobile-nav';
 import { SideNav } from '../../shared/components/side-nav/side-nav';
 import { AuthService } from '../../services/auth/auth.service';
@@ -30,17 +23,7 @@ import { IOrganization } from '../../core/interface/organization.interface';
 
 @Component({
   selector: 'app-org-admin',
-  imports: [
-    FormsModule,
-    LucideAngularModule,
-    RouterOutlet,
-    TooltipModule,
-    ButtonModule,
-    AvatarModule,
-    Header,
-    MobileNav,
-    SideNav,
-  ],
+  imports: [FormsModule, LucideAngularModule, RouterOutlet, TooltipModule, MobileNav, SideNav],
   templateUrl: './org-admin.html',
   styleUrl: './org-admin.css',
 })
@@ -52,12 +35,6 @@ export class OrgAdmin implements OnInit {
   currentUser = CURRENT_USER;
   organizationDetails = signal<IOrganization | null>(null);
 
-  icons = {
-    ChevronLeft,
-    ChevronRight,
-    Bell,
-    Search,
-  };
   navItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboardIcon },
     { id: 'users', label: 'Members', icon: Users },

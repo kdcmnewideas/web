@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Aile</string>
+    <string name="title_activity_main">Aile</string>
+    <string name="package_name">com.alc.aile</string>
+    <string name="custom_url_scheme">com.alc.aile</string>
+</resources>

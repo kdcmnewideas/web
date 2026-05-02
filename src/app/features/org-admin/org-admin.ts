@@ -1,5 +1,6 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
+import { IonRouterOutlet } from '@ionic/angular/standalone';
 import { environment } from '../../../environments/environment';
 import { TooltipModule } from 'primeng/tooltip';
 import { CURRENT_USER } from '../../shared/constants/mock-data.constant';
@@ -23,7 +24,7 @@ import { IOrganization } from '../../core/interface/organization.interface';
 
 @Component({
   selector: 'app-org-admin',
-  imports: [FormsModule, LucideAngularModule, RouterOutlet, TooltipModule, MobileNav, SideNav],
+  imports: [FormsModule, LucideAngularModule, IonRouterOutlet, TooltipModule, MobileNav, SideNav],
   templateUrl: './org-admin.html',
   styleUrl: './org-admin.css',
 })

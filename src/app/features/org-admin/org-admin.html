@@ -1,25 +1,27 @@
-<div class="flex min-h-screen bg-app-mesh">
-  <!-- Sidebar for Desktop -->
-  <app-side-nav
-    [navItems]="navItems"
-    [(isSidebarCollapsed)]="isSidebarCollapsed"
-    [currentUser]="currentUser"
-    (navigateTo)="navigateTo($event)"
-  />
+<div class="ion-page">
+  <div class="flex min-h-screen bg-app-mesh">
+    <!-- Sidebar for Desktop -->
+    <app-side-nav
+      [navItems]="navItems"
+      [(isSidebarCollapsed)]="isSidebarCollapsed"
+      [currentUser]="currentUser"
+      (navigateTo)="navigateTo($event)"
+    />
 
-  <!-- Main Content -->
-  <div
-    [class]="
-      `flex-1 flex flex-col transition-all duration-500 ${isSidebarCollapsed() ? 'md:ml-24' : 'md:ml-64'}`
-    "
-  >
-    <main class="flex-1 p-4 md:p-10">
-      <div class="max-w-400 mx-auto">
-        <router-outlet />
-      </div>
-    </main>
+    <!-- Main Content -->
+    <div
+      [class]="
+        `flex-1 flex flex-col transition-all duration-500 ${isSidebarCollapsed() ? 'md:ml-24' : 'md:ml-64'}`
+      "
+    >
+      <main class="flex-1 p-4 md:p-10">
+        <div class="max-w-400 mx-auto">
+          <ion-router-outlet></ion-router-outlet>
+        </div>
+      </main>
+    </div>
+
+    <!-- Bottom Nav for Mobile -->
+    <app-mobile-nav [mobileNavItems]="mobileNavItems" (navigateTo)="navigateTo($event)" />
   </div>
-
-  <!-- Bottom Nav for Mobile -->
-  <app-mobile-nav [mobileNavItems]="mobileNavItems" (navigateTo)="navigateTo($event)" />
 </div>

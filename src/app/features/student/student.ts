@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
+import { IonRouterOutlet } from '@ionic/angular/standalone';
 import { TooltipModule } from 'primeng/tooltip';
 import { CURRENT_USER } from '../../shared/constants/mock-data.constant';
 import {
@@ -15,7 +16,7 @@ import { SideNav } from '../../shared/components/side-nav/side-nav';
 
 @Component({
   selector: 'app-student',
-  imports: [RouterOutlet, TooltipModule, LucideAngularModule, MobileNav, SideNav],
+  imports: [IonRouterOutlet, TooltipModule, LucideAngularModule, MobileNav, SideNav],
   templateUrl: './student.html',
   styleUrl: './student.css',
 })

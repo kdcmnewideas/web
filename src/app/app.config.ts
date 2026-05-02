@@ -7,6 +7,7 @@ import Aura from '@primeuix/themes/aura';
 import { definePreset } from '@primeuix/themes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './core/interceptor/auth.interceptor';
+import { provideIonicAngular } from '@ionic/angular/standalone';
 
 const MyPreset = definePreset(Aura, {
   semantic: {
@@ -75,6 +76,6 @@ export const appConfig: ApplicationConfig = {
           darkModeSelector: '.my-app-dark',
         },
       },
-    }),
+    }), provideIonicAngular({}),
   ],
 };

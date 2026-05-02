@@ -1,14 +1,15 @@
 import { Component, inject, signal } from '@angular/core';
 import { LucideAngularModule, Layers, Users, Building2 } from 'lucide-angular';
 import { CURRENT_USER } from '../../shared/constants/mock-data.constant';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
+import { IonRouterOutlet } from '@ionic/angular/standalone';
 import { TooltipModule } from 'primeng/tooltip';
 import { MobileNav } from '../../shared/components/mobile-nav/mobile-nav';
 import { SideNav } from '../../shared/components/side-nav/side-nav';
 
 @Component({
   selector: 'app-admin',
-  imports: [LucideAngularModule, RouterOutlet, TooltipModule, MobileNav, SideNav],
+  imports: [LucideAngularModule, IonRouterOutlet, TooltipModule, MobileNav, SideNav],
   templateUrl: './platform-admin.html',
   styleUrl: './platform-admin.css',
 })
